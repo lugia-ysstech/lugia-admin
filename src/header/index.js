@@ -6,27 +6,36 @@
  */
 import React from "react";
 import { go, Link } from "@lugia/lugiax-router";
-import { Button } from "@lugia/lugia-web";
+import { Button, Theme } from "@lugia/lugia-web";
+import Widget from "@lugia/lugia-web/dist/consts";
+
+const theme = {
+  [Widget.Button]: {
+    width: 150
+  }
+};
 
 export default class Header extends React.Component<any> {
   render() {
     return (
       <div>
-        <Link to="/tomato">
-          <Button type="primary" shape="round">
-            番茄钟
-          </Button>
-        </Link>
-        <Link to="/todo">
-          <Button type="primary" shape="round">
-            To Do List
-          </Button>
-        </Link>
-        <Link to="/404">
-          <Button type="primary" shape="round" onClick={this.onClick}>
-            404
-          </Button>
-        </Link>
+        <Theme config={theme}>
+          <Link to="/tomato">
+            <Button type="primary" shape="round">
+              番茄钟
+            </Button>
+          </Link>
+          <Link to="/todo">
+            <Button type="primary" shape="round">
+              To Do List
+            </Button>
+          </Link>
+          <Link to="/404">
+            <Button type="primary" shape="round" onClick={this.onClick}>
+              404
+            </Button>
+          </Link>
+        </Theme>
       </div>
     );
   }

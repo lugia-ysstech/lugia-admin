@@ -46,6 +46,7 @@ const TodoInput = bindTo(
 export default () => {
   return (
     <div>
+      <h1>To Do List</h1>
       <TodoInput />
       <TodoList />
     </div>
