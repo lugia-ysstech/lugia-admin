@@ -4,6 +4,7 @@ import Header from "./header";
 import Todo from "./todo";
 import Tomato from "./tomato";
 import NotAccess from "./access/NotAccess";
+import "./App.css";
 
 export default () => {
   console.info("init main");
