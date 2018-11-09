@@ -4,13 +4,15 @@ import Header from "./header";
 import Todo from "./todo";
 import Tomato from "./tomato";
 import NotAccess from "./access/NotAccess";
+import logo from "./assets/logo.png";
 import "./App.css";
 
 export default () => {
   console.info("init main");
 
   return (
-    <div style={styles}>
+    <div className="app">
+      <img src={logo} style={styles} />
       <Header />
       {createRoute({
         "/todo": {
@@ -30,6 +32,5 @@ export default () => {
 };
 
 const styles = {
-  width: "500px",
-  margin: "100px auto"
+  padding: "30px"
 };

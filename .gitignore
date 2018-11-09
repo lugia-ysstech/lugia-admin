@@ -1,10 +1,20 @@
-.DS_Store
-tmp
+# See https://help.github.com/ignore-files/ for more about ignoring files.
+
+# dependencies
 /node_modules
+
+# testing
+/coverage
+
+# production
+/dist
+/tmp
 /.history
-lib
-dist
-coverage
-yarn-error.log
+/lib
+
+# misc
+.DS_Store
+
 npm-debug.log*
-.changelog
+yarn-debug.log*
+yarn-error.log*

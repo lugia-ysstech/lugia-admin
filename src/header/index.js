@@ -6,8 +6,7 @@
  */
 import React from "react";
 import { go, Link } from "@lugia/lugiax-router";
-import { Button, Theme } from "@lugia/lugia-web";
-import Widget from "@lugia/lugia-web/dist/consts";
+import { Button, Theme, consts as Widget } from "@lugia/lugia-web";
 
 const theme = {
   [Widget.Button]: {
