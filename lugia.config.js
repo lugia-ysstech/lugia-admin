@@ -10,7 +10,7 @@ export default {
       }
     ]
   ],
-  applyWebpack(webpackConfig, { webpack, mega }) {
+  applyWebpack(webpackConfig, { webpack, merge }) {
     return webpackConfig;
   }
 };
