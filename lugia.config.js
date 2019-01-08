@@ -1,6 +1,7 @@
 export default {
   disableCSSModules: true,
   cssModulesWithAffix: true,
+  publicPath: "/",
   extraBabelPlugins: [
     [
       "import",
