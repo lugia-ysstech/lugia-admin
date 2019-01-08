@@ -8,9 +8,9 @@
     "test": "lugia-scripts test -w"
   },
   "dependencies": {
-    "@lugia/lugia-web": "^1.0.60",
-    "@lugia/lugiax": "^1.0.3",
-    "@lugia/lugiax-router": "^1.0.5",
+    "@lugia/lugia-web": "^1.0.61",
+    "@lugia/lugiax": "^1.0.4",
+    "@lugia/lugiax-router": "^1.0.6",
     "history": "^4.7.2",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
