@@ -1,16 +1,15 @@
 {
-  "name": "lugiax-scaffolding",
+  "name": "@lugia/scaffolding-admin",
   "version": "1.0.0",
-  "private": true,
   "scripts": {
     "start": "lugia-scripts start",
     "build": "lugia-scripts build",
     "test": "lugia-scripts test -w"
   },
   "dependencies": {
-    "@lugia/lugia-web": "^1.0.61",
-    "@lugia/lugiax": "^1.0.4",
-    "@lugia/lugiax-router": "^1.0.6",
+    "@lugia/lugia-web": "^1.0.72",
+    "@lugia/lugiax": "^1.0.6",
+    "@lugia/lugiax-router": "^1.0.8",
     "history": "^4.7.2",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
