@@ -14,8 +14,9 @@ import menuData from '../../menu'
 
 const NavContainer = styled.div`
   display: inline-block;
-  min-height: 1080px;
   background: #000033;
+  min-height: ${props => props.menuMinHeight}px;
+  height: 100%;
 `;
 
 const styles = {
@@ -32,9 +33,15 @@ const theme = {
 };
 
 export default class List extends React.Component<any> {
+
+  componentDidMount() {
+    const menuMinHeight = document.documentElement.clientHeight ;
+    this.setState({ menuMinHeight });
+  }
   render() {
+    const {menuMinHeight = 900} = this.state||{};
     return (
-      <NavContainer>
+      <NavContainer  menuMinHeight={menuMinHeight}>
         <Title>
           <img src={logo} style={styles} />
         </Title>
