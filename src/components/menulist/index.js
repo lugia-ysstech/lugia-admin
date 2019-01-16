@@ -8,7 +8,7 @@ import React from "react";
 import { go, Link } from "@lugia/lugiax-router";
 import styled from "styled-components";
 import { Navmenu, Theme, consts as Widget } from "@lugia/lugia-web";
-import logo from "../../assets/logo.png";
+import logo from "../../assets/pro_logo.png";
 import menuData from '../../menu'
 
 
@@ -20,7 +20,8 @@ const NavContainer = styled.div`
 `;
 
 const styles = {
-  padding: "30px"
+  padding: "30px",
+  width:'160px'
 };
 
 const Title = styled.div``;
