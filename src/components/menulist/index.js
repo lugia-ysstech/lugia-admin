@@ -20,8 +20,8 @@ const NavContainer = styled.div`
 `;
 
 const styles = {
-  padding: "30px",
-  width:'160px'
+  padding: "20px 20px 10px",
+  width:'90px'
 };
 
 const Title = styled.div``;
