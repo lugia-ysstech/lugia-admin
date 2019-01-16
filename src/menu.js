@@ -1,6 +1,5 @@
-import { Redirect } from '@lugia/lugiax-router/target/lib';
-import React from 'react';
 
+import React from 'react';
 import Abnormal from "./pages/abnormal";
 import Personal from "./pages/personal";
 import Form from "./pages/form";
@@ -8,33 +7,30 @@ import Detail from "./pages/detail";
 import Result from "./pages/result";
 import List from "./pages/list";
 
-const getMenuRouter = (menuData,routes) => {
-  const rout = routes || {};
-  menuData.forEach( item => {
-    const {component,value,path} = item;
-    if(component){
-      rout[value] = {
-        exact: true,
-        component: component
-      };
-    }else if(path){
-      rout[value] = {
-        exact: true,
-        render: () => import(`${path}`),
-      };
-    }else{
-      const {children} = item;
-      if(children){
-        return getMenuRouter(children,rout);
-      }
-    }
-  });
-  return rout;
+const data =[
+  {
+    name:'Dashboard',
+    icon:'lugia-icon-financial_sad',
+    text: "Dashboard",
+    children:[
+      {
+        name:'analyse',
+        icon:'lugia-icon-financial_sad',
+        text: "分析页",
+      },
+      {
+        name: "monitor",
+        text: "监控页",
+        icon:'lugia-icon-financial_sad',
+      },
+    ]
+  },
+  {name:'form', text: "表单页", icon: "lugia-icon-financial_editor"},
+  {name:'list', text: "列表页", icon: "lugia-icon-financial_table" },
+  {name:'detail', text: "详情页", icon: "lugia-icon-financial_sad_o" },
+];
 
-};
-
-
-const menuData = [
+export default [
   {
     value: "Dashboard",
     text: "Dashboard",
@@ -71,32 +67,3 @@ const menuData = [
   { value: "/personal", text: "个人页", icon: "lugia-icon-financial_user" ,component: Personal}
 ];
 
-const router = {
-  '/': {
-    exact: true,
-    render: async () => {
-      return  () => <Redirect
-        to={{
-          pathname: '/analyse',
-        }}
-      />;
-    },
-  },
-  ...getMenuRouter(menuData),
-  '/404': {
-    exact: true,
-    render: async () => import('./components/404'),
-  },
-  NotFound: {
-    isHidden: true,
-    render: async () => {
-      return  () => <Redirect
-        to={{
-          pathname: '/404',
-        }}
-      />;
-    },
-  }
-};
-
-export default  {menuData,router};

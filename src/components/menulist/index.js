@@ -9,13 +9,12 @@ import { go, Link } from "@lugia/lugiax-router";
 import styled from "styled-components";
 import { Navmenu, Theme, consts as Widget } from "@lugia/lugia-web";
 import logo from "../../assets/logo.png";
-import menu from '../../menu'
+import menuData from '../../menu'
 
 
 const NavContainer = styled.div`
   display: inline-block;
-  min-height: 850px;
-  height: 100%;
+  min-height: 1080px;
   background: #000033;
 `;
 
@@ -34,7 +33,6 @@ const theme = {
 
 export default class List extends React.Component<any> {
   render() {
-    const {menuData} = menu;
     return (
       <NavContainer>
         <Title>
@@ -46,6 +44,7 @@ export default class List extends React.Component<any> {
             onSelect={this.onSelect}
             inlineType={"ellipse"}
             data={menuData}
+            // size={'large'}
           />
         </Theme>
       </NavContainer>

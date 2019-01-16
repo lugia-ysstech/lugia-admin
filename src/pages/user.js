@@ -20,23 +20,11 @@ const InputWrapper = styled.div`
   margin:10px 10px;
 `;
 
-const columns=[{
-  title: 'Name', dataIndex: 'name', key:'name', width: 100,
-}, {
-  title: 'Age', dataIndex: 'age', key:'age', width: 100,
-}, {
-  title: 'Phone', dataIndex: 'phone', key:'phone', width: 200,
-}, {
-  title: 'Operations', dataIndex: '', key:'operations', render: () => <a href="javascript:;">Delete</a>,
-}];
-
 
 class User extends Component {
 
   render() {
-    const {total, currentPage,formData} = this.props;
-    console.log('----',formData);
-    // const {} = this.props;
+    const {total, limit,currentPage,formData,columns} = this.props;
     return <Container>
       <Container>
         <InputWrapper>
@@ -48,11 +36,14 @@ class User extends Component {
         <InputWrapper>
           <Input size={'default'} placeholder={'请输入电话号码'} onChange={this.props.onChangePhone}/>
         </InputWrapper>
+        <InputWrapper>
+          <Input size={'default'} placeholder={'请输入邮箱'} onChange={this.props.onChangeEmail}/>
+        </InputWrapper>
         <Button type="primary" onClick={this.props.doRequest}>搜索</Button>
       </Container>
       <Table columns={columns} data={formData}/>
       <Container>
-        <Pagination defaultCurrent={currentPage} total={total}/>
+        <Pagination defaultCurrent={currentPage} total={total} pageSize={limit} onChange={this.props.changePage}/>
       </Container>
 
     </Container>;
@@ -64,19 +55,23 @@ const UserList = connect(
   user,
   state => {
     return { searchInfo: state.user.get('searchInfo'),
-      formData: state.user.get('formData'),
+      formData: Array.isArray(state.user.get('formData'))?state.user.get('formData'):state.user.get('formData').toJS(),
       currentPage: state.user.get('currentPage'),
-      total: state.user.get('total')
+      total: state.user.get('total'),
+      limit: state.user.get('limit'),
+      columns: state.user.get('columns').toJS(),
     };
   },
   mutations => {
     const { user } = mutations;
     return {
-      transformQuery: user.asyncTransformQuery,
       doRequest: user.asyncDoRequest,
+      doDelete:user.asyncDoDelete,
+      changePage:user.asyncChangePage,
       onChangeAge:user.onChangeAge,
       onChangePhone:user.onChangePhone,
-      onChangeName:user.onChangeName
+      onChangeName:user.onChangeName,
+      onChangeEmail:user.onChangeEmail,
     };
   }
 )(User);

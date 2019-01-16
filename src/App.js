@@ -4,7 +4,7 @@ import Header from "./components/header";
 import MnueList from "./components/menulist";
 import "./App.css";
 import styled from "styled-components";
-import menu from  './menu'
+import router from  './router'
 
 const ContentContainer = styled.div`
   flex: 1;
@@ -12,7 +12,6 @@ const ContentContainer = styled.div`
 
 export default () => {
   console.info("init main");
-  const {router} = menu;
   return (
     <div className="app">
       <MnueList />
