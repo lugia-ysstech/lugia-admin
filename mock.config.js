@@ -1,7 +1,8 @@
 import random from "./mock/random";
-
+import search from "./mock/search";
 export default {
   ...random,
+  ...search,
   "/example": "https://easy-mock.com/mock/5c36fa23c0fe6620a6a800be",
   "/api/array": [
     { name: "apple", value: 1.2 },
