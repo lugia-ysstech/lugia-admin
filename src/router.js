@@ -28,13 +28,11 @@ const getMenuRouter = (menuData,routes) => {
 };
 export default  {
   '/pages': {
-    // exact: true,
     render:  async () => import('./pages/user'),
     exact: true,
   },
   ...getMenuRouter(menuData),
   '/pages/404': {
-    // exact: true,
     render: async () => import('./components/404'),
   },
   NotFound: {
