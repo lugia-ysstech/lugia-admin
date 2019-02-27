@@ -18,7 +18,7 @@ export const firstRouter = {
   },
   '/login': {
     exact: true,
-    render: async () => import('./components/login'),
+    render: async () => import('./login'),
   },
   NotFound: {
     isHidden: true,
