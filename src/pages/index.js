@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { createRoute } from "@lugia/lugiax-router";
 import Header from "../components/header";
 import MnueList from "../components/menulist";

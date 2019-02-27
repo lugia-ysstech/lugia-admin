@@ -6,10 +6,6 @@
  */
 import React from "react";
 import styled from 'styled-components';
-// import notFound from '../../assets/404.png';
-// import reject from '../../assets/403.png';
-// import damaged from '../../assets/500.png';
-
 import {go} from '@lugia/lugiax-router';
 
 const Container = styled.div`
@@ -66,10 +62,6 @@ type propsType={
   buttonText:string,
   img:string
 }
-
-const  getImg = (url:string) => {
-  return import(''+url);
-};
 
 export default class Pages extends React.Component<propsType, any> {
 
