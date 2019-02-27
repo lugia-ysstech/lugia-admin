@@ -52,7 +52,6 @@ export default class List extends React.Component<any> {
             onSelect={this.onSelect}
             inlineType={"ellipse"}
             data={menuData}
-            // size={'large'}
           />
         </Theme>
       </NavContainer>
