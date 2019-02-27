@@ -34,25 +34,25 @@ const getTableData = (req,tableDatas) => {
   const newArray = [];
 
   resData.forEach(item => {
-    if(name && (item.name.indexOf(name) != -1)){
+    if(name && (item.name.indexOf(name) !== -1)){
       newArray.push(item);
     }
-    if(age &&  (item.age.toString().indexOf(age.toString()) != -1)){
+    if(age &&  (item.age.toString().indexOf(age.toString()) !== -1)){
       newArray.push(item);
     }
-    if(phone && (item.phone.toString().indexOf(phone.toString()) != -1)){
+    if(phone && (item.phone.toString().indexOf(phone.toString()) !== -1)){
       newArray.push(item);
     }
-    if(address && (item.address.toString().indexOf(address.toString()) != -1)){
+    if(address && (item.address.toString().indexOf(address.toString()) !== -1)){
       newArray.push(item);
     }
-    if(job && (item.job.toString().indexOf(job.toString()) != -1)){
+    if(job && (item.job.toString().indexOf(job.toString()) !== -1)){
       newArray.push(item);
     }
-    if(createTime && (item.createTime.toString().indexOf(createTime.toString()) != -1)){
+    if(createTime && (item.createTime.toString().indexOf(createTime.toString()) !== -1)){
       newArray.push(item);
     }
-    if(email && (item.email.toString().indexOf(email.toString()) != -1)){
+    if(email && (item.email.toString().indexOf(email.toString()) !== -1)){
       newArray.push(item);
     }
   });
