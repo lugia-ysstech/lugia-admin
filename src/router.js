@@ -8,12 +8,12 @@ const getMenuRouter = (menuData,routes) => {
     const {component,value,path} = item;
     if(component){
       rout[value] = {
-        exact: true,
+        // exact: true,
         component: component
       };
     }else if(path){
       rout[value] = {
-        exact: true,
+        // exact: true,
         render: () => import(`${path}`),
       };
     }else{
@@ -27,19 +27,12 @@ const getMenuRouter = (menuData,routes) => {
 
 };
 export default  {
-  '/': {
+  '/pages': {
+    render:  async () => import('./pages/user'),
     exact: true,
-    render: async () => {
-      return  () => <Redirect
-        to={{
-          pathname: '/analyse',
-        }}
-      />;
-    },
   },
   ...getMenuRouter(menuData),
-  '/404': {
-    exact: true,
+  '/pages/404': {
     render: async () => import('./components/404'),
   },
   NotFound: {
@@ -47,7 +40,7 @@ export default  {
     render: async () => {
       return  () => <Redirect
         to={{
-          pathname: '/404',
+          pathname: '/pages/404',
         }}
       />;
     },
