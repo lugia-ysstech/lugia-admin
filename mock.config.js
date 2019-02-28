@@ -16,5 +16,14 @@ export default {
   },
   "/api/function": function(req, res) {
     res.end("Mock Function.");
-  }
+  },
+  "POST /api/login":function(req, res) {
+    const requestBody = req.body;
+    const {loginInfo:{userName,passWord}} = requestBody;
+    if(userName ==='admin' && passWord ==='123'){
+      res.json({status:200,allowPass:true})
+    }else{
+      res.json({status:1101,allowPass:false,error:'用户名或密码错误'})
+    }
+  },
 };

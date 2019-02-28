@@ -5,27 +5,286 @@
  * @flow
  */
 import React from "react";
-import { go, Link } from "@lugia/lugiax-router";
-import { Theme, consts as Widget, Icon, Avatar } from "@lugia/lugia-web";
+import { Theme, consts as Widget,Input, Icon,Radio,Button } from "@lugia/lugia-web";
 import styled from "styled-components";
-import Avator from "../assets/mega.png";
+import "../App.css";
+import "../assets/iconfonts/index.css";
+import loginBg from "../assets/images/backgroundPic.png";
+import {getColorCalculate,getArrayFromRgb} from "../components/utils/colorFunction";
+import login from "../models/login";
+import {connect} from "@lugia/lugiax/target/lib/index";
 
 const LoginContainer = styled.div`
-  height: 60px;
-  background: #ffffff;
-  position: relative;
+  min-height: ${props => props.height}px;
+  background: url(${loginBg}) no-repeat center;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const LoginInfoBox = styled.div`
+  width:440px;
+  height:600px;
+  border-radius:10px;
+  box-shadow:rgba(0,0,0,0.3) 0 0 16px;
+  background:#fff;
+  padding:75px 50px 50px;
+  font-family:Helvetica;
+  text-align:center;
+`;
+
+
+const WelcomeTitle = styled.div`
+  font-size: 30px;
+  height:42px;
+  color: #50575D;
+  line-height:42px;
+`;
+
+const Slogen = styled.div`
+  font-size: 14px;
+  height:20px;
+  color: #50575D;
+  line-height:20px;
+  margin:14px 0 56px;
+`;
+
+const InputWrapper = styled.div`
+  width:100%;
+  display: inline-block;
+  position:relative;
+  margin-bottom: 20px;
+`;
+
+const ForgotPwd = styled.div`
+  width:73px;
+  height:18px;
+  font-size:14px;
+  color:#747E90;
+  display: inline-block;
+  padding-left:16px;
+  border-left:1px solid #ccc;
+  position:absolute;
+  right:14px;
+  top:12px;
+  z-index:10;
+  cursor:pointer;
+`;
+
+const RemindIcon = styled.div`
+  display: inline-block;
+  position:absolute;
+  left:4px;
+  top:-6px;
+  font-size: 14px; 
+  color:#333;
+  // z-index:10;
+`;
+
+const AutoWrapper = styled.div`
+  width:100%;
+  font-size: 14px; 
+  text-align:left;
+`;
+
+const Register = styled.div`
+  font-size: 14px;
+  color: #747E90;
+  margin-bottom:76px;
+`;
+
+const GoRegister = styled.span`
+  font-size: 14px;
+  color: #4d63ff;
+  text-decoration: underline;
+`;
+
+const QuickLoginWrapper = styled.div`
+  width:100%;
+  font-size: 36px;
+  margin-top:35px;
+  display:flex;
+  flex-wrap:wrap;
+  justify-content: space-around;
+`;
+
+const getColor = (props: string) => {
+  const { type } = props;
+  switch (type){
+    case 'wechat':
+      return '#50B674';
+    case 'QQ':
+      return '#68A5E1';
+    case 'weibo':
+      return '#EA5D5C';
+    case 'dingding':
+      return '#5DA6FB';
+    default:
+      return `#333`;
+  }
+
+};
+
+const getHoverColor =(props: string) => {
+  return `${getColorCalculate(getColor(props),-40,'hex')};`
+};
+
+const QuickLoginIcon =  styled.i`
+  color:${getColor};
+  &:hover{
+    color:${getHoverColor};
+  }
+
 `;
 
 
 
-export default class Header extends React.Component<> {
+class UserIcon extends React.Component<IconProps> {
+  static displayName = Widget.UserIcon;
+
   render() {
     return (
-      <LoginContainer>
-        login
+      <Icon
+        iconClass="lugia-icon-financial_user"
+        key="refresh"
+        {...this.props}
+      />
+    );
+  }
+}
+
+class PassWordIcon extends React.Component<IconProps> {
+  static displayName = Widget.PassWordIcon;
+
+  render() {
+    return (
+      <Icon
+        iconClass="lugia-icon-financial_lock"
+        key="refresh"
+        {...this.props}
+      />
+    );
+  }
+}
+
+
+class Login extends React.Component<> {
+
+  componentDidMount() {
+    const windowHeight = document.documentElement.clientHeight ;
+    this.setState({windowHeight });
+  }
+
+  render() {
+    const {windowHeight = 900} = this.state||{};
+    const theme = {
+      [Widget.Input]: {
+        width: 340,
+        height:40,
+        borderRadius:20,
+        padding:{
+          left:16,
+          right:0,
+        }
+      },
+      [Widget.Button]: {
+        margin:{
+          top:18,
+          bottom:24,
+          left:0,
+          right:0
+        },
+        width: 340,
+      },
+    };
+    const iconTheme = {
+      [Widget.Icon]: {
+        fontSize: 36
+      },
+    };
+    return (
+      <LoginContainer height={windowHeight}>
+        <LoginInfoBox>
+          <WelcomeTitle>欢迎使用洛奇亚</WelcomeTitle>
+          <Slogen>这里有一句slogen - 大概长度就这样</Slogen>
+          <Theme config={theme}>
+            <InputWrapper>
+              <Input
+                prefix={ <RemindIcon className='iconfont  icon-user1'/> }
+                size={'large'}
+                placeholder={'手机号或邮箱账号 -- admin'}
+                onChange={this.props.onChangeUserName}
+              />
+              {/*<RemindIcon className='iconfont  icon-user' />*/}
+            </InputWrapper>
+            <InputWrapper>
+              <Input
+                prefix={ <RemindIcon className='iconfont  icon-mima' />}
+                size={'large'}
+                type={'password'}
+                placeholder={'密码  --123'}
+                onChange={this.props.onChangePassWord}
+              />
+              <ForgotPwd>忘记密码</ForgotPwd>
+            </InputWrapper>
+            <AutoWrapper>
+              <Radio checked value="1">自动登陆</Radio>
+            </AutoWrapper>
+            <div>
+              <Button type="primary" size='large' shape="round" onClick={this.props.doLogin}>登陆</Button>
+            </div>
+          </Theme>
+          <Register>还没有lugia账号？ <GoRegister>马上注册</GoRegister> </Register>
+          <Theme config={iconTheme}>
+          <QuickLoginWrapper>
+            <QuickLoginIcon
+              className='iconfont  icon-logo-wechat'
+              type='wechat'
+            />
+            <QuickLoginIcon
+              className='iconfont  icon-QQ'
+              type='QQ'
+            />
+            <QuickLoginIcon
+              className='iconfont  icon-logo-weibo'
+              type='weibo'
+            />
+            <QuickLoginIcon
+              className='iconfont  icon-dingding'
+              type='dingding'
+            />
+          </QuickLoginWrapper>
+          </Theme>
+        </LoginInfoBox>
       </LoginContainer>
     );
   }
 
 
 }
+
+const LoginPage = connect(
+  login,
+  state => {
+    return {
+      loginInfo: state.login.get('loginInfo'),
+    };
+  },
+  mutations => {
+    const { login } = mutations;
+    return {
+      doLogin: login.asyncDoLogin,
+      onChangeUserName:login.onChangeUserName,
+      onChangePassWord:login.onChangePassWord,
+      showMessage:login.showMessage,
+    };
+  }
+)(Login);
+
+export default () => {
+  return (
+      <LoginPage />
+  );
+};
+
+

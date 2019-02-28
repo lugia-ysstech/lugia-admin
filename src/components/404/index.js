@@ -5,7 +5,7 @@
  * @flow
  */
 import React from "react";
-import notFound from '../../assets/404.png';
+import notFound from '../../assets/images/404.png';
 import Abnormal from '../abnormal'
 
 export default class Pages extends React.Component<any, any> {
