@@ -8,7 +8,7 @@ import React from "react";
 import { go, Link } from "@lugia/lugiax-router";
 import styled from "styled-components";
 import { Navmenu, Theme, consts as Widget } from "@lugia/lugia-web";
-import logo from "../../assets/pro_logo.png";
+import logo from "../../assets/images/pro_logo.png";
 import menuData from '../../menu'
 
 
@@ -20,8 +20,8 @@ const NavContainer = styled.div`
 `;
 
 const styles = {
-  padding: "30px",
-  width:'160px'
+  padding: "20px 20px 10px",
+  width:'90px'
 };
 
 const Title = styled.div``;
@@ -52,7 +52,6 @@ export default class List extends React.Component<any> {
             onSelect={this.onSelect}
             inlineType={"ellipse"}
             data={menuData}
-            // size={'large'}
           />
         </Theme>
       </NavContainer>
