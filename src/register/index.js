@@ -140,6 +140,36 @@ const QuickLoginIcon =  styled.i`
 `;
 
 
+class PassWord extends React.Component<> {
+  static displayName = Widget.PassWord;
+
+  render() {
+    return (
+      <Input
+        prefix={ <RemindIcon className='iconfont  icon-mima'/> }
+        size={'large'}
+        placeholder={'请输入密码'}
+        onChange={this.props.onChangePassWord}
+      />
+    );
+  }
+}
+
+class RepeatPassword extends React.Component<> {
+  static displayName = Widget.RepeatPassword;
+
+  render() {
+    return (
+      <Input
+        prefix={ <RemindIcon className='iconfont  icon-mima'/> }
+        size={'large'}
+        placeholder={'请输入密码'}
+        onChange={this.props.onChangePassWord}
+      />
+    );
+  }
+}
+
 class Register extends React.Component<> {
 
   componentDidMount() {
@@ -154,12 +184,11 @@ class Register extends React.Component<> {
         fontSize: 36
       },
     };
-
     return (
       <LoginContainer height={windowHeight}>
         <LoginInfoBox>
           <WelcomeTitle>欢迎加入洛奇亚</WelcomeTitle>
-          <Slogen>这里有一句slogen - 大概长度就这样</Slogen>
+          <Slogen>不用思考，因为我帮你想好了</Slogen>
           {this.getElement()}
           <Login>已经有lugia账号了？ <GoLogin onClick={this.props.goLogin}>返回登录</GoLogin> </Login>
           <Theme config={iconTheme}>
@@ -211,26 +240,13 @@ class Register extends React.Component<> {
     };
     let children ;
     if(isRegister){
-      const {passWordInfo:{passWord, repeatPassword} }= this.props;
       children = (
         <Theme config={theme}>
           <InputWrapper>
-            <Input
-              prefix={ <RemindIcon className='iconfont  icon-mima'/> }
-              size={'large'}
-              placeholder={'请输入密码'}
-              onChange={this.props.onChangePassWord}
-            />
-            {/*<RemindIcon className='iconfont  icon-user' />*/}
+            <PassWord onChangePassWord={this.props.onChangePassWord}/>
           </InputWrapper>
           <InputWrapper>
-            <Input
-              prefix={ <RemindIcon className='iconfont  icon-mima' />}
-              size={'large'}
-              type={'password'}
-              placeholder={'请再次输入密码'}
-              onChange={this.props.onChangeRepeatPassword}
-            />
+            <RepeatPassword onChangePassWord={this.props.onChangeRepeatPassword}/>
           </InputWrapper>
           <div>
             <Button type="primary" size='large' shape="round" onClick={this.props.doSavePassWord}>完 成</Button>

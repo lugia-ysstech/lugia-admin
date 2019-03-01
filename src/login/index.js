@@ -177,7 +177,7 @@ class Login extends React.Component<> {
       <LoginContainer height={windowHeight}>
         <LoginInfoBox>
           <WelcomeTitle>欢迎使用洛奇亚</WelcomeTitle>
-          <Slogen>这里有一句slogen - 大概长度就这样</Slogen>
+          <Slogen>不用思考，因为我帮你想好了</Slogen>
           <Theme config={theme}>
             <InputWrapper>
               <Input

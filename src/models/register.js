@@ -50,6 +50,7 @@ export default lugiax.register({
       },
       goLogin(state, inParam){
         go({ url: "/login" });
+        return state.set('isRegister', false);
       },
 
     },
