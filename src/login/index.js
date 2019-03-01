@@ -5,12 +5,12 @@
  * @flow
  */
 import React from "react";
-import { Theme, consts as Widget,Input, Icon,Radio,Button } from "@lugia/lugia-web";
+import { Theme, consts as Widget,Input, Radio,Button } from "@lugia/lugia-web";
 import styled from "styled-components";
 import "../App.css";
 import "../assets/iconfonts/index.css";
 import loginBg from "../assets/images/backgroundPic.png";
-import {getColorCalculate,getArrayFromRgb} from "../components/utils/colorFunction";
+import {getColorCalculate} from "../components/utils/colorFunction";
 import login from "../models/login";
 import {connect} from "@lugia/lugiax/target/lib/index";
 
@@ -177,7 +177,7 @@ class Login extends React.Component<> {
       <LoginContainer height={windowHeight}>
         <LoginInfoBox>
           <WelcomeTitle>欢迎使用洛奇亚</WelcomeTitle>
-          <Slogen>这里有一句slogen - 大概长度就这样</Slogen>
+          <Slogen>不用思考，因为我帮你想好了。</Slogen>
           <Theme config={theme}>
             <InputWrapper>
               <Input
@@ -186,7 +186,6 @@ class Login extends React.Component<> {
                 placeholder={'手机号或邮箱账号 -- admin'}
                 onChange={this.props.onChangeUserName}
               />
-              {/*<RemindIcon className='iconfont  icon-user' />*/}
             </InputWrapper>
             <InputWrapper>
               <Input
