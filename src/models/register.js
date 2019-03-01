@@ -101,6 +101,7 @@ export default lugiax.register({
         const {status,error} = res;
         if(status === 200){
           go({ url: "/pages" });
+          return state.set('isRegister', false);
         }else{
           mutations.showMessage({type:'error',text:error})
         }

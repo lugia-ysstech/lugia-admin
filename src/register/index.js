@@ -5,12 +5,12 @@
  * @flow
  */
 import React from "react";
-import { Theme, consts as Widget,Input, Icon,Radio,Button } from "@lugia/lugia-web";
+import { Theme, consts as Widget,Input,Button } from "@lugia/lugia-web";
 import styled from "styled-components";
 import "../App.css";
 import "../assets/iconfonts/index.css";
 import loginBg from "../assets/images/backgroundPic.png";
-import {getColorCalculate,getArrayFromRgb} from "../components/utils/colorFunction";
+import {getColorCalculate} from "../components/utils/colorFunction";
 import register from "../models/register";
 import {connect} from "@lugia/lugiax/target/lib/index";
 
@@ -80,12 +80,6 @@ const RemindIcon = styled.div`
   font-size: ${props => props.type==='phone'?'12px':'14px'}; 
   color:#333;
   // z-index:10;
-`;
-
-const AutoWrapper = styled.div`
-  width:100%;
-  font-size: 14px; 
-  text-align:left;
 `;
 
 const Login = styled.div`
@@ -188,7 +182,7 @@ class Register extends React.Component<> {
       <LoginContainer height={windowHeight}>
         <LoginInfoBox>
           <WelcomeTitle>欢迎加入洛奇亚</WelcomeTitle>
-          <Slogen>不用思考，因为我帮你想好了</Slogen>
+          <Slogen>不用思考，因为我帮你想好了。</Slogen>
           {this.getElement()}
           <Login>已经有lugia账号了？ <GoLogin onClick={this.props.goLogin}>返回登录</GoLogin> </Login>
           <Theme config={iconTheme}>
