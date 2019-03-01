@@ -1,6 +1,6 @@
 /**
  *
- * create by ligx
+ * create by lyq
  *
  * @flow
  */
@@ -11,7 +11,7 @@ import "../App.css";
 import "../assets/iconfonts/index.css";
 import loginBg from "../assets/images/backgroundPic.png";
 import {getColorCalculate,getArrayFromRgb} from "../components/utils/colorFunction";
-import login from "../models/login";
+import register from "../models/register";
 import {connect} from "@lugia/lugiax/target/lib/index";
 
 const LoginContainer = styled.div`
@@ -58,7 +58,7 @@ const InputWrapper = styled.div`
 `;
 
 const ForgotPwd = styled.div`
-  width:73px;
+  min-width:73px;
   height:18px;
   font-size:14px;
   color:#747E90;
@@ -66,7 +66,7 @@ const ForgotPwd = styled.div`
   padding-left:16px;
   border-left:1px solid #ccc;
   position:absolute;
-  right:16px;
+  right:14px;
   top:12px;
   z-index:10;
   cursor:pointer;
@@ -75,9 +75,9 @@ const ForgotPwd = styled.div`
 const RemindIcon = styled.div`
   display: inline-block;
   position:absolute;
-  left:4px;
+  left: ${props => props.type==='phone'?'0px':'4px'};
   top:-6px;
-  font-size: 14px; 
+  font-size: ${props => props.type==='phone'?'12px':'14px'}; 
   color:#333;
   // z-index:10;
 `;
@@ -88,13 +88,13 @@ const AutoWrapper = styled.div`
   text-align:left;
 `;
 
-const Register = styled.div`
+const Login = styled.div`
   font-size: 14px;
   color: #747E90;
   margin-bottom:76px;
 `;
 
-const GoRegister = styled.span`
+const GoLogin = styled.span`
   font-size: 14px;
   color: #4d63ff;
   text-decoration: underline;
@@ -127,7 +127,7 @@ const getColor = (props: string) => {
 
 };
 
-const getHoverColor =(props:string) => {
+const getHoverColor =(props: string) => {
   return `${getColorCalculate(getColor(props),-40,'hex')};`
 };
 
@@ -139,7 +139,8 @@ const QuickLoginIcon =  styled.i`
 
 `;
 
-class Login extends React.Component<> {
+
+class Register extends React.Component<> {
 
   componentDidMount() {
     const windowHeight = document.documentElement.clientHeight ;
@@ -148,64 +149,19 @@ class Login extends React.Component<> {
 
   render() {
     const {windowHeight = 900} = this.state||{};
-    const theme = {
-      [Widget.Input]: {
-        width: 340,
-        height:40,
-        borderRadius:20,
-        padding:{
-          left:16,
-          right:0,
-        }
-      },
-      [Widget.Button]: {
-        margin:{
-          top:18,
-          bottom:24,
-          left:0,
-          right:0
-        },
-        width: 340,
-      },
-    };
     const iconTheme = {
       [Widget.Icon]: {
         fontSize: 36
       },
     };
+
     return (
       <LoginContainer height={windowHeight}>
         <LoginInfoBox>
-          <WelcomeTitle>欢迎使用洛奇亚</WelcomeTitle>
+          <WelcomeTitle>欢迎加入洛奇亚</WelcomeTitle>
           <Slogen>这里有一句slogen - 大概长度就这样</Slogen>
-          <Theme config={theme}>
-            <InputWrapper>
-              <Input
-                prefix={ <RemindIcon className='iconfont  icon-user1'/> }
-                size={'large'}
-                placeholder={'手机号或邮箱账号 -- admin'}
-                onChange={this.props.onChangeUserName}
-              />
-              {/*<RemindIcon className='iconfont  icon-user' />*/}
-            </InputWrapper>
-            <InputWrapper>
-              <Input
-                prefix={ <RemindIcon className='iconfont  icon-mima' />}
-                size={'large'}
-                type={'password'}
-                placeholder={'密码  --123'}
-                onChange={this.props.onChangePassWord}
-              />
-              <ForgotPwd>忘记密码</ForgotPwd>
-            </InputWrapper>
-            <AutoWrapper>
-              <Radio checked value="1">自动登录</Radio>
-            </AutoWrapper>
-            <div>
-              <Button type="primary" size='large' shape="round" onClick={this.props.doLogin}>登 录</Button>
-            </div>
-          </Theme>
-          <Register>还没有lugia账号？ <GoRegister onClick={this.props.goRegister}>马上注册</GoRegister> </Register>
+          {this.getElement()}
+          <Login>已经有lugia账号了？ <GoLogin onClick={this.props.goLogin}>返回登录</GoLogin> </Login>
           <Theme config={iconTheme}>
           <QuickLoginWrapper>
             <QuickLoginIcon
@@ -231,31 +187,113 @@ class Login extends React.Component<> {
     );
   }
 
+  getElement = () => {
+    const {isRegister} = this.props;
+    const theme = {
+      [Widget.Input]: {
+        width: 340,
+        height:40,
+        borderRadius:20,
+        padding:{
+          left:16,
+          right:0,
+        }
+      },
+      [Widget.Button]: {
+        margin:{
+          top:18,
+          bottom:24,
+          left:0,
+          right:0
+        },
+        width: 340,
+      },
+    };
+    let children ;
+    if(isRegister){
+      const {passWordInfo:{passWord, repeatPassword} }= this.props;
+      children = (
+        <Theme config={theme}>
+          <InputWrapper>
+            <Input
+              prefix={ <RemindIcon className='iconfont  icon-mima'/> }
+              size={'large'}
+              placeholder={'请输入密码'}
+              onChange={this.props.onChangePassWord}
+            />
+            {/*<RemindIcon className='iconfont  icon-user' />*/}
+          </InputWrapper>
+          <InputWrapper>
+            <Input
+              prefix={ <RemindIcon className='iconfont  icon-mima' />}
+              size={'large'}
+              type={'password'}
+              placeholder={'请再次输入密码'}
+              onChange={this.props.onChangeRepeatPassword}
+            />
+          </InputWrapper>
+          <div>
+            <Button type="primary" size='large' shape="round" onClick={this.props.doSavePassWord}>完 成</Button>
+          </div>
+        </Theme>
+      )
+    }else{
+      children = (
+        <Theme config={theme}>
+          <InputWrapper>
+            <Input
+              prefix={ <RemindIcon type='phone' >+86</RemindIcon> }
+              size={'large'}
+              placeholder={'请输入您要注册的手机号'}
+              onChange={this.props.onChangeCellPhone}
+            />
+          </InputWrapper>
+          <InputWrapper>
+            <Input
+              size={'large'}
+              type={'password'}
+              placeholder={'请输入验证码'}
+              onChange={this.props.onChangeIdentifyCode}
+            />
+            <ForgotPwd >获取验证码</ForgotPwd>
+          </InputWrapper>
+          <div>
+            <Button type="primary" size='large' shape="round" onClick={this.props.doRegister}>注 册</Button>
+          </div>
+        </Theme>
+      )
+    }
+    return children;
+  }
+
 
 }
 
-const LoginPage = connect(
-  login,
+const RegisterPage = connect(
+  register,
   state => {
     return {
-      loginInfo: state.login.get('loginInfo'),
+      isRegister: state.register.get('isRegister'),
+      passWordInfo: state.register.get('passWordInfo'),
     };
   },
   mutations => {
-    const { login } = mutations;
+    const { register } = mutations;
     return {
-      doLogin: login.asyncDoLogin,
-      onChangeUserName:login.onChangeUserName,
-      onChangePassWord:login.onChangePassWord,
-      showMessage:login.showMessage,
-      goRegister:login.goRegister
+      doRegister: register.asyncDoRegister,
+      doSavePassWord: register.asyncDoSavePassWord,
+      onChangeCellPhone: register.onChangeCellPhone,
+      onChangeIdentifyCode: register.onChangeIdentifyCode,
+      onChangeRepeatPassword: register.onChangeRepeatPassword,
+      onChangePassWord: register.onChangePassWord,
+      goLogin: register.goLogin,
     };
   }
-)(Login);
+)(Register);
 
 export default () => {
   return (
-      <LoginPage />
+      <RegisterPage />
   );
 };
 

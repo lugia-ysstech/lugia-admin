@@ -33,7 +33,10 @@ export default lugiax.register({
       showMessage(state, inParam){
         const {type,text} = inParam;
           message[type](text, 2);
-      }
+      },
+      goRegister(state, inParam){
+        go({ url: "/register" });
+      },
 
     },
     async: {
@@ -51,7 +54,6 @@ export default lugiax.register({
         });
 
         const res = await resp;
-        console.log('response data',res);
         const {allowPass,error} = res;
         if(allowPass){
           go({ url: "/pages" });
