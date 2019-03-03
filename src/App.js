@@ -26,7 +26,7 @@ export const firstRouter = {
     exact: true,
     render: async () => import("./login")
   },
-  NotFound: {
+  LOGIN: {
     isHidden: true,
     render: async () => {
       return () => (

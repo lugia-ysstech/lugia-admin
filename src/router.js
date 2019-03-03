@@ -41,12 +41,12 @@ export default  {
   '/pages/500': {
     render: async () => import('./components/abnormal/500'),
   },
-  NotFound: {
+  ROOT: {
     isHidden: true,
     render: async () => {
       return  () => <Redirect
         to={{
-          pathname: '/pages/user',
+          pathname: '/pages',
         }}
       />;
     },
