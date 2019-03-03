@@ -46,7 +46,7 @@ export default  {
     render: async () => {
       return  () => <Redirect
         to={{
-          pathname: '/pages/404',
+          pathname: '/pages/user',
         }}
       />;
     },
