@@ -5,12 +5,12 @@
  * @flow
  */
 import React from "react";
-import { Theme, consts as Widget,Input,Button } from "@lugia/lugia-web";
+import { Theme, consts as Widget,Input, Icon,Radio,Button } from "@lugia/lugia-web";
 import styled from "styled-components";
 import "../App.css";
 import "../assets/iconfonts/index.css";
 import loginBg from "../assets/images/backgroundPic.png";
-import {getColorCalculate} from "../components/utils/colorFunction";
+import {getColorCalculate,getArrayFromRgb} from "../components/utils/colorFunction";
 import register from "../models/register";
 import {connect} from "@lugia/lugiax/target/lib/index";
 
@@ -82,6 +82,12 @@ const RemindIcon = styled.div`
   // z-index:10;
 `;
 
+const AutoWrapper = styled.div`
+  width:100%;
+  font-size: 14px; 
+  text-align:left;
+`;
+
 const Login = styled.div`
   font-size: 14px;
   color: #747E90;
@@ -134,36 +140,6 @@ const QuickLoginIcon =  styled.i`
 `;
 
 
-class PassWord extends React.Component<> {
-  static displayName = Widget.PassWord;
-
-  render() {
-    return (
-      <Input
-        prefix={ <RemindIcon className='iconfont  icon-mima'/> }
-        size={'large'}
-        placeholder={'请输入密码'}
-        onChange={this.props.onChangePassWord}
-      />
-    );
-  }
-}
-
-class RepeatPassword extends React.Component<> {
-  static displayName = Widget.RepeatPassword;
-
-  render() {
-    return (
-      <Input
-        prefix={ <RemindIcon className='iconfont  icon-mima'/> }
-        size={'large'}
-        placeholder={'请输入密码'}
-        onChange={this.props.onChangePassWord}
-      />
-    );
-  }
-}
-
 class Register extends React.Component<> {
 
   componentDidMount() {
@@ -178,11 +154,12 @@ class Register extends React.Component<> {
         fontSize: 36
       },
     };
+
     return (
       <LoginContainer height={windowHeight}>
         <LoginInfoBox>
           <WelcomeTitle>欢迎加入洛奇亚</WelcomeTitle>
-          <Slogen>不用思考，因为我帮你想好了。</Slogen>
+          <Slogen>这里有一句slogen - 大概长度就这样</Slogen>
           {this.getElement()}
           <Login>已经有lugia账号了？ <GoLogin onClick={this.props.goLogin}>返回登录</GoLogin> </Login>
           <Theme config={iconTheme}>
@@ -234,13 +211,26 @@ class Register extends React.Component<> {
     };
     let children ;
     if(isRegister){
+      const {passWordInfo:{passWord, repeatPassword} }= this.props;
       children = (
         <Theme config={theme}>
           <InputWrapper>
-            <PassWord onChangePassWord={this.props.onChangePassWord}/>
+            <Input
+              prefix={ <RemindIcon className='iconfont  icon-mima'/> }
+              size={'large'}
+              placeholder={'请输入密码'}
+              onChange={this.props.onChangePassWord}
+            />
+            {/*<RemindIcon className='iconfont  icon-user' />*/}
           </InputWrapper>
           <InputWrapper>
-            <RepeatPassword onChangePassWord={this.props.onChangeRepeatPassword}/>
+            <Input
+              prefix={ <RemindIcon className='iconfont  icon-mima' />}
+              size={'large'}
+              type={'password'}
+              placeholder={'请再次输入密码'}
+              onChange={this.props.onChangeRepeatPassword}
+            />
           </InputWrapper>
           <div>
             <Button type="primary" size='large' shape="round" onClick={this.props.doSavePassWord}>完 成</Button>

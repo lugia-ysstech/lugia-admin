@@ -1,43 +1,47 @@
 import React, { Component } from "react";
 import { createRoute } from "@lugia/lugiax-router";
-import { Redirect } from '@lugia/lugiax-router/target/lib';
+import { Redirect } from "@lugia/lugiax-router/target/lib";
 import register from "./models/register";
 
 export const firstRouter = {
-  '/': {
+  "/": {
     exact: true,
     render: async () => {
-      return  () => <Redirect
-        to={{
-          pathname: '/pages',
-        }}
-      />;
-    },
+      return () => (
+        <Redirect
+          to={{
+            pathname: "/pages"
+          }}
+        />
+      );
+    }
   },
-  '/pages': {
-    render: async () => import('./pages'),
+  "/pages": {
+    render: async () => import("./pages")
   },
-  '/register': {
-    render: async () => import('./register'),
+  "/register": {
+    render: async () => import("./register")
   },
-  '/login': {
+  "/login": {
     exact: true,
-    render: async () => import('./login'),
+    render: async () => import("./login")
   },
   NotFound: {
     isHidden: true,
     render: async () => {
-      return  () => <Redirect
-        to={{
-          pathname: '/login',
-        }}
-      />;
-    },
+      return () => (
+        <Redirect
+          to={{
+            pathname: "/login"
+          }}
+        />
+      );
+    }
   }
 };
 
 export default () => {
-  console.info("init main",firstRouter);
+  console.info("init main", firstRouter);
   return (
     <React.Fragment>
       {createRoute(
