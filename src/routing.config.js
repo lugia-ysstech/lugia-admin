@@ -4,7 +4,7 @@ import Abnormal from "./pages/abnormal";
 import Personal from "./pages/personal";
 import Form from "./pages/form";
 import Detail from "./pages/detail";
-import Result from "./pages/result";
+import Result from './pages/result.lugiad';
 import List from "./pages/list";
 
 

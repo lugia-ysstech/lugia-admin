@@ -5,12 +5,12 @@
  * @flow
  */
 import React from "react";
-import { go, Link } from "@lugia/lugiax-router";
 import styled from "styled-components";
 import { Navmenu, Theme, consts as Widget } from "@lugia/lugia-web";
 import logo from "../../assets/images/pro_logo.png";
-import menuData from '../../menu'
-
+import menuList from "../../models/menuList";
+import { connect } from "@lugia/lugiax/target/lib/index";
+import routingConfig from "../../routing.config";
 
 const NavContainer = styled.div`
   display: inline-block;
@@ -20,46 +20,58 @@ const NavContainer = styled.div`
 `;
 
 const styles = {
-  padding: "20px 20px 10px",
-  width:'90px'
+  padding: "20px 20px 10px 5px",
+  height: "70px"
 };
 
 const Title = styled.div``;
 
 const theme = {
   [Widget.NavMenu]: {
-    width: 220,
+    width: 210,
     paddingLeft: 38
   }
 };
-
-export default class List extends React.Component<any> {
-
+class List extends React.Component<any> {
   componentDidMount() {
-    const menuMinHeight = document.documentElement.clientHeight ;
+    const menuMinHeight = document.documentElement.clientHeight;
     this.setState({ menuMinHeight });
   }
   render() {
-    const {menuMinHeight = 900} = this.state||{};
+    const { menuMinHeight = 900 } = this.state || {};
     return (
-      <NavContainer  menuMinHeight={menuMinHeight}>
-        <Title>
+      <NavContainer menuMinHeight={menuMinHeight}>
+        <Title style={{ textAlign: "center" }}>
           <img src={logo} style={styles} />
         </Title>
         <Theme config={theme}>
           <Navmenu
+            size={"large"}
             theme={"dark"}
-            onSelect={this.onSelect}
+            onSelect={this.props.onSelect}
             inlineType={"ellipse"}
-            data={menuData}
+            data={routingConfig}
           />
         </Theme>
       </NavContainer>
     );
   }
-
-  onSelect = (res: Object) => {
-    const { value } = res;
-    go({ url: value });
-  };
 }
+const MenuList = connect(
+  menuList,
+  state => {
+    return {
+      value: state.menuList.get("value")
+    };
+  },
+  mutations => {
+    const { menuList } = mutations;
+    return {
+      onSelect: menuList.onSelect
+    };
+  }
+)(List);
+
+export default () => {
+  return <MenuList />;
+};
