@@ -99,7 +99,7 @@ export default lugiax.register({
         const res = await resp;
         const {status,error} = res;
         if(status === 200){
-          go({ url: "/pages" });
+          go({ url: "/" });
         }else{
           mutations.showMessage({type:'error',text:error})
         }

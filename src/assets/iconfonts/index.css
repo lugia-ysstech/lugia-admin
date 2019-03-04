@@ -1,5 +1,5 @@
 @font-face {
-  font-family: 'iconfont';
+  font-family: 'lugia-admin-iconfont';
   src: url('./font/iconfont.eot');
   src: url('./font/iconfont.eot?#iefix') format('embedded-opentype'),
   url('./font/iconfont.woff2') format('woff2'),
@@ -9,7 +9,7 @@
 }
 
 .iconfont {
-  font-family: "iconfont" ;
+  font-family: 'lugia-admin-iconfont';
   /*font-size: 16px;*/
   font-style: normal;
   -webkit-font-smoothing: antialiased;
