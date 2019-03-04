@@ -2,18 +2,18 @@ const userList = [
   { id: 1, userName: "admin", passWord: "123", cellPhone: "181" },
   { id: 2, userName: "222", cellPhone: "222" }
 ];
-const userList2 = [
+const userData = [
   {
     id: 1,
     name: "王易",
     phone: "13590873847",
-    path: ["用户管理", "表单页", "分析页", "工作台", "列表页","个人页"]
+    path: ["用户管理", "表单页", "分析页", "工作台", "列表页", "个人页"]
   },
   {
     id: 2,
     name: "赵散",
     phone: "13378643567",
-    path: ["用户管理",  "列表页","个人页"]
+    path: ["用户管理", "列表页", "个人页"]
   },
   {
     id: 3,
@@ -25,19 +25,19 @@ const userList2 = [
     id: 4,
     name: "张期",
     phone: "15177836698",
-    path: ["用户管理", "分析页", "工作台","个人页"]
+    path: ["用户管理", "分析页", "工作台", "个人页"]
   },
   {
     id: 5,
     name: "范午",
     phone: "15876543456",
-    path: ["用户管理", "监控页", "列表页","个人页"]
+    path: ["用户管理", "监控页", "列表页", "个人页"]
   },
   {
     id: 6,
     name: "李祺",
     phone: "13399876785",
-    path: ["用户管理", "分析页", "工作台","个人页"]
+    path: ["用户管理", "分析页", "工作台", "个人页"]
   }
 ];
 
@@ -97,16 +97,18 @@ export default {
     const {
       query: { text }
     } = requestBody;
-    userList2.filter(item => {
-      if (item.path.indexOf(text) > -1)
-        res.json({ status: 200, allowPass: true });
-      else {
-        res.json({
-          status: 403,
-          allowPass: false,
-          error: "您没有访问权限"
-        });
-      }
+    let checkRole = false;
+    userData.filter(item => {
+      checkRole = item.path.indexOf(text) > -1;
     });
+    if (checkRole) {
+      res.json({ status: 200, allowPass: true });
+    } else {
+      res.json({
+        status: 403,
+        allowPass: false,
+        error: "您没有访问权限"
+      });
+    }
   }
 };
