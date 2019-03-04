@@ -11,7 +11,7 @@ import Abnormal from './index'
 export default class Pages extends React.Component<any, any> {
 
   render(){
-    const errorInfo ={url : 'user',title :'403' ,desc :'抱歉，您无权访问页面',buttonText :'返回首页' ,img:`${notFound}`};
+    const errorInfo ={url : '/',title :'403' ,desc :'抱歉，您无权访问页面',buttonText :'返回首页' ,img:`${notFound}`};
     return (
       <Abnormal {...errorInfo}/>
     );

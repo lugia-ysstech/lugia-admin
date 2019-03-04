@@ -2,42 +2,71 @@ import { Redirect } from "@lugia/lugiax-router/target/lib";
 import React from "react";
 import routingConfig from "./routing.config";
 
-const getRouter = (routingConfig, routes) => {
+const getRouters = (routingConfig, routes) => {
   const rout = routes || {};
   routingConfig.forEach(item => {
     const { component, value, path } = item;
     if (component) {
       rout[value] = {
-        // exact: true,
+        exact: true,
         component: component
       };
     } else if (path) {
       rout[value] = {
-        // exact: true,
+        exact: true,
         render: () => import(`${path}`)
       };
     } else {
       const { children } = item;
+      rout[value] = {
+        exact: true,
+        render: async () => {
+          return () => (
+            <Redirect
+              to={{
+                pathname: getIndexRouter(children)
+              }}
+            />
+          );
+        }
+      };
+
       if (children) {
-        return getRouter(children, rout);
+        return getRouters(children, rout);
       }
     }
   });
   return rout;
 };
+
+function getIndexRouter(routingConfig) {
+  if (!routingConfig || routingConfig.length === 0) {
+    return "/404";
+  }
+  return routingConfig[0].value;
+}
+
 export default {
-  "/pages": {
-    render: async () => import("./pages/user"),
-    exact: true
+  "/": {
+    exact: true,
+    render: async () => {
+      return () => (
+        <Redirect
+          to={{
+            pathname: getIndexRouter(routingConfig)
+          }}
+        />
+      );
+    }
   },
-  ...getRouter(routingConfig),
-  "/pages/404": {
+  ...getRouters(routingConfig),
+  "/404": {
     render: async () => import("./components/404")
   },
-  "/pages/403": {
+  "/403": {
     render: async () => import("./components/abnormal/403")
   },
-  "/pages/500": {
+  "/500": {
     render: async () => import("./components/abnormal/500")
   },
   NotFound: {
@@ -46,7 +75,7 @@ export default {
       return () => (
         <Redirect
           to={{
-            pathname: "/pages/404"
+            pathname: "/404"
           }}
         />
       );
