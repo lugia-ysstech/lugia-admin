@@ -21,8 +21,10 @@ export default lugiax.register({
   mutations: {
     sync: {
       onSelect(state, inParam) {
-        const { value, text } = inParam;
+        const { value } = inParam;
+        go({ url:value});
         return state.setIn(["menuState", "value"], value);
+
       }
     }
   }
