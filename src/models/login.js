@@ -56,7 +56,7 @@ export default lugiax.register({
         const res = await resp;
         const {allowPass,error} = res;
         if(allowPass){
-          go({ url: "/pages" });
+          go({ url: "/" });
         }else{
           mutations.showMessage({type:'error',text:error})
         }

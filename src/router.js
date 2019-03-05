@@ -1,48 +1,84 @@
-import { Redirect } from '@lugia/lugiax-router/target/lib';
-import React from 'react';
-import menuData from './menu'
+import { Redirect } from "@lugia/lugiax-router/target/lib";
+import React from "react";
+import routingConfig from "./routing.config";
 
-const getMenuRouter = (menuData,routes) => {
+const getRouters = (routingConfig, routes) => {
   const rout = routes || {};
-  menuData.forEach( item => {
-    const {component,value,path} = item;
-    if(component){
+  routingConfig.forEach(item => {
+    const { component, value, path } = item;
+    if (component) {
       rout[value] = {
-        // exact: true,
+        exact: true,
         component: component
       };
-    }else if(path){
+    } else if (path) {
       rout[value] = {
-        // exact: true,
-        render: () => import(`${path}`),
+        exact: true,
+        render: () => import(`${path}`)
       };
-    }else{
-      const {children} = item;
-      if(children){
-        return getMenuRouter(children,rout);
+    } else {
+      const { children } = item;
+      rout[value] = {
+        exact: true,
+        render: async () => {
+          return () => (
+            <Redirect
+              to={{
+                pathname: getIndexRouter(children)
+              }}
+            />
+          );
+        }
+      };
+
+      if (children) {
+        return getRouters(children, rout);
       }
     }
   });
   return rout;
-
 };
-export default  {
-  '/pages': {
-    render:  async () => import('./pages/user'),
+
+function getIndexRouter(routingConfig) {
+  if (!routingConfig || routingConfig.length === 0) {
+    return "/404";
+  }
+  return routingConfig[0].value;
+}
+
+export default {
+  "/": {
     exact: true,
+    render: async () => {
+      return () => (
+        <Redirect
+          to={{
+            pathname: getIndexRouter(routingConfig)
+          }}
+        />
+      );
+    }
   },
-  ...getMenuRouter(menuData),
-  '/pages/404': {
-    render: async () => import('./components/404'),
+  ...getRouters(routingConfig),
+  "/404": {
+    render: async () => import("./components/404")
+  },
+  "/403": {
+    render: async () => import("./components/abnormal/403")
+  },
+  "/500": {
+    render: async () => import("./components/abnormal/500")
   },
   NotFound: {
     isHidden: true,
     render: async () => {
-      return  () => <Redirect
-        to={{
-          pathname: '/pages/404',
-        }}
-      />;
-    },
+      return () => (
+        <Redirect
+          to={{
+            pathname: "/404"
+          }}
+        />
+      );
+    }
   }
 };
