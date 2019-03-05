@@ -50,7 +50,6 @@ export default lugiax.register({
       },
       goLogin(state, inParam){
         go({ url: "/login" });
-        return state.set('isRegister', false);
       },
 
     },
@@ -100,8 +99,7 @@ export default lugiax.register({
         const res = await resp;
         const {status,error} = res;
         if(status === 200){
-          go({ url: "/pages" });
-          return state.set('isRegister', false);
+          go({ url: "/" });
         }else{
           mutations.showMessage({type:'error',text:error})
         }
