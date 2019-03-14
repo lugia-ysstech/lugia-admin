@@ -18,5 +18,9 @@
   "devDependencies": {
     "@lugia/mega-scripts": "^1.3.13",
     "babel-plugin-import": "^1.11.0"
+  },
+  "engines": {
+    "mega": "1.x",
+    "scaffolding": "1.0.0"
   }
 }

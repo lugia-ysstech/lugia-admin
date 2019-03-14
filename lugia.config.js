@@ -1,4 +1,4 @@
-import megaConfig from "./config/mega.config.js";
+import megaDesktop from "./config/mega.desktop.js";
 
 export default {
   disableCSSModules: true,
@@ -17,5 +17,5 @@ export default {
   applyWebpack(webpackConfig, { webpack, merge }) {
     return webpackConfig;
   },
-  ...megaConfig
+  ...megaDesktop
 };
