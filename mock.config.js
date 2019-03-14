@@ -1,3 +1,5 @@
+import * as mock from "./mock";
+
 const userList = [
   { id: 1, userName: "admin", passWord: "123", cellPhone: "181" },
   { id: 2, userName: "222", cellPhone: "222" }
@@ -7,7 +9,12 @@ const userData = [
     id: 1,
     name: "王易",
     phone: "13590873847",
-    path: [ "/Dashboard","/Dashboard/analyse","/Dashboard/monitor", "/Dashboard/desk"]
+    path: [
+      "/Dashboard",
+      "/Dashboard/analyse",
+      "/Dashboard/monitor",
+      "/Dashboard/desk"
+    ]
   },
   {
     id: 2,
@@ -92,6 +99,7 @@ const userData = [
 ];
 
 export default {
+  ...mock,
   "/example": "https://easy-mock.com/mock/5c36fa23c0fe6620a6a800be",
   "/api/array": [
     { name: "apple", value: 1.2 },
