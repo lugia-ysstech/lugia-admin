@@ -1,6 +1,6 @@
 {
   "name": "@lugia/scaffolding-admin",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "scripts": {
     "start": "lugia-scripts start",
     "build": "lugia-scripts build",
@@ -19,8 +19,21 @@
     "@lugia/mega-scripts": "^1.3.13",
     "babel-plugin-import": "^1.11.0"
   },
+  "files": [
+    "config",
+    "mock",
+    "portal",
+    "public",
+    "test",
+    ".editorconfig",
+    "gitignore",
+    "lugia.config.js",
+    "mock.config.js",
+    "README.md",
+    "yarn.lock"
+  ],
   "engines": {
     "mega": "1.x",
-    "scaffolding": "1.0.0"
+    "scaffolding": "1.0.1"
   }
 }
