@@ -61,7 +61,7 @@ export default {
   },
   ...getRouters(routingConfig),
   "/404": {
-    render: async () => import("./components/404")
+    render: async () => import("./components/abnormal/404")
   },
   "/403": {
     render: async () => import("./components/abnormal/403")
@@ -75,7 +75,7 @@ export default {
       return () => (
         <Redirect
           to={{
-            pathname: "/404"
+            pathname: "/abnormal/404"
           }}
         />
       );

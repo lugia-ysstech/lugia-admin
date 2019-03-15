@@ -153,13 +153,13 @@ export default {
   "POST /api/checkAuthority": function(req, res) {
     const requestBody = req.body;
     const {
-      query: { value }
+      query: { value, name }
     } = requestBody;
     let checkRole = false;
     userData.filter(item => {
       checkRole = item.path.indexOf(value) > -1;
     });
-    if (checkRole) {
+    if (checkRole || name === "admin") {
       res.json({ status: 200, allowPass: true });
     } else {
       res.json({
