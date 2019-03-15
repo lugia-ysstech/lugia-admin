@@ -1,6 +1,9 @@
+import megaDesktop from "./config/mega.desktop.js";
+
 export default {
   disableCSSModules: true,
   cssModulesWithAffix: true,
+  entry: "./portal/index.js",
   publicPath: "/",
   extraBabelPlugins: [
     [
@@ -13,5 +16,6 @@ export default {
   ],
   applyWebpack(webpackConfig, { webpack, merge }) {
     return webpackConfig;
-  }
+  },
+  ...megaDesktop
 };
