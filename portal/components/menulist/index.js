@@ -10,7 +10,7 @@ import { Navmenu, Theme, consts as Widget } from "@lugia/lugia-web";
 import logo from "../../assets/images/pro_logo.png";
 import menuList from "../../models/menuList";
 import { connect } from "@lugia/lugiax/target/lib/index";
-import routingConfig from "../../routing.config";
+import routingConfig from "../../../config/routing.config";
 
 const NavContainer = styled.div`
   display: inline-block;
