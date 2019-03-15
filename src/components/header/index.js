@@ -112,32 +112,66 @@ export default class Header extends React.Component<> {
             <SearchButton>
               <Icon iconClass="lugia-icon-financial_search" />
             </SearchButton>
-            <Input placeholder={"搜索"} />
+            <Input placeholder={"站内搜索"} />
           </InputWrap>
 
           <CommonIconWrap>
-            <Icon iconClass="lugia-icon-financial_folder_open" />
+            <Popover
+              placement="bottom"
+              action={"hover"}
+              description={[
+                <div onClick={e => this.goDoc()}>使用文档</div>
+              ]}
+            >
+              <div>
+                <Icon iconClass="lugia-icon-financial_folder_open" />
+              </div>
+            </Popover>
           </CommonIconWrap>
 
           <CommonIconWrap>
-            <Icon iconClass="lugia-icon-financial_home" />
+            <Popover
+              placement="bottom"
+              action={"hover"}
+              description={
+                <div onClick={e => this.goPersonalCenter()}>个人中心</div>
+              }
+            >
+              <div>
+                <Icon iconClass="lugia-icon-financial_home" />
+              </div>
+            </Popover>
           </CommonIconWrap>
 
           <CommonIconWrap>
-            <Icon iconClass="lugia-icon-financial_setting" />
+            <Popover
+              placement="bottom"
+              action={"hover"}
+              description={[
+                <div onClick={e => this.goSetting()}>个人设置</div>,
+              ]}
+            >
+              <div>
+                <Icon iconClass="lugia-icon-financial_setting" />
+              </div>
+            </Popover>
           </CommonIconWrap>
           <AvatarWrap>
             <Popover
               placement="bottom"
               action={"hover"}
-              description={[<div onClick={e => this.onClick()}>退出登陆</div>]}
+              description={[
+                <div onClick={e => this.onClick()}>退出登陆</div>
+              ]}
             >
-              <Avatar
-                shape={"circle"}
-                src="http://192.168.102.73:8081/BigFrontend/Work/ued/lugia/raw/master/lugiaweb%E7%BB%84%E4%BB%B6/%E5%A4%B4%E5%83%8F/32.jpg"
-                msgNum={99}
-                size={"small"}
-              />
+              <div>
+                <Avatar
+                  shape={"circle"}
+                  src="http://192.168.102.73:8081/BigFrontend/Work/ued/lugia/raw/master/lugiaweb%E7%BB%84%E4%BB%B6/%E5%A4%B4%E5%83%8F/32.jpg"
+                  msgNum={99}
+                  size={"small"}
+                />
+              </div>
             </Popover>
           </AvatarWrap>
         </ActionListContainer>
@@ -146,6 +180,15 @@ export default class Header extends React.Component<> {
   }
 
   onClick = () => {
+    go({ url: "/login" });
+  };
+  goDoc = () => {
+    go({ url: "/login" });
+  };
+  goPersonalCenter = () => {
+    go({ url: "/login" });
+  };
+  goSetting = () => {
     go({ url: "/login" });
   };
 }

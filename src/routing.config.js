@@ -1,6 +1,5 @@
 
 import React from 'react';
-import Abnormal from "./pages/abnormal";
 import Personal from "./pages/personal";
 import Form from "./pages/form";
 import Detail from "./pages/detail";
@@ -41,7 +40,26 @@ export default [
     icon: "lugia-icon-reminder_check_circle_o",
     component: Result
   },
-  { value: "/abnormal", text: "异常页", icon: "lugia-icon-reminder_warning" , component: Abnormal},
+  { value: "/abnormal", text: "异常页", icon: "lugia-icon-reminder_warning" ,
+
+    children: [
+      {
+        value: "/403",
+        text: "403",
+        path:'./pages/abnormal/403',
+      },
+      {
+        value: "/404",
+        text: "404",
+        path:'./pages/abnormal/404',
+      },
+      {
+        value: "/500",
+        text: "500",
+        path:'./pages/abnormal/500',
+      }
+    ]
+  },
   { value: "/personal", text: "个人页", icon: "lugia-icon-financial_user" ,component: Personal}
 ];
 
