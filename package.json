@@ -1,16 +1,16 @@
 {
   "name": "@lugia/scaffolding-admin",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "scripts": {
     "start": "lugia-scripts start",
     "build": "lugia-scripts build",
     "test": "lugia-scripts test -w"
   },
   "dependencies": {
-    "@lugia/lugia-web": "^1.0.94",
+    "@lugia/lugia-web": "^1.0.95",
     "@lugia/lugiax": "^1.0.6",
     "@lugia/lugiax-router": "^1.0.8",
-    "history": "^4.7.2",
+    "history": "^4.9.0",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
     "styled-components": "3.4.9"
@@ -34,6 +34,6 @@
   ],
   "engines": {
     "mega": "1.x",
-    "scaffolding": "1.0.1"
+    "scaffolding": "1.0.2"
   }
 }
