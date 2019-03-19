@@ -1,5 +1,3 @@
-import React from "react";
-import Abnormal from "../portal/pages/abnormal";
 import Personal from "../portal/pages/personal";
 import Form from "../portal/pages/form";
 import Detail from "../portal/pages/detail";
@@ -63,7 +61,23 @@ export default [
     value: "/abnormal",
     text: "异常页",
     icon: "lugia-icon-reminder_warning",
-    component: Abnormal
+    children: [
+      {
+        value: "/403",
+        text: "403",
+        path: "./pages/abnormal/403"
+      },
+      {
+        value: "/404",
+        text: "404",
+        path: "./pages/abnormal/404"
+      },
+      {
+        value: "/500",
+        text: "500",
+        path: "./pages/abnormal/500"
+      }
+    ]
   },
   {
     value: "/personal",
