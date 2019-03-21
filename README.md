@@ -8,7 +8,8 @@
 
 ### 这些文件由 Mega 动态生成，不允许手动修改
 
-- config/mega.config.js
+- config/mega.desktop.js
+- config/pages.config.json
 - config/routing.config.js
 - mock/index.js
 
