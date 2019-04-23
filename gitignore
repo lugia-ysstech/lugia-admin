@@ -12,6 +12,7 @@
 /.history
 /.lugia
 /lib
+/dll
 
 # misc
 .DS_Store
