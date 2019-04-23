@@ -1,0 +1,8 @@
+{
+  "extraMega": {
+    "engines": {
+      "desktop": "1.x",
+      "scaffolding": "1.0.4"
+    }
+  }
+}
