@@ -34,7 +34,7 @@ const App = createApp(
   {
     loading: PageLoading,
     async onBeforeGo({ url }) {
-      const result = await checkAuthorityeData({ value: url });
+      const result = await checkAuthorityeData({ value: url, name: "admin" });
       const { status } = result;
       if (
         url === "/Dashboard" ||
