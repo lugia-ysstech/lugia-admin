@@ -1172,23 +1172,23 @@
     redux-immutable "^4.0.0"
     redux-saga "^0.16.0"
 
-"@lugia/devtools-material@^1.0.3":
-  version "1.0.4"
-  resolved "http://192.168.102.79:5001/@lugia/devtools-material/download/@lugia/devtools-material-1.0.4.tgz#4745e8a9cbca90abdac1066ee266193b0b39a54d"
-  integrity sha1-R0XoqcvKkKvawQZu4mYZOws5pU0=
+"@lugia/devtools-material@^1.0.5-0":
+  version "1.0.5-0"
+  resolved "http://192.168.102.79:5001/@lugia/devtools-material/download/@lugia/devtools-material-1.0.5-0.tgz#39c82380b7d9086ddb34d28ae638d9c8a9aee8c6"
+  integrity sha1-OcgjgLfZCG3bNNKK5jjZyKmu6MY=
   dependencies:
     "@lugia/lugiax-core" "^1.0.0"
     babel-runtime "^6.26.0"
     immutable "^3.8.2"
     yargs "^13.2.2"
 
-"@lugia/lugia-web@^1.0.110-6":
-  version "1.0.110-6"
-  resolved "http://192.168.102.79:5001/@lugia/lugia-web/download/@lugia/lugia-web-1.0.110-6.tgz#4160baa1b960badc4d5bc8a239ff922286a3f0ca"
-  integrity sha1-QWC6oblgutxNW8iiOf+SIoaj8Mo=
+"@lugia/lugia-web@^1.0.110-7":
+  version "1.0.110-7"
+  resolved "http://192.168.102.79:5001/@lugia/lugia-web/download/@lugia/lugia-web-1.0.110-7.tgz#0ec53e3a52749b91cf9a7d4a7eb1e53a673e60d6"
+  integrity sha1-DsU+OlJ0m5HPmn1KfrHlOmc+YNY=
   dependencies:
     "@lugia/devtools-core" "^1.0.0"
-    "@lugia/devtools-material" "^1.0.3"
+    "@lugia/devtools-material" "^1.0.5-0"
     "@lugia/type-utils" "^1.0.4"
     babel-polyfill "6.26.0"
     classnames "2.2.5"
