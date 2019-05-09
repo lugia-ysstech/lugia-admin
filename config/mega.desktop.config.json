@@ -2,7 +2,7 @@
   "extraMega": {
     "engines": {
       "desktop": "1.x",
-      "scaffolding": "1.0.8"
+      "scaffolding": "1.0.9"
     }
   }
 }
