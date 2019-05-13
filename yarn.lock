@@ -1151,18 +1151,18 @@
     babel-plugin-transform-dynamic-import "2.1.0"
     babel-plugin-transform-react-remove-prop-types "0.4.20"
 
-"@lugia/devtools-conversion@^1.0.2-y.1":
-  version "1.0.2-y.1"
-  resolved "http://192.168.102.79:5001/@lugia/devtools-conversion/download/@lugia/devtools-conversion-1.0.2-y.1.tgz#ef0bd22448d0ab0c84b767d1aa5b17fb957fd7e8"
-  integrity sha1-7wvSJEjQqwyEt2fRqlsX+5V/1+g=
+"@lugia/devtools-conversion@^1.0.2":
+  version "1.0.2"
+  resolved "http://192.168.102.79:5001/@lugia/devtools-conversion/download/@lugia/devtools-conversion-1.0.2.tgz#4f20f53897a1b57d7b6ab00fd08178658391f1cf"
+  integrity sha1-TyD1OJehtX17arAP0IF4ZYOR8c8=
   dependencies:
-    "@lugia/devtools-core" "^1.0.0"
+    "@lugia/devtools-core" "^1.0.1"
     chai "^4.1.2"
 
-"@lugia/devtools-core@^1.0.0":
-  version "1.0.0"
-  resolved "http://192.168.102.79:5001/@lugia/devtools-core/download/@lugia/devtools-core-1.0.0.tgz#fca0fbade0b36d7ae3415a8d1a71a8040135d937"
-  integrity sha1-/KD7reCzbXrjQVqNGnGoBAE12Tc=
+"@lugia/devtools-core@^1.0.1":
+  version "1.0.1"
+  resolved "http://192.168.102.79:5001/@lugia/devtools-core/download/@lugia/devtools-core-1.0.1.tgz#c8684a23444d7a7cd3a1ec3762b902e3b2e319c9"
+  integrity sha1-yGhKI0RNenzToew3YrkC47LjGck=
   dependencies:
     chai "^4.1.2"
     immutable "^3.8.2"
@@ -1182,10 +1182,10 @@
     immutable "^3.8.2"
     yargs "^13.2.2"
 
-"@lugia/lugia-web@^1.0.110-8":
-  version "1.0.110-8"
-  resolved "http://192.168.102.79:5001/@lugia/lugia-web/download/@lugia/lugia-web-1.0.110-8.tgz#6c2764565090beb7e8335a5ab81cfbc05b82f54f"
-  integrity sha1-bCdkVlCQvrfoM1pauBz7wFuC9U8=
+"@lugia/lugia-web@^1.0.110-9":
+  version "1.0.110-9"
+  resolved "http://192.168.102.79:5001/@lugia/lugia-web/download/@lugia/lugia-web-1.0.110-9.tgz#6691e4d6505fd371142e15951e398cfe4398667a"
+  integrity sha1-ZpHk1lBf03EULhWVHjmM/kOYZno=
   dependencies:
     "@lugia/devtools-material" "^1.0.5-y.0"
     "@lugia/type-utils" "^1.0.4"
@@ -1208,13 +1208,13 @@
     styled-components "^4.2.0"
     warning "3.0.0"
 
-"@lugia/lugiad-loader@^1.0.2":
-  version "1.0.2"
-  resolved "http://192.168.102.79:5001/@lugia/lugiad-loader/download/@lugia/lugiad-loader-1.0.2.tgz#e6be00fc925cf239828242060ce37a92153a7a87"
-  integrity sha1-5r4A/JJc8jmCgkIGDON6khU6eoc=
+"@lugia/lugiad-loader@^1.0.3":
+  version "1.0.3"
+  resolved "http://192.168.102.79:5001/@lugia/lugiad-loader/download/@lugia/lugiad-loader-1.0.3.tgz#6338d21c6dd3c49aaafc25610594a13014ab3df3"
+  integrity sha1-YzjSHG3TxJqq/CVhBZShMBSrPfM=
   dependencies:
     "@babel/runtime" "^7.4.3"
-    "@lugia/devtools-conversion" "^1.0.2-y.1"
+    "@lugia/devtools-conversion" "^1.0.2"
 
 "@lugia/lugiax-core@^1.0.0", "@lugia/lugiax-core@^1.0.5":
   version "1.0.5"
@@ -1289,10 +1289,10 @@
     ts-jest-babel-7 "^22.0.7"
     typescript "^3.4.5"
 
-"@lugia/mega-scripts@^1.3.32":
-  version "1.3.32"
-  resolved "http://192.168.102.79:5001/@lugia/mega-scripts/download/@lugia/mega-scripts-1.3.32.tgz#dbd9e66eeeeed50e0f41b5847b45c2c9abd7bbe8"
-  integrity sha1-29nmbu7u1Q4PQbWEe0XCyavXu+g=
+"@lugia/mega-scripts@^1.3.33":
+  version "1.3.33"
+  resolved "http://192.168.102.79:5001/@lugia/mega-scripts/download/@lugia/mega-scripts-1.3.33.tgz#0a69deef64700f4ab23d727baec65fc07876f91d"
+  integrity sha1-Cmne72RwD0qyPXJ7rsZfwHh2+R0=
   dependencies:
     "@babel/core" "7.1.5"
     "@babel/runtime" "^7.1.5"
@@ -1300,7 +1300,7 @@
     "@lugia/mega-config" "^1.0.10"
     "@lugia/mega-jest" "^1.2.27"
     "@lugia/mega-utils" "^1.4.20"
-    "@lugia/mega-webpack" "^1.3.29"
+    "@lugia/mega-webpack" "^1.3.30"
     babel-plugin-add-module-exports "^1.0.0"
     body-parser "^1.18.3"
     browser-sync "^2.26.3"
@@ -1352,16 +1352,16 @@
     username "^4.1.0"
     which "^1.3.1"
 
-"@lugia/mega-webpack@^1.3.29":
-  version "1.3.29"
-  resolved "http://192.168.102.79:5001/@lugia/mega-webpack/download/@lugia/mega-webpack-1.3.29.tgz#912e810b4f277850b46c952caf63da6ad94a5086"
-  integrity sha1-kS6BC08neFC0bJUsr2PaatlKUIY=
+"@lugia/mega-webpack@^1.3.30":
+  version "1.3.30"
+  resolved "http://192.168.102.79:5001/@lugia/mega-webpack/download/@lugia/mega-webpack-1.3.30.tgz#48fb593ec7aa3db7ba757f607ff91d8478cbbb84"
+  integrity sha1-SPtZPseqPbe6dX9gf/kdhHjLu4Q=
   dependencies:
     "@babel/core" "7.1.5"
     "@babel/runtime" "^7.1.5"
     "@babel/runtime-corejs2" "^7.1.5"
     "@lugia/babel-preset-mega" "^1.0.9"
-    "@lugia/lugiad-loader" "^1.0.2"
+    "@lugia/lugiad-loader" "^1.0.3"
     "@lugia/mega-utils" "^1.4.20"
     assert "^1.4.1"
     autoprefixer "^8.6.5"
