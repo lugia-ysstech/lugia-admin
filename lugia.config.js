@@ -35,9 +35,9 @@ export default {
     const {
       appPath,
       pkg: { version }
-    } = this.getApp();
-    const verbose = this.isVerbose();
-    const { fs, mergeObj } = this._utils();
+    } = api.getApp();
+    const verbose = api.isVerbose();
+    const { fs, mergeObj } = api._utils();
 
     fs.writeJSONSync(
       join(appPath, "./config/mega.desktop.config.json"),
