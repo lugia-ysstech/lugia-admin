@@ -7,7 +7,7 @@
     "test": "lugia-scripts test -w"
   },
   "dependencies": {
-    "@lugia/lugia-web": "^1.0.110-9",
+    "@lugia/lugia-web": "^1.0.110-14",
     "@lugia/lugiax": "^1.0.6",
     "@lugia/lugiax-router": "^1.0.8",
     "history": "^4.9.0",
@@ -16,8 +16,8 @@
     "styled-components": "4.2.0"
   },
   "devDependencies": {
-    "@lugia/mega-scripts": "^1.3.33",
-    "babel-plugin-import": "^1.11.0"
+    "@lugia/mega-scripts": "^1.3.35",
+    "babel-plugin-import": "^1.12.0"
   },
   "files": [
     "config",
