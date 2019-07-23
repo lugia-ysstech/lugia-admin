@@ -1,7 +1,7 @@
 import Personal from "../portal/pages/personal";
 import Form from "../portal/pages/form";
 import Detail from "../portal/pages/detail";
-import Result from "../portal/pages/result";
+import Result from "../portal/pages/result.lugiad";
 import List from "../portal/pages/list";
 
 export default [
