@@ -9,7 +9,7 @@ export default {
   alias: {
     "@": join(__dirname, "./src")
   },
-  extraBabelIncludes: [/decamelize/, /ramada/],
+  extraBabelIncludes: [/decamelize/],
   extraBabelPlugins: [
     [
       "import",
