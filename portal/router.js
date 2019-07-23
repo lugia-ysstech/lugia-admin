@@ -5,16 +5,16 @@ import routingConfig from "../config/routing.config";
 const getRouters = (routingConfig, routes) => {
   const rout = routes || {};
   routingConfig.forEach(item => {
-    const { component, value, path } = item;
+    const { component, value, render } = item;
     if (component) {
       rout[value] = {
         exact: true,
         component: component
       };
-    } else if (path) {
+    } else if (render) {
       rout[value] = {
         exact: true,
-        render: () => import(`${path}`)
+        render
       };
     } else {
       const { children } = item;
@@ -75,7 +75,7 @@ export default {
       return () => (
         <Redirect
           to={{
-            pathname: "/abnormal/404"
+            pathname: "/404"
           }}
         />
       );
