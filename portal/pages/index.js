@@ -1,24 +1,30 @@
 import React from "react";
 import { createRoute } from "@lugia/lugiax-router";
 import Header from "../components/header";
-import MnueList from "../components/menulist";
+import MenuList from "../components/menulist";
 import "../App.css";
 import styled from "styled-components";
-import router from  '../router'
+import router from "../router";
 
 const ContentContainer = styled.div`
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  overflow: auto;
+`;
+
+const Content = styled.div`
+  overflow: auto;
   flex: 1;
 `;
 
 export default () => {
   return (
     <div className="app">
-      <MnueList />
+      <MenuList />
       <ContentContainer>
         <Header />
-        {createRoute(
-          router
-        )}
+        <Content>{createRoute(router)}</Content>
       </ContentContainer>
     </div>
   );
