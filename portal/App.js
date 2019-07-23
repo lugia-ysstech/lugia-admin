@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { createRoute } from "@lugia/lugiax-router";
-import { Redirect } from "@lugia/lugiax-router/target/lib";
+import { Redirect } from "@lugia/lugiax-router";
 import register from "./models/register";
 
 export const firstRouter = {
@@ -18,6 +18,5 @@ export const firstRouter = {
 };
 
 export default () => {
-  console.info("init main", firstRouter);
   return <React.Fragment>{createRoute(firstRouter)}</React.Fragment>;
 };

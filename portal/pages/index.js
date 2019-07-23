@@ -11,7 +11,6 @@ const ContentContainer = styled.div`
 `;
 
 export default () => {
-  console.info("init pages",router);
   return (
     <div className="app">
       <MnueList />

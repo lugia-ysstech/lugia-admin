@@ -12,7 +12,7 @@ import "../assets/iconfonts/index.css";
 import loginBg from "../assets/images/backgroundPic.png";
 import {getColorCalculate} from "../components/utils/colorFunction";
 import login from "../models/login";
-import {connect} from "@lugia/lugiax/target/lib/index";
+import {connect} from "@lugia/lugiax";
 
 const LoginContainer = styled.div`
   min-height: ${props => props.height}px;
