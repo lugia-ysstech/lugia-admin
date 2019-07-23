@@ -13,17 +13,17 @@ export default [
       {
         value: "/Dashboard/analyse",
         text: "分析页",
-        path: "./pages/Dashboard/analyse"
+        render: () => import("../portal/pages/Dashboard/analyse")
       },
       {
         value: "/Dashboard/monitor",
         text: "监控页",
-        path: "./pages/Dashboard/monitor"
+        render: () => import("../portal/pages/Dashboard/monitor")
       },
       {
         value: "/Dashboard/desk",
         text: "工作台",
-        path: "./pages/Dashboard/desk"
+        render: () => import("../portal/pages/Dashboard/desk")
       }
     ]
   },
@@ -31,7 +31,7 @@ export default [
     value: "/user",
     text: "用户管理",
     icon: "lugia-icon-financial_user",
-    path: "./pages/user"
+    render: () => import("../portal/pages/user")
   },
   {
     value: "/form",
@@ -63,19 +63,19 @@ export default [
     icon: "lugia-icon-reminder_warning",
     children: [
       {
-        value: "/403",
+        value: "/abnormal/403",
         text: "403",
-        path: "./pages/abnormal/403"
+        render: () => import("../portal/components/abnormal/403")
       },
       {
-        value: "/404",
+        value: "/abnormal/404",
         text: "404",
-        path: "./pages/abnormal/404"
+        render: () => import("../portal/components/abnormal/404")
       },
       {
-        value: "/500",
+        value: "/abnormal/500",
         text: "500",
-        path: "./pages/abnormal/500"
+        render: () => import("../portal/components/abnormal/500")
       }
     ]
   },
