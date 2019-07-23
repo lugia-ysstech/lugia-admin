@@ -1,4 +1,4 @@
-import { Redirect } from "@lugia/lugiax-router/target/lib";
+import { Redirect } from "@lugia/lugiax-router";
 import React from "react";
 import routingConfig from "../config/routing.config";
 

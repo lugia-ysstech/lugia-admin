@@ -22,9 +22,8 @@ export default lugiax.register({
     sync: {
       onSelect(state, inParam) {
         const { value } = inParam;
-        go({ url:value});
+        go({ url: value });
         return state.setIn(["menuState", "value"], value);
-
       }
     }
   }
