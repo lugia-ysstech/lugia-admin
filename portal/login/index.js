@@ -5,7 +5,7 @@
  * @flow
  */
 import React from "react";
-import { Theme, consts as Widget,Input, Radio,Button } from "@lugia/lugia-web";
+import {Theme, consts as Widget, Input, Radio, Button} from "@lugia/lugia-web";
 import styled from "styled-components";
 import "../App.css";
 import "../assets/iconfonts/index.css";
@@ -111,8 +111,8 @@ const QuickLoginWrapper = styled.div`
 `;
 
 const getColor = (props: string) => {
-  const { type } = props;
-  switch (type){
+  const {type} = props;
+  switch (type) {
     case 'wechat':
       return '#50B674';
     case 'QQ':
@@ -127,12 +127,13 @@ const getColor = (props: string) => {
 
 };
 
-const getHoverColor =(props:string) => {
-  return `${getColorCalculate(getColor(props),-40,'hex')};`
+const getHoverColor = (props: string) => {
+  return `${getColorCalculate(getColor(props), -40, 'hex')};`
 };
 
-const QuickLoginIcon =  styled.i`
+const QuickLoginIcon = styled.i`
   color:${getColor};
+  cursor: pointer;
   &:hover{
     color:${getHoverColor};
   }
@@ -142,35 +143,53 @@ const QuickLoginIcon =  styled.i`
 class Login extends React.Component<> {
 
   componentDidMount() {
-    const windowHeight = document.documentElement.clientHeight ;
-    this.setState({windowHeight });
+    const windowHeight = document.documentElement.clientHeight;
+    this.setState({windowHeight});
   }
 
   render() {
-    const {windowHeight = 900} = this.state||{};
+    const {windowHeight = 900} = this.state || {};
+    const {autoSignIn} = this.props ;
     const theme = {
       [Widget.Input]: {
-        width: 340,
-        height:40,
-        borderRadius:20,
-        padding:{
-          left:16,
-          right:0,
-        }
+        Input: {
+          normal: {
+            width: 340,
+            height: 40,
+            borderRadius: 20,
+            padding: {
+              left: 30,
+              right: 0,
+            }
+          }
+        },
+        InputSuffix: {normal: { fontSize: 36}},
+
+
       },
       [Widget.Button]: {
-        margin:{
-          top:18,
-          bottom:24,
-          left:0,
-          right:0
+        Container: {
+          normal: {
+            margin: {
+              top: 18,
+              bottom: 24,
+              left: 0,
+              right: 0
+            },
+            width: 340,
+          }
         },
-        width: 340,
+
+
       },
     };
     const iconTheme = {
       [Widget.Icon]: {
-        fontSize: 36
+        Icon: {
+          normal: {
+            fontSize: 36
+          }
+        }
       },
     };
     return (
@@ -181,16 +200,15 @@ class Login extends React.Component<> {
           <Theme config={theme}>
             <InputWrapper>
               <Input
-                prefix={ <RemindIcon className='iconfont  icon-user1'/> }
+                prefix={<RemindIcon className='iconfont  icon-user1'/>}
                 size={'large'}
                 placeholder={'手机号或邮箱账号 -- admin'}
                 onChange={this.props.onChangeUserName}
               />
-              {/*<RemindIcon className='iconfont  icon-user' />*/}
             </InputWrapper>
             <InputWrapper>
               <Input
-                prefix={ <RemindIcon className='iconfont  icon-mima' />}
+                prefix={<RemindIcon className='iconfont  icon-mima'/>}
                 size={'large'}
                 type={'password'}
                 placeholder={'密码  --123'}
@@ -199,7 +217,7 @@ class Login extends React.Component<> {
               <ForgotPwd>忘记密码</ForgotPwd>
             </InputWrapper>
             <AutoWrapper>
-              <Radio checked value="1">自动登录</Radio>
+              <Radio value='1' checked={autoSignIn}  onChange={(e,val) => this.props.onChangeAutoSignIn(val)} >自动登录</Radio>
             </AutoWrapper>
             <div>
               <Button type="primary" size='large' shape="round" onClick={this.props.doLogin}>登 录</Button>
@@ -207,24 +225,24 @@ class Login extends React.Component<> {
           </Theme>
           <Register>还没有lugia账号？ <GoRegister onClick={this.props.goRegister}>马上注册</GoRegister> </Register>
           <Theme config={iconTheme}>
-          <QuickLoginWrapper>
-            <QuickLoginIcon
-              className='iconfont  icon-logo-wechat'
-              type='wechat'
-            />
-            <QuickLoginIcon
-              className='iconfont  icon-QQ'
-              type='QQ'
-            />
-            <QuickLoginIcon
-              className='iconfont  icon-logo-weibo'
-              type='weibo'
-            />
-            <QuickLoginIcon
-              className='iconfont  icon-dingding'
-              type='dingding'
-            />
-          </QuickLoginWrapper>
+            <QuickLoginWrapper>
+              <QuickLoginIcon
+                className='iconfont  icon-logo-wechat'
+                type='wechat'
+              />
+              <QuickLoginIcon
+                className='iconfont  icon-QQ'
+                type='QQ'
+              />
+              <QuickLoginIcon
+                className='iconfont  icon-logo-weibo'
+                type='weibo'
+              />
+              <QuickLoginIcon
+                className='iconfont  icon-dingding'
+                type='dingding'
+              />
+            </QuickLoginWrapper>
           </Theme>
         </LoginInfoBox>
       </LoginContainer>
@@ -238,24 +256,25 @@ const LoginPage = connect(
   login,
   state => {
     return {
-      loginInfo: state.login.get('loginInfo'),
+      loginInfo: state.get('loginInfo'),
+      autoSignIn: state.get('autoSignIn')
     };
   },
   mutations => {
-    const { login } = mutations;
     return {
-      doLogin: login.asyncDoLogin,
-      onChangeUserName:login.onChangeUserName,
-      onChangePassWord:login.onChangePassWord,
-      showMessage:login.showMessage,
-      goRegister:login.goRegister
+      doLogin: mutations.asyncDoLogin,
+      onChangeUserName: mutations.onChangeUserName,
+      onChangePassWord: mutations.onChangePassWord,
+      onChangeAutoSignIn: mutations.onChangeAutoSignIn,
+      showMessage: mutations.showMessage,
+      goRegister: mutations.goRegister
     };
   }
 )(Login);
 
 export default () => {
   return (
-    <LoginPage />
+    <LoginPage/>
   );
 };
 

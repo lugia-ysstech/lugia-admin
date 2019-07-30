@@ -15,6 +15,7 @@ const state = {
     userName:null,
     passWord:null,
   },
+  autoSignIn:true
 
 };
 export default lugiax.register({
@@ -24,11 +25,11 @@ export default lugiax.register({
     sync: {
       onChangeUserName(state, inParam){
         const {newValue} = inParam;
-        return state.setIn(['loginInfo', 'userName',], newValue);
+        return state.setIn(['loginInfo', 'userName'], newValue);
       },
       onChangePassWord(state, inParam){
         const {newValue} = inParam;
-        return state.setIn(['loginInfo', 'passWord',], newValue);
+        return state.setIn(['loginInfo', 'passWord'], newValue);
       },
       showMessage(state, inParam){
         const {type,text} = inParam;
@@ -37,7 +38,9 @@ export default lugiax.register({
       goRegister(state, inParam){
         go({ url: "/register" });
       },
-
+      onChangeAutoSignIn(state,inParam ){
+        return state.set('autoSignIn', inParam);
+      }
     },
     async: {
       async doLogin(state, inParam,{mutations}) {
@@ -60,7 +63,7 @@ export default lugiax.register({
         }else{
           mutations.showMessage({type:'error',text:error})
         }
-      },
+      }
     }
   }
 });
