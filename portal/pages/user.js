@@ -54,24 +54,23 @@ class User extends Component {
 const UserList = connect(
   user,
   state => {
-    return { searchInfo: state.user.get('searchInfo'),
-      formData: Array.isArray(state.user.get('formData'))?state.user.get('formData'):state.user.get('formData').toJS(),
-      currentPage: state.user.get('currentPage'),
-      total: state.user.get('total'),
-      limit: state.user.get('limit'),
-      columns: state.user.get('columns').toJS(),
+    return { searchInfo: state.get('searchInfo'),
+      formData: Array.isArray(state.get('formData'))?state.get('formData'):state.get('formData').toJS(),
+      currentPage: state.get('currentPage'),
+      total: state.get('total'),
+      limit: state.get('limit'),
+      columns: state.get('columns').toJS(),
     };
   },
   mutations => {
-    const { user } = mutations;
     return {
-      doRequest: user.asyncDoRequest,
-      doDelete:user.asyncDoDelete,
-      changePage:user.asyncChangePage,
-      onChangeAge:user.onChangeAge,
-      onChangePhone:user.onChangePhone,
-      onChangeName:user.onChangeName,
-      onChangeEmail:user.onChangeEmail,
+      doRequest: mutations.asyncDoRequest,
+      doDelete:mutations.asyncDoDelete,
+      changePage:mutations.asyncChangePage,
+      onChangeAge:mutations.onChangeAge,
+      onChangePhone:mutations.onChangePhone,
+      onChangeName:mutations.onChangeName,
+      onChangeEmail:mutations.onChangeEmail,
     };
   }
 )(User);

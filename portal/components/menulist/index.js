@@ -139,13 +139,13 @@ const MenuList = connect(
   menuList,
   state => {
     return {
-      value: state.menuList.get("value")
+      value: state.get("value"),
+
     };
   },
   mutations => {
-    const { menuList } = mutations;
     return {
-      onSelect: menuList.onSelect
+      onSelect: mutations.onSelect
     };
   }
 )(List);
