@@ -1380,10 +1380,10 @@
     immutable "^3.8.2"
     yargs "^13.2.2"
 
-"@lugia/lugia-web@1.1.0-49":
-  version "1.1.0-49"
-  resolved "http://192.168.102.79:5001/@lugia/lugia-web/download/@lugia/lugia-web-1.1.0-49.tgz#652a1853800aafadac0ddbc7b69cc351024478ca"
-  integrity sha1-ZSoYU4AKr62sDdvHtpzDUQJEeMo=
+"@lugia/lugia-web@1.1.0-52":
+  version "1.1.0-52"
+  resolved "http://192.168.102.79:5001/@lugia/lugia-web/download/@lugia/lugia-web-1.1.0-52.tgz#7dc405248d6ec5b401567244565850e80955e2ea"
+  integrity sha1-fcQFJI1uxbQBVnJEVlhQ6AlV4uo=
   dependencies:
     "@lugia/css" "1.0.18"
     "@lugia/math" "1.0.8"
