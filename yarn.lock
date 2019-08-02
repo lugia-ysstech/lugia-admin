@@ -1371,10 +1371,10 @@
     redux-immutable "^4.0.0"
     redux-saga "^0.16.0"
 
-"@lugia/devtools-material@^1.0.29":
-  version "1.0.29"
-  resolved "http://192.168.102.79:5001/@lugia/devtools-material/download/@lugia/devtools-material-1.0.29.tgz#3cb6c7fbfdd8eb9e2229103b035571b01f36c30a"
-  integrity sha1-PLbH+/3Y654iKRA7A1VxsB82wwo=
+"@lugia/devtools-material@^1.0.30":
+  version "1.0.30"
+  resolved "http://192.168.102.79:5001/@lugia/devtools-material/download/@lugia/devtools-material-1.0.30.tgz#cb9a8098dfb215967a0413dec082bf38996fb7d2"
+  integrity sha1-y5qAmN+yFZZ6BBPewIK/OJlvt9I=
   dependencies:
     babel-runtime "^6.26.0"
     immutable "^3.8.2"
@@ -1504,16 +1504,16 @@
     ts-jest-babel-7 "^22.0.7"
     typescript "^3.4.5"
 
-"@lugia/mega-scripts@1.3.52":
-  version "1.3.52"
-  resolved "http://192.168.102.79:5001/@lugia/mega-scripts/download/@lugia/mega-scripts-1.3.52.tgz#fd50669ef7c62ef0837cfb966668dcc0cd50cc38"
-  integrity sha1-/VBmnvfGLvCDfPuWZmjcwM1QzDg=
+"@lugia/mega-scripts@1.3.53":
+  version "1.3.53"
+  resolved "http://192.168.102.79:5001/@lugia/mega-scripts/download/@lugia/mega-scripts-1.3.53.tgz#5201a119dd912d0e49e3b31bc5eb8b94bed1f641"
+  integrity sha1-UgGhGd2RLQ5J47MbxeuLlL7R9kE=
   dependencies:
     "@babel/core" "7.4.3"
     "@babel/runtime" "^7.1.5"
     "@lugia/babel-preset-mega" "^1.0.18"
     "@lugia/devtools-conversion" "^1.0.13"
-    "@lugia/devtools-material" "^1.0.29"
+    "@lugia/devtools-material" "^1.0.30"
     "@lugia/mega-config" "^1.0.14"
     "@lugia/mega-utils" "^1.4.22"
     "@lugia/mega-webpack" "^1.3.47"

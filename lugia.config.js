@@ -9,6 +9,7 @@ export default {
   alias: {
     "@": join(__dirname, "./src")
   },
+  dllDependenciesExcludes: [],
   extraBabelIncludes: [/decamelize/],
   extraBabelPlugins: [
     [
