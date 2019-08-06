@@ -1177,7 +1177,7 @@
     babel-plugin-transform-react-remove-prop-types "0.4.24"
     core-js "^3.1.4"
 
-"@lugia/css@1.0.18", "@lugia/css@^1.0.18":
+"@lugia/css@^1.0.18":
   version "1.0.18"
   resolved "https://registry.yarnpkg.com/@lugia/css/-/css-1.0.18.tgz#3ff5d9039c2dfdc2290e830d6eba59b27b5d7039"
   integrity sha512-WvOHWNCkbC17UNLcYBKFfowspdSOzVkYMpGwhX+oj3BFuSjBy2b2T/+qAjQ96XaDJ05xcbzFO2l9Rt4sa+poQQ==
@@ -1212,21 +1212,21 @@
     immutable "^3.8.2"
     yargs "^13.2.2"
 
-"@lugia/lugia-web@1.1.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@lugia/lugia-web/-/lugia-web-1.1.0.tgz#743e807b3b33491731bbf203b3fff439b385eb69"
-  integrity sha512-Aa1xU/PIGYFEXqKHimJPnkNKjdPP32rsYAgJgnZCv1D4OvqJydZoodHLqcK0FyNBDNMENV6LhhHdkKiSPxTREg==
+"@lugia/lugia-web@^1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@lugia/lugia-web/-/lugia-web-1.1.1.tgz#6bf0a08b033aab10fc0377be5313d46614b62956"
+  integrity sha512-xF5xUnzsh6GvmS/g7dUOmceEhoGsRxXJ/LDdhFV76KDD+ATIkmbI/PG2YOtc0EkkCgtMdRB4rFpuZb01n0/6Ig==
   dependencies:
-    "@lugia/css" "1.0.18"
-    "@lugia/math" "1.0.8"
-    "@lugia/object-utils" "1.0.14"
-    "@lugia/ramada" "1.0.2"
-    "@lugia/theme-config" "1.0.35"
-    "@lugia/theme-core" "1.0.35"
-    "@lugia/theme-css-hoc" "1.0.62"
-    "@lugia/theme-hoc" "1.0.46"
-    "@lugia/theme-hoc-devtools" "1.0.7"
-    "@lugia/theme-utils" "1.0.7"
+    "@lugia/css" "^1.0.18"
+    "@lugia/math" "^1.0.8"
+    "@lugia/object-utils" "^1.0.14"
+    "@lugia/ramada" "^1.0.2"
+    "@lugia/theme-config" "^1.0.35"
+    "@lugia/theme-core" "^1.0.35"
+    "@lugia/theme-css-hoc" "^1.0.62"
+    "@lugia/theme-hoc" "^1.0.47"
+    "@lugia/theme-hoc-devtools" "^1.0.7"
+    "@lugia/theme-utils" "^1.0.7"
     "@lugia/type-utils" "^1.0.4"
     babel-polyfill "6.26.0"
     classnames "2.2.5"
@@ -1285,7 +1285,7 @@
     "@lugia/lugiax-core" "^1.0.9"
     immutable "^3.8.2"
 
-"@lugia/math@1.0.8":
+"@lugia/math@^1.0.8":
   version "1.0.8"
   resolved "https://registry.yarnpkg.com/@lugia/math/-/math-1.0.8.tgz#c840d060329bc745f5e855a01ae12018b3d08941"
   integrity sha512-zcOS0KMBUvgSM46SN3vYdP+QSIjmOadwy7sQhN8UW3a2OkrhgMV6BgNtEasfM19iDtl1HdCUWnowUTNhN7uh1Q==
@@ -1468,7 +1468,7 @@
     webpack-merge "^4.2.1"
     webpack-parallel-uglify-plugin "^1.1.0"
 
-"@lugia/object-utils@1.0.14", "@lugia/object-utils@^1.0.14":
+"@lugia/object-utils@^1.0.14":
   version "1.0.14"
   resolved "https://registry.yarnpkg.com/@lugia/object-utils/-/object-utils-1.0.14.tgz#732689c1f3b245f732f8b9cc2928e8fcafedabe3"
   integrity sha512-PMMP5E577hYi+tyg0SgTdoFZRnuRcZ+fqznUeUtcgf51VCFJiE9ZFv5PYKGXN/3ctpMGftwqey/9DqmKk6Fs+Q==
@@ -1477,7 +1477,7 @@
     deepmerge "^3.2.0"
     is-plain-object "^3.0.0"
 
-"@lugia/ramada@1.0.2", "@lugia/ramada@^1.0.2":
+"@lugia/ramada@^1.0.2":
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/@lugia/ramada/-/ramada-1.0.2.tgz#7c11310d723921dc9110a3e96471c3a75775cc0b"
   integrity sha512-F6DNEi7+1qnRenHiTjwuOSgLH6wY1tElPEc+Aov7rR8bt90vjLXUBMn4NkNpE/d8onzlKv1vN4LD1tV4apO+nw==
@@ -1492,7 +1492,7 @@
     shell-quote "^1.6.1"
     ws "^3.3.1"
 
-"@lugia/theme-config@1.0.35":
+"@lugia/theme-config@^1.0.35":
   version "1.0.35"
   resolved "https://registry.yarnpkg.com/@lugia/theme-config/-/theme-config-1.0.35.tgz#08c5b3cc14a584f2676eb5aa74fc7b2ac23bba73"
   integrity sha512-MS8gF48qTvgU3NKh0hOZr2pXGFcxM17TpVYMzcwKPizNiSWFjoNhHzgL6yXYkiImZcr8IAwaY6caZsx/yH/DJQ==
@@ -1501,7 +1501,7 @@
     "@lugia/theme-core" "^1.0.35"
     prop-types "^15.7.2"
 
-"@lugia/theme-core@1.0.35", "@lugia/theme-core@^1.0.35":
+"@lugia/theme-core@^1.0.35":
   version "1.0.35"
   resolved "https://registry.yarnpkg.com/@lugia/theme-core/-/theme-core-1.0.35.tgz#b2bd214baf88d51ce1ef658c4ccb2dfecc59cded"
   integrity sha512-4ubs6tTVDX8Ow3/UjwV43QdqZhHjM/1ifMRX+0b6E3EAGPjcAveK0hzqBteHzSMGhvAUhDjKZRAS0jMC4djKOQ==
@@ -1509,7 +1509,7 @@
     "@babel/runtime" "^7.4.5"
     "@lugia/object-utils" "^1.0.14"
 
-"@lugia/theme-css-hoc@1.0.62":
+"@lugia/theme-css-hoc@^1.0.62":
   version "1.0.62"
   resolved "https://registry.yarnpkg.com/@lugia/theme-css-hoc/-/theme-css-hoc-1.0.62.tgz#690ac165adb3c0fd0ae4ced40b39393d3142e744"
   integrity sha512-xP620NQeRp5KKixdswe4uz888OGUZEn1cZ/1miqr889Rf7Wk95HAxndxtApQ9dlP81eMMUG4Zgkrsj+kT4K7Ow==
@@ -1522,24 +1522,24 @@
     "@lugia/theme-utils" "^1.0.7"
     decamelize "^3.2.0"
 
-"@lugia/theme-hoc-devtools@1.0.7", "@lugia/theme-hoc-devtools@^1.0.7":
+"@lugia/theme-hoc-devtools@^1.0.7":
   version "1.0.7"
   resolved "https://registry.yarnpkg.com/@lugia/theme-hoc-devtools/-/theme-hoc-devtools-1.0.7.tgz#3825e36e816941f65a6ec19842d17ab7db421399"
   integrity sha512-fO73CZY96RoKTrjIJknfhX5PTHmIL7H1xDI7eWDjCkmN8dP0yGTizVBhSBoWZ29fbn6/WHjWTye0xUx2oG1iog==
   dependencies:
     "@lugia/react-devtools-core" "^1.0.3"
 
-"@lugia/theme-hoc@1.0.46":
-  version "1.0.46"
-  resolved "https://registry.yarnpkg.com/@lugia/theme-hoc/-/theme-hoc-1.0.46.tgz#af0cc6a4cabf912b90cd3798198dfd7fee5a1114"
-  integrity sha512-Z+RIJVENeCdJvaB9WoU1UR0GlewmVgUBX6wARURW3Xl5WlgwhHoXFwk1Qfq4E2DS2Eks0eIh3bnbXU8E5VAo0w==
+"@lugia/theme-hoc@^1.0.47":
+  version "1.0.47"
+  resolved "https://registry.yarnpkg.com/@lugia/theme-hoc/-/theme-hoc-1.0.47.tgz#775baec82dc6de1e2201ea10a9143a5ef9b6216a"
+  integrity sha512-0dWHcLk9XsE8QpkJB5fqstkaiB2CEUlA2GyJdc+/QcUorZG2oxl0C3xaxqY+64DZH4L27EnwR0Ua2517+H08Fg==
   dependencies:
     "@babel/runtime" "^7.4.5"
     "@lugia/object-utils" "^1.0.14"
     "@lugia/theme-core" "^1.0.35"
     "@lugia/theme-hoc-devtools" "^1.0.7"
 
-"@lugia/theme-utils@1.0.7", "@lugia/theme-utils@^1.0.7":
+"@lugia/theme-utils@^1.0.7":
   version "1.0.7"
   resolved "https://registry.yarnpkg.com/@lugia/theme-utils/-/theme-utils-1.0.7.tgz#f280697ebd02a82e9e529a75683315c78bf7d3fc"
   integrity sha512-mhfdoVjzb4rLcxAAA5GwjrohI9wIFw5ZbhVfl3WzaWY9zS8a80GF/2r/17ZGxuCPxFVtv/Okw6Fhf51n2XK5aQ==
