@@ -1,13 +1,16 @@
 {
   "name": "@lugia/scaffolding-admin",
-  "version": "1.1.15",
+  "version": "1.1.16",
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "start": "lugia-scripts start",
     "build": "lugia-scripts build",
     "test": "lugia-scripts test -w"
   },
   "dependencies": {
-    "@lugia/lugia-web": "^1.1.1",
+    "@lugia/lugia-web": "^1.1.2",
     "@lugia/lugiax": "1.0.13",
     "@lugia/lugiax-router": "^1.0.16",
     "history": "4.9.0",
