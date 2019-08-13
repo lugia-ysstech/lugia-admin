@@ -5,7 +5,7 @@
       "scaffolding": {
         "type": "npm",
         "name": "@lugia/scaffolding-admin",
-        "registry": "http://192.168.102.79:5001/",
+        "registry": "https://registry.npmjs.org/",
         "version": "1.0.10"
       }
     }
