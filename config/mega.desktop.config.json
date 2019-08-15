@@ -6,7 +6,7 @@
         "type": "npm",
         "name": "@lugia/scaffolding-admin",
         "registry": "https://registry.npmjs.org/",
-        "version": "1.0.10"
+        "version": "*"
       }
     }
   }
