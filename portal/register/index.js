@@ -273,20 +273,19 @@ const RegisterPage = connect(
   register,
   state => {
     return {
-      isRegister: state.register.get('isRegister'),
-      passWordInfo: state.register.get('passWordInfo'),
+      isRegister: state.get('isRegister'),
+      passWordInfo: state.get('passWordInfo'),
     };
   },
   mutations => {
-    const { register } = mutations;
     return {
-      doRegister: register.asyncDoRegister,
-      doSavePassWord: register.asyncDoSavePassWord,
-      onChangeCellPhone: register.onChangeCellPhone,
-      onChangeIdentifyCode: register.onChangeIdentifyCode,
-      onChangeRepeatPassword: register.onChangeRepeatPassword,
-      onChangePassWord: register.onChangePassWord,
-      goLogin: register.goLogin,
+      doRegister: mutations.asyncDoRegister,
+      doSavePassWord: mutations.asyncDoSavePassWord,
+      onChangeCellPhone: mutations.onChangeCellPhone,
+      onChangeIdentifyCode: mutations.onChangeIdentifyCode,
+      onChangeRepeatPassword: mutations.onChangeRepeatPassword,
+      onChangePassWord: mutations.onChangePassWord,
+      goLogin: mutations.goLogin,
     };
   }
 )(Register);
