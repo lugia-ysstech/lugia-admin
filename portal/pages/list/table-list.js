@@ -12,7 +12,7 @@ import PageContent from "../../components/page-content";
 import TableForm from "../../components/table-list-form";
 const routes = [
   {
-    path: "/Dashboard/analyse",
+    path: "/dashboard/analyse",
     title: "首页"
   },
   {
