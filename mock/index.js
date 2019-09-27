@@ -12,8 +12,12 @@
 
 import random from "./random";
 import search from "./search";
+import detail from "./detailMock";
+import personal from "./personal";
 
 export default {
   ...random,
-  ...search
+  ...search,
+  ...detail,
+  ...personal
 };

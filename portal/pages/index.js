@@ -18,6 +18,7 @@ const Content = styled.div`
   justify-content: center;
   flex-wrap: nowrap;
   overflow: auto;
+   flex: 1;
 `;
 
 export default () => {
