@@ -33,7 +33,7 @@ export default [
       },
       {
         value: "/form/step-form",
-        text: "分布表单",
+        text: "分步表单",
         render: () => import("../portal/pages/form/step")
       },
       {
