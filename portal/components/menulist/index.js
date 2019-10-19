@@ -141,6 +141,7 @@ class List extends React.Component<any> {
         <Navmenu
           theme={theme}
           value={value}
+          pathSeparator={"@"}
           themeStyle={"dark"}
           onSelect={this.props.onSelect}
           inlineType={"ellipse"}
