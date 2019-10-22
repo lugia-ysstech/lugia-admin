@@ -69,7 +69,14 @@ const theme = {
       }
     },
     CardContent:{
-      normal: { padding:0 },
+      normal: {
+        padding:{
+          top: 10,
+          left: 0,
+          right: 0,
+          bottom:0
+        },
+      },
     }
   },
   [Widget.Avatar]: {
