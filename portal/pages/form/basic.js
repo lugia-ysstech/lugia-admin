@@ -81,11 +81,6 @@ const routes = [
 ];
 
 class BasicForm extends Component {
-  // onTitleChange: mutations.onTitleChange,
-  // onDescChange: mutations.onDescChange,
-  // onReferenceChange: mutations.onReferenceChange,
-  // onVisitorChange: mutations.onVisitorChange,
-  // onInviterChange: mutations.onInviterChange,
 
   render() {
     const {

@@ -19,10 +19,8 @@ export default lugiax.register({
         go({ url: "/" });
       },
       goDetails(state, inParam) {
-        go({ url: "/" });
       },
       doPrint(state, inParam) {
-        go({ url: "/" });
       },
     },
     async: {
