@@ -22,6 +22,8 @@ import {
   Table,
   TimePicker
 } from "@lugia/lugia-web";
+import { connect } from "@lugia/lugiax";
+import advanced from "../../models/form/advanced";
 const { Row, Col } = Grid;
 
 const { RangePicker } = DatePicker;
@@ -73,286 +75,333 @@ const routes = [
     title: "高级表单"
   }
 ];
-const nameData = [
-  {
-    title: "仓库名:",
-    placeholder: "请输入仓库名称"
-  }
-];
-const workData = [
-  {
-    title: "任务名:",
-    placeholder: "请输入"
-  }
-];
-const workDesData = [
-  {
-    title: "任务描述:",
-    placeholder: "请输入"
-  }
-];
-const autoData = [
-  {
-    title: "仓库域名:",
-    placeholder: "请输入",
-    isAuto: true
-  }
-];
-const managerData = [
-  {
-    title: "仓库管理员",
-    isSelect: true,
-    selectData: [
-      { value: "付晓晓", label: "付晓晓" },
-      { value: "周毛毛", label: "周毛毛" }
-    ],
-    selectView: {
-      [Widget.Select]: {
-        InputTag: {
-          InputTagWrap: {
-            normal: {
-              width: 200
-            }
-          }
-        }
-      }
-    },
-    placeholder: "请选择管理员"
-  }
-];
-const workerData = [
-  {
-    title: "执行人",
-    isSelect: true,
-    selectData: [
-      { value: "付晓晓", label: "付晓晓" },
-      { value: "周毛毛", label: "周毛毛" }
-    ],
-    selectView: {
-      [Widget.Select]: {
-        InputTag: {
-          InputTagWrap: {
-            normal: {
-              width: 200
-            }
-          }
-        }
-      }
-    },
-    placeholder: "请选择管理员"
-  }
-];
-const approvalData = [
-  {
-    title: "审批人",
-    isSelect: true,
-    placeholder: "请选择审批员",
-    selectData: [
-      { value: "付晓晓", label: "付晓晓" },
-      { value: "周毛毛", label: "周毛毛" }
-    ],
-    selectView: {
-      [Widget.Select]: {
-        InputTag: {
-          InputTagWrap: {
-            normal: {
-              width: 200
-            }
-          }
-        }
-      }
-    }
-  }
-];
-const responsibleData = [
-  {
-    title: "责任人",
-    isSelect: true,
-    placeholder: "请选择责任人",
-    selectData: [
-      { value: "付晓晓", label: "付晓晓" },
-      { value: "周毛毛", label: "周毛毛" }
-    ],
-    selectView: {
-      [Widget.Select]: {
-        InputTag: {
-          InputTagWrap: {
-            normal: {
-              width: 200
-            }
-          }
-        }
-      }
-    }
-  }
-];
-const workTypeData = [
-  {
-    title: "任务类型",
-    isSelect: true,
-    placeholder: "请选择任务类型",
-    selectData: [
-      { value: "私密", label: "私密" },
-      { value: "公开", label: "公开" }
-    ],
-    selectView: {
-      [Widget.Select]: {
-        InputTag: {
-          InputTagWrap: {
-            normal: {
-              width: 200
-            }
-          }
-        }
-      }
-    }
-  }
-];
-const inputView = {
-  [Widget.Input]: {
-    Container: {
-      normal: {
-        width: 200
-      }
-    }
-  }
-};
 
-const getDataItem = (
-  <ItemContainer>
-    <ItemInnerContainer>
-      <TitleContainer>
-        <TitleText>{"生效日期"}</TitleText>
-      </TitleContainer>
-    </ItemInnerContainer>
-    <ItemInputContainer>
-      <RangePicker format={"YYYY-MM-DD"} />
-    </ItemInputContainer>
-  </ItemContainer>
-);
-const getWorkDataItem = (
-  <ItemContainer>
-    <ItemInnerContainer>
-      <TitleContainer>
-        <TitleText>{"生效日期"}</TitleText>
-      </TitleContainer>
-    </ItemInnerContainer>
-    <ItemInputContainer>
-      <TimePicker />
-    </ItemInputContainer>
-  </ItemContainer>
-);
+class TableList extends Component {
+  constructor(props) {
+    super(props);
+    const { getStaffsInfo, getStorageInfo, getTaskInfo } = props;
+    getStorageInfo().then(() => {
+      getTaskInfo().then(() => {
+        getStaffsInfo();
+      });
+    });
+  }
 
-const getItem = data => () => {
-  return data.map(item => {
+  render() {
     const {
-      title,
-      placeholder,
-      isSelect,
-      selectData,
-      selectView,
-      isAuto
-    } = item;
-    return (
+      onStorageNameChange,
+      onIpAddressChange,
+      onStorageManageChange,
+      onApprovalChange,
+
+      onTaskTitleChange,
+      onTaskDescChange,
+      onExecutorChange,
+      onTaskManageChange,
+      onTaskTypeChange,
+      onTableChange
+    } = this.props;
+    const nameData = [
+      {
+        title: "仓库名:",
+        placeholder: "请输入仓库名称",
+        onChange: onStorageNameChange
+      }
+    ];
+
+    const ipData = [
+      {
+        title: "仓库域名:",
+        placeholder: "请输入",
+        isAuto: true,
+        onChange: onIpAddressChange
+      }
+    ];
+    const managerData = [
+      {
+        title: "仓库管理员",
+        isSelect: true,
+        selectData: [
+          { value: "付晓晓", label: "付晓晓" },
+          { value: "周毛毛", label: "周毛毛" }
+        ],
+        selectView: {
+          [Widget.Select]: {
+            InputTag: {
+              InputTagWrap: {
+                normal: {
+                  width: 200
+                }
+              }
+            }
+          }
+        },
+        placeholder: "请选择管理员",
+        onChange: onStorageManageChange
+      }
+    ];
+    const approvalData = [
+      {
+        title: "审批人",
+        isSelect: true,
+        placeholder: "请选择审批员",
+        selectData: [
+          { value: "付晓晓", label: "付晓晓" },
+          { value: "周毛毛", label: "周毛毛" }
+        ],
+        selectView: {
+          [Widget.Select]: {
+            InputTag: {
+              InputTagWrap: {
+                normal: {
+                  width: 200
+                }
+              }
+            }
+          }
+        },
+        onChange: onApprovalChange
+      }
+    ];
+
+    const workData = [
+      {
+        title: "任务名:",
+        placeholder: "请输入",
+        onChange: onTaskTitleChange
+      }
+    ];
+    const workDesData = [
+      {
+        title: "任务描述:",
+        placeholder: "请输入",
+        onChange: onTaskDescChange
+      }
+    ];
+    const workerData = [
+      {
+        title: "执行人",
+        isSelect: true,
+        selectData: [
+          { value: "付晓晓", label: "付晓晓" },
+          { value: "周毛毛", label: "周毛毛" }
+        ],
+        selectView: {
+          [Widget.Select]: {
+            InputTag: {
+              InputTagWrap: {
+                normal: {
+                  width: 200
+                }
+              }
+            }
+          }
+        },
+        placeholder: "请选择管理员",
+        onChange: onExecutorChange
+      }
+    ];
+    const responsibleData = [
+      {
+        title: "责任人",
+        isSelect: true,
+        placeholder: "请选择责任人",
+        selectData: [
+          { value: "付晓晓", label: "付晓晓" },
+          { value: "周毛毛", label: "周毛毛" }
+        ],
+        selectView: {
+          [Widget.Select]: {
+            InputTag: {
+              InputTagWrap: {
+                normal: {
+                  width: 200
+                }
+              }
+            }
+          }
+        },
+        onChange: onTaskManageChange
+      }
+    ];
+    const workTypeData = [
+      {
+        title: "任务类型",
+        isSelect: true,
+        placeholder: "请选择任务类型",
+        selectData: [
+          { value: "私密", label: "私密" },
+          { value: "公开", label: "公开" }
+        ],
+        selectView: {
+          [Widget.Select]: {
+            InputTag: {
+              InputTagWrap: {
+                normal: {
+                  width: 200
+                }
+              }
+            }
+          }
+        },
+        onChange: onTaskTypeChange
+      }
+    ];
+    const inputView = {
+      [Widget.Input]: {
+        Container: {
+          normal: {
+            width: 200
+          }
+        }
+      }
+    };
+
+    const getDataItem = (
       <ItemContainer>
         <ItemInnerContainer>
           <TitleContainer>
-            <TitleText>{title}</TitleText>
+            <TitleText>{"生效日期"}</TitleText>
           </TitleContainer>
         </ItemInnerContainer>
         <ItemInputContainer>
-          {!isSelect &&
-            !isAuto && (
-              <Theme config={inputView}>
-                <Input placeholder={placeholder} />
-              </Theme>
-            )}
-          {isAuto && (
-            <Theme config={inputView}>
-              <AutoComplete placeholder={placeholder} />
-            </Theme>
-          )}
-          {isSelect && (
-            <Theme config={selectView}>
-              <SelectContainer>
-                <Select
-                  createPortal
-                  data={selectData}
-                  displayField={"label"}
-                  placeholder={placeholder}
-                />
-              </SelectContainer>
-            </Theme>
-          )}
+          <RangePicker format={"YYYY-MM-DD"} />
         </ItemInputContainer>
       </ItemContainer>
     );
-  });
-};
-const cardThemeConfig = {
-  [Widget.Card]: {
-    Container: {
-      normal: {
-        width: "100%",
-        height: 400,
-        margin: {
-          bottom: 30
+    const getWorkDataItem = (
+      <ItemContainer>
+        <ItemInnerContainer>
+          <TitleContainer>
+            <TitleText>{"生效日期"}</TitleText>
+          </TitleContainer>
+        </ItemInnerContainer>
+        <ItemInputContainer>
+          <TimePicker />
+        </ItemInputContainer>
+      </ItemContainer>
+    );
+
+    const getItem = data => () => {
+      return data.map(item => {
+        const {
+          title,
+          placeholder,
+          isSelect,
+          selectData,
+          selectView,
+          isAuto,
+          onChange
+        } = item;
+        return (
+          <ItemContainer>
+            <ItemInnerContainer>
+              <TitleContainer>
+                <TitleText>{title}</TitleText>
+              </TitleContainer>
+            </ItemInnerContainer>
+            <ItemInputContainer>
+              {!isSelect &&
+                !isAuto && (
+                  <Theme config={inputView}>
+                    <Input placeholder={placeholder} onChange={onChange} />
+                  </Theme>
+                )}
+              {isAuto && (
+                <Theme config={inputView}>
+                  <AutoComplete placeholder={placeholder} onChange={onChange} />
+                </Theme>
+              )}
+              {isSelect && (
+                <Theme config={selectView}>
+                  <SelectContainer>
+                    <Select
+                      createPortal
+                      data={selectData}
+                      displayField={"label"}
+                      placeholder={placeholder}
+                      onChange={onChange}
+                    />
+                  </SelectContainer>
+                </Theme>
+              )}
+            </ItemInputContainer>
+          </ItemContainer>
+        );
+      });
+    };
+    const cardThemeConfig = {
+      [Widget.Card]: {
+        Container: {
+          normal: {
+            width: "100%",
+            height: 400,
+            margin: {
+              bottom: 30
+            }
+          }
+        },
+        CardTitle: {
+          normal: {
+            height: 30,
+            margin: {
+              top: 20
+            }
+          }
+        },
+        CardContent: {
+          normal: {
+            padding: 0
+          }
         }
       }
-    },
-    CardTitle: {
-      normal: {
-        height: 30,
-        margin: {
-          top: 20
-        }
+    };
+
+    const columns = [
+      {
+        title: "成员名字",
+        dataIndex: "name",
+        key: "name",
+        width: 100
+      },
+      {
+        title: "工号",
+        dataIndex: "id",
+        key: "id",
+        width: 100
+      },
+      {
+        title: "所属部门",
+        dataIndex: "address",
+        key: "address",
+        width: 200
+      },
+      {
+        title: "操作",
+        dataIndex: "",
+        key: "operations",
+        render: () => <a href="javascript:;">删除</a>
       }
-    },
-    CardContent: {
-      normal: {
-        padding: 0
-      }
-    }
-  }
-};
+    ];
 
-const columns = [
-  {
-    title: "成员名字",
-    dataIndex: "name",
-    key: "name",
-    width: 100
-  },
-  {
-    title: "工号",
-    dataIndex: "id",
-    key: "id",
-    width: 100
-  },
-  {
-    title: "所属部门",
-    dataIndex: "address",
-    key: "address",
-    width: 200
-  },
-  {
-    title: "操作",
-    dataIndex: "",
-    key: "operations",
-    render: () => <a href="javascript:;">删除</a>
-  }
-];
+    const data = [
+      { name: "Jack", id: 28, address: "some where", key: "1" },
 
-const data = [
-  { name: "Jack", id: 28, address: "some where", key: "1" },
+      { name: "Rose", id: 36, address: "some where", key: "2" },
 
-  { name: "Rose", id: 36, address: "some where", key: "2" },
+      { name: "Uzi", id: 36, address: "some where", key: "3" }
+    ];
+    const { staffsInfo, storageInfo, taskInfo } = this.props;
+    const theNameData=storageInfo&&storageInfo.data&&storageInfo.data.nameData?storageInfo.data.nameData:nameData;
+    const theIpData=storageInfo&&storageInfo.data&&storageInfo.data.ipData?storageInfo.data.ipData:ipData;
+    const theManagerData=storageInfo&&storageInfo.data&&storageInfo.data.managerData?storageInfo.data.managerData:managerData;
+    const theApprovalData=storageInfo&&storageInfo.data&&storageInfo.data.approvalData?storageInfo.data.approvalData:approvalData;
 
-  { name: "Uzi", id: 36, address: "some where", key: "3" }
-];
-
-export default class TableList extends Component {
-  render() {
+    const theWorkData=taskInfo&&taskInfo.data&&taskInfo.data.workData?taskInfo.data.workData:workData;
+    const theWorkDesData=taskInfo&&taskInfo.data&&taskInfo.data.workDesData?taskInfo.data.workDesData:workDesData;
+    const theWorkerData=taskInfo&&taskInfo.data&&taskInfo.data.workerData?taskInfo.data.workerData:workerData;
+    const theResponsibleData=taskInfo&&taskInfo.data&&taskInfo.data.responsibleData?taskInfo.data.responsibleData:responsibleData;
+    const theWorkTypeData=taskInfo&&taskInfo.data&&taskInfo.data.workTypeData?taskInfo.data.workTypeData:workTypeData;
     return (
       <Content>
         <PageHeader
@@ -369,16 +418,18 @@ export default class TableList extends Component {
               content={
                 <PageContent>
                   <Row>
-                    <Col span={6}>{getItem(nameData)()}</Col>
+                    <Col span={6}>{getItem(theNameData)()}</Col>
                     <Col span={6} offset={2}>
-                      {getItem(autoData)()}
+                      {getItem(theIpData)()}
                     </Col>
                     <Col span={6} offset={2}>
-                      {getItem(managerData)()}
+                      {getItem(theManagerData)()}
                     </Col>
                   </Row>
                   <Row>
-                    <Col span={6}>{getItem(approvalData)()}</Col>
+                    <Col span={6}>
+                      {getItem(theApprovalData)()}
+                    </Col>
                     <Col span={16} offset={2}>
                       {getDataItem}
                     </Col>
@@ -393,21 +444,21 @@ export default class TableList extends Component {
               content={
                 <PageContent>
                   <Row>
-                    <Col span={6}>{getItem(workData)()}</Col>
+                    <Col span={6}>{getItem(theWorkData)()}</Col>
                     <Col span={6} offset={2}>
-                      {getItem(workDesData)()}
+                      {getItem(theWorkDesData)()}
                     </Col>
                     <Col span={6} offset={2}>
-                      {getItem(workerData)()}
+                      {getItem(theWorkerData)()}
                     </Col>
                   </Row>
                   <Row>
-                    <Col span={6}>{getItem(responsibleData)()}</Col>
+                    <Col span={6}>{getItem(theResponsibleData)()}</Col>
                     <Col span={6} offset={2}>
                       {getWorkDataItem}
                     </Col>
                     <Col span={6} offset={2}>
-                      {getItem(workTypeData)()}
+                      {getItem(theWorkTypeData)()}
                     </Col>
                   </Row>
                 </PageContent>
@@ -419,7 +470,11 @@ export default class TableList extends Component {
               title={"成员管理"}
               content={
                 <PageContent>
-                  <Table columns={columns} data={data} />
+                  <Table
+                    columns={staffsInfo.columns}
+                    data={staffsInfo.data}
+                    onChange={onTableChange}
+                  />
                 </PageContent>
               }
             />
@@ -429,3 +484,44 @@ export default class TableList extends Component {
     );
   }
 }
+
+const AdvancedFormPage = connect(
+  advanced,
+  state => {
+    return {
+      staffsInfo: state.get("staffsInfo").toJS
+        ? state.get("staffsInfo").toJS()
+        : state.get("staffsInfo"),
+      storageInfo: state.get("storageInfo").toJS
+        ? state.get("storageInfo").toJS()
+        : state.get("storageInfo"),
+      taskInfo: state.get("taskInfo").toJS
+        ? state.get("taskInfo").toJS()
+        : state.get("taskInfo")
+    };
+  },
+  mutations => {
+    return {
+      onStorageNameChange: mutations.onStorageNameChange,
+      onIpAddressChange: mutations.onIpAddressChange,
+      onStorageManageChange: mutations.onStorageManageChange,
+      onApprovalChange: mutations.onApprovalChange,
+
+      onTaskTitleChange: mutations.onTaskTitleChange,
+      onTaskDescChange: mutations.onTaskDescChange,
+      onExecutorChange: mutations.onExecutorChange,
+      onTaskManageChange: mutations.onTaskManageChange,
+      onTaskTypeChange: mutations.onTaskTypeChange,
+
+      onTableChange: mutations.onTableChange,
+
+      getStaffsInfo: mutations.asyncGetStaffsInfo,
+      getStorageInfo: mutations.asyncGetStorageInfo,
+      getTaskInfo: mutations.asyncGetTaskInfo
+    };
+  }
+)(TableList);
+
+export default () => {
+  return <AdvancedFormPage />;
+};

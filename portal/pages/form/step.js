@@ -22,6 +22,8 @@ import {
 } from "@lugia/lugia-web";
 import styled from "styled-components";
 import Widget from "@lugia/lugia-web/dist/consts";
+import { connect } from "@lugia/lugiax";
+import stepForm from "../../models/form/step";
 
 const ItemContainer = styled.div`
   position: relative;
@@ -77,152 +79,189 @@ const routes = [
   },
   {
     path: "/pages/form/step",
-    title: "分步3表单"
+    title: "分步表单"
   }
 ];
-const inputView = {
-  [Widget.Input]: {
-    Container: {
-      normal: {
-        width: 300
-      }
-    }
-  }
-};
-const getItem = data => () => {
-  return data.map(item => {
+
+class StepForm extends Component {
+  render() {
     const {
-      title,
-      inputPlaceholder,
-      isAmount,
-      isSelect,
-      selectData,
-      selectView,
-      selectDefaultValue,
-      inputDefaultValue
-    } = item;
-    return (
+      onPayAccountChange,
+      onReceiptAccountChange,
+      onReceiptTypeChange,
+      onReceiptNameChange,
+      onTransferAmountChange
+    } = this.props;
+    const inputView = {
+      [Widget.Input]: {
+        Container: {
+          normal: {
+            width: 300
+          }
+        }
+      }
+    };
+    const getItem = data => () => {
+      return data.map(item => {
+        const {
+          title,
+          inputPlaceholder,
+          isAmount,
+          isSelect,
+          selectData,
+          selectView,
+          selectDefaultValue,
+          inputDefaultValue,
+          onChange,
+          amountOnChange,
+          onReceiptTypeChange
+        } = item;
+        return (
+          <ItemContainer>
+            <ItemInnerContainer>
+              <TitleContainer>
+                <TitleText>{title}</TitleText>
+              </TitleContainer>
+            </ItemInnerContainer>
+            <ItemInputContainer>
+              {isSelect && (
+                <Theme config={selectView}>
+                  <SelectContainer>
+                    <Select
+                      createPortal
+                      data={selectData}
+                      displayField={"label"}
+                      defaultValue={selectDefaultValue}
+                      onChange={onReceiptTypeChange}
+                    />
+                  </SelectContainer>
+                </Theme>
+              )}
+              <Theme config={inputView}>
+                {!isAmount &&
+                  inputPlaceholder && (
+                    <Input placeholder={inputPlaceholder} onChange={onChange} />
+                  )}
+              </Theme>
+              {isAmount && (
+                <AmountInput
+                  defaultValue={inputDefaultValue}
+                  onChange={amountOnChange}
+                />
+              )}
+            </ItemInputContainer>
+          </ItemContainer>
+        );
+      });
+    };
+
+    const steps = [
+      {
+        title: "填写转账信息"
+      },
+      {
+        title: "确认转账信息"
+      },
+      {
+        title: "完成"
+      }
+    ];
+
+    const getSteps = currentStepNumber => () => {
+      return (
+        <StepContainer>
+          <Steps data={steps} currentStepNumber={currentStepNumber || 1} />
+        </StepContainer>
+      );
+    };
+    const payData = [
+      {
+        title: "付款账户",
+        isSelect: true,
+        selectData: [
+          {
+            value: "lugia-design@ysstech.com",
+            label: "lugia-design@ysstech.com"
+          }
+        ],
+        selectDefaultValue: "lugia-design@ysstech.com",
+        selectView: {
+          [Widget.Select]: {
+            InputTag: {
+              InputTagWrap: {
+                normal: {
+                  width: 300
+                }
+              }
+            }
+          }
+        },
+        onChange: onPayAccountChange
+      }
+    ];
+    const receiptData = [
+      {
+        title: "收款人姓名:",
+        inputPlaceholder: "Lugia",
+        onChange: onReceiptNameChange
+      }
+    ];
+
+    const receiptAccountData = [
+      {
+        title: "收款账户:",
+        isSelect: true,
+        selectDefaultValue: "支付宝",
+        selectData: [
+          { value: "支付宝", label: "支付宝" },
+          { value: "银行账户", label: "银行账户" }
+        ],
+        selectView: {
+          [Widget.Select]: {
+            InputTag: {
+              InputTagWrap: {
+                normal: {
+                  width: 100
+                }
+              }
+            }
+          }
+        },
+        inputPlaceholder: "lugia-design@ysstech.com",
+        onReceiptTypeChange: onReceiptTypeChange,
+        onChange: onReceiptAccountChange
+      }
+    ];
+    const transferData = [
+      {
+        title: "转账金额:",
+        inputDefaultValue: 500,
+        isAmount: true,
+        inputPlaceholder: "请输入衡量标准",
+        amountOnChange: onTransferAmountChange
+      }
+    ];
+    const getOperation = (
       <ItemContainer>
-        <ItemInnerContainer>
-          <TitleContainer>
-            <TitleText>{title}</TitleText>
-          </TitleContainer>
-        </ItemInnerContainer>
+        <ItemInnerContainer />
         <ItemInputContainer>
-          {isSelect && (
-            <Theme config={selectView}>
-              <SelectContainer>
-                <Select createPortal data={selectData} displayField={"label"}  defaultValue={selectDefaultValue}/>
-              </SelectContainer>
-            </Theme>
-          )}
-          <Theme config={inputView}>
-            {!isAmount &&
-              inputPlaceholder && <Input placeholder={inputPlaceholder} />}
-          </Theme>
-          {isAmount && <AmountInput  defaultValue={inputDefaultValue}/>}
+          <Button onClick={this.props.doNextStep} type={"primary"}>
+            {"下一步"}
+          </Button>
         </ItemInputContainer>
       </ItemContainer>
     );
-  });
-};
-
-const steps = [
-  {
-    title: "填写转账信息"
-  },
-  {
-    title: "确认转账信息"
-  },
-  {
-    title: "完成"
-  }
-];
-const getSteps = currentStepNumber => () => {
-  return (
-    <StepContainer>
-      <Steps data={steps} currentStepNumber={currentStepNumber} />
-    </StepContainer>
-  );
-};
-const payData = [
-  {
-    title: "付款账户",
-    isSelect: true,
-    selectData: [{ value: "lugia-design@ysstech.com", label: "lugia-design@ysstech.com" }],
-    selectDefaultValue:"lugia-design@ysstech.com",
-    selectView: {
-      [Widget.Select]: {
-        InputTag: {
-          InputTagWrap: {
-            normal: {
-              width: 300
-            }
-          }
-        }
-      }
-    }
-  }
-];
-const receiptData = [
-  {
-    title: "收款人姓名:",
-    inputPlaceholder: "Lugia"
-  }
-];
-
-const receiptAccountData = [
-  {
-    title: "收款账户:",
-    isSelect: true,
-    selectDefaultValue:"支付宝",
-    selectData: [
-      { value: "支付宝", label: "支付宝" },
-      { value: "银行账户", label: "银行账户" }
-    ],
-    selectView: {
-      [Widget.Select]: {
-        InputTag: {
-          InputTagWrap: {
-            normal: {
-              width: 100
-            }
-          }
-        }
-      }
-    },
-    inputPlaceholder: "lugia-design@ysstech.com"
-  }
-];
-const transferData = [
-  {
-    title: "转账金额:",
-    inputDefaultValue:500,
-    isAmount: true,
-    inputPlaceholder: "请输入衡量标准"
-  }
-];
-const getOperation = (
-  <ItemContainer>
-    <ItemInnerContainer />
-    <ItemInputContainer>
-      <Button type={"primary"}>{"下一步"}</Button>
-    </ItemInputContainer>
-  </ItemContainer>
-);
-
-export default class Demo extends Component {
-  render() {
+    const { currentStepNumber } = this.props;
     return (
       <Content>
         <PageHeader
           routes={routes}
-          title={"分布表单"}
+          title={"分步表单"}
           desc={"将一个冗长或用户不熟悉的表单任务分成多个步骤，指导用户完成。"}
         />
         <PageContent>
           <div>
-            {getSteps(1)()}
+            {getSteps(currentStepNumber)()}
             {getItem(payData)()}
             {getItem(receiptAccountData)()}
             {getItem(receiptData)()}
@@ -234,3 +273,28 @@ export default class Demo extends Component {
     );
   }
 }
+
+const StepFormPage = connect(
+  stepForm,
+  state => {
+    const stepsInfo = stepForm.getState().get("stepForm");
+    const currentStepNumber = state.getIn([stepsInfo, "currentStepNumber"]);
+    return {
+      currentStepNumber
+    };
+  },
+  mutations => {
+    return {
+      onPayAccountChange: mutations.onTitleChange,
+      onReceiptAccountChange: mutations.onReceiptAccountChange,
+      onReceiptTypeChange: mutations.onReceiptTypeChange,
+      onReceiptNameChange: mutations.onReceiptNameChange,
+      onTransferAmountChange: mutations.onTransferAmountChange,
+      doNextStep: mutations.doNextStep
+    };
+  }
+)(StepForm);
+
+export default () => {
+  return <StepFormPage />;
+};
