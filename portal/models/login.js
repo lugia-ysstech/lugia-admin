@@ -36,7 +36,7 @@ export default lugiax.register({
           message[type](text, 2);
       },
       goRegister(state, inParam){
-        go({ url: "/register" });
+        go({ url: "/register/register" });
       },
       onChangeAutoSignIn(state,inParam ){
         return state.set('autoSignIn', inParam);

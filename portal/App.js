@@ -4,8 +4,13 @@ import { Redirect } from "@lugia/lugiax-router";
 import register from "./models/register";
 
 export const firstRouter = {
-  "/register": {
-    render: async () => import("./register")
+  "/register/register": {
+    exact: true,
+    render: async () => import("./register/register")
+  },
+  "/register/registerSuccess": {
+    exact: true,
+    render: async () => import("./register/registerSuccess")
   },
   "/login": {
     exact: true,

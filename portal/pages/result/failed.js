@@ -20,6 +20,8 @@ import {
 } from "@lugia/lugia-web";
 import styled from "styled-components";
 import Widget from "@lugia/lugia-web/dist/consts";
+import { connect } from "@lugia/lugiax";
+import failed from "../../models/result/failed";
 
 const ContentContainer = styled.div`
   width: 100%;
@@ -88,7 +90,7 @@ const cardThemeConfig = {
         background:{
           color:"#f6f6f6"
         }
-      }
+      },
     },
     CardTitle: {
       normal: {
@@ -120,7 +122,7 @@ const iconTheme = {
   }
 };
 
-export default class Demo extends Component {
+class failedDemo extends Component {
   render() {
     return (
       <Content>
@@ -155,7 +157,7 @@ export default class Demo extends Component {
           </Theme>
           <CardContentContainer>
             <Theme config={buttonView}>
-              <Button type={"primary"}>{"返回修改"}</Button>
+              <Button type={"primary"} onClick={this.props.goBack}>{"返回修改"}</Button>
             </Theme>
           </CardContentContainer>
         </PageContent>
@@ -163,3 +165,20 @@ export default class Demo extends Component {
     );
   }
 }
+
+const FailedPage = connect(
+  failed,
+  state => {
+    return {
+    };
+  },
+  mutations => {
+    return {
+      goBack: mutations.goBack,
+    };
+  }
+)(failedDemo);
+
+export default () => {
+  return <FailedPage />;
+};
