@@ -59,7 +59,7 @@ const theme = {
           bottomRight:0
         },
         boxShadow: 'none',
-        height: 352
+        height: 350
       },
     },
     CardTitle: {

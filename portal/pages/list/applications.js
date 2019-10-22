@@ -93,11 +93,6 @@ const theme = {
           borderRadius: getBorderRadius(2),
           border: getBorder({ color: '#56c22d', width: 0, style: 'solid' }),
         },
-        // hover: {
-        //   background: { color: '#56c22d' },
-        //   borderRadius: getBorderRadius(2),
-        //   border: getBorder({ color: 'yellow', width: 0, style: 'solid' }),
-        // },
       },
       CheckboxEdgeIndeterminate: {
         normal: {
