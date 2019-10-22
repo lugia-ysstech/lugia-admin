@@ -54,31 +54,31 @@ export default lugiax.register({
     },
     async: {
       async doRegister(state, inParam, { mutations }) {
-        // const registerInfo = state.get("registerInfo").toJS();
-        // const query = { ...registerInfo };
-        // const resp = await fetch("/api/register", {
-        //   method: "Post",
-        //   body: JSON.stringify({ registerInfo: query }),
-        //   headers: new Headers({ "Content-Type": "application/json" })
-        // })
-        //   .then(response => response.json())
-        //   .then(data => {
-        //     return data;
-        //   });
-        //
-        // const res = await resp;
-        // const {
-        //   status,
-        //   data: { userId, register },
-        //   error
-        // } = res;
-        // if (status === 200) {
-        //   state = state.set("userId", userId);
+        const registerInfo = state.get("registerInfo").toJS();
+        const query = { ...registerInfo };
+        const resp = await fetch("/api/register", {
+          method: "Post",
+          body: JSON.stringify({ registerInfo: query }),
+          headers: new Headers({ "Content-Type": "application/json" })
+        })
+          .then(response => response.json())
+          .then(data => {
+            return data;
+          });
+
+        const res = await resp;
+        const {
+          status,
+          data: { userId, register },
+          error
+        } = res;
+        if (status === 200) {
+          state = state.set("userId", userId);
           go({ url: "/register/registerSuccess" });
-          // return state.set("isRegister", register);
-        // } else {
-        //   mutations.showMessage({ type: "error", text: error });
-        // }
+          return state.set("isRegister", register);
+        } else {
+          mutations.showMessage({ type: "error", text: error });
+        }
       },
       async doSavePassWord(state, inParam, { mutations }) {
         const passWordInfo = state.get("passWordInfo").toJS();
