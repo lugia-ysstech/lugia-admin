@@ -388,7 +388,6 @@ export default class InputTask extends Component<any> {
 
   render() {
     const { browserWidth } = this.state;
-    console.log("browserWidth", browserWidth);
     const span = this.getColSpan(browserWidth);
     return (
       <Container>
