@@ -76,8 +76,16 @@ const routes = [
   }
 ];
 
-
 class TableList extends Component {
+  constructor(props) {
+    super(props);
+    const { getStaffsInfo, getStorageInfo, getTaskInfo } = props;
+    getStorageInfo().then(() => {
+      getTaskInfo().then(() => {
+        getStaffsInfo();
+      });
+    });
+  }
 
   render() {
     const {
@@ -90,16 +98,14 @@ class TableList extends Component {
       onTaskDescChange,
       onExecutorChange,
       onTaskManageChange,
-
       onTaskTypeChange,
-
-      onTableChange,
+      onTableChange
     } = this.props;
     const nameData = [
       {
         title: "仓库名:",
         placeholder: "请输入仓库名称",
-        onChange:onStorageNameChange
+        onChange: onStorageNameChange
       }
     ];
 
@@ -108,8 +114,7 @@ class TableList extends Component {
         title: "仓库域名:",
         placeholder: "请输入",
         isAuto: true,
-        onChange:onIpAddressChange
-
+        onChange: onIpAddressChange
       }
     ];
     const managerData = [
@@ -132,7 +137,7 @@ class TableList extends Component {
           }
         },
         placeholder: "请选择管理员",
-        onChange:onStorageManageChange
+        onChange: onStorageManageChange
       }
     ];
     const approvalData = [
@@ -155,7 +160,7 @@ class TableList extends Component {
             }
           }
         },
-        onChange:onApprovalChange
+        onChange: onApprovalChange
       }
     ];
 
@@ -163,14 +168,14 @@ class TableList extends Component {
       {
         title: "任务名:",
         placeholder: "请输入",
-        onChange:onTaskTitleChange
+        onChange: onTaskTitleChange
       }
     ];
     const workDesData = [
       {
         title: "任务描述:",
         placeholder: "请输入",
-        onChange:onTaskDescChange
+        onChange: onTaskDescChange
       }
     ];
     const workerData = [
@@ -193,7 +198,7 @@ class TableList extends Component {
           }
         },
         placeholder: "请选择管理员",
-        onChange:onExecutorChange
+        onChange: onExecutorChange
       }
     ];
     const responsibleData = [
@@ -216,8 +221,7 @@ class TableList extends Component {
             }
           }
         },
-        onChange:onTaskManageChange
-
+        onChange: onTaskManageChange
       }
     ];
     const workTypeData = [
@@ -240,7 +244,7 @@ class TableList extends Component {
             }
           }
         },
-        onChange:onTaskTypeChange
+        onChange: onTaskTypeChange
       }
     ];
     const inputView = {
@@ -298,14 +302,14 @@ class TableList extends Component {
             </ItemInnerContainer>
             <ItemInputContainer>
               {!isSelect &&
-              !isAuto && (
-                <Theme config={inputView}>
-                  <Input placeholder={placeholder} onChange={onChange} />
-                </Theme>
-              )}
+                !isAuto && (
+                  <Theme config={inputView}>
+                    <Input placeholder={placeholder} onChange={onChange} />
+                  </Theme>
+                )}
               {isAuto && (
                 <Theme config={inputView}>
-                  <AutoComplete placeholder={placeholder} onChange={onChange}/>
+                  <AutoComplete placeholder={placeholder} onChange={onChange} />
                 </Theme>
               )}
               {isSelect && (
@@ -387,7 +391,17 @@ class TableList extends Component {
 
       { name: "Uzi", id: 36, address: "some where", key: "3" }
     ];
+    const { staffsInfo, storageInfo, taskInfo } = this.props;
+    const theNameData=storageInfo&&storageInfo.data&&storageInfo.data.nameData?storageInfo.data.nameData:nameData;
+    const theIpData=storageInfo&&storageInfo.data&&storageInfo.data.ipData?storageInfo.data.ipData:ipData;
+    const theManagerData=storageInfo&&storageInfo.data&&storageInfo.data.managerData?storageInfo.data.managerData:managerData;
+    const theApprovalData=storageInfo&&storageInfo.data&&storageInfo.data.approvalData?storageInfo.data.approvalData:approvalData;
 
+    const theWorkData=taskInfo&&taskInfo.data&&taskInfo.data.workData?taskInfo.data.workData:workData;
+    const theWorkDesData=taskInfo&&taskInfo.data&&taskInfo.data.workDesData?taskInfo.data.workDesData:workDesData;
+    const theWorkerData=taskInfo&&taskInfo.data&&taskInfo.data.workerData?taskInfo.data.workerData:workerData;
+    const theResponsibleData=taskInfo&&taskInfo.data&&taskInfo.data.responsibleData?taskInfo.data.responsibleData:responsibleData;
+    const theWorkTypeData=taskInfo&&taskInfo.data&&taskInfo.data.workTypeData?taskInfo.data.workTypeData:workTypeData;
     return (
       <Content>
         <PageHeader
@@ -404,16 +418,18 @@ class TableList extends Component {
               content={
                 <PageContent>
                   <Row>
-                    <Col span={6}>{getItem(nameData)()}</Col>
+                    <Col span={6}>{getItem(theNameData)()}</Col>
                     <Col span={6} offset={2}>
-                      {getItem(ipData)()}
+                      {getItem(theIpData)()}
                     </Col>
                     <Col span={6} offset={2}>
-                      {getItem(managerData)()}
+                      {getItem(theManagerData)()}
                     </Col>
                   </Row>
                   <Row>
-                    <Col span={6}>{getItem(approvalData)()}</Col>
+                    <Col span={6}>
+                      {getItem(theApprovalData)()}
+                    </Col>
                     <Col span={16} offset={2}>
                       {getDataItem}
                     </Col>
@@ -428,21 +444,21 @@ class TableList extends Component {
               content={
                 <PageContent>
                   <Row>
-                    <Col span={6}>{getItem(workData)()}</Col>
+                    <Col span={6}>{getItem(theWorkData)()}</Col>
                     <Col span={6} offset={2}>
-                      {getItem(workDesData)()}
+                      {getItem(theWorkDesData)()}
                     </Col>
                     <Col span={6} offset={2}>
-                      {getItem(workerData)()}
+                      {getItem(theWorkerData)()}
                     </Col>
                   </Row>
                   <Row>
-                    <Col span={6}>{getItem(responsibleData)()}</Col>
+                    <Col span={6}>{getItem(theResponsibleData)()}</Col>
                     <Col span={6} offset={2}>
                       {getWorkDataItem}
                     </Col>
                     <Col span={6} offset={2}>
-                      {getItem(workTypeData)()}
+                      {getItem(theWorkTypeData)()}
                     </Col>
                   </Row>
                 </PageContent>
@@ -454,7 +470,11 @@ class TableList extends Component {
               title={"成员管理"}
               content={
                 <PageContent>
-                  <Table columns={columns} data={data}  onChange={onTableChange}/>
+                  <Table
+                    columns={staffsInfo.columns}
+                    data={staffsInfo.data}
+                    onChange={onTableChange}
+                  />
                 </PageContent>
               }
             />
@@ -469,9 +489,15 @@ const AdvancedFormPage = connect(
   advanced,
   state => {
     return {
-      staffsInfo: state.get("staffsInfo"),
-      storageInfo: state.get("storageInfo"),
-      taskInfo: state.get("taskInfo"),
+      staffsInfo: state.get("staffsInfo").toJS
+        ? state.get("staffsInfo").toJS()
+        : state.get("staffsInfo"),
+      storageInfo: state.get("storageInfo").toJS
+        ? state.get("storageInfo").toJS()
+        : state.get("storageInfo"),
+      taskInfo: state.get("taskInfo").toJS
+        ? state.get("taskInfo").toJS()
+        : state.get("taskInfo")
     };
   },
   mutations => {
@@ -488,6 +514,10 @@ const AdvancedFormPage = connect(
       onTaskTypeChange: mutations.onTaskTypeChange,
 
       onTableChange: mutations.onTableChange,
+
+      getStaffsInfo: mutations.asyncGetStaffsInfo,
+      getStorageInfo: mutations.asyncGetStorageInfo,
+      getTaskInfo: mutations.asyncGetTaskInfo
     };
   }
 )(TableList);

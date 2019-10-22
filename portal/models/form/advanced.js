@@ -7,7 +7,9 @@ import React from "react";
 
 const model = "advancedForm";
 const state = {
-  userInfo: {}
+  storageInfo: {},
+  taskInfo: {},
+  staffsInfo: {},
 };
 export default lugiax.register({
   model,

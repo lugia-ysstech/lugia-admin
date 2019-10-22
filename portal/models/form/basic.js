@@ -4,11 +4,10 @@
  */
 import lugiax from "@lugia/lugiax";
 import React from "react";
-import { go } from "@lugia/lugiax-router";
 
 const model = "basicForm";
 const state = {
-  userInfo:{}  ,
+  basicInfo:{}  ,
 
 };
 export default lugiax.register({
@@ -53,7 +52,7 @@ export default lugiax.register({
       async doSubmit(state, inParam,{mutations}) {
         const basicInfo  = state.get('basicInfo').toJS();
         const query = {...basicInfo};
-        const resp = await fetch('/api/basic',
+        const resp = await fetch('/api/basic/submit',
           {
             method: 'Post',
             body: JSON.stringify({basicInfo:query}),

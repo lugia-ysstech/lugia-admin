@@ -18,7 +18,8 @@ import {
   Select,
   Switch,
   Icon,
-  Divider
+  Divider,
+  Upload
 } from "@lugia/lugia-web";
 import { connect } from "@lugia/lugiax";
 import setting from "../../models/personal/center";
@@ -443,12 +444,13 @@ class Setting extends Component {
               />
             </RightContainer>
             <RightContainer>
-              <Button
+              <Upload
+                areaType={'button'}
                 icon={"lugia-icon-financial_download"}
                 onClick={this.props.doUpdateAvatar}
               >
                 更换头像
-              </Button>
+              </Upload>
             </RightContainer>
           </Theme>
         </InnerContainer>

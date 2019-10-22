@@ -7,15 +7,15 @@ import React from "react";
 
 const model = "stepForm";
 const state = {
-  userInfo:{}  ,
-
+  stepsInfo: {
+    stepsData: []
+  }
 };
 export default lugiax.register({
   model,
   state,
   mutations: {
     sync: {
-
       onPayAccountChange(state, inParam) {
         const { newValue } = inParam;
         return state.setIn(["stepsInfo", "payAccount"], newValue);
@@ -36,14 +36,13 @@ export default lugiax.register({
         const { newValue } = inParam;
         return state.setIn(["stepsInfo", "transferAmount"], newValue);
       },
+      doNextStep(state, inParam, { mutations }) {
+        const { currentStepNumber } = inParam;
+        const theCurrentStepNumber =
+          currentStepNumber > 3 ? 1 : currentStepNumber + 1;
+        return state.set("stepsInfo", "currentStepNumber", theCurrentStepNumber);
+      }
     },
-    async: {
-      async doNextStep (state, inParam,{mutations}){
-        const result  = await fetch('/api/form/nextStep',{method: 'POST'}).then(res => (res.json())).then(res => {
-          return res;
-        });
-        return state.set('stepsInfo', result);
-      },
-    }
+    async: {}
   }
 });

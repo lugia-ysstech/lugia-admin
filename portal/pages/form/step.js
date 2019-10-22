@@ -166,10 +166,11 @@ class StepForm extends Component {
         title: "完成"
       }
     ];
+
     const getSteps = currentStepNumber => () => {
       return (
         <StepContainer>
-          <Steps data={steps} currentStepNumber={currentStepNumber} />
+          <Steps data={steps} currentStepNumber={currentStepNumber || 1} />
         </StepContainer>
       );
     };
@@ -250,7 +251,7 @@ class StepForm extends Component {
         </ItemInputContainer>
       </ItemContainer>
     );
-
+    const { currentStepNumber } = this.props;
     return (
       <Content>
         <PageHeader
@@ -260,7 +261,7 @@ class StepForm extends Component {
         />
         <PageContent>
           <div>
-            {getSteps(1)()}
+            {getSteps(currentStepNumber)()}
             {getItem(payData)()}
             {getItem(receiptAccountData)()}
             {getItem(receiptData)()}
@@ -276,7 +277,11 @@ class StepForm extends Component {
 const StepFormPage = connect(
   stepForm,
   state => {
-    return {};
+    const stepsInfo = stepForm.getState().get("stepForm");
+    const currentStepNumber = state.getIn([stepsInfo, "currentStepNumber"]);
+    return {
+      currentStepNumber
+    };
   },
   mutations => {
     return {
@@ -285,7 +290,7 @@ const StepFormPage = connect(
       onReceiptTypeChange: mutations.onReceiptTypeChange,
       onReceiptNameChange: mutations.onReceiptNameChange,
       onTransferAmountChange: mutations.onTransferAmountChange,
-      doNextStep: mutations.asyncDoNextStep
+      doNextStep: mutations.doNextStep
     };
   }
 )(StepForm);
