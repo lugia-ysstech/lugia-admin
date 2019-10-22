@@ -16,9 +16,11 @@ import {
   NumberInput,
   Radio
 } from "@lugia/lugia-web";
+import { connect } from "@lugia/lugiax";
+
+import basicForm from "../../models/form/basic";
 
 const RadioGroup = Radio.Group;
-const RadioButton = Radio.Button;
 
 const { RangePicker } = DatePicker;
 
@@ -77,148 +79,170 @@ const routes = [
     title: "基础表单"
   }
 ];
-const titleData = [
-  {
-    title: "标题:",
-    placeholder: "给目标给个名字"
-  }
-];
-const descData = [
-  {
-    title: "目标描述:",
-    placeholder: "请输入你的阶段性工作目标"
-  }
-];
-const referenceData = [
-  {
-    title: "衡量标准",
-    placeholder: "请输入衡量标准"
-  }
-];
-const visitorData = [
-  {
-    title: "客户",
-    icon: "",
-    isSelect: true,
-    placeholder: "请描述你服务的客户，内部客户直接 @姓名／工号"
-  }
-];
-const inviterData = [
-  {
-    title: "邀评人",
-    isSelect: true,
-    placeholder: "请直接 @姓名／工号，最多可邀请 5 人"
-  }
-];
-const RadioGroupData = [
-  { text: "公开", value: "1" },
-  { text: "部分公开", value: "2" },
-  { text: "不公开", value: "3" }
-];
-const numberInputView = {
-  [Widget.NumberInput]: {
-    Container: {
-      normal: {
-        width: 100
+
+class BasicForm extends Component {
+
+  render() {
+    const {
+      onTitleChange,
+      onDescChange,
+      onReferenceChange,
+      onVisitorChange,
+      onInviterChange
+    } = this.props;
+    const titleData = [
+      {
+        title: "标题:",
+        placeholder: "给目标给个名字",
+        onChange: onTitleChange
       }
-    }
-  }
-};
-const inputView = {
-  [Widget.Input]: {
-    Container: {
-      normal: {
-        width: 410
+    ];
+    const descData = [
+      {
+        title: "目标描述:",
+        placeholder: "请输入你的阶段性工作目标",
+        onChange: onDescChange
       }
-    }
-  }
-};
-const buttonView = {
-  [Widget.Button]: {
-    Container: {
-      normal: {
-        margin: {
-          right: 10
+    ];
+    const referenceData = [
+      {
+        title: "衡量标准",
+        placeholder: "请输入衡量标准",
+        onChange: onReferenceChange
+      }
+    ];
+    const visitorData = [
+      {
+        title: "客户",
+        icon: "",
+        isSelect: true,
+        placeholder: "请描述你服务的客户，内部客户直接 @姓名／工号",
+        onChange: onVisitorChange
+      }
+    ];
+    const inviterData = [
+      {
+        title: "邀评人",
+        isSelect: true,
+        placeholder: "请直接 @姓名／工号，最多可邀请 5 人",
+        onChange: onInviterChange
+      }
+    ];
+    const RadioGroupData = [
+      { text: "公开", value: "1" },
+      { text: "部分公开", value: "2" },
+      { text: "不公开", value: "3" }
+    ];
+    const numberInputView = {
+      [Widget.NumberInput]: {
+        Container: {
+          normal: {
+            width: 100
+          }
         }
       }
-    }
-  }
-};
+    };
+    const inputView = {
+      [Widget.Input]: {
+        Container: {
+          normal: {
+            width: 410
+          }
+        }
+      }
+    };
+    const buttonView = {
+      [Widget.Button]: {
+        Container: {
+          normal: {
+            margin: {
+              right: 10
+            }
+          }
+        }
+      }
+    };
 
-const getDataItem = (
-  <ItemContainer>
-    <ItemInnerContainer>
-      <TitleContainer>
-        <TitleText>{"起止日期"}</TitleText>
-      </TitleContainer>
-    </ItemInnerContainer>
-    <ItemInputContainer>
-      <RangePicker format={"YYYY-MM-DD"} />
-    </ItemInputContainer>
-  </ItemContainer>
-);
-const getWeight = (
-  <ItemContainer>
-    <ItemInnerContainer>
-      <TitleContainer>
-        <TitleText>{"权重"}</TitleText>
-        <IsSelectText>{"(选填)"}</IsSelectText>
-      </TitleContainer>
-    </ItemInnerContainer>
-    <ItemInputContainer>
-      <Theme config={numberInputView}>
-        <NumberInput />
-      </Theme>
-      <TitleText>{"%"}</TitleText>
-    </ItemInputContainer>
-  </ItemContainer>
-);
-const getOperation = (
-  <ItemContainer>
-    <ItemInputContainer />
-    <Theme config={buttonView}>
-      <Button type={"primary"}>{"提交"}</Button>
-      <Button>{"保存"}</Button>
-    </Theme>
-  </ItemContainer>
-);
-const getRadioGroup = (
-  <ItemContainer>
-    <ItemInnerContainer />
-    <ItemInputContainer>
-      <RadioGroup defaultValue="1" valueField="value" data={RadioGroupData} />
-    </ItemInputContainer>
-  </ItemContainer>
-);
+    const getItem = data => () => {
+      return data.map(item => {
+        const { title, placeholder, icon, isSelect, onChange } = item;
+        const leftIcon = icon ? (
+          <div>
+            <Icon icon={icon} />
+          </div>
+        ) : null;
+        return (
+          <ItemContainer>
+            <ItemInnerContainer>
+              <TitleContainer>
+                <TitleText>{title}</TitleText>
+                {isSelect && <IsSelectText>{"(选填)"}</IsSelectText>}
+              </TitleContainer>
+            </ItemInnerContainer>
+            {leftIcon}
+            <ItemInputContainer>
+              <Theme config={inputView}>
+                <Input placeholder={placeholder} onChange={onChange} />
+              </Theme>
+            </ItemInputContainer>
+          </ItemContainer>
+        );
+      });
+    };
 
-const getItem = data => () => {
-  return data.map(item => {
-    const { title, placeholder, icon, isSelect } = item;
-    const leftIcon = icon ? (
-      <div>
-        <Icon icon={icon} />
-      </div>
-    ) : null;
-    return (
+    const getDataItem = (
       <ItemContainer>
         <ItemInnerContainer>
           <TitleContainer>
-            <TitleText>{title}</TitleText>
-            {isSelect && <IsSelectText>{"(选填)"}</IsSelectText>}
+            <TitleText>{"起止日期"}</TitleText>
           </TitleContainer>
         </ItemInnerContainer>
-        {leftIcon}
         <ItemInputContainer>
-          <Theme config={inputView}>
-            <Input placeholder={placeholder} />
-          </Theme>
+          <RangePicker format={"YYYY-MM-DD"} />
         </ItemInputContainer>
       </ItemContainer>
     );
-  });
-};
-export default class TableList extends Component {
-  render() {
+    const getWeight = (
+      <ItemContainer>
+        <ItemInnerContainer>
+          <TitleContainer>
+            <TitleText>{"权重"}</TitleText>
+            <IsSelectText>{"(选填)"}</IsSelectText>
+          </TitleContainer>
+        </ItemInnerContainer>
+        <ItemInputContainer>
+          <Theme config={numberInputView}>
+            <NumberInput onChange={this.props.onWeightChange} />
+          </Theme>
+          <TitleText>{"%"}</TitleText>
+        </ItemInputContainer>
+      </ItemContainer>
+    );
+    const getOperation = (
+      <ItemContainer>
+        <ItemInputContainer />
+        <Theme config={buttonView}>
+          <Button onClick={this.props.doSubmit} type={"primary"}>
+            {"提交"}
+          </Button>
+          <Button onClick={this.props.doSave}>{"保存"}</Button>
+        </Theme>
+      </ItemContainer>
+    );
+    const getRadioGroup = (
+      <ItemContainer>
+        <ItemInnerContainer />
+        <ItemInputContainer>
+          <RadioGroup
+            defaultValue="1"
+            valueField="value"
+            data={RadioGroupData}
+            onChange={this.props.onRadioChange}
+          />
+        </ItemInputContainer>
+      </ItemContainer>
+    );
+
     return (
       <Content>
         <PageHeader
@@ -229,17 +253,41 @@ export default class TableList extends Component {
           }
         />
         <PageContent>
-            {getItem(titleData)()}
-            {getDataItem}
-            {getItem(descData)()}
-            {getItem(referenceData)()}
-            {getItem(visitorData)()}
-            {getItem(inviterData)()}
-            {getWeight}
-            {getRadioGroup}
-            {getOperation}
+          {getItem(titleData)()}
+          {getDataItem}
+          {getItem(descData)()}
+          {getItem(referenceData)()}
+          {getItem(visitorData)()}
+          {getItem(inviterData)()}
+          {getWeight}
+          {getRadioGroup}
+          {getOperation}
         </PageContent>
       </Content>
     );
   }
 }
+
+const BasicFormPage = connect(
+  basicForm,
+  state => {
+    return {};
+  },
+  mutations => {
+    return {
+      onTitleChange: mutations.onTitleChange,
+      onDescChange: mutations.onDescChange,
+      onReferenceChange: mutations.onReferenceChange,
+      onVisitorChange: mutations.onVisitorChange,
+      onInviterChange: mutations.onInviterChange,
+      onWeightChange: mutations.onWeightChange,
+      onRadioChange: mutations.onRadioChange,
+      doSave: mutations.doSave,
+      doSubmit: mutations.asyncDoSubmit
+    };
+  }
+)(BasicForm);
+
+export default () => {
+  return <BasicFormPage />;
+};

@@ -14,10 +14,13 @@ import random from "./random";
 import search from "./search";
 import detail from "./detailMock";
 import personal from "./personal";
+import form from "./form";
 
 export default {
   ...random,
   ...search,
   ...detail,
-  ...personal
+  ...personal,
+  ...form,
+
 };

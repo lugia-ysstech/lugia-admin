@@ -154,8 +154,39 @@ class Register extends React.Component<> {
         fontSize: 36
       },
     };
+    const theme = {
+      [Widget.Input]: {
+        Input: {
+          normal: {
+            width: 340,
+            height: 40,
+            borderRadius: 20,
+            padding: {
+              left: 30,
+              right: 0,
+            }
+          }
+        },
+        InputSuffix: {normal: { fontSize: 36}},
+      },
+      [Widget.Button]: {
+        Container: {
+          normal: {
+            margin: {
+              top: 18,
+              bottom: 24,
+              left: 0,
+              right: 0
+            },
+            width: 340,
+          }
+        },
 
+
+      },
+    };
     return (
+      <Theme config={theme}>
       <LoginContainer height={windowHeight}>
         <LoginInfoBox>
           <WelcomeTitle>欢迎加入洛奇亚</WelcomeTitle>
@@ -184,6 +215,7 @@ class Register extends React.Component<> {
           </Theme>
         </LoginInfoBox>
       </LoginContainer>
+      </Theme>
     );
   }
 

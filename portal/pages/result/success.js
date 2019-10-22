@@ -20,6 +20,8 @@ import {
 } from "@lugia/lugia-web";
 import styled from "styled-components";
 import Widget from "@lugia/lugia-web/dist/consts";
+import { connect } from "@lugia/lugiax";
+import success from "../../models/result/success";
 
 const Step = Steps.Step;
 
@@ -117,7 +119,7 @@ const iconTheme = {
   }
 };
 
-export default class Demo extends Component {
+ class ResultSuccess extends Component {
   render() {
     return (
       <Content>
@@ -176,9 +178,9 @@ export default class Demo extends Component {
           </Theme>
           <CardContentContainer>
             <Theme config={buttonView}>
-              <Button type={"primary"}>{"返回列表"}</Button>
-              <Button>{"查看项目"}</Button>
-              <Button>{"打印"}</Button>
+              <Button type={"primary"} onClick={this.props.goBack}>{"返回列表"}</Button>
+              <Button onClick={this.props.goDetails}>{"查看项目"}</Button>
+              <Button onClick={this.props.doPrint}>{"打印"}</Button>
             </Theme>
           </CardContentContainer>
         </PageContent>
@@ -186,3 +188,22 @@ export default class Demo extends Component {
     );
   }
 }
+
+const SuccessPage = connect(
+  success,
+  state => {
+    return {
+    };
+  },
+  mutations => {
+    return {
+      goBack: mutations.goBack,
+      goDetails: mutations.goDetails,
+      doPrint: mutations.doPrint,
+    };
+  }
+)(ResultSuccess);
+
+export default () => {
+  return <SuccessPage />;
+};
