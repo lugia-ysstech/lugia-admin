@@ -28,6 +28,7 @@ const Container = styled.div`
   width: 100%;
   height: 600px;
   display: inline-flex;
+  padding: 8px 40px;
 `;
 const InnerContainer = styled.div`
   width: 400px;
@@ -80,6 +81,9 @@ const TitleText = styled.div`
 const SelectContainer = styled.div`
   vertical-align: bottom;
   display: inline-block;
+`;
+const ProvinceSelectContainer = styled(SelectContainer)`
+  margin-right: 10px;
 `;
 
 class Setting extends Component {
@@ -324,7 +328,10 @@ class Setting extends Component {
           [Widget.Input]: {
             Container: {
               normal: {
-                width: 60
+                width: 60,
+                margin: {
+                  right: 10
+                }
               }
             }
           }
@@ -380,7 +387,7 @@ class Setting extends Component {
             InputTag: {
               InputTagWrap: {
                 normal: {
-                  width: 130
+                  width: 140
                 }
               }
             }
@@ -421,7 +428,9 @@ class Setting extends Component {
           {getInputItem(desData)()}
           {getSelectItem(countryData)()}
           <SelectContainer>
-            <SelectContainer>{getSelectItem(provinceData)()}</SelectContainer>
+            <ProvinceSelectContainer>
+              {getSelectItem(provinceData)()}
+            </ProvinceSelectContainer>
             <SelectContainer>{getSelectItem(cityData)()}</SelectContainer>
           </SelectContainer>
 
@@ -445,7 +454,7 @@ class Setting extends Component {
             </RightContainer>
             <RightContainer>
               <Upload
-                areaType={'button'}
+                areaType={"button"}
                 icon={"lugia-icon-financial_download"}
                 onClick={this.props.doUpdateAvatar}
               >
@@ -491,7 +500,12 @@ class Setting extends Component {
         TabHeader: {
           DefaultTabPan: {
             normal: {
-              height: 40
+              width: 150,
+              height: 40,
+              margin:{
+                top:4,
+                bottom:8,
+              }
             }
           }
         }

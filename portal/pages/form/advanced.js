@@ -34,7 +34,7 @@ const ItemContainer = styled.div`
   zoom: 1;
   display: inline-block;
   box-sizing: border-box;
-  padding: 12px 0;
+  padding: 5px 0;
 `;
 
 const ItemInnerContainer = styled.div`
@@ -335,7 +335,7 @@ class TableList extends Component {
         Container: {
           normal: {
             width: "100%",
-            height: 400,
+            height: 260,
             margin: {
               bottom: 30
             }
@@ -345,7 +345,32 @@ class TableList extends Component {
           normal: {
             height: 30,
             margin: {
-              top: 20
+              top: 20,
+              left:10
+            }
+          }
+        },
+        CardContent: {
+          normal: {
+            padding: 0
+          }
+        }
+      }
+    };
+    const staffCardThemeConfig = {
+      [Widget.Card]: {
+        Container: {
+          normal: {
+            width: "100%",
+            height: 300,
+          }
+        },
+        CardTitle: {
+          normal: {
+            height: 30,
+            margin: {
+              top: 20,
+              left:10
             }
           }
         },
@@ -465,7 +490,7 @@ class TableList extends Component {
               }
             />
           </Theme>
-          <Theme config={cardThemeConfig}>
+          <Theme config={staffCardThemeConfig}>
             <Card
               title={"成员管理"}
               content={

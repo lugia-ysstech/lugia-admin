@@ -32,7 +32,6 @@ const ItemContainer = styled.div`
   display: block;
   box-sizing: border-box;
   padding: 12px 0;
-  margin: 0 0 24px;
 `;
 const StepContainer = styled(ItemContainer)`
   text-align: center;
@@ -101,6 +100,7 @@ class StepForm extends Component {
         }
       }
     };
+
     const getItem = data => () => {
       return data.map(item => {
         const {
@@ -114,7 +114,8 @@ class StepForm extends Component {
           inputDefaultValue,
           onChange,
           amountOnChange,
-          onReceiptTypeChange
+          onReceiptTypeChange,
+          accountInputView
         } = item;
         return (
           <ItemContainer>
@@ -137,7 +138,7 @@ class StepForm extends Component {
                   </SelectContainer>
                 </Theme>
               )}
-              <Theme config={inputView}>
+              <Theme config={accountInputView ? accountInputView : inputView}>
                 {!isAmount &&
                   inputPlaceholder && (
                     <Input placeholder={inputPlaceholder} onChange={onChange} />
@@ -222,6 +223,18 @@ class StepForm extends Component {
               InputTagWrap: {
                 normal: {
                   width: 100
+                }
+              }
+            }
+          }
+        },
+        accountInputView: {
+          [Widget.Input]: {
+            Container: {
+              normal: {
+                width: 190,
+                margin: {
+                  left: 10
                 }
               }
             }
