@@ -32,8 +32,9 @@ const Container = styled.div`
 `;
 const InnerContainer = styled.div`
   width: 400px;
-  height: 1000px;
-  display: block;
+`;
+const InnerInputContainer = styled.div`
+  flex: 1;
 `;
 const RightContainer = styled.div`
   display: block;
@@ -49,10 +50,11 @@ const OutContainer = styled.ul`
   list-style: none;
 `;
 const ItemContainer = styled.li`
-  display: flex;
+  display: inline-flex;
   align-items: center;
   padding: 12px 0;
   height: 80px;
+  width:100%;
 `;
 const ItemInnerContainer = styled.div`
   flex: 1 1;
@@ -65,16 +67,13 @@ const Title = styled.div`
   margin: 10px 0;
 `;
 const OperationText = styled.div`
-  flex: 0 0 auto;
-  margin-left: 48px;
-  padding: 0;
   list-style: none;
   height: 25px;
   line-height: 25px;
   color: #4d63ff;
+  width: 100px;
 `;
 const TitleText = styled.div`
-  display: block;
   height: 25px;
   line-height: 25px;
 `;
@@ -85,8 +84,17 @@ const SelectContainer = styled.div`
 const ProvinceSelectContainer = styled(SelectContainer)`
   margin-right: 10px;
 `;
-
+function changeBrowserWidth() {
+  return document.documentElement.clientWidth;
+}
 class Setting extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      browserWidth: changeBrowserWidth()
+    };
+  }
+
   render() {
     const {
       onEmailChange,
@@ -194,14 +202,14 @@ class Setting extends Component {
           <Switch />
         ) : null;
         return [
-          <ItemContainer>
-            {leftIcon}
-            <ItemInnerContainer>
-              <TitleText>{title}</TitleText>
-              <TitleText>{desc}</TitleText>
-            </ItemInnerContainer>
-            {Operation}
-          </ItemContainer>,
+            <ItemContainer>
+              {leftIcon}
+              <ItemInnerContainer>
+                <TitleText>{title}</TitleText>
+                <TitleText>{desc}</TitleText>
+              </ItemInnerContainer>
+              {Operation}
+            </ItemContainer>,
           <Divider />
         ];
       });
@@ -418,32 +426,11 @@ class Setting extends Component {
         onChange: onCityChange
       }
     ];
+    const { browserWidth } = this.state;
+    const flexDirection = browserWidth > 800 ? "row-reverse" : "column";
 
     const settingContent = [
-      <Container>
-        <InnerContainer>
-          <h2>基本设置</h2>
-          {getInputItem(emailData)()}
-          {getInputItem(nameData)()}
-          {getInputItem(desData)()}
-          {getSelectItem(countryData)()}
-          <SelectContainer>
-            <ProvinceSelectContainer>
-              {getSelectItem(provinceData)()}
-            </ProvinceSelectContainer>
-            <SelectContainer>{getSelectItem(cityData)()}</SelectContainer>
-          </SelectContainer>
-
-          {getInputItem(streetData)()}
-          <SelectContainer>
-            <SelectContainer>{getInputItem(telAreaCodeData)()}</SelectContainer>
-            <SelectContainer>{getInputItem(telNumberData)()} </SelectContainer>
-          </SelectContainer>
-
-          <Button onClick={this.props.doUpdateUserInfo} type={"primary"}>
-            更新基本信息
-          </Button>
-        </InnerContainer>
+      <Container style={{ flexDirection: flexDirection }}>
         <InnerContainer>
           <Theme config={avatarConfig}>
             <RightContainer>
@@ -463,6 +450,30 @@ class Setting extends Component {
             </RightContainer>
           </Theme>
         </InnerContainer>
+        <InnerInputContainer>
+          <h2>基本设置</h2>
+          {getInputItem(emailData)()}
+          {getInputItem(nameData)()}
+          {getInputItem(desData)()}
+          {getSelectItem(countryData)()}
+          <SelectContainer>
+            <ProvinceSelectContainer>
+              {getSelectItem(provinceData)()}
+            </ProvinceSelectContainer>
+            <SelectContainer>{getSelectItem(cityData)()}</SelectContainer>
+          </SelectContainer>
+
+          {getInputItem(streetData)()}
+          <SelectContainer>
+            <SelectContainer>{getInputItem(telAreaCodeData)()}</SelectContainer>
+            <SelectContainer>{getInputItem(telNumberData)()} </SelectContainer>
+          </SelectContainer>
+          <div>
+            <Button onClick={this.props.doUpdateUserInfo} type={"primary"}>
+              更新基本信息
+            </Button>
+          </div>
+        </InnerInputContainer>
       </Container>
     ];
     const defaultData = [
@@ -486,15 +497,10 @@ class Setting extends Component {
     ];
     const config = {
       [Widget.Tabs]: {
-        TitleContainer: {
-          normal: {
-            width: 1330,
-            height: 1500
-          }
-        },
         ContentBlock: {
           normal: {
-            width: 600
+            width: 1350,
+            height: 1500
           }
         },
         TabHeader: {
@@ -502,26 +508,39 @@ class Setting extends Component {
             normal: {
               width: 150,
               height: 40,
-              margin:{
-                top:4,
-                bottom:8,
+              margin: {
+                top: 4,
+                bottom: 8
               }
             }
           }
         }
       }
     };
+    const position = browserWidth > 800 ? "left" : "top";
     return (
       <Content>
         <PageContent>
           <Theme config={config}>
             <TabsContainer>
-              <Tabs tabType={"line"} tabPosition={"left"} data={defaultData} />
+              <Tabs
+                tabType={"line"}
+                tabPosition={position}
+                data={defaultData}
+              />
             </TabsContainer>
           </Theme>
         </PageContent>
       </Content>
     );
+  }
+  componentDidMount() {
+    window.onresize = () => {
+      const browserWidth = changeBrowserWidth();
+      setTimeout(() => {
+        this.setState({ browserWidth });
+      }, 0);
+    };
   }
 }
 
