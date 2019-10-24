@@ -34,25 +34,24 @@ const CardContentContainer = styled.div`
   height: 100px;
   display: inline-block;
   text-align: center;
-  margin-top: 20px;
 `;
-const TitleContainer = styled.tr`
+const TitleContainer = styled.div`
   width: 100%;
-  display: table-row;
   vertical-align: inherit;
   border-color: inherit;
   text-align: left;
+  margin:15px 0;
 `;
 const Title = styled.td`
   display: inline-block;
   text-align: left;
-  font-size: 10px;
+  font-size: 12px;
   margin: 0 10px;
 `;
 const Operation = styled.td`
   display: inline-block;
   text-align: left;
-  font-size: 10px;
+  font-size: 12px;
   color: #4d63ff;
 `;
 const SuccessText = styled.div`
@@ -71,7 +70,7 @@ const buttonView = {
     Container: {
       normal: {
         margin: {
-          right: 10
+          top: 30
         }
       }
     }

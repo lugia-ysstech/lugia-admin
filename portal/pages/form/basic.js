@@ -58,6 +58,9 @@ const TitleText = styled.span`
   height: 25px;
   line-height: 25px;
 `;
+const PercentText = styled(TitleText)`
+  margin-left: 10px;
+`;
 const IsSelectText = styled.span`
   position: relative;
   display: inline-block;
@@ -81,7 +84,6 @@ const routes = [
 ];
 
 class BasicForm extends Component {
-
   render() {
     const {
       onTitleChange,
@@ -137,7 +139,7 @@ class BasicForm extends Component {
       [Widget.NumberInput]: {
         Container: {
           normal: {
-            width: 100
+            width: 120
           }
         }
       }
@@ -214,7 +216,7 @@ class BasicForm extends Component {
           <Theme config={numberInputView}>
             <NumberInput onChange={this.props.onWeightChange} />
           </Theme>
-          <TitleText>{"%"}</TitleText>
+          <PercentText>{"%"}</PercentText>
         </ItemInputContainer>
       </ItemContainer>
     );
