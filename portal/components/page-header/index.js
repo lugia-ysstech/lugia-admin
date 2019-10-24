@@ -9,7 +9,7 @@ import styled from "styled-components";
 import { Breadcrumb } from "@lugia/lugia-web";
 
 const Wrap = styled.div`
-  margin: 8px 0 20px ;
+  margin: 8px 0 20px;
   background: #fff;
   padding: 16px 20px 0;
 `;
@@ -22,6 +22,7 @@ const Title = styled.div`
 const Description = styled.div`
   font-size: 14px;
   line-height: 1.4;
+  padding: 15px 0;
 `;
 
 export default class PageHeader extends Component {
