@@ -138,7 +138,7 @@ class StepForm extends Component {
                   </SelectContainer>
                 </Theme>
               )}
-              <Theme config={accountInputView ? accountInputView : inputView}>
+              <Theme config={accountInputView || inputView}>
                 {!isAmount &&
                   inputPlaceholder && (
                     <Input placeholder={inputPlaceholder} onChange={onChange} />
