@@ -16,6 +16,8 @@ import InteractChart from "./charts/interact";
 import TableChart from "./charts/table";
 import PopoverComponent from "./component/popover";
 import TabsPans from "./component/tabspans";
+import model from "../../models/dashboard/analyse";
+import { connect } from "@lugia/lugiax";
 import {
   Theme,
   Grid,
@@ -374,12 +376,21 @@ const tabsData = [
 function changeBrowserWidth() {
   return document.documentElement.clientWidth;
 }
-export default class InputTask extends Component<any> {
+class Analyse extends Component<any> {
   constructor(props) {
     super(props);
     this.state = {
       browserWidth: changeBrowserWidth()
     };
+
+    const { getHeaderInfo, getContentInfo, getSecInfo, getFooterInfo } = props;
+    getHeaderInfo().then(() => {
+      getContentInfo().then(() => {
+        getSecInfo().then(() => {
+          getFooterInfo();
+        });
+      });
+    });
   }
 
   getHeaderColSpan = browserWidth => {
@@ -399,6 +410,10 @@ export default class InputTask extends Component<any> {
   render() {
     const { browserWidth } = this.state;
     const headerSpan = this.getHeaderColSpan(browserWidth);
+
+    const { headerInfo, intervalData, secInfo, interactData } = this.props;
+    const { visitsData, payData } = headerInfo;
+    const { averageSearchData, salesData, searchUserData } = secInfo;
 
     return (
       <Container>
@@ -435,7 +450,9 @@ export default class InputTask extends Component<any> {
                 <HeaderH4>访问量</HeaderH4>
                 <HeaderContent>
                   <HeaderH1>8,846</HeaderH1>
-                  <VisitsChart />
+                  {visitsData && visitsData.length !== 0 ? (
+                    <VisitsChart data={visitsData} />
+                  ) : null}
                 </HeaderContent>
                 <HeaderLine />
                 <HeaderH3>日访问量 1,234</HeaderH3>
@@ -449,7 +466,9 @@ export default class InputTask extends Component<any> {
                 <HeaderH4>支付笔数</HeaderH4>
                 <HeaderContent>
                   <HeaderH1>6,560</HeaderH1>
-                  <PayChart />
+                  {payData && payData.length !== 0 ? (
+                    <PayChart data={payData} />
+                  ) : null}
                 </HeaderContent>
                 <HeaderLine />
                 <HeaderH3>转化率 60%</HeaderH3>
@@ -503,7 +522,9 @@ export default class InputTask extends Component<any> {
             >
               <Col span={this.getContentColSpan(browserWidth).left}>
                 <p>销售趋势</p>
-                <IntervalScalesChart />
+                {intervalData && intervalData.length !== 0 ? (
+                  <IntervalScalesChart data={intervalData} />
+                ) : null}
               </Col>
               <Col span={this.getContentColSpan(browserWidth).right}>
                 <p>门店销售额排名</p>
@@ -543,7 +564,9 @@ export default class InputTask extends Component<any> {
                           12,321
                           <span>17.1</span>
                         </CountSpan>
-                        <SearchUsersChart />
+                        {searchUserData && searchUserData.length !== 0 ? (
+                          <SearchUsersChart data={searchUserData} />
+                        ) : null}
                       </SearchBox>
                     </Col>
                     <Col span={12}>
@@ -558,7 +581,9 @@ export default class InputTask extends Component<any> {
                           2.7
                           <span>26.2</span>
                         </CountSpan>
-                        <AverageSearchChart />
+                        {averageSearchData && averageSearchData.length !== 0 ? (
+                          <AverageSearchChart data={averageSearchData} />
+                        ) : null}
                       </SearchBox>
                     </Col>
                   </Row>
@@ -582,7 +607,9 @@ export default class InputTask extends Component<any> {
                   </CheckboxWrap>
                 </SecTopWrap>
                 <SecSalesTitle>销售额</SecSalesTitle>
-                <SalesChart />
+                {salesData && salesData.length !== 0 ? (
+                  <SalesChart data={salesData} />
+                ) : null}
               </SecContainer>
             </Col>
           </Row>
@@ -591,7 +618,9 @@ export default class InputTask extends Component<any> {
         {/**底部双线图 */}
         <FooterWrap>
           <FooterTop>{this.getTabsPans()}</FooterTop>
-          <InteractChart />
+          {interactData && interactData.length !== 0 ? (
+            <InteractChart data={interactData} />
+          ) : null}
         </FooterWrap>
       </Container>
     );
@@ -630,3 +659,35 @@ export default class InputTask extends Component<any> {
     };
   }
 }
+
+const AnalysePage = connect(
+  model,
+  state => {
+    return {
+      headerInfo: state.get("headerInfo").toJS
+        ? state.get("headerInfo").toJS()
+        : state.get("headerInfo"),
+      intervalData: state.get("intervalData").toJS
+        ? state.get("intervalData").toJS()
+        : state.get("intervalData"),
+      secInfo: state.get("secInfo").toJS
+        ? state.get("secInfo").toJS()
+        : state.get("secInfo"),
+      interactData: state.get("interactData").toJS
+        ? state.get("interactData").toJS()
+        : state.get("interactData")
+    };
+  },
+  mutations => {
+    return {
+      getHeaderInfo: mutations.asyncGetHeaderInfo,
+      getContentInfo: mutations.asyncGetContentInfo,
+      getSecInfo: mutations.asyncGetSecInfo,
+      getFooterInfo: mutations.asyncGetFooterInfo
+    };
+  }
+)(Analyse);
+
+export default () => {
+  return <AnalysePage />;
+};
