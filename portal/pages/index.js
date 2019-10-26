@@ -1,7 +1,6 @@
 import React from "react";
 import { createRoute } from "@lugia/lugiax-router";
 import Header from "../components/header";
-import MenuList from "../components/menulist";
 import "../App.css";
 import styled from "styled-components";
 import router from "../router";
@@ -18,21 +17,14 @@ const Content = styled.div`
   justify-content: center;
   flex-wrap: nowrap;
   overflow: auto;
-   flex: 1;
+  flex: 1;
 `;
 
 export default () => {
   return (
-    <div className="app">
-      <MenuList />
-      <ContentContainer>
-        <Header />
-        <Content>{createRoute(router)}</Content>
-      </ContentContainer>
-    </div>
+    <ContentContainer>
+      <Header />
+      <Content>{createRoute(router)}</Content>
+    </ContentContainer>
   );
-};
-
-const styles = {
-  padding: "30px"
 };

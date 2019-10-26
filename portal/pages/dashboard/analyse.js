@@ -162,7 +162,6 @@ const PerChart = styled.div`
 
 // 销售额 模块
 const ContentWrap = styled.div`
-  height: 404px;
   padding: 0 20px;
   margin-bottom: 20px;
   width: 100%;
@@ -175,6 +174,7 @@ const DatePickerContainer = styled.div`
   right: 20px;
   top: 10px;
   z-index: 1000;
+  display: ${props => (props.browserWidth >= 1100 ? "block" : "none")};
 `;
 
 const TabsWrap = styled.div`
@@ -251,7 +251,6 @@ const ListIcon = styled.div`
 const SecWrap = styled.div`
   width: 100%;
   margin: 10px 0;
-  height: 540px;
   overflow: hidden;
   margin-bottom: 20px;
 `;
@@ -321,6 +320,7 @@ const FooterTop = styled.div`
   height: 140px;
   margin-bottom: 20px;
   display: flex;
+  overflow: hidden;
 `;
 
 const PaginationWrap = styled.div`
@@ -382,13 +382,24 @@ export default class InputTask extends Component<any> {
     };
   }
 
-  getColSpan = browserWidth => {
+  getHeaderColSpan = browserWidth => {
     return browserWidth <= 800 ? 24 : browserWidth <= 1100 ? 12 : 6;
+  };
+
+  getContentColSpan = browserWidth => {
+    return browserWidth <= 1200
+      ? { left: 24, right: 24 }
+      : { left: 16, right: 8 };
+  };
+
+  getSecColSpan = browserWidth => {
+    return browserWidth <= 1200 ? 24 : 12;
   };
 
   render() {
     const { browserWidth } = this.state;
-    const span = this.getColSpan(browserWidth);
+    const headerSpan = this.getHeaderColSpan(browserWidth);
+
     return (
       <Container>
         {/* 头部图表  */}
@@ -399,7 +410,7 @@ export default class InputTask extends Component<any> {
             justify="spaceAround"
             align="middle"
           >
-            <Col span={span}>
+            <Col span={headerSpan}>
               <HeaderBoxWrap>
                 <PositionPopoverWrap>
                   <PopoverComponent />
@@ -416,7 +427,7 @@ export default class InputTask extends Component<any> {
                 <HeaderH3>日销售额 1,423</HeaderH3>
               </HeaderBoxWrap>
             </Col>
-            <Col span={span}>
+            <Col span={headerSpan}>
               <HeaderBoxWrap>
                 <PositionPopoverWrap>
                   <PopoverComponent />
@@ -430,7 +441,7 @@ export default class InputTask extends Component<any> {
                 <HeaderH3>日访问量 1,234</HeaderH3>
               </HeaderBoxWrap>
             </Col>
-            <Col span={span}>
+            <Col span={headerSpan}>
               <HeaderBoxWrap>
                 <PositionPopoverWrap>
                   <PopoverComponent />
@@ -444,7 +455,7 @@ export default class InputTask extends Component<any> {
                 <HeaderH3>转化率 60%</HeaderH3>
               </HeaderBoxWrap>
             </Col>
-            <Col span={span}>
+            <Col span={headerSpan}>
               <HeaderBoxWrap>
                 <PositionPopoverWrap>
                   <PopoverComponent />
@@ -471,7 +482,7 @@ export default class InputTask extends Component<any> {
         </HeaderWrap>
         {/** 销售和访问图表 */}
         <ContentWrap>
-          <DatePickerContainer>
+          <DatePickerContainer browserWidth={browserWidth}>
             <RangePicker
               defaultValue={["2019-01-01", "2019-02-01"]}
               format={"YYYY-MM-DD"}
@@ -490,11 +501,11 @@ export default class InputTask extends Component<any> {
               justify="spaceBetween"
               align="middle"
             >
-              <Col span={16}>
+              <Col span={this.getContentColSpan(browserWidth).left}>
                 <p>销售趋势</p>
                 <IntervalScalesChart />
               </Col>
-              <Col span={8}>
+              <Col span={this.getContentColSpan(browserWidth).right}>
                 <p>门店销售额排名</p>
                 <ListWrap>{this.getListItem()}</ListWrap>
               </Col>
@@ -510,7 +521,7 @@ export default class InputTask extends Component<any> {
             justify="spaceBetween"
             align="middle"
           >
-            <Col span={12}>
+            <Col span={this.getSecColSpan(browserWidth)}>
               <SecContainer>
                 <SecTopWrap>线上热门搜索</SecTopWrap>
                 <SearchWrap>
@@ -558,7 +569,7 @@ export default class InputTask extends Component<any> {
                 </PaginationWrap>
               </SecContainer>
             </Col>
-            <Col span={12}>
+            <Col span={this.getSecColSpan(browserWidth)}>
               <SecContainer>
                 <SecTopWrap>
                   销售额类别占比
@@ -615,7 +626,7 @@ export default class InputTask extends Component<any> {
       const browserWidth = changeBrowserWidth();
       setTimeout(() => {
         this.setState({ browserWidth });
-      }, 0);
+      }, 100);
     };
   }
 }

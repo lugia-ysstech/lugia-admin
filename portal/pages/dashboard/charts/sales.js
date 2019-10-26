@@ -35,7 +35,7 @@ export default class Demo extends Component<any> {
     });
     chart.legend("type", {
       position: "right-center",
-      offsetX: -200,
+      offsetX: -110,
       textStyle: {
         fontSize: 15,
         color: "orange"

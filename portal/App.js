@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { createRoute } from "@lugia/lugiax-router";
-import { Redirect } from "@lugia/lugiax-router";
-import register from "./models/register";
+import MenuList from "./components/menulist";
+import styled from "styled-components";
 
 export const firstRouter = {
   "/register/register": {
@@ -22,6 +22,21 @@ export const firstRouter = {
   }
 };
 
+const ContentContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  overflow: auto;
+  height: 100%;
+  width: 100%;
+  background: #f5f5f9;
+`;
+
 export default () => {
-  return <React.Fragment>{createRoute(firstRouter)}</React.Fragment>;
+  return (
+    <ContentContainer>
+      <MenuList />
+      {createRoute(firstRouter)}
+    </ContentContainer>
+  );
 };
