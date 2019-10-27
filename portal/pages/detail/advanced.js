@@ -345,7 +345,7 @@ class Advanced extends Component{
 
 
   render() {
-    const {advancedUserInfo,advancedTableInfo} = this.props;
+    const {advancedUserInfo,advancedTableInfo,advancedOrderInfo} = this.props;
 
     const tabsData=[
       {
@@ -366,16 +366,16 @@ class Advanced extends Component{
     ];
     return <Theme config={theme}>
       <Content>
-        <PageHeader routes={routes} title={"查询表格"} desc={this.getHeaderDesc()}/>
+        <PageHeader routes={routes} title={"查询表格"} desc={this.getHeaderDesc(advancedOrderInfo.data)}/>
         <Wrap>
           <ContentTitle>流程进度</ContentTitle>
           <Divider/>
           <CenterWrap>
             <Steps orientation="horizontal" stepType={'dot'}>
 
-              <Step title="创建项目" stepStatus="finish" description={<HeaderContent><HeaderLabel>曲丽丽</HeaderLabel><HeaderLabel>2016-12-12 12:32</HeaderLabel></HeaderContent>} />
+              <Step title="创建项目" stepStatus="finish" description={<HeaderContent><HeaderLabel>玉萌萌</HeaderLabel><HeaderLabel>2016-12-12 12:32</HeaderLabel></HeaderContent>} />
 
-              <Step title="部门初审" stepStatus="process" description={<HeaderContent><HeaderLabel>周毛毛</HeaderLabel><HeaderLabel>催一下</HeaderLabel></HeaderContent>} />
+              <Step title="部门初审" stepStatus="process" description={<HeaderContent><HeaderLabel>夹心心</HeaderLabel><HeaderLabel>催一下</HeaderLabel></HeaderContent>} />
 
               <Step title="财务复核" stepStatus="next"  description={<HeaderLabel>description</HeaderLabel>}/>
 
@@ -441,11 +441,7 @@ class Advanced extends Component{
         </Wrap>
         <Wrap>
           <UserInfoWrap>
-            <Tabs onChange={this.onChange} data={tabsData}>
-              {/*<TabPane title={'操作日志一'}  key={'操作日志一'} content={ <Table columns={log.columns} data={log.data} />}  />*/}
-              {/*<TabPane title={'操作日志二'}  key={'操作日志二'} content={ <Table columns={log.columns} data={log.data} />}  />*/}
-              {/*<TabPane title={'操作日志三'}  key={'操作日志三'} content={ <Table columns={log.columns} data={log.data} />}  />*/}
-            </Tabs>
+            <Tabs onChange={this.onChange} data={tabsData} />
           </UserInfoWrap>
 
         </Wrap>
@@ -453,19 +449,19 @@ class Advanced extends Component{
     </Theme> ;
   }
 
-  getHeaderDesc = () => {
+  getHeaderDesc = (advancedOrderInfo) => {
+    console.log('advancedOrderInfo',advancedOrderInfo);
     return <HeaderContent>
       <Row>
         <Col span={1}> </Col>
         <Col span={19}>
           <Title>单号：234231029431</Title>
           <FlexBox>
-            <Label width='50%'>创建人：<Text>曲丽丽</Text> </Label>
-            <Label width='50%'>订购产品	：<Text>XX 服务</Text> </Label>
-            <Label width='50%'>创建时间：<Text>	2017-07-07</Text> </Label>
-            <Label width='50%'>关联单据：	<Text>12421</Text> </Label>
-            <Label width='50%'>生效日期：	<Text>2017-07-07 ~ 2017-08-08</Text> </Label>
-            <Label width='50%'>备注：<Text>请于两个工作日内确认</Text> </Label>
+            {advancedOrderInfo && advancedOrderInfo.map( item => {
+              const {text,value} = item;
+              return (<Label width='50%'>{text}： <Text>{value}</Text> </Label>);
+            }
+            )}
           </FlexBox>
 
         </Col>

@@ -13,10 +13,10 @@ const getUserInfo = () => {
     },
     { type:'用户信息',
       data: [
-        {title:'用户姓名', value:'锺芳'},
+        {title:'用户姓名', value:'椰果果'},
         {title:'联系电话', value:'18100000000'},
         {title:'常用快递', value:'菜鸟物流'},
-        {title:'取货地址', value:'浙江省杭州市西湖区万塘路18号'},
+        {title:'取货地址', value:'河北省廊坊市 XXX 街道'},
       ]
     },
     ];
@@ -37,10 +37,10 @@ const getTableUserInfo = () => {
   ];
 
   const data = [
-    { id: '1234561',name: '矿泉水 550ml', code: '12421432143214321', price: '2.00', count:'1' ,totalprice:'2.00'},
-    { id: '1234562',name: '凉茶 300ml', code: '12421432143214322', price: '3.00', count:'2' ,totalprice:'6.00'},
-    { id: '1234563',name: '好吃的薯片', code: '12421432143214323', price: '7.00', count:'4' ,totalprice:'28.00'},
-    { id: '1234564',name: '特别好吃的蛋卷', code: '12421432143214324', price: '8.50', count:'3' ,totalprice:'25.50'},
+    { id: '1234561',name: '冰红茶 550ml', code: '12421432143214321', price: '2.00', count:'1' ,totalprice:'2.00'},
+    { id: '1234562',name: '可乐 300ml', code: '12421432143214322', price: '3.00', count:'2' ,totalprice:'6.00'},
+    { id: '1234563',name: '法式小奶酪', code: '12421432143214323', price: '7.00', count:'4' ,totalprice:'28.00'},
+    { id: '1234564',name: '卷卷卷卷饼啊', code: '12421432143214324', price: '8.50', count:'3' ,totalprice:'25.50'},
     { id: '总计',totalprice:'61.50'},
   ];
 
@@ -81,20 +81,20 @@ const getOperateLog = (req) => {
 
   const data ={
     '操作日志一':[
-      { type: '订购关系生效',name: '曲丽丽', result: '成功', operate_time: '2017-10-03 19:23:12', remarks:'-' },
-      { type: '财务复审',name: '付小小', result: '驳回', operate_time: '2017-10-03 19:23:12', remarks:'不通过原因' },
-      { type: '部门初审',name: '周毛毛', result: '成功', operate_time: '2017-10-03 19:23:12', remarks:'-' },
-      { type: '提交订单',name: '林东东', result: '成功', operate_time: '2017-10-03 19:23:12', remarks:'很棒' },
-      { type: '创建订单',name: '汗牙牙', result: '成功', operate_time: '2017-10-03 19:23:12', remarks:'-' },
+      { type: '订购关系生效',name: '椰果果', result: '成功', operate_time: '2017-10-03 19:23:12', remarks:'-' },
+      { type: '财务复审',name: '夹心心', result: '驳回', operate_time: '2017-10-03 19:23:12', remarks:'不通过原因' },
+      { type: '部门初审',name: '瑞逛逛', result: '成功', operate_time: '2017-10-03 19:23:12', remarks:'-' },
+      { type: '提交订单',name: '颈脖脖', result: '成功', operate_time: '2017-10-03 19:23:12', remarks:'很棒' },
+      { type: '创建订单',name: '玉萌萌', result: '成功', operate_time: '2017-10-03 19:23:12', remarks:'-' },
 
     ],
     '操作日志二':[
-      { type: '订购关系生效',name: '曲丽丽', result: '成功', operate_time: '2017-10-03 19:23:12', remarks:'-' },
+      { type: '订购关系生效',name: '瑞逛逛', result: '成功', operate_time: '2017-10-03 19:23:12', remarks:'-' },
 
 
     ],
     '操作日志三':[
-      { type: '创建订单',name: '汗牙牙', result: '成功', operate_time: '2017-10-03 19:23:12', remarks:'-' },
+      { type: '创建订单',name: '玉萌萌', result: '成功', operate_time: '2017-10-03 19:23:12', remarks:'-' },
 
     ],
   } ;
@@ -105,26 +105,26 @@ const getOperateLog = (req) => {
 const getAdvancedUserInfo = (req) => {
   const data =[
     {type:'1',data:[
-        {text:'用户姓名',value:'付小小'},
+        {text:'用户姓名',value:'脆卜卜'},
         {text:'会员卡号',value:'32943898021309809423'},
         {text:'身份证',value:'3321944288191034921'},
         {text:'联系方式',value:'18112345678'},
-        {text:'联系地址',value:'曲丽丽 18100000000 浙江省杭州市西湖区黄姑山路工专路交叉路口'},
+        {text:'联系地址',value:'椰果果 18100000000 北京市朝阳区'},
       ]
     },
     {type:'1',title:'信息组', data:[
-        {text:'某某数据',value:'725'},
+        {text:'XX 数据',value:'725'},
         {text:'该数据更新时间',value:'2017-08-08'},
       ]
     },
     {type:'1',data:[
-        {text:'某某数据',value:'725'},
+        {text:'XX 数据',value:'725'},
         {text:'该数据更新时间',value:'2017-08-08'},
       ]
     },
     {title:'信息组', type:'2',head:'多层级信息组',data:[
         {title:'组名称',children:[
-            {text:'负责人',value:'林东东'},
+            {text:'负责人',value:'玉萌萌'},
             {text:'角色码',value:'1234567'},
             {text:'所属部门',value:'XX公司 - YY部'},
             {text:'过期时间',value:'2017-08-08'},
@@ -134,7 +134,7 @@ const getAdvancedUserInfo = (req) => {
             {text:'学名',value:'Citrullus lanatus (Thunb.) Matsum. et Nakai一年生蔓生藤本；茎、枝粗壮，具明显的棱。卷须较粗..'},
           ]},
         {children:[
-            {text:'负责人',value:'付小小'},
+            {text:'负责人',value:'瑞逛逛'},
             {text:'角色码',value:'1234568'},
           ]},
       ]
@@ -148,12 +148,12 @@ const getAdvancedOrderInfo = (req) => {
   const data ={
     order:'234231029431',
     data:[
-      {text:'创建人',value:'曲丽丽'},
-      {text:'订购产品',value:'XX 服务'},
+      {text:'创建人',value:'脆卜卜'},
+      {text:'选购产品',value:'XX 服务'},
       {text:'创建时间',value:'2017-07-07'},
-      {text:'关联单据',value:'12421'},
+      {text:'关联票号',value:'12421'},
       {text:'生效日期',value:'2017-07-07 ~ 2017-08-08'},
-      {text:'备注',value:'请于两个工作日内确认'},
+      {text:'备注',value:'请于48小时内确认'},
     ],
     orderDetail:{
       status:'1',
