@@ -32,12 +32,14 @@ const InformationData = styled.div`
 
 const ApplicationBottom = styled.div`
     height: 46px;
-    margin: 20px 0 0 ;
     display: flex;
     justify-content: space-evenly;
     background: #f8f8f8;
     align-items: center;
     text-align: center;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
 `;
 
 

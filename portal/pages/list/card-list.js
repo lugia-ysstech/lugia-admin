@@ -71,7 +71,8 @@ const ApplicationTop = styled.div`
 `;
 
 const InformationContainer = styled.div`
-    // padding:  0 0 0 42px;
+    max-height: 80px;
+    overflow: hidden;
     margin: 20px 0 10px;
     display: flex;
     line-height: 20px;
@@ -79,13 +80,15 @@ const InformationContainer = styled.div`
 
 const ApplicationBottom = styled.div`
     height: 46px;
-    margin: 20px 0 0 ;
+    width: 100%;
     display: flex;
     justify-content: space-evenly;
     background: #f8f8f8;
     align-items: center;
     text-align: center;
     border-top: 1px solid #ddd;
+    position: absolute;
+    bottom: 0;
 `;
 
 const DefaultCard = styled.div`
