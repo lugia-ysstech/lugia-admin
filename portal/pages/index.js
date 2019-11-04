@@ -1,6 +1,7 @@
 import React from "react";
 import { createRoute } from "@lugia/lugiax-router";
 import Header from "../components/header";
+import MenuList from "../components/menulist";
 import "../App.css";
 import styled from "styled-components";
 import router from "../router";
@@ -22,9 +23,12 @@ const Content = styled.div`
 
 export default () => {
   return (
-    <ContentContainer>
-      <Header />
-      <Content>{createRoute(router)}</Content>
-    </ContentContainer>
+    <div className="app">
+      <MenuList />
+      <ContentContainer>
+        <Header />
+        <Content>{createRoute(router)}</Content>
+      </ContentContainer>
+    </div>
   );
 };
