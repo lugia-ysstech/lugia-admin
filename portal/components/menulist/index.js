@@ -132,7 +132,6 @@ class List extends React.Component<any> {
         }
       }
     };
-
     return (
       <NavContainer>
         <Title>

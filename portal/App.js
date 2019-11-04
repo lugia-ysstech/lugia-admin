@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { createRoute } from "@lugia/lugiax-router";
 import MenuList from "./components/menulist";
 import styled from "styled-components";
+import Pages from "./pages";
+import register from "./models/register";
 
 export const firstRouter = {
   "/register/register": {
@@ -18,7 +20,7 @@ export const firstRouter = {
   },
   "/": {
     // exact: true,
-    render: async () => import("./pages")
+    component: Pages
   }
 };
 
@@ -34,9 +36,8 @@ const ContentContainer = styled.div`
 
 export default () => {
   return (
-    <ContentContainer>
-      <MenuList />
+    <React.Fragment>
       {createRoute(firstRouter)}
-    </ContentContainer>
+    </React.Fragment>
   );
 };
