@@ -3,25 +3,61 @@
 const getUserInfo = () => {
 
   const data = [
-    { type:'退款申请',
+    { type:'物流信息',
       data: [
-        {title:'取货单号', value:'1000000000'},
-        {title:'状态', value:'已取货'},
-        {title:'销售单号', value:'450000199903131111'},
-        {title:'子订单', value:'530000198008146785'},
+        {title:'运单号码', value:'294571619523'},
+        {title:'物流公司', value:'顺丰快递'},
+        {title:'客服电话', value:'95338'},
+        {title:'发货地址', value:'河南省开封市兰考县'},
+        {title:'邮编', value:'475312'},
       ]
     },
     { type:'用户信息',
       data: [
-        {title:'用户姓名', value:'椰果果'},
-        {title:'联系电话', value:'18100000000'},
-        {title:'常用快递', value:'菜鸟物流'},
-        {title:'取货地址', value:'河北省廊坊市 XXX 街道'},
+        {title:'收货地址', value:'北京市朝阳区朝阳北路达美中心'},
+        {title:'收件人', value:'石小欣'},
+        {title:'手机号', value:'15294627777'}
       ]
     },
     ];
 
   return {data};
+};
+
+const getStepsInfo = () => {
+
+  const steps = [
+    { title: '待揽件',stepStatus: 'process'},
+    { title: '运输',stepStatus: 'next'},
+    { title: '派送',stepStatus: 'wait'},
+    { title: '签收',stepStatus: 'wait'},
+  ];
+  const data = [
+    {
+      title: '2018-11-15  周五',stepStatus: 'finish',
+      description: [
+        { date:'17:01:10',desc:'卖家发货'},
+        { date:'18:13:10',desc:'顺丰快递 已收取快件'},
+        { date:'18:13:10',desc:'快递在「开封市兰考县车站路营业点」已装车，准备发往「郑州新郑集散中心」'},
+      ]
+    },
+    {
+      title: '2018-11-16  周六',stepStatus: 'process',
+      description: [
+        { date:'12:31:00',desc:'快件到达北京顺义集散中心'},
+        { date:'14:19:00',desc:'快递在「北京顺义集散中心」已装车，准备发往「北京青年路营业点」'},
+        { date:'15:39:00',desc:'快递到达「青年路营业点」'},
+      ]
+    },
+    {
+      title: '2018-11-16  周六',stepStatus: 'next',
+      description: [
+        { desc:'等待「青年路营业点」快递员  张天宇  取件'},
+      ]
+    },
+  ];
+
+  return {data,steps};
 };
 
 const getTableUserInfo = () => {
@@ -105,38 +141,19 @@ const getOperateLog = (req) => {
 const getAdvancedUserInfo = (req) => {
   const data =[
     {type:'1',data:[
-        {text:'用户姓名',value:'脆卜卜'},
-        {text:'会员卡号',value:'32943898021309809423'},
-        {text:'身份证',value:'3321944288191034921'},
-        {text:'联系方式',value:'18112345678'},
-        {text:'联系地址',value:'椰果果 18100000000 北京市朝阳区'},
+        {text:'企业法人代表',value:'脆卜卜'},
+        {text:'营业执照号码',value:'0000521'},
+        {text:'注册资本',value:'¥742,530,000'},
+        {text:'账户银行名称',value:'中国人民银行'},
+        {text:'账户银行账号',value:'6330 4588 XXXX 0382 117'},
+        {text:'开户行地址',value:'北京朝阳区中国人民银行第九支行'},
       ]
     },
-    {type:'1',title:'信息组', data:[
-        {text:'XX 数据',value:'725'},
-        {text:'该数据更新时间',value:'2017-08-08'},
-      ]
-    },
-    {type:'1',data:[
-        {text:'XX 数据',value:'725'},
-        {text:'该数据更新时间',value:'2017-08-08'},
-      ]
-    },
-    {title:'信息组', type:'2',head:'多层级信息组',data:[
-        {title:'组名称',children:[
-            {text:'负责人',value:'玉萌萌'},
-            {text:'角色码',value:'1234567'},
-            {text:'所属部门',value:'XX公司 - YY部'},
-            {text:'过期时间',value:'2017-08-08'},
-            {text:'描述',value:'这段描述很长很长很长很长很长很长很长很长很长很长很长很长很长很长...'},
-          ]},
-        {title:'组名称',children:[
-            {text:'学名',value:'Citrullus lanatus (Thunb.) Matsum. et Nakai一年生蔓生藤本；茎、枝粗壮，具明显的棱。卷须较粗..'},
-          ]},
-        {children:[
-            {text:'负责人',value:'瑞逛逛'},
-            {text:'角色码',value:'1234568'},
-          ]},
+    {title:'', type:'2',head:'生产经营项目',data:[
+        {title:'Lugia组件库',link:{text: '了解更多lugia组件库',url:'http://lugia.tech/#/component/lugia'},desc:'Lugia的诞生就是要树立中后台组件化的标杆,我们不仅仅创造了一套属于通用的开源组件及其设计器，而是将设计、代码，变成一种专属语言，一种跨时代的组件规范'},
+        {title:'Lugia mega',link:{text: '关于 lugia-mega',url:'http://lugia.tech/#/lugia-mega'},desc:'Lugia mega是基于lugia组件库研发的一款组件生成实际页面的桌面应用。可以实现前后端解耦，让色痕迹程序研发融为一体，减少公司产品的研发成本。'},
+        {title:'Lugia pro',desc:'Lugia pro是一款组件库的页面示例，里面包含了所有lugia组件的应用方式，以及组件拼接区块的摆放样式。'},
+
       ]
     },
   ];
@@ -148,12 +165,15 @@ const getAdvancedOrderInfo = (req) => {
   const data ={
     order:'234231029431',
     data:[
-      {text:'创建人',value:'脆卜卜'},
-      {text:'选购产品',value:'XX 服务'},
-      {text:'创建时间',value:'2017-07-07'},
-      {text:'关联票号',value:'12421'},
-      {text:'生效日期',value:'2017-07-07 ~ 2017-08-08'},
-      {text:'备注',value:'请于48小时内确认'},
+      {text:'厂家名称',value:'北京中关村信息文化产业园'},
+      {text:'国家和地区',value:'中国北京'},
+      {text:'企业性质',value:'民营'},
+      {text:'厂商性质',value:'民营'},
+      {text:'组织机构代码',value:'475312'},
+      {text:'身份证号码',value:'130281199593810021'},
+      {text:'厂商编号',value:'N3530703'},
+      {text:'注册地址邮政编码',value:'03122'},
+      {text:'币别',value:'人民币'},
     ],
     orderDetail:{
       status:'1',
@@ -183,5 +203,8 @@ export default {
   },
   "POST /api/advance/getAdvancedOrderInfo": function(req, res) {
     res.json(getAdvancedOrderInfo(req));
+  },
+  "POST /api/basic/getStepsInfo": function(req, res) {
+    res.json(getStepsInfo(req));
   }
 };
