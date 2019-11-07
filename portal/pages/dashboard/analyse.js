@@ -421,7 +421,7 @@ class Analyse extends Component<any> {
     //     });
     //   });
     // });
-    getYearsTrendInfo();
+    // getYearsTrendInfo();
   }
 
   getHeaderColSpan = browserWidth => {
