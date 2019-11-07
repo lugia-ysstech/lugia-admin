@@ -11,14 +11,14 @@
 
 "@antv/attr@~0.1.2":
   version "0.1.2"
-  resolved "https://registry.npm.taobao.org/@antv/attr/download/@antv/attr-0.1.2.tgz#2eeb122fcaaf851a2d8749abc7c60519d3f77e37"
+  resolved "https://registry.npm.taobao.org/@antv/attr/download/@antv/attr-0.1.2.tgz?cache=0&sync_timestamp=1566219337111&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40antv%2Fattr%2Fdownload%2F%40antv%2Fattr-0.1.2.tgz#2eeb122fcaaf851a2d8749abc7c60519d3f77e37"
   integrity sha1-LusSL8qvhRoth0mrx8YFGdP3fjc=
   dependencies:
     "@antv/util" "~1.3.1"
 
 "@antv/component@~0.3.3":
   version "0.3.8"
-  resolved "https://registry.npm.taobao.org/@antv/component/download/@antv/component-0.3.8.tgz#677ecd3b5026907d4cb70d9082951d7c3c2b5434"
+  resolved "https://registry.npm.taobao.org/@antv/component/download/@antv/component-0.3.8.tgz?cache=0&sync_timestamp=1571711662320&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40antv%2Fcomponent%2Fdownload%2F%40antv%2Fcomponent-0.3.8.tgz#677ecd3b5026907d4cb70d9082951d7c3c2b5434"
   integrity sha1-Z37NO1AmkH1Mtw2QgpUdfDwrVDQ=
   dependencies:
     "@antv/attr" "~0.1.2"
@@ -58,7 +58,7 @@
 
 "@antv/g2@^3.5.8":
   version "3.5.9"
-  resolved "https://registry.npm.taobao.org/@antv/g2/download/@antv/g2-3.5.9.tgz#7037263d50e93ac7fd30a4706c1b9a54f883ef29"
+  resolved "https://registry.npm.taobao.org/@antv/g2/download/@antv/g2-3.5.9.tgz?cache=0&sync_timestamp=1571712117197&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40antv%2Fg2%2Fdownload%2F%40antv%2Fg2-3.5.9.tgz#7037263d50e93ac7fd30a4706c1b9a54f883ef29"
   integrity sha1-cDcmPVDpOsf9MKRwbBuaVPiD7yk=
   dependencies:
     "@antv/adjust" "~0.1.0"
@@ -97,7 +97,7 @@
 
 "@antv/scale@~0.1.1":
   version "0.1.3"
-  resolved "https://registry.npm.taobao.org/@antv/scale/download/@antv/scale-0.1.3.tgz?cache=0&sync_timestamp=1569479536220&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40antv%2Fscale%2Fdownload%2F%40antv%2Fscale-0.1.3.tgz#4876e6140cb7dcda190e7fe2e780882dcac6b09d"
+  resolved "https://registry.npm.taobao.org/@antv/scale/download/@antv/scale-0.1.3.tgz#4876e6140cb7dcda190e7fe2e780882dcac6b09d"
   integrity sha1-SHbmFAy33NoZDn/i54CILcrGsJ0=
   dependencies:
     "@antv/util" "~1.3.1"
@@ -105,7 +105,7 @@
 
 "@antv/util@~1.3.1":
   version "1.3.1"
-  resolved "https://registry.npm.taobao.org/@antv/util/download/@antv/util-1.3.1.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40antv%2Futil%2Fdownload%2F%40antv%2Futil-1.3.1.tgz#30a34b201ff9126ec0d58c72c8166a9c3e644ccd"
+  resolved "https://registry.npm.taobao.org/@antv/util/download/@antv/util-1.3.1.tgz?cache=0&sync_timestamp=1568276528640&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40antv%2Futil%2Fdownload%2F%40antv%2Futil-1.3.1.tgz#30a34b201ff9126ec0d58c72c8166a9c3e644ccd"
   integrity sha1-MKNLIB/5Em7A1YxyyBZqnD5kTM0=
   dependencies:
     "@antv/gl-matrix" "^2.7.1"
@@ -1255,10 +1255,10 @@
     "@types/istanbul-reports" "^1.1.1"
     "@types/yargs" "^12.0.9"
 
-"@lugia/babel-preset-mega@^1.1.2":
-  version "1.1.2"
-  resolved "https://registry.npm.taobao.org/@lugia/babel-preset-mega/download/@lugia/babel-preset-mega-1.1.2.tgz#07b5a7527181c5ae7cef5eea8a0670dfa9441297"
-  integrity sha1-B7WnUnGBxa58717qigZw36lEEpc=
+"@lugia/babel-preset-mega@^1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@lugia/babel-preset-mega/-/babel-preset-mega-1.1.1.tgz#c01e9ce6c5c3922cc0b9dac8de3ec4ff34b76264"
+  integrity sha512-hgJv5cSvMxCh2fXCxvrZV6L0hRqMNYIgQlE0IURE9i5acESgDl0CuiaPlRZqKGQt6Kdlc/soMwD6NDhruZwyHA==
   dependencies:
     "@babel/core" "7.4.3"
     "@babel/plugin-proposal-class-properties" "7.4.0"
@@ -1293,18 +1293,17 @@
     "@babel/runtime" "^7.4.5"
     decamelize "^3.2.0"
 
-"@lugia/devtools-conversion@1.0.17":
-  version "1.0.17"
-  resolved "https://registry.npm.taobao.org/@lugia/devtools-conversion/download/@lugia/devtools-conversion-1.0.17.tgz#3924cef6e38df9ab71a986bbf2310226bb4693a6"
-  integrity sha1-OSTO9uON+atxqYa78jECJrtGk6Y=
+"@lugia/devtools-conversion@1.0.14":
+  version "1.0.14"
+  resolved "https://registry.yarnpkg.com/@lugia/devtools-conversion/-/devtools-conversion-1.0.14.tgz#63c237629b22b01a00e611bb79711a3caae3c787"
+  integrity sha512-Zv0gg98S2u6Ab1uNqNPlIuZ+A/g2Vv6D5zYXHZ/arqMq43Qdh6nOLf/Ale4KeO/R3elwrYl0M/wBKn1eD1ZCqQ==
   dependencies:
-    "@lugia/devtools-core" "^1.0.7"
-    "@lugia/lugiad-core" "^1.0.2"
+    "@lugia/devtools-core" "^1.0.5"
 
-"@lugia/devtools-core@^1.0.7":
-  version "1.0.7"
-  resolved "https://registry.npm.taobao.org/@lugia/devtools-core/download/@lugia/devtools-core-1.0.7.tgz#b1a2f4591339a5d1ff960ac96eaf48ebb46cebd7"
-  integrity sha1-saL0WRM5pdH/lgrJbq9I67Rs69c=
+"@lugia/devtools-core@^1.0.5":
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/@lugia/devtools-core/-/devtools-core-1.0.5.tgz#53e9147497b3f581a7ba886a240f69c0e425273a"
+  integrity sha512-Ab97vCKxXJbXfidHAxPi4ZqBkfJLqO0Zxk3009lxJ5H+lNSiwVaC9TG/v+ayGcL98Z5ftm8cHhclnSdK58nDRA==
   dependencies:
     chai "^4.1.2"
     immutable "^3.8.2"
@@ -1321,10 +1320,10 @@
     immutable "^3.8.2"
     yargs "^13.2.2"
 
-"@lugia/lugia-web@1.1.8-alpha-6":
-  version "1.1.8-alpha-6"
-  resolved "https://registry.yarnpkg.com/@lugia/lugia-web/-/lugia-web-1.1.8-alpha-6.tgz#874e69c7885842fde11a3912805c1e1369c90b62"
-  integrity sha512-o2HuMAmk6/B+PApURpY4r6YwS4X178yR+gHknagqtuWIT2XKwhA6CZdAK9Qwgn1ijoo91Ote3dsQ3YVvnQ70iQ==
+"@lugia/lugia-web@1.1.8-alpha-20":
+  version "1.1.8-alpha-20"
+  resolved "https://registry.npmjs.org/@lugia/lugia-web/-/lugia-web-1.1.8-alpha-20.tgz#a571dff9319cd3c2184931fcd171d1061567fedd"
+  integrity sha512-8JAOYnp3c5028WRQkovPECXL5vFhVxBT26SFwMiOgWM0DkjKg1RJhgEqeXrWvBvQ6hh43i7hHl840sdrUJsiSQ==
   dependencies:
     "@lugia/css" "^1.0.18"
     "@lugia/math" "^1.0.8"
@@ -1357,20 +1356,13 @@
     react-error-overlay "1.0.9"
     warning "3.0.0"
 
-"@lugia/lugiad-core@^1.0.2":
-  version "1.0.2"
-  resolved "https://registry.npm.taobao.org/@lugia/lugiad-core/download/@lugia/lugiad-core-1.0.2.tgz#186c5de344cdf62a3cadbfb51787c29c5aa530e9"
-  integrity sha1-GGxd40TN9io8rb+1F4fCnFqlMOk=
-  dependencies:
-    chai "^4.1.2"
-
-"@lugia/lugiad-loader@^1.2.3":
-  version "1.2.3"
-  resolved "https://registry.npm.taobao.org/@lugia/lugiad-loader/download/@lugia/lugiad-loader-1.2.3.tgz#0e3bbc9cadbd596bb31c20ca073a64282eaada65"
-  integrity sha1-Dju8nK29WWuzHCDKBzpkKC6q2mU=
+"@lugia/lugiad-loader@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@lugia/lugiad-loader/-/lugiad-loader-1.2.0.tgz#2bba2ffd7bc04659caff9eccc4907847dcf0b962"
+  integrity sha512-HV/oeBbjYySeMW7zm+5aoLrdHK6sQwxrwWGsePnjuQOITgYvupDmZHK/YTjwMtEDbaEn/aVaAu52PIlQjeK5Aw==
   dependencies:
     "@babel/runtime" "^7.4.3"
-    "@lugia/devtools-conversion" "1.0.17"
+    "@lugia/devtools-conversion" "1.0.14"
     loader-utils "1.2.3"
 
 "@lugia/lugiax-core@^1.0.9":
@@ -1409,13 +1401,13 @@
   dependencies:
     "@babel/runtime" "^7.4.5"
 
-"@lugia/mega-config@^1.2.1":
-  version "1.2.1"
-  resolved "https://registry.npm.taobao.org/@lugia/mega-config/download/@lugia/mega-config-1.2.1.tgz#1321774202aae5bfb6c9a8ada41e142bf84c3696"
-  integrity sha1-EyF3QgKq5b+2yaitpB4UK/hMNpY=
+"@lugia/mega-config@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@lugia/mega-config/-/mega-config-1.2.0.tgz#02ac5599c6bc9c3e224e725816c8136c5756413a"
+  integrity sha512-/fDVjlyCuS6S04aFKBWJwxiequJwg1TfiSH3amroi/dZ2T8SIg93ZTBEiIxiabxAzQe/uQWjZ1XfoEipBD8hnA==
   dependencies:
     "@babel/runtime" "^7.1.5"
-    "@lugia/mega-utils" "^1.5.1"
+    "@lugia/mega-utils" "^1.5.0"
     assert "^1.4.1"
     chalk "^2.4.1"
     chokidar "^2.0.4"
@@ -1424,19 +1416,19 @@
     lodash.isequal "^4.5.0"
     requireindex "^1.2.0"
 
-"@lugia/mega-jest@^1.3.2":
-  version "1.3.2"
-  resolved "https://registry.npm.taobao.org/@lugia/mega-jest/download/@lugia/mega-jest-1.3.2.tgz#d9a9c312ef233e767c72bd5782a5d8e5e661dc63"
-  integrity sha1-2anDEu8jPnZ8cr1XgqXY5eZh3GM=
+"@lugia/mega-jest@^1.3.1":
+  version "1.3.1"
+  resolved "https://registry.yarnpkg.com/@lugia/mega-jest/-/mega-jest-1.3.1.tgz#9d6f6ba9500febd257f8f05fd965a1a579f26453"
+  integrity sha512-BCspXHF4j8oYLFyTGp4PxmAh5/lNcmAao2SyWd7SRTtl6tFgiI25gZh3uuJ0jDhPDgp3lHJ9ZjCy9Xg8eSTA7g==
   dependencies:
     "@babel/core" "7.1.5"
     "@babel/plugin-syntax-dynamic-import" "^7.0.0"
     "@babel/plugin-transform-modules-commonjs" "^7.1.0"
     "@babel/polyfill" "7.0.0"
     "@babel/runtime" "^7.1.5"
-    "@lugia/babel-preset-mega" "^1.1.2"
-    "@lugia/mega-config" "^1.2.1"
-    "@lugia/mega-utils" "^1.5.1"
+    "@lugia/babel-preset-mega" "^1.1.1"
+    "@lugia/mega-config" "^1.2.0"
+    "@lugia/mega-utils" "^1.5.0"
     babel-core "7.0.0-bridge.0"
     babel-jest "^24.7.1"
     babel-plugin-module-resolver "^3.2.0"
@@ -1453,19 +1445,19 @@
     ts-jest-babel-7 "^22.0.7"
     typescript "^3.4.5"
 
-"@lugia/mega-scripts@^1.4.6":
-  version "1.4.6"
-  resolved "https://registry.npm.taobao.org/@lugia/mega-scripts/download/@lugia/mega-scripts-1.4.6.tgz#ec0b9264ceae10c4758235ef55d1e7b0c460b7d7"
-  integrity sha1-7AuSZM6uEMR1gjXvVdHnsMRgt9c=
+"@lugia/mega-scripts@^1.4.2":
+  version "1.4.2"
+  resolved "https://registry.yarnpkg.com/@lugia/mega-scripts/-/mega-scripts-1.4.2.tgz#4776eda487769e70da04f6a8f046df8b88933076"
+  integrity sha512-M1Bl1auU+TG85E98lvlrQT3ctP0HqX20ZM7eJ2a97eGuX0GX9ubMTpD5lqEm/CSpSlN+xvWZmjhYyip0x7Sehg==
   dependencies:
     "@babel/core" "7.4.3"
     "@babel/runtime" "^7.1.5"
-    "@lugia/babel-preset-mega" "^1.1.2"
-    "@lugia/devtools-conversion" "1.0.17"
+    "@lugia/babel-preset-mega" "^1.1.1"
+    "@lugia/devtools-conversion" "1.0.14"
     "@lugia/devtools-material" "^1.0.33"
-    "@lugia/mega-config" "^1.2.1"
-    "@lugia/mega-utils" "^1.5.1"
-    "@lugia/mega-webpack" "^1.4.6"
+    "@lugia/mega-config" "^1.2.0"
+    "@lugia/mega-utils" "^1.5.0"
+    "@lugia/mega-webpack" "^1.4.2"
     babel-plugin-add-module-exports "^1.0.0"
     body-parser "^1.18.3"
     browser-sync "^2.26.3"
@@ -1490,10 +1482,10 @@
     xlsx "^0.14.0"
     yargs "^12.0.2"
 
-"@lugia/mega-utils@^1.5.1":
-  version "1.5.1"
-  resolved "https://registry.npm.taobao.org/@lugia/mega-utils/download/@lugia/mega-utils-1.5.1.tgz#6cc7d6a3ebbc24590310d588eb468c7a849e7e31"
-  integrity sha1-bMfWo+u8JFkDENWI60aMeoSefjE=
+"@lugia/mega-utils@^1.5.0":
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/@lugia/mega-utils/-/mega-utils-1.5.0.tgz#f286ae395b314ff15bb9dc4687091b5bb7a07b56"
+  integrity sha512-bm7tQ8axTpHHd2kQnUwrlRLkzppe6LI/dPueMK65vO46mQd6Ns/aPXEwcE0LyDYXWrX2II7ic4p06nla/EOZvQ==
   dependencies:
     "@babel/plugin-transform-modules-commonjs" "^7.4.3"
     "@babel/register" "^7.4.0"
@@ -1521,16 +1513,16 @@
     username "^4.1.0"
     which "^1.3.1"
 
-"@lugia/mega-webpack@^1.4.6":
-  version "1.4.6"
-  resolved "https://registry.npm.taobao.org/@lugia/mega-webpack/download/@lugia/mega-webpack-1.4.6.tgz#0f7bf3f103b25039e021fb9c5e163d4f12c65c05"
-  integrity sha1-D3vz8QOyUDngIfucXhY9TxLGXAU=
+"@lugia/mega-webpack@^1.4.2":
+  version "1.4.2"
+  resolved "https://registry.yarnpkg.com/@lugia/mega-webpack/-/mega-webpack-1.4.2.tgz#681eefd8bf88305e3e9d2874bfef871e15198f8c"
+  integrity sha512-yAXXQWMHq7st4lyDUpmE+b2/9nCveSHdRjHSqWoGTSbqbCGUJTeGyvNhGzrPWFhrqP2nRSMyBP1VasVTC3uFtA==
   dependencies:
     "@babel/core" "7.1.5"
     "@babel/runtime" "^7.5.5"
-    "@lugia/babel-preset-mega" "^1.1.2"
-    "@lugia/lugiad-loader" "^1.2.3"
-    "@lugia/mega-utils" "^1.5.1"
+    "@lugia/babel-preset-mega" "^1.1.1"
+    "@lugia/lugiad-loader" "^1.2.0"
+    "@lugia/mega-utils" "^1.5.0"
     assert "^1.4.1"
     autoprefixer "^8.6.5"
     awesome-typescript-loader "^3.5.0"
@@ -3643,7 +3635,7 @@ combined-stream@^1.0.6, combined-stream@~1.0.6:
 
 commander@2:
   version "2.20.3"
-  resolved "https://registry.npm.taobao.org/commander/download/commander-2.20.3.tgz#fd485e84c03eb4881c20722ba48035e8531aeb33"
+  resolved "https://registry.npm.taobao.org/commander/download/commander-2.20.3.tgz?cache=0&sync_timestamp=1570772537716&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fcommander%2Fdownload%2Fcommander-2.20.3.tgz#fd485e84c03eb4881c20722ba48035e8531aeb33"
   integrity sha1-/UhehMA+tIgcIHIrpIA16FMa6zM=
 
 commander@2.17.x, commander@~2.17.1:
@@ -4214,7 +4206,7 @@ d3-color@1:
 
 d3-composite-projections@~1.2.0:
   version "1.2.3"
-  resolved "https://registry.npm.taobao.org/d3-composite-projections/download/d3-composite-projections-1.2.3.tgz#d4283b32fca77ab0aeab92354f7726410f94b1cc"
+  resolved "https://registry.npm.taobao.org/d3-composite-projections/download/d3-composite-projections-1.2.3.tgz?cache=0&sync_timestamp=1564472482868&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fd3-composite-projections%2Fdownload%2Fd3-composite-projections-1.2.3.tgz#d4283b32fca77ab0aeab92354f7726410f94b1cc"
   integrity sha1-1Cg7MvynerCuq5I1T3cmQQ+Uscw=
   dependencies:
     d3-geo "^1.11.6"
@@ -4295,7 +4287,7 @@ d3-path@1, d3-path@^1.0.7:
 
 d3-sankey@~0.7.1:
   version "0.7.1"
-  resolved "https://registry.npm.taobao.org/d3-sankey/download/d3-sankey-0.7.1.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fd3-sankey%2Fdownload%2Fd3-sankey-0.7.1.tgz#d229832268fc69a7fec84803e96c2256a614c521"
+  resolved "https://registry.npm.taobao.org/d3-sankey/download/d3-sankey-0.7.1.tgz#d229832268fc69a7fec84803e96c2256a614c521"
   integrity sha1-0imDImj8aaf+yEgD6WwiVqYUxSE=
   dependencies:
     d3-array "1"
@@ -4492,7 +4484,7 @@ deep-eql@^3.0.1:
 
 deep-equal@^1.0.1, deep-equal@~1.0.1:
   version "1.0.1"
-  resolved "https://registry.npm.taobao.org/deep-equal/download/deep-equal-1.0.1.tgz#f5d260292b660e084eff4cdbc9f08ad3247448b5"
+  resolved "https://registry.npm.taobao.org/deep-equal/download/deep-equal-1.0.1.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fdeep-equal%2Fdownload%2Fdeep-equal-1.0.1.tgz#f5d260292b660e084eff4cdbc9f08ad3247448b5"
   integrity sha1-9dJgKStmDghO/0zbyfCK0yR0SLU=
 
 deep-extend@^0.6.0:
@@ -6228,8 +6220,8 @@ fullname@^3.3.0:
 
 function-bind@^1.0.2, function-bind@^1.1.1, function-bind@~1.1.1:
   version "1.1.1"
-  resolved "https://registry.yarnpkg.com/function-bind/-/function-bind-1.1.1.tgz#a56899d3ea3c9bab874bb9773b7c5ede92f4895d"
-  integrity sha512-yIovAzMX49sF8Yl58fSCWJ5svSLuaibPxXQJFLmBObTuCr0Mf1KiPopGM9NiFjiYBCbfaa2Fh6breQ6ANVTI0A==
+  resolved "https://registry.npm.taobao.org/function-bind/download/function-bind-1.1.1.tgz#a56899d3ea3c9bab874bb9773b7c5ede92f4895d"
+  integrity sha1-pWiZ0+o8m6uHS7l3O3xe3pL0iV0=
 
 function.prototype.name@^1.1.0, function.prototype.name@^1.1.1:
   version "1.1.1"
@@ -7089,8 +7081,8 @@ inflight@^1.0.4:
 
 inherits@2, inherits@2.0.4, inherits@^2.0.1, inherits@^2.0.3, inherits@~2.0.1, inherits@~2.0.3, inherits@~2.0.4:
   version "2.0.4"
-  resolved "https://registry.yarnpkg.com/inherits/-/inherits-2.0.4.tgz#0fa2c64f932917c3433a0ded55363aae37416b7c"
-  integrity sha512-k/vGaX4/Yla3WzyMCvTQOXYeIHvqOKtnqBduzTHpzpQZzAskKMhZ2K+EnBiSM9zGSoIFeMpXKxa4dYeZIQqewQ==
+  resolved "https://registry.npm.taobao.org/inherits/download/inherits-2.0.4.tgz?cache=0&sync_timestamp=1560975547815&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Finherits%2Fdownload%2Finherits-2.0.4.tgz#0fa2c64f932917c3433a0ded55363aae37416b7c"
+  integrity sha1-D6LGT5MpF8NDOg3tVTY6rjdBa3w=
 
 inherits@2.0.1:
   version "2.0.1"
@@ -12702,7 +12694,7 @@ string.prototype.trim@^1.1.2:
 
 string.prototype.trim@~1.1.2:
   version "1.1.2"
-  resolved "https://registry.npm.taobao.org/string.prototype.trim/download/string.prototype.trim-1.1.2.tgz?cache=0&sync_timestamp=1563993185027&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fstring.prototype.trim%2Fdownload%2Fstring.prototype.trim-1.1.2.tgz#d04de2c89e137f4d7d206f086b5ed2fae6be8cea"
+  resolved "https://registry.npm.taobao.org/string.prototype.trim/download/string.prototype.trim-1.1.2.tgz#d04de2c89e137f4d7d206f086b5ed2fae6be8cea"
   integrity sha1-0E3iyJ4Tf019IG8Ia17S+ua+jOo=
   dependencies:
     define-properties "^1.1.2"
@@ -12719,7 +12711,7 @@ string.prototype.trimleft@^2.1.0:
 
 string.prototype.trimright@^2.1.0:
   version "2.1.0"
-  resolved "https://registry.npm.taobao.org/string.prototype.trimright/download/string.prototype.trimright-2.1.0.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fstring.prototype.trimright%2Fdownload%2Fstring.prototype.trimright-2.1.0.tgz#669d164be9df9b6f7559fa8e89945b168a5a6c58"
+  resolved "https://registry.npm.taobao.org/string.prototype.trimright/download/string.prototype.trimright-2.1.0.tgz?cache=0&sync_timestamp=1568091197688&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fstring.prototype.trimright%2Fdownload%2Fstring.prototype.trimright-2.1.0.tgz#669d164be9df9b6f7559fa8e89945b168a5a6c58"
   integrity sha1-Zp0WS+nfm291WfqOiZRbFopabFg=
   dependencies:
     define-properties "^1.1.3"
@@ -13433,7 +13425,7 @@ uglify-js@3.4.x:
 
 uglify-js@^2.6.2, uglify-js@^2.8.29:
   version "2.8.29"
-  resolved "https://registry.npm.taobao.org/uglify-js/download/uglify-js-2.8.29.tgz#29c5733148057bb4e1f75df35b7a9cb72e6a59dd"
+  resolved "https://registry.npm.taobao.org/uglify-js/download/uglify-js-2.8.29.tgz?cache=0&sync_timestamp=1571486541954&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fuglify-js%2Fdownload%2Fuglify-js-2.8.29.tgz#29c5733148057bb4e1f75df35b7a9cb72e6a59dd"
   integrity sha1-KcVzMUgFe7Th913zW3qcty5qWd0=
   dependencies:
     source-map "~0.5.1"
@@ -14122,7 +14114,7 @@ window-size@^0.2.0:
 
 wolfy87-eventemitter@~5.1.0:
   version "5.1.0"
-  resolved "https://registry.npm.taobao.org/wolfy87-eventemitter/download/wolfy87-eventemitter-5.1.0.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fwolfy87-eventemitter%2Fdownload%2Fwolfy87-eventemitter-5.1.0.tgz#35c1ac0dd1ac0c15e35d981508fc22084a13a011"
+  resolved "https://registry.npm.taobao.org/wolfy87-eventemitter/download/wolfy87-eventemitter-5.1.0.tgz#35c1ac0dd1ac0c15e35d981508fc22084a13a011"
   integrity sha1-NcGsDdGsDBXjXZgVCPwiCEoToBE=
 
 wordwrap@0.0.2:
