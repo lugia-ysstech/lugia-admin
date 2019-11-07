@@ -11,9 +11,11 @@ import PageHeader from "../../components/page-header";
 import PageContent from "../../components/page-content";
 import styled from "styled-components";
 import { getBorder, getBoxShadow,getBorderRadius } from '@lugia/theme-utils';
-import { Grid,Theme,Tabs,consts as Widget , Radio, Button, Dropmenu,Menu ,Divider,Steps,Card,Table,Icon} from "@lugia/lugia-web";
+import { Grid,Theme,Tabs,consts as Widget , Radio, Button, Dropmenu,Menu ,Divider,Steps,Card,Table,Icon,Avatar} from "@lugia/lugia-web";
+import { Block ,Label,DescLabel ,FlexBox} from "./basic";
 import advanced from "../../models/detail/advanced";
 import {connect} from "@lugia/lugiax";
+import avatar from "../../assets/images/logo.png";
 
 const TabPane = Tabs.TabPane;
 const Step = Steps.Step;
@@ -44,21 +46,21 @@ const Title = styled.div`
   font-size: 20px;
   padding: 16px 0;
 `;
-const Label = styled.div`
-  color: rgba(0,0,0,.85);
-  font-size: 14px;
-  width: ${props => props.width?props.width:'100%'};
-  margin: 8px 0;
-`;
+// const Label = styled.div`
+//   color: rgba(0,0,0,.85);
+//   font-size: 14px;
+//   width: ${props => props.width?props.width:'100%'};
+//   margin: 8px 0;
+// `;
 const Text = styled.span`
   color: rgba(0,0,0,.55);
 `;
-const FlexBox = styled.div`
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: ${props => props.justify?props.justify:'space-between'};
-`;
+// const FlexBox = styled.div`
+//   display: flex;
+//   flex-direction: row;
+//   flex-wrap: wrap;
+//   justify-content: ${props => props.justify?props.justify:'space-between'};
+// `;
 
 const Container = styled.div`
   text-align: right;
@@ -74,6 +76,19 @@ const HeaderLabel = styled.div`
 const HeaderTitle = styled.div`
   color: rgba(0,0,0,.85);
   font-size: 20px;
+`;
+const FundTitle = styled.div`
+  color: rgba(0,0,0,.85);
+  font-size: 14px;
+  font-weight: bold;
+  margin: 6px 0 ;
+`;
+
+const Link = styled.a`
+  display: block;
+  color: #4d63ff;
+  font-size: 14px;
+  margin: 10px 0 ;
 `;
 
 const ContentTitle = styled.div`
@@ -310,7 +325,7 @@ const dividerTheme ={
     HorizontalDivider: {
       normal: {
         margin: {
-          top: 16,
+          top: 10,
           bottom: 16
         },
 
@@ -318,6 +333,60 @@ const dividerTheme ={
     },
   },
 };
+
+
+
+const themeCardInfo = {
+  [Widget.Card]: {
+    Container: {
+      normal: {
+        width: '100%',
+        height: 200,
+        margin: {
+          bottom: 10
+        },
+        boxShadow: 0
+      },
+    },
+    CardTitleTipLine:{
+      normal: {
+        width: 6,
+      },
+    }
+  },
+};
+
+const propertyCard = {
+  [Widget.Card]: {
+    Container: {
+      normal: {
+        width: '100%',
+        height: 540,
+        margin: {
+          bottom: 10
+        },
+        boxShadow: 0
+      },
+    },
+    CardTitleTipLine:{
+      normal: {
+        width: 6,
+      },
+    }
+  },
+  [Widget.Avatar]: {
+    Container: {
+      normal: {
+        height: 24,
+        width: 24,
+        margin:{
+          right: 15
+        }
+      },
+    },
+  },
+};
+
 
 export const defaultData = [
   {
@@ -364,89 +433,91 @@ class Advanced extends Component{
         key: '操作日志三',
       },
     ];
-    return <Theme config={theme}>
-      <Content>
-        <PageHeader routes={routes} title={"查询表格"} desc={this.getHeaderDesc(advancedOrderInfo.data)}/>
-        <Wrap>
-          <ContentTitle>流程进度</ContentTitle>
-          <Divider/>
-          <CenterWrap>
-            <Steps orientation="horizontal" stepType={'dot'}>
+    return <Content>
+        <PageHeader routes={routes} title={"高级详情页"} desc={'高级详情页完全展示一个信息的全部面貌，在高级详情页面尽量较少可操作项。'}/>
+        <PageContent>
+          <Theme config={themeCardInfo}>
+            <Card type={'tip'} title={'厂家信息'}>
+              <Block>
+                <FlexBox>
+                  {advancedOrderInfo.data && advancedOrderInfo.data.map((dataItem) => {
+                    const {text,value} = dataItem;
+                    return <Label>{text}：<DescLabel> {value} </DescLabel></Label>;
+                    })}
+                </FlexBox>
+              </Block>
+            </Card>
+          </Theme>
 
-              <Step title="创建项目" stepStatus="finish" description={<HeaderContent><HeaderLabel>玉萌萌</HeaderLabel><HeaderLabel>2016-12-12 12:32</HeaderLabel></HeaderContent>} />
-
-              <Step title="部门初审" stepStatus="process" description={<HeaderContent><HeaderLabel>夹心心</HeaderLabel><HeaderLabel>催一下</HeaderLabel></HeaderContent>} />
-
-              <Step title="财务复核" stepStatus="next"  description={<HeaderLabel>description</HeaderLabel>}/>
-
-              <Step title="完成" stepStatus="next"  />
-
-            </Steps>
-          </CenterWrap>
-
-
-        </Wrap>
-        <Wrap>
-          <ContentTitle>用户信息</ContentTitle>
-          <Divider/>
-          <UserInfoWrap>
-            {advancedUserInfo && advancedUserInfo.map( item => {
-              const {type,title,data,head} = item;
-              return <React.Fragment>
-                  {title?<Label>{title}</Label>:null}
-                  {type === '1'? <FlexBox justify={'flex-start'}>
-                      {data.map( list => {
-                        const {text,value} = list;
-                        return  <Label width='33%'>{text}	：<Text>{value}</Text> </Label>
-                      })}
-                  </FlexBox>
-                    :<InfoContainer>
-                    <InfoTitle>{head}</InfoTitle>
-                    <Divider/>
-                    <UserInfoWrap>
-                      <Theme config={dividerTheme}>
+          <Theme config={propertyCard}>
+            <Card type={'tip'} title={'资产信息'}>
+              <Block>
+                {advancedUserInfo && advancedUserInfo.map( item => {
+                  const {type,title,data,head} = item;
+                  return <React.Fragment>
+                    {title?<Label>{title}</Label>:null}
+                    {type === '1'? <FlexBox justify={'flex-start'}>
                         {data.map( list => {
-                          const {title:liTitle,children} = list;
-                          return <React.Fragment>
-                            <Label>{liTitle}</Label>
-                            <FlexBox justify={'flex-start'}>
-                              {children.map( child => {
-                                const {text,value} = child;
-                                return  <Label width={children.length>1?'33%':null}>{text}	：<Text>{value}</Text> </Label>
-                              })}
-                            </FlexBox>
-                            <Divider/>
-                          </React.Fragment> ;
-
+                          const {text,value} = list;
+                          return  <Label width='33%'>{text}	：<Text>{value}</Text> </Label>
                         })}
-                      </Theme>
+                      </FlexBox>
+                      :<InfoContainer>
+                        <InfoTitle>{head}</InfoTitle>
+                        <Divider/>
+                        <UserInfoWrap>
+                          <Theme config={dividerTheme}>
+                            {data.map( list => {
+                              const {title:liTitle,link,desc} = list;
+                              return <React.Fragment>
+                                <FlexBox>
+                                  <Avatar type={'img'}  src={avatar} />
+                                  <HeaderContent>
+                                    <FundTitle>{liTitle}</FundTitle>
+                                    <Text>{desc}</Text>
+                                    {link && <Link href={link.url} target={'_blank'}>{link.text} > </Link>}
 
-                    </UserInfoWrap>
-                  </InfoContainer>}
-              </React.Fragment>
-            })}
+                                  </HeaderContent>
+                                </FlexBox>
+                                <Divider/>
+                              </React.Fragment> ;
+
+                            })}
+                          </Theme>
+
+                        </UserInfoWrap>
+                      </InfoContainer>}
+                  </React.Fragment>
+                })}
+              </Block>
+            </Card>
+          </Theme>
+
+          <Theme config={themeCardInfo}>
+            <Card type={'tip'} title={'厂家信息'}>
+              <Block>
+                <FlexBox>
+                  {advancedOrderInfo.data && advancedOrderInfo.data.map((dataItem) => {
+                    const {text,value} = dataItem;
+                    return <Label>{text}：<DescLabel> {value} </DescLabel></Label>;
+                  })}
+                </FlexBox>
+              </Block>
+            </Card>
+          </Theme>
+
+        </PageContent>
 
 
-
-          </UserInfoWrap>
-
-        </Wrap>
         <Wrap>
-          <ContentTitle>用户近半年来电记录</ContentTitle>
-          <Divider/>
-          <CenterWrap>
-            <DefaultText> <Icon iconClass={"lugia-icon-financial_sad_o"} /> 暂无数据</DefaultText>
-          </CenterWrap>
-
-        </Wrap>
-        <Wrap>
+          <Theme config={theme}>
           <UserInfoWrap>
             <Tabs onChange={this.onChange} data={tabsData} />
           </UserInfoWrap>
-
+          </Theme>
         </Wrap>
       </Content>
-    </Theme> ;
+   ;
   }
 
   getHeaderDesc = (advancedOrderInfo) => {
