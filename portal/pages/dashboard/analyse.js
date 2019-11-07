@@ -8,6 +8,11 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import VisitsChart from "./charts/visits";
 import PayChart from "./charts/paymen";
+import YearsTrendChart from "./charts/yearsTrend";
+import MarketRankingChart from "./charts/marketRanking";
+import DistributionPolarChart from "./charts/distributionPolar";
+import YearsTradeChart from "./charts/yearsTrade";
+import ProceedsChart from "./charts/proceeds";
 import SalesChart from "./charts/sales";
 import SearchUsersChart from "./charts/searchusers";
 import AverageSearchChart from "./charts/averagesearch";
@@ -18,6 +23,7 @@ import PopoverComponent from "./component/popover";
 import TabsPans from "./component/tabspans";
 import model from "../../models/dashboard/analyse";
 import { connect } from "@lugia/lugiax";
+import { getBorder, getBoxShadow, getBorderRadius } from "@lugia/theme-utils";
 import {
   Theme,
   Grid,
@@ -25,22 +31,18 @@ import {
   consts as Widget,
   Pagination,
   Checkbox,
-  DatePicker
+  DatePicker,
+  Select,
+  Icon
 } from "@lugia/lugia-web";
+const Tabpane = Tabs.Tabpane;
 const { Row, Col } = Grid;
 const CheckboxGroup = Checkbox.Group;
 const CheckBoxButton = Checkbox.Button;
-const { RangePicker } = DatePicker;
 const Container = styled.div`
   width: 100%;
   height: 100%;
   padding: 20px;
-`;
-
-const PopoverWrap = styled.div`
-  display: inline-block;
-  transform: translate(0, 3px);
-  margin-left: 5px;
 `;
 
 const HeaderWrap = styled.div`
@@ -49,207 +51,91 @@ const HeaderWrap = styled.div`
 `;
 
 const HeaderBoxWrap = styled.div`
-  height: 180px;
+  height: 160px;
   background: white;
   margin: 10px 0;
-  padding: 20px 20px 0;
-  overflow: hidden;
+  padding: 20px 0;
+  width: 100%;
+  display: inline-block;
   position: relative;
 `;
 
-const PositionPopoverWrap = styled.div`
+const HeaderBoxDivider = styled.div`
   position: absolute;
-  top: 20px;
-  right: 20px;
-  color: #aaa;
-`;
-
-const HeaderH4 = styled.h3`
-  color: rgba(0, 0, 0, 0.6);
-  font-weight: 100;
-  margin-bottom: 4px;
-`;
-
-const HeaderH3 = styled.h3`
-  color: rgba(0, 0, 0, 0.8);
-  display: inline-block;
-  margin-right: 10px;
-  font-size: 14px;
-  line-height: 40px;
-  height: 30px;
-  font-weight: 100;
-`;
-
-const HeaderH1 = styled.div`
-  font-size: 30px;
-`;
-
-const HeaderContent = styled.div`
   width: 100%;
-  height: 100px;
-`;
-
-const HeaderLine = styled.div`
-  height: 1px;
-  background: rgba(0, 0, 0, 0.25);
-`;
-
-const HeaderFlexBox = styled.div`
-  width: 100%;
-  height: 50px;
-  display: flex;
-  font-size: 14px;
-  flex-wrap: wrap;
-`;
-const HeaderItem = styled.div`
-  display: inline-block;
-  line-height: 30px;
-  margin-right: 20px;
-`;
-
-const OprateBox = styled.div`
-  height: 50px;
-  position: relative;
-`;
-
-const PerChartWrap = styled.div`
-  height: 18px;
-  width: 100%;
-  position: absolute;
-  left: 0;
-  bottom: 0;
-`;
-
-const IndexIconTop = styled.span`
-  position: absolute;
-  width: 3px;
-  height: 5px;
-  top: 0;
-  left: 80%;
-  background: #0abfae;
-`;
-
-const IndexIconBottom = styled.span`
-  position: absolute;
-  width: 3px;
-  height: 5px;
-  bottom: 0;
-  left: 80%;
-  background: #0abfae;
-`;
-
-const PerChartContainer = styled.div`
-  height: 8px;
-  width: 100%;
-  background: #eee;
-  position: absolute;
-  left: 0;
+  border-right: 1px solid #f5f5f9;
+  height: 70%;
+  transform: translateY(-50%);
   top: 50%;
-  transform: translate(0, -50%);
+  left: 2px;
+  z-index: 10000;
 `;
 
-const getPerChartWidth = props => {
-  const { count } = props;
-  return `width: ${count}%`;
-};
-
-const PerChart = styled.div`
-  ${getPerChartWidth};
-  background: #0abfae;
-  position: absolute;
+const HeaderBoxContainer = styled.div`
+  width: 100%;
   height: 100%;
-  left: 0;
-  top: 0;
+  padding: 0 40px;
 `;
 
-// 销售额 模块
+const HeaderTitle = styled.h3`
+  font-size: 14px;
+  font-weight: 900;
+  color: rgba(0, 0, 0, 0.8);
+`;
+
+const HeaderPercentBox = styled.div`
+  font-size: 28px;
+  line-height: 70px;
+  color: #4d63ff;
+  text-align: center;
+  font-weight: 900;
+`;
+
+const HeaderPercentSpan = styled.span`
+  font-size: 12px;
+  padding-left: 5px;
+`;
+
+const HeaderFooterBox = styled.div`
+  font-size: 12px;
+  line-height: 20px;
+  color: rgba(0, 0, 0, 0.8);
+  text-align: right;
+`;
+
+const HeaderRedSpan = styled.span`
+  display: inline-block;
+  color: red;
+  width: 36px;
+  font-weight: 900;
+`;
+
+const HeaderGreenSpan = styled(HeaderRedSpan)`
+  color: green;
+`;
+
 const ContentWrap = styled.div`
-  padding: 0 20px;
   margin-bottom: 20px;
   width: 100%;
-  background: #fff;
   position: relative;
 `;
 
-const DatePickerContainer = styled.div`
+const ContentIconWrap = styled.div`
   position: absolute;
   right: 20px;
-  top: 10px;
+  top: 12px;
   z-index: 1000;
-  display: ${props => (props.browserWidth >= 1100 ? "block" : "none")};
+  width: 20px;
 `;
 
 const TabsWrap = styled.div`
-  height: 50px;
   width: 100%;
   overflow: hidden;
   position: relative;
   left: 0;
   top: 0;
-  margin-bottom: 10px;
 `;
 
-const TabsLine = styled.div`
-  width: 100%;
-  height: 1px;
-  background: #ccc;
-  position: absolute;
-  left: 0;
-  top: 50px;
-  z-index: 1000;
-`;
-
-const ContentContainer = styled.div`
-  padding-top: 20px;
-  & p {
-    font-size: 14px;
-    margin-bottom: 20px;
-  }
-`;
-
-const ListWrap = styled.div`
-  height: 250px;
-  margin-top: 30px;
-`;
-
-const ListItem = styled.div`
-  width: 100%;
-  font-size: 14px;
-  color: #666;
-  margin-top: 15px;
-  & p {
-    display: inline-block;
-    margin: 0;
-  }
-
-  & span {
-    float: right;
-  }
-`;
-
-const getListIconBgColor = props => {
-  const { i } = props;
-  return i <= 3
-    ? `
-        background: rgba(0, 0, 0, 0.6);
-        color: #fff;
-    `
-    : "";
-};
-
-const ListIcon = styled.div`
-  display: inline-block;
-  height: 20px;
-  width: 20px;
-  border-radius: 50%;
-  ${getListIconBgColor}
-  margin-right: 20px;
-  text-align: center;
-  font-size: 12px;
-  line-height: 20px;
-`;
-
-// 搜索模块
 const SecWrap = styled.div`
   width: 100%;
   margin: 10px 0;
@@ -257,121 +143,259 @@ const SecWrap = styled.div`
   margin-bottom: 20px;
 `;
 
+const CommonH2 = styled.h2`
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: 900;
+  margin-bottom: 10px;
+`;
+
+const CommonH2Mark = styled.span`
+  display: inline-block;
+  height: 16px;
+  margin-right: 8px;
+  width: 5px;
+  border-radius: 2px;
+  background: #4d63ff;
+  vertical-align: bottom;
+`;
+
 const SecContainer = styled.div`
+  height: 400px;
   background: #fff;
-  height: 540px;
+  position: relative;
+`;
+
+const SecCheckBoxWrap = styled.div`
+  position: absolute;
+  top: 20px;
+  right: 50px;
 `;
 
 const SecTopWrap = styled.div`
-  height: 56px;
-  line-height: 56px;
-  font-size: 16px;
-  padding: 0 20px;
-  position: relative;
-  border-bottom: 1px solid #ddd;
-`;
-
-const CheckboxWrap = styled.div`
-  height: 100%;
-  position: absolute;
-  right: 20px;
-  top: 0px;
-`;
-
-const SecSalesTitle = styled.div`
-  font-size: 14px;
-  padding-left: 20px;
-  margin: 32px 0 42px;
-`;
-
-const SearchWrap = styled.div`
-  height: 110px;
-  margin: 22px 0;
-`;
-
-const SearchBox = styled.div`
+  height: 80px;
   width: 100%;
-  padding: 0 20px;
-`;
-
-const SearchTitle = styled.div`
-  font-size: 14px;
-  line-height: 14px;
-  color: #aaa;
-`;
-
-const CountSpan = styled.div`
-  font-size: 22px;
-  line-height: 50px;
-
-  & span {
-    color: #666;
-    font-size: 14px;
-    padding-left: 40px;
-  }
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const FooterWrap = styled.div`
-  height: 700px;
+  height: 480px;
   width: 100%;
   background: #fff;
   margin-bottom: 20px;
   padding: 20px;
 `;
-const FooterTop = styled.div`
-  height: 140px;
-  margin-bottom: 20px;
-  display: flex;
-  overflow: hidden;
+
+const YearsTradeWrap = styled.div`
+  height: 100%;
+  position: relative;
 `;
 
-const PaginationWrap = styled.div`
-  float: right;
-  padding-right: 20px;
-  margin-top: 20px;
+const FooterFormWrap = styled.div`
+  width: 150px;
+  height: 100%;
+`;
+
+const FooterTitle = styled.div`
+  font-size: 14px;
+  font-weight: 900;
+  line-height: 30px;
+  margin-top: 30px;
+`;
+
+const FooterTotalWrap = styled.div`
+  height: 200px;
+  & p {
+    line-height: 40px;
+  }
+`;
+
+const FooterTotalTitle = styled.div`
+  display: inline-block;
+  width: 50%;
+`;
+
+const FooterTotalValue = styled.div`
+  display: inline-block;
+  width: 50%;
+  background: #red;
+  color: #4d63ff;
+  text-align: right;
+`;
+
+const FooterSelectWrap = styled.div`
+  margin: 10px 0;
+`;
+
+const FooterCheckBoxWrap = styled.div`
+  position: absolute;
+  top: 0px;
+  right: 40px;
+`;
+
+const TabsContentBoxWrap = styled.div`
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+  position: relative;
+`;
+
+const TabsSelectWrap = styled.div`
+  position: absolute;
+  right: 10%;
+  top: 5px;
 `;
 
 const view = {
   [Widget.Tabs]: {
     TitleContainer: {
       normal: {
-        width: "100%"
+        width: "100%",
+        background: {
+          color: "#f5f5f9"
+        }
       }
     },
     TabHeader: {
       DefaultTabPan: {
         normal: {
-          height: 50,
+          height: 40,
           padding: {
             top: 0,
             left: 20,
             right: 20,
             bottom: 0
           },
+          margin: {
+            left: -1
+          },
+          background: {
+            color: "#f5f5f9"
+          },
+          border: {
+            left: {
+              color: "#f5f5f9",
+              width: 1,
+              style: "solid"
+            },
+            right: {
+              color: "#f5f5f9",
+              width: 1,
+              style: "solid"
+            },
+            top: {
+              color: "#f5f5f9",
+              width: 1,
+              style: "solid"
+            }
+          },
+
           font: {
-            size: 14
+            size: 14,
+            weight: 900
+          }
+        }
+      },
+      SelectTabPan: {
+        normal: {
+          background: {
+            color: "#fff"
           }
         }
       }
     },
-    BorderStyle: {
+    ContentBlock: {
       normal: {
-        border: {
-          bottom: {
-            width: 1,
-            color: "transparent",
-            style: "solid"
-          }
+        height: 400
+      }
+    }
+  }
+};
+
+const selectView = {
+  [Widget.Select]: {
+    InputTag: {
+      InputTagWrap: {
+        normal: {
+          width: 150
         }
       }
     }
   }
 };
 
-const tabsData = [
-  { title: "销售额", content: <div></div>, key: "0" },
-  { title: "访问量", content: <div></div>, key: "1" }
-];
+const iconView = {
+  [Widget.Icon]: {
+    Icon: {
+      normal: {
+        fontSize: 20,
+        color: "#888"
+      }
+    }
+  }
+};
+
+const checkbuttonView = {
+  [Widget.CheckboxGroup]: {
+    CheckButton: {
+      CheckButtonChecked: {
+        normal: {
+          opacity: 1,
+          border: {
+            top: { color: "#4d63ff", width: 1, style: "solid" },
+            right: { color: "#4d63ff", width: 1, style: "solid" },
+            bottom: { color: "#4d63ff", width: 1, style: "solid" }
+          },
+
+          color: "#fff",
+          font: { size: 14, fontWeight: 500 }
+        },
+        hover: {
+          opacity: 1,
+          border: {
+            top: { color: "#4d63ff", width: 1, style: "solid" },
+            right: { color: "#4d63ff", width: 1, style: "solid" },
+            bottom: { color: "#4d63ff", width: 1, style: "solid" }
+          },
+          color: "#fff",
+          font: { size: 14, fontWeight: 500 }
+        }
+      },
+      CheckButtonUnChecked: {
+        normal: {
+          opacity: 1,
+          border: {
+            top: { color: "#4d63ff", width: 1, style: "solid" },
+            right: { color: "#4d63ff", width: 1, style: "solid" },
+            bottom: { color: "#4d63ff", width: 1, style: "solid" }
+          },
+          color: "#4d63ff",
+          font: { size: 14, fontWeight: 500 },
+          first: {
+            border: {
+              top: { color: "#4d63ff", width: 1, style: "solid" },
+              bottom: { color: "#4d63ff", width: 1, style: "solid" },
+              left: { color: "#4d63ff", width: 1, style: "solid" }
+            }
+          }
+        },
+        hover: {
+          opacity: 1,
+          border: {
+            top: { color: "#4d63ff", width: 1, style: "solid" },
+            right: { color: "#4d63ff", width: 1, style: "solid" },
+            bottom: { color: "#4d63ff", width: 1, style: "solid" }
+          },
+          color: "#4d63ff",
+          font: { size: 14, fontWeight: 500 }
+        }
+      }
+    }
+  }
+};
 
 function changeBrowserWidth() {
   return document.documentElement.clientWidth;
@@ -383,35 +407,148 @@ class Analyse extends Component<any> {
       browserWidth: changeBrowserWidth()
     };
 
-    const { getHeaderInfo, getContentInfo, getSecInfo, getFooterInfo } = props;
-    getHeaderInfo().then(() => {
-      getContentInfo().then(() => {
-        getSecInfo().then(() => {
-          getFooterInfo();
-        });
-      });
-    });
+    const {
+      getHeaderInfo,
+      getContentInfo,
+      getSecInfo,
+      getFooterInfo,
+      getYearsTrendInfo
+    } = props;
+    // getHeaderInfo().then(() => {
+    //   getContentInfo().then(() => {
+    //     getSecInfo().then(() => {
+    //       getFooterInfo();
+    //     });
+    //   });
+    // });
+    getYearsTrendInfo();
   }
 
   getHeaderColSpan = browserWidth => {
     return browserWidth <= 800 ? 24 : browserWidth <= 1100 ? 12 : 6;
   };
 
-  getContentColSpan = browserWidth => {
-    return browserWidth <= 1200
-      ? { left: 24, right: 24 }
-      : { left: 16, right: 8 };
+  getSecLeftColSpan = browserWidth => {
+    return browserWidth <= 1200 ? 24 : 8;
   };
 
-  getSecColSpan = browserWidth => {
-    return browserWidth <= 1200 ? 24 : 12;
+  getSecRightColSpan = browserWidth => {
+    return browserWidth <= 1200 ? 24 : 16;
+  };
+  getHeaderBoxs = headerSpan => {
+    const headerData = [
+      { title: "期末规模", num: "109.80", mark: "亿" },
+      { title: "浮动盈亏", num: "109.80", mark: "亿" },
+      { title: "实现收益 (减值后)", num: "80", mark: "%" },
+      { title: "实现收益率 (减值后)", num: "60", mark: "%" }
+    ];
+    return headerData.map(val => {
+      return (
+        <Col span={headerSpan}>
+          <HeaderBoxWrap>
+            <HeaderBoxContainer>
+              <HeaderTitle>{val.title}</HeaderTitle>
+              <HeaderPercentBox>
+                {val.num}
+                <HeaderPercentSpan>{val.mark}</HeaderPercentSpan>
+              </HeaderPercentBox>
+              <HeaderFooterBox>
+                较年初变动
+                <HeaderRedSpan>+5%</HeaderRedSpan>
+              </HeaderFooterBox>
+              <HeaderFooterBox>
+                较上日变动
+                <HeaderGreenSpan>-15%</HeaderGreenSpan>
+              </HeaderFooterBox>
+            </HeaderBoxContainer>
+            <HeaderBoxDivider></HeaderBoxDivider>
+          </HeaderBoxWrap>
+        </Col>
+      );
+    });
+  };
+
+  getYearTabsComp = () => {
+    const { yearsTrendData = [] } = this.props;
+    return (
+      <TabsWrap>
+        <Theme config={view}>
+          <Tabs tabType={"card"} forceRender>
+            <Tabpane
+              title={"本年净值走势"}
+              content={
+                <TabsContentBoxWrap key={"1"}>
+                  <TabsSelectWrap>
+                    <Select
+                      theme={selectView}
+                      value={"请选择"}
+                      canClear={false}
+                    />
+                  </TabsSelectWrap>
+                  <YearsTrendChart data={yearsTrendData} />
+                </TabsContentBoxWrap>
+              }
+            />
+            <Tabpane
+              title={"累计单位净值"}
+              content={
+                <TabsContentBoxWrap key={"2"}>
+                  <TabsSelectWrap>
+                    <Select
+                      theme={selectView}
+                      value={"请选择"}
+                      canClear={false}
+                    />
+                  </TabsSelectWrap>
+                  <YearsTrendChart data={yearsTrendData} />
+                </TabsContentBoxWrap>
+              }
+            />
+          </Tabs>
+        </Theme>
+      </TabsWrap>
+    );
+  };
+
+  getMarketRankingComp = () => {
+    return (
+      <TabsWrap>
+        <Theme config={view}>
+          <Tabs tabType={"card"} forceRender>
+            <Tabpane
+              title={"月净值增长率"}
+              content={
+                <TabsContentBoxWrap key={"1"}>
+                  <MarketRankingChart />
+                </TabsContentBoxWrap>
+              }
+            />
+            <Tabpane
+              title={"年净值增长率"}
+              content={
+                <TabsContentBoxWrap key={"2"}>
+                  <MarketRankingChart />
+                </TabsContentBoxWrap>
+              }
+            />
+          </Tabs>
+        </Theme>
+      </TabsWrap>
+    );
   };
 
   render() {
     const { browserWidth } = this.state;
     const headerSpan = this.getHeaderColSpan(browserWidth);
 
-    const { headerInfo, intervalData, secInfo, interactData } = this.props;
+    const {
+      headerInfo,
+      intervalData,
+      secInfo,
+      interactData,
+      yearsTrendData
+    } = this.props;
+    console.log("yearsTrendData", yearsTrendData);
     const { visitsData, payData } = headerInfo;
     const { averageSearchData, salesData, searchUserData } = secInfo;
 
@@ -419,122 +556,19 @@ class Analyse extends Component<any> {
       <Container>
         {/* 头部图表  */}
         <HeaderWrap>
-          <Row
-            gutter={{ xs: 8, sm: 16, md: 24, lg: 24, xl: 24, xxl: 24 }}
-            type="flex"
-            justify="spaceAround"
-            align="middle"
-          >
-            <Col span={headerSpan}>
-              <HeaderBoxWrap>
-                <PositionPopoverWrap>
-                  <PopoverComponent />
-                </PositionPopoverWrap>
-                <HeaderH4>总销售额</HeaderH4>
-                <HeaderContent>
-                  <HeaderH1>￥ 126,560</HeaderH1>
-                  <HeaderFlexBox>
-                    <HeaderItem>周同比 12% </HeaderItem>
-                    <HeaderItem>日同比 11% </HeaderItem>
-                  </HeaderFlexBox>
-                </HeaderContent>
-                <HeaderLine />
-                <HeaderH3>日销售额 1,423</HeaderH3>
-              </HeaderBoxWrap>
-            </Col>
-            <Col span={headerSpan}>
-              <HeaderBoxWrap>
-                <PositionPopoverWrap>
-                  <PopoverComponent />
-                </PositionPopoverWrap>
-                <HeaderH4>访问量</HeaderH4>
-                <HeaderContent>
-                  <HeaderH1>8,846</HeaderH1>
-                  {visitsData && visitsData.length !== 0 ? (
-                    <VisitsChart data={visitsData} />
-                  ) : null}
-                </HeaderContent>
-                <HeaderLine />
-                <HeaderH3>日访问量 1,234</HeaderH3>
-              </HeaderBoxWrap>
-            </Col>
-            <Col span={headerSpan}>
-              <HeaderBoxWrap>
-                <PositionPopoverWrap>
-                  <PopoverComponent />
-                </PositionPopoverWrap>
-                <HeaderH4>支付笔数</HeaderH4>
-                <HeaderContent>
-                  <HeaderH1>6,560</HeaderH1>
-                  {payData && payData.length !== 0 ? (
-                    <PayChart data={payData} />
-                  ) : null}
-                </HeaderContent>
-                <HeaderLine />
-                <HeaderH3>转化率 60%</HeaderH3>
-              </HeaderBoxWrap>
-            </Col>
-            <Col span={headerSpan}>
-              <HeaderBoxWrap>
-                <PositionPopoverWrap>
-                  <PopoverComponent />
-                </PositionPopoverWrap>
-                <HeaderH4>运营活动效果</HeaderH4>
-                <HeaderContent>
-                  <HeaderH1>78%</HeaderH1>
-                  <OprateBox>
-                    <PerChartWrap>
-                      <IndexIconTop />
-                      <IndexIconBottom />
-                      <PerChartContainer>
-                        <PerChart count={78}></PerChart>
-                      </PerChartContainer>
-                    </PerChartWrap>
-                  </OprateBox>
-                </HeaderContent>
-                <HeaderLine />
-                <HeaderH3>周同比 12% </HeaderH3>
-                <HeaderH3>日同比 11% </HeaderH3>
-              </HeaderBoxWrap>
-            </Col>
-          </Row>
+          <Row>{this.getHeaderBoxs(headerSpan)}</Row>
         </HeaderWrap>
-        {/** 销售和访问图表 */}
+        {/** 本年净值走势 和 累计单位净值 */}
         <ContentWrap>
-          <DatePickerContainer browserWidth={browserWidth}>
-            <RangePicker
-              defaultValue={["2019-01-01", "2019-02-01"]}
-              format={"YYYY-MM-DD"}
-            />
-          </DatePickerContainer>
-          <TabsLine />
-          <TabsWrap>
-            <Theme config={view}>
-              <Tabs titleType={"line"} tabPosition={"top"} data={tabsData} />
+          <ContentIconWrap>
+            <Theme config={iconView}>
+              <Icon iconClass={"lugia-icon-financial_omit"} />
             </Theme>
-          </TabsWrap>
-          <ContentContainer>
-            <Row
-              gutter={{ xs: 8, sm: 16, md: 40, lg: 40, xl: 40, xxl: 40 }}
-              type="flex"
-              justify="spaceBetween"
-              align="middle"
-            >
-              <Col span={this.getContentColSpan(browserWidth).left}>
-                <p>销售趋势</p>
-                {intervalData && intervalData.length !== 0 ? (
-                  <IntervalScalesChart data={intervalData} />
-                ) : null}
-              </Col>
-              <Col span={this.getContentColSpan(browserWidth).right}>
-                <p>门店销售额排名</p>
-                <ListWrap>{this.getListItem()}</ListWrap>
-              </Col>
-            </Row>
-          </ContentContainer>
+          </ContentIconWrap>
+          {this.getYearTabsComp()}
         </ContentWrap>
 
-        {/* 中部图表  */}
+        {/**  持仓分布 和 本年实现收益 */}
         <SecWrap>
           <Row
             gutter={{ xs: 8, sm: 16, md: 24, lg: 24, xl: 24, xxl: 24 }}
@@ -542,112 +576,119 @@ class Analyse extends Component<any> {
             justify="spaceBetween"
             align="middle"
           >
-            <Col span={this.getSecColSpan(browserWidth)}>
-              <SecContainer>
-                <SecTopWrap>线上热门搜索</SecTopWrap>
-                <SearchWrap>
-                  <Row
-                    gutter={{ xs: 8, sm: 16, md: 24, lg: 60, xl: 60, xxl: 60 }}
-                    type="flex"
-                    justify="spaceBetween"
-                    align="middle"
-                  >
-                    <Col span={12}>
-                      <SearchBox>
-                        <SearchTitle>
-                          搜索用户数
-                          <PopoverWrap>
-                            <PopoverComponent />
-                          </PopoverWrap>
-                        </SearchTitle>
-                        <CountSpan>
-                          12,321
-                          <span>17.1</span>
-                        </CountSpan>
-                        {searchUserData && searchUserData.length !== 0 ? (
-                          <SearchUsersChart data={searchUserData} />
-                        ) : null}
-                      </SearchBox>
-                    </Col>
-                    <Col span={12}>
-                      <SearchBox>
-                        <SearchTitle>
-                          人均搜索次数
-                          <PopoverWrap>
-                            <PopoverComponent />
-                          </PopoverWrap>
-                        </SearchTitle>
-                        <CountSpan>
-                          2.7
-                          <span>26.2</span>
-                        </CountSpan>
-                        {averageSearchData && averageSearchData.length !== 0 ? (
-                          <AverageSearchChart data={averageSearchData} />
-                        ) : null}
-                      </SearchBox>
-                    </Col>
-                  </Row>
-                </SearchWrap>
-                <TableChart />
-                <PaginationWrap>
-                  <Pagination total={50} pageSize={5} />
-                </PaginationWrap>
-              </SecContainer>
-            </Col>
-            <Col span={this.getSecColSpan(browserWidth)}>
+            <Col span={this.getSecLeftColSpan(browserWidth)}>
+              <CommonH2>
+                <CommonH2Mark />
+                持仓分布
+              </CommonH2>
               <SecContainer>
                 <SecTopWrap>
-                  销售额类别占比
-                  <CheckboxWrap>
+                  <Theme config={checkbuttonView}>
                     <CheckboxGroup childType="button" defaultValue={["1"]}>
-                      <CheckBoxButton value="1">全部渠道</CheckBoxButton>
-                      <CheckBoxButton value="2">线上</CheckBoxButton>
-                      <CheckBoxButton value="3">门店</CheckBoxButton>
+                      <CheckBoxButton value="1">总况</CheckBoxButton>
+                      <CheckBoxButton value="2">基金</CheckBoxButton>
+                      <CheckBoxButton value="3">股票</CheckBoxButton>
                     </CheckboxGroup>
-                  </CheckboxWrap>
+                  </Theme>
                 </SecTopWrap>
-                <SecSalesTitle>销售额</SecSalesTitle>
-                {salesData && salesData.length !== 0 ? (
-                  <SalesChart data={salesData} />
-                ) : null}
+                <DistributionPolarChart />
+              </SecContainer>
+            </Col>
+            <Col span={this.getSecRightColSpan(browserWidth)}>
+              <CommonH2>
+                <CommonH2Mark />
+                本年实现收益
+              </CommonH2>
+              <SecContainer>
+                <SecCheckBoxWrap>
+                  <Theme config={checkbuttonView}>
+                    <CheckboxGroup childType="button" defaultValue={["1"]}>
+                      <CheckBoxButton value="1">月</CheckBoxButton>
+                      <CheckBoxButton value="2">日</CheckBoxButton>
+                    </CheckboxGroup>
+                  </Theme>
+                </SecCheckBoxWrap>
+                <ProceedsChart />
               </SecContainer>
             </Col>
           </Row>
         </SecWrap>
-
-        {/**底部双线图 */}
+        {/** 市场排位变化情况 */}
+        <CommonH2>
+          <CommonH2Mark />
+          市场排位变化情况
+        </CommonH2>
+        <ContentWrap>
+          <ContentIconWrap>
+            <Theme config={iconView}>
+              <Icon iconClass={"lugia-icon-financial_omit"} />
+            </Theme>
+          </ContentIconWrap>
+          {this.getMarketRankingComp()}
+        </ContentWrap>
+        {/**本年交易 */}
+        <CommonH2>
+          <CommonH2Mark />
+          本年交易
+        </CommonH2>
         <FooterWrap>
-          <FooterTop>{this.getTabsPans()}</FooterTop>
-          {interactData && interactData.length !== 0 ? (
-            <InteractChart data={interactData} />
-          ) : null}
+          <Row
+            gutter={{ xs: 8, sm: 16, md: 24, lg: 24, xl: 24, xxl: 24 }}
+            type="flex"
+            justify="spaceBetween"
+            align="middle"
+          >
+            <Col span={18}>
+              <YearsTradeWrap>
+                <FooterCheckBoxWrap>
+                  <Theme config={checkbuttonView}>
+                    <CheckboxGroup childType="button" defaultValue={["1"]}>
+                      <CheckBoxButton value="1">月</CheckBoxButton>
+                      <CheckBoxButton value="2">日</CheckBoxButton>
+                    </CheckboxGroup>
+                  </Theme>
+                </FooterCheckBoxWrap>
+                <YearsTradeChart />
+              </YearsTradeWrap>
+            </Col>
+            <Col span={6}>
+              <FooterFormWrap>
+                <FooterSelectWrap>
+                  <Select
+                    theme={selectView}
+                    value={"请选择日期"}
+                    canClear={false}
+                  />
+                </FooterSelectWrap>
+
+                <FooterSelectWrap>
+                  <Select
+                    theme={selectView}
+                    value={"请选择日期"}
+                    canClear={false}
+                  />
+                </FooterSelectWrap>
+
+                <FooterTitle>区间统计：</FooterTitle>
+                <FooterTotalWrap>
+                  <FooterTotalTitle>
+                    <p>买入</p>
+                    <p>卖出</p>
+                    <p>净资产</p>
+                  </FooterTotalTitle>
+
+                  <FooterTotalValue>
+                    <p>1000亿元</p>
+                    <p>10000亿元</p>
+                    <p>9000亿元</p>
+                  </FooterTotalValue>
+                </FooterTotalWrap>
+              </FooterFormWrap>
+            </Col>
+          </Row>
         </FooterWrap>
       </Container>
     );
-  }
-
-  getTabsPans() {
-    const counts = [70, 40, 50, 30, 80, 60, 20];
-    const target = [];
-    counts.forEach(value => {
-      target.push(<TabsPans value={value} />);
-    });
-    return target;
-  }
-
-  getListItem() {
-    const target = [];
-    for (let i = 0; i < 7; i++) {
-      const item = (
-        <ListItem>
-          <ListIcon i={i + 1}>{i + 1}</ListIcon>
-          <p>工专路{i}号店</p>
-          <span>323,234</span>
-        </ListItem>
-      );
-      target.push(item);
-    }
-    return target;
   }
 
   componentDidMount() {
@@ -675,7 +716,9 @@ const AnalysePage = connect(
         : state.get("secInfo"),
       interactData: state.get("interactData").toJS
         ? state.get("interactData").toJS()
-        : state.get("interactData")
+        : state.get("interactData"),
+
+      yearsTrendData: state.get("yearsTrendData")
     };
   },
   mutations => {
@@ -683,7 +726,9 @@ const AnalysePage = connect(
       getHeaderInfo: mutations.asyncGetHeaderInfo,
       getContentInfo: mutations.asyncGetContentInfo,
       getSecInfo: mutations.asyncGetSecInfo,
-      getFooterInfo: mutations.asyncGetFooterInfo
+      getFooterInfo: mutations.asyncGetFooterInfo,
+
+      getYearsTrendInfo: mutations.asyncGetYearsTrendInfo
     };
   }
 )(Analyse);
