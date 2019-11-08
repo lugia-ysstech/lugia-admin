@@ -86,7 +86,7 @@ const MemoContainer = styled(ItemContainer)`
 const ItemInnerContainer = styled.div`
   display: inline-block;
   box-sizing: border-box;
-  width: 15%;
+  width: 20%;
   text-align: right;
   margin-right: 15px;
   vertical-align: bottom;
@@ -94,7 +94,7 @@ const ItemInnerContainer = styled.div`
 const MemoInnerContainer = styled.div`
   display: inline-block;
   box-sizing: border-box;
-  width: 8%;
+  width: 10%;
   text-align: right;
   margin-right: 10px;
   vertical-align: top;
@@ -388,7 +388,7 @@ class StepForm extends Component {
       [Widget.Divider]: {
         VerticalDivider: {
           normal: {
-            width: 1,
+            width: 2,
             height: 170,
             background: {
               color: "#e8e8e8"
@@ -476,10 +476,12 @@ class StepForm extends Component {
             <InlineContainer>
               <TitleText>{"出票机构"}</TitleText>
               <StepsSecondInputContainer>
-                <Input
-                  placeholder={"深圳赢时胜技术股份有限公司"}
-                  onChange={this.props.ticketChange}
-                />
+                <Theme config={inputTicketView}>
+                  <Input
+                    placeholder={"深圳赢时胜技术股份有限公司"}
+                    onChange={this.props.ticketChange}
+                  />
+                </Theme>
               </StepsSecondInputContainer>
             </InlineContainer>
             {getSecondStepsOperation}
@@ -624,6 +626,15 @@ class StepForm extends Component {
           normal: {
             width: 970,
             height: 100
+          }
+        }
+      }
+    };
+    const inputTicketView = {
+      [Widget.Input]: {
+        Container: {
+          normal: {
+            width: 400
           }
         }
       }
