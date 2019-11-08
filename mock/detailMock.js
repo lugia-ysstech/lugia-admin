@@ -108,29 +108,34 @@ const getOperateLog = (req) => {
   const requestBody = req.body;
   const {searchInfo ='操作日志一'} = requestBody;
   const columns = [
-    {title: '操作类型', dataIndex: 'type', key:'type', width: 200},
-    {title: '操作人', dataIndex: 'name', key:'name', width: 100},
-    {title: '执行结果', dataIndex: 'result', key:'result', width: 100},
-    {title: '操作时间', dataIndex: 'operate_time', key:'operate_time',width: 200},
-    {title: '备注', dataIndex: 'remarks', key:'remarks',width: 100}
+    {title: '用户ID', dataIndex: 'id', key:'id',width:100},
+    {title: '使用者', dataIndex: 'name', key:'name',width:100},
+    {title: '邮箱', dataIndex: 'email', key:'email',width:100},
+    {title: '手机号', dataIndex: 'phone', key:'phone',width:100},
+    {title: '使用时间', dataIndex: 'times', key:'times',width:100},
+    {title: '状态', dataIndex: 'status', key:'status',width:100},
   ];
 
   const data ={
     '操作日志一':[
-      { type: '订购关系生效',name: '椰果果', result: '成功', operate_time: '2017-10-03 19:23:12', remarks:'-' },
-      { type: '财务复审',name: '夹心心', result: '驳回', operate_time: '2017-10-03 19:23:12', remarks:'不通过原因' },
-      { type: '部门初审',name: '瑞逛逛', result: '成功', operate_time: '2017-10-03 19:23:12', remarks:'-' },
-      { type: '提交订单',name: '颈脖脖', result: '成功', operate_time: '2017-10-03 19:23:12', remarks:'很棒' },
-      { type: '创建订单',name: '玉萌萌', result: '成功', operate_time: '2017-10-03 19:23:12', remarks:'-' },
+      { id: '00031',name: '椰果果', email: '13887767283@163.com', phone: '13887767283', times:'2019-11-11',status:'正在使用'},
+      { id: '00032',name: '脆卜卜', email: '283749301@qq.com', phone: '13655894743', times:'2019-10-23',status:'正在使用'},
+      { id: '00033',name: '瑞逛逛', email: '15674839933@163.com', phone: '15674839933', times:'2019-03-12',status:'正在使用'},
+      { id: '00034',name: '夹心心', email: 'Asyllabear@gmail.com', phone: '16647899870', times:'2018-03-12',status:'已禁用'},
+      { id: '00035',name: '玉萌萌', email: '328766046@qq.com', phone: '15834729965', times:'2018-03-12',status:'已禁用'},
+      { id: '00036',name: '脆霞霞', email: 'cuixiaixia@163.com', phone: '1336674302', times:'2018-03-12',status:'已禁用'},
+
 
     ],
     '操作日志二':[
-      { type: '订购关系生效',name: '瑞逛逛', result: '成功', operate_time: '2017-10-03 19:23:12', remarks:'-' },
+      { id: '00031',name: '椰果果', email: '13887767283@163.com', phone: '13887767283', times:'2019-11-11',status:'正在使用'},
+      { id: '00032',name: '脆卜卜', email: '283749301@qq.com', phone: '13655894743', times:'2019-10-23',status:'正在使用'},
 
 
     ],
     '操作日志三':[
-      { type: '创建订单',name: '玉萌萌', result: '成功', operate_time: '2017-10-03 19:23:12', remarks:'-' },
+      { id: '00035',name: '玉萌萌', email: '328766046@qq.com', phone: '15834729965', times:'2018-03-12',status:'已禁用'},
+      { id: '00036',name: '脆霞霞', email: 'cuixiaixia@163.com', phone: '1336674302', times:'2018-03-12',status:'已禁用'},
 
     ],
   } ;
@@ -179,8 +184,19 @@ const getAdvancedOrderInfo = (req) => {
       status:'1',
       price:'568.08'
     },
+    info :[
+      {title:'异地登陆',desc:'当有异地登陆您的账号密码时，给予消息提醒。',status:true},
+      {title:'数据修改基于消息提醒',desc:'当有数据进行最新更改时候数据',status:true},
+    ],
+    cooperate:[
+      {name:'玉萌萌',desc:'Lugia UED'},
+      {name:'脆卜卜',desc:'Lugia 高级UI交互设计师'},
+      {name:'椰果果',desc:'Lugia product manager'},
+      {name:'夹心心',desc:'Lugia UI'},
+      {name:'瑞逛逛',desc:'Lugia 人机交互专家'},
+      {name:'脆霞霞',desc:'Lugia 前端工程师'},
+    ]
   };
-
   return {...data};
 };
 

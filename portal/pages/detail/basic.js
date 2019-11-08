@@ -36,7 +36,7 @@ export const Block = styled.div`
 `;
 
 const StepsContainer = styled.div`
-  margin: 40px auto;
+  margin: 60px auto 40px;
   transform: translate(0,-50);
   background: #FAFAFA;
   border-radius: 4px;
@@ -68,7 +68,7 @@ export const FlexBox = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: start;
+  justify-content: ${props => props.justify || 'start'};
 `;
 
 const theme = {
@@ -154,7 +154,7 @@ class Basic extends Component{
               Container: {
                 normal: {
                   width: '100%',
-                  height: 460,
+                  height: 420,
                   margin: {
                     bottom: 10,
                     top: 40,

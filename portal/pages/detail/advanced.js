@@ -11,7 +11,7 @@ import PageHeader from "../../components/page-header";
 import PageContent from "../../components/page-content";
 import styled from "styled-components";
 import { getBorder, getBoxShadow,getBorderRadius } from '@lugia/theme-utils';
-import { Grid,Theme,Tabs,consts as Widget , Radio, Button, Dropmenu,Menu ,Divider,Steps,Card,Table,Icon,Avatar} from "@lugia/lugia-web";
+import { Grid,Theme,Tabs,consts as Widget , Radio, Button, Dropmenu,Menu ,Divider,Steps,Card,Table,Icon,Avatar,Switch} from "@lugia/lugia-web";
 import { Block ,Label,DescLabel ,FlexBox} from "./basic";
 import advanced from "../../models/detail/advanced";
 import {connect} from "@lugia/lugiax";
@@ -274,20 +274,20 @@ const theme = {
   },
   [Widget.Card]: {
     Container: {
-     normal:{
-       width: '100%',
-       borderRadius: getBorderRadius(0)
-     }
-    },
-    CardTitle: {
-      normal:{
+      normal: {
         width: '100%',
-        background:{
-          color:'#ccc'
+        height: 540,
+        margin: {
+          bottom: 10
         },
-      }
-
+        boxShadow: 0
+      },
     },
+    CardTitleTipLine:{
+      normal: {
+        width: 6,
+      },
+    }
   },
   [Widget.Tabs]: {
     ContentBlock: {
@@ -305,21 +305,6 @@ const theme = {
 
 };
 
-const HeadTheme ={
-  [Widget.Tabs]: {
-    BorderStyle: {
-      normal: {
-        border: {
-          bottom: {
-            width: 1,
-            color: 'transparent',
-            style: 'solid'
-          },
-        },
-      },
-    },
-  },
-};
 const dividerTheme ={
   [Widget.Divider]: {
     HorizontalDivider: {
@@ -354,6 +339,7 @@ const themeCardInfo = {
       },
     }
   },
+  ...dividerTheme
 };
 
 const propertyCard = {
@@ -385,6 +371,75 @@ const propertyCard = {
       },
     },
   },
+};
+
+const cooperateCard = {
+  [Widget.Card]: {
+    Container: {
+      normal: {
+        width: '100%',
+        height: 360,
+        margin: {
+          bottom: 10
+        },
+        boxShadow: 0
+      },
+    },
+    CardTitleTipLine:{
+      normal: {
+        width: 6,
+      },
+    }
+  },
+
+};
+
+const HAvatarCardCard = {
+  [Widget.Card]: {
+    Container: {
+      normal: {
+        width: 300,
+        height: 120,
+        margin: {
+          bottom: 30,
+          right: 40,
+          left: 40
+        },
+        boxShadow: 0
+      },
+    },
+    CardTitleTipLine:{
+      normal: {
+        width: 6,
+      },
+    },
+    CardTitle:{
+      normal: {
+        margin:{
+          top: 15
+        }
+      }
+    },
+    CardAvatarContainer: {
+      normal: {
+        margin:{
+          right: 5,
+          left: 25,
+          top: 25
+        }
+      },
+    },
+    CardAvatar:{
+      SrcAvatar:{
+        normal: {
+          height: 70,
+          width: 70,
+        },
+      }
+
+    }
+  },
+
 };
 
 
@@ -494,86 +549,59 @@ class Advanced extends Component{
           </Theme>
 
           <Theme config={themeCardInfo}>
-            <Card type={'tip'} title={'厂家信息'}>
+            <Card type={'tip'} title={'信息关联记录'}>
               <Block>
-                <FlexBox>
-                  {advancedOrderInfo.data && advancedOrderInfo.data.map((dataItem) => {
-                    const {text,value} = dataItem;
-                    return <Label>{text}：<DescLabel> {value} </DescLabel></Label>;
-                  })}
+                {advancedOrderInfo.info && advancedOrderInfo.info.map((infoItem) => {
+                  const {title,desc,status} = infoItem;
+                  return <React.Fragment>
+                    <FundTitle>{title}</FundTitle>
+                    <FlexBox justify={'space-between'}>
+                      <Text>{desc}</Text> <Switch defaultValue={status} />
+                    </FlexBox>
+
+                    <Divider/>
+                  </React.Fragment>;
+                })}
+              </Block>
+            </Card>
+          </Theme>
+
+          <Theme config={theme}>
+            <Card type={'tip'} title={'使用明细'}>
+              <Block>
+                  <Tabs onChange={this.onChange} data={tabsData} />
+              </Block>
+            </Card>
+          </Theme>
+          <Theme config={cooperateCard}>
+            <Card type={'tip'} title={'合作者'}>
+              <Block>
+                <FlexBox >
+                  <Theme config={HAvatarCardCard}>
+                    { advancedOrderInfo.cooperate && advancedOrderInfo.cooperate.map( item => {
+                      const {name,desc} = item;
+                      return <Card
+                        type={"avatar"}
+                        title={name}
+                        description={desc}
+                        avatar={avatar}
+                        shadow={"hover"}
+                      />
+                    })}
+
+                  </Theme>
+
                 </FlexBox>
+
               </Block>
             </Card>
           </Theme>
 
         </PageContent>
 
-
-        <Wrap>
-          <Theme config={theme}>
-          <UserInfoWrap>
-            <Tabs onChange={this.onChange} data={tabsData} />
-          </UserInfoWrap>
-          </Theme>
-        </Wrap>
       </Content>
    ;
   }
-
-  getHeaderDesc = (advancedOrderInfo) => {
-    console.log('advancedOrderInfo',advancedOrderInfo);
-    return <HeaderContent>
-      <Row>
-        <Col span={1}> </Col>
-        <Col span={19}>
-          <Title>单号：234231029431</Title>
-          <FlexBox>
-            {advancedOrderInfo && advancedOrderInfo.map( item => {
-              const {text,value} = item;
-              return (<Label width='50%'>{text}： <Text>{value}</Text> </Label>);
-            }
-            )}
-          </FlexBox>
-
-        </Col>
-        <Col span={4}>
-          <FlexBox  justify={'flex-end'}>
-            <RadioGroup childType='button' >
-
-              <RadioButton value='1'>操作</RadioButton>
-
-              <RadioButton value='2'>操作</RadioButton>
-
-              <RadioButton value='3' >...
-                {/*<Dropmenu menus={<Menu data={menu} />} action='hover'>*/}
-                  {/*<Dropmenu.Button type="basic"  divided={false}>...</Dropmenu.Button>*/}
-                {/*</Dropmenu>*/}
-              </RadioButton>
-
-            </RadioGroup>
-            <Button type='primary'>主操作</Button>
-          </FlexBox>
-          <FlexBox  justify={'flex-end'}>
-            <Container>
-              <HeaderLabel>状态</HeaderLabel>
-              <HeaderTitle>待审批</HeaderTitle>
-            </Container>
-            <Container>
-              <HeaderLabel>订单金额</HeaderLabel>
-              <HeaderTitle>¥ 568.08</HeaderTitle>
-            </Container>
-          </FlexBox>
-
-        </Col>
-
-      </Row>
-      <Theme config={HeadTheme}>
-        <Tabs data={defaultData} hideContent/>
-      </Theme>
-
-      </HeaderContent>
-    ;
-  };
 
   onChange = (res) => {
     const { activityValue } = res;
