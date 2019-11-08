@@ -9,12 +9,11 @@ import styled from "styled-components";
 import Content from "../../components/content";
 import PageHeader from "../../components/page-header";
 import PageContent from "../../components/page-content";
-import { Divider ,Theme ,consts as Widget,Table,Label as TextLabel ,Card,Steps,TimeLine} from "@lugia/lugia-web";
+import { Divider ,Theme ,consts as Widget,Table,Card,Steps} from "@lugia/lugia-web";
 import basic from "../../models/detail/basic";
 import {connect} from "@lugia/lugiax";
 
 const Step = Steps.Step;
-const TimeLineItem = TimeLine.TimeLineItem;
 
 const routes = [
   {
@@ -36,7 +35,7 @@ export const Block = styled.div`
 `;
 
 const StepsContainer = styled.div`
-  margin: 40px auto;
+  margin: 60px auto 40px;
   transform: translate(0,-50);
   background: #FAFAFA;
   border-radius: 4px;
@@ -68,7 +67,7 @@ export const FlexBox = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: start;
+  justify-content: ${props => props.justify || 'start'};
 `;
 
 const theme = {
@@ -154,7 +153,7 @@ class Basic extends Component{
               Container: {
                 normal: {
                   width: '100%',
-                  height: 460,
+                  height: 420,
                   margin: {
                     bottom: 10,
                     top: 40,
