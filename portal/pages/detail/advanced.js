@@ -11,19 +11,12 @@ import PageHeader from "../../components/page-header";
 import PageContent from "../../components/page-content";
 import styled from "styled-components";
 import { getBorder, getBoxShadow,getBorderRadius } from '@lugia/theme-utils';
-import { Grid,Theme,Tabs,consts as Widget , Radio, Button, Dropmenu,Menu ,Divider,Steps,Card,Table,Icon,Avatar,Switch} from "@lugia/lugia-web";
+import { Theme,Tabs,consts as Widget , Button, Divider,Steps,Card,Table,Avatar,Switch} from "@lugia/lugia-web";
 import { Block ,Label,DescLabel ,FlexBox} from "./basic";
 import advanced from "../../models/detail/advanced";
 import {connect} from "@lugia/lugiax";
 import avatar from "../../assets/images/logo.png";
 
-const TabPane = Tabs.TabPane;
-const Step = Steps.Step;
-const RadioButton = Radio.Button;
-
-const RadioGroup = Radio.Group;
-
-const { Row, Col } = Grid;
 
 const routes = [
   {
@@ -41,42 +34,10 @@ const routes = [
 const HeaderContent = styled.div`
 `;
 
-const Title = styled.div`
-  color: rgba(0,0,0,.85);
-  font-size: 20px;
-  padding: 16px 0;
-`;
-// const Label = styled.div`
-//   color: rgba(0,0,0,.85);
-//   font-size: 14px;
-//   width: ${props => props.width?props.width:'100%'};
-//   margin: 8px 0;
-// `;
 const Text = styled.span`
   color: rgba(0,0,0,.55);
 `;
-// const FlexBox = styled.div`
-//   display: flex;
-//   flex-direction: row;
-//   flex-wrap: wrap;
-//   justify-content: ${props => props.justify?props.justify:'space-between'};
-// `;
 
-const Container = styled.div`
-  text-align: right;
-  flex:1;
-  margin: 16px 0 0;
-`;
-
-const HeaderLabel = styled.div`
-  color: rgba(0,0,0,.45);
-  font-size: 14px;
-`;
-
-const HeaderTitle = styled.div`
-  color: rgba(0,0,0,.85);
-  font-size: 20px;
-`;
 const FundTitle = styled.div`
   color: rgba(0,0,0,.85);
   font-size: 14px;
@@ -91,32 +52,11 @@ const Link = styled.a`
   margin: 10px 0 ;
 `;
 
-const ContentTitle = styled.div`
-  color: rgba(0,0,0,.85);
-  font-size: 16px;
-  padding: 16px 0 16px 20px;
-`;
-
-const Wrap = styled.div`
-  margin: 0 20px 20px;
-  background: #fff;
-`;
-const CenterWrap = styled.div`
-  text-align:center;
-`;
 
 const UserInfoWrap = styled.div`
    padding: 20px;
 `;
 
-const DefaultText = styled.div`
-   padding: 40px 0;
-   color: rgba(0,0,0,.25);
-   font-size: 16px;
-   & i{
-    vertical-align: text-top;
-   }
-`;
 
 const InfoContainer = styled.div`
    border: 1px solid #e8e8e8;

@@ -9,12 +9,11 @@ import styled from "styled-components";
 import Content from "../../components/content";
 import PageHeader from "../../components/page-header";
 import PageContent from "../../components/page-content";
-import { Divider ,Theme ,consts as Widget,Table,Label as TextLabel ,Card,Steps,TimeLine} from "@lugia/lugia-web";
+import { Divider ,Theme ,consts as Widget,Table,Card,Steps} from "@lugia/lugia-web";
 import basic from "../../models/detail/basic";
 import {connect} from "@lugia/lugiax";
 
 const Step = Steps.Step;
-const TimeLineItem = TimeLine.TimeLineItem;
 
 const routes = [
   {
