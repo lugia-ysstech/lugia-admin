@@ -5,11 +5,11 @@ const getUserInfo = () => {
   const data = {
     avatar:'',
     name:'Lugia 脆',
-    desc:'我是好人~~',
+    desc:'北方多鸿雁，日落江河莫忘旧人曾婀娜。南方多阴雨，一缕炊烟似是梦中多归客。',
     company:{
-      title:'Lugia 主要贡献者',
-      department:'lugia - frontend - 研究院 - yss',
-      position: '北京市朝阳区'
+      title:'赢时胜信息技术有限公司',
+      department:'中国·北京',
+      position: 'Lugia UI'
     },
     remarks:['Lugia','好人','呆萌','啊噢','笔芯','及其优秀的'],
     group:[

@@ -59,7 +59,7 @@ const theme = {
           bottomRight:0
         },
         boxShadow: 'none',
-        height: 350
+        height: 320
       },
     },
     CardTitle: {
@@ -121,6 +121,39 @@ const theme = {
     },
   },
 };
+const themeImage = {
+  [Widget.Card]: {
+    Container: {
+      normal: {
+        margin:{
+          bottom: 16,
+          // right:  40
+        },
+        borderRadius:{
+          topLeft:0,
+          topRight:0,
+          bottomLeft:0,
+          bottomRight:0
+        },
+        boxShadow: 'none',
+        height: 207
+      },
+    },
+    CardTitle: {
+      normal:{
+        padding:{
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom:0
+        }
+      }
+    },
+    CardContent:{
+      normal: { padding:0 },
+    }
+  },
+};
 
 const randomImg={
   '1':loginBg,
@@ -131,10 +164,10 @@ const randomImg={
 
 export default class Application extends Component {
   render() {
-    const {data = []} = this.props;
+    const {data = [], showDesc = false} = this.props;
     return (
       <Row type="flex" justify="spaceBetween">
-        <Theme config={theme}>
+        <Theme config={showDesc?theme:themeImage}>
           {data && data.map( item => {
             const {img ,title,create_time,desc,member} = item;
             return <Col span={8}  xs={24}  md={12} lg={8} xl={8} xxl={8} >
@@ -142,20 +175,10 @@ export default class Application extends Component {
                 <ProjectImgBox>
                   <Img  src={randomImg[Math.floor(Math.random()*4+1)]} />
                 </ProjectImgBox>
-                <ProjectInfoBox>
+                {showDesc &&<ProjectInfoBox>
                   <Title>{title}</Title>
                   <Text>{desc}</Text>
-                  <FlexBox>
-                    <Label>{create_time}秒前</Label>
-                    <AvatarBox>
-                      {member.map( people => {
-                        const{name,head} = people;
-                        return <Tooltip title={name} action={'hover'} placement="top"><Avatar type={'img'} src={loginBg} /></Tooltip>;
-                      })}
-                    </AvatarBox>
-                  </FlexBox>
-
-                </ProjectInfoBox>
+                </ProjectInfoBox> }
 
               </Card>
 
