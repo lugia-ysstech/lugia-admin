@@ -8,39 +8,76 @@ import React from "react";
 const model = "stepForm";
 const state = {
   stepsInfo: {
-    stepsData: []
-  }
+  },
+  currentStepNumber: 1
 };
 export default lugiax.register({
   model,
   state,
   mutations: {
     sync: {
-      onPayAccountChange(state, inParam) {
+      ticketChange(state, inParam) {
         const { newValue } = inParam;
-        return state.setIn(["stepsInfo", "payAccount"], newValue);
+        return state.setIn(["stepsInfo", "ticket"], newValue);
       },
-      onReceiptAccountChange(state, inParam) {
+      memoChange(state, inParam) {
         const { newValue } = inParam;
-        return state.setIn(["stepsInfo", "receiptAccount"], newValue);
+        return state.setIn(["stepsInfo", "memo"], newValue);
       },
-      onReceiptTypeChange(state, inParam) {
+      typeChange(state, inParam) {
         const { newValue } = inParam;
-        return state.setIn(["stepsInfo", "receiptType"], newValue);
+        return state.setIn(["stepsInfo", "type"], newValue);
       },
-      onReceiptNameChange(state, inParam) {
+      belongChange(state, inParam) {
         const { newValue } = inParam;
-        return state.setIn(["stepsInfo", "receiptName"], newValue);
+        return state.setIn(["stepsInfo", "belong"], newValue);
       },
-      onTransferAmountChange(state, inParam) {
+      deductionChange(state, inParam) {
         const { newValue } = inParam;
-        return state.setIn(["stepsInfo", "transferAmount"], newValue);
+        return state.setIn(["stepsInfo", "deduction"], newValue);
       },
-      doNextStep(state, inParam, { mutations }) {
-        const { currentStepNumber } = inParam;
+      periodChange(state, inParam) {
+        const { newValue } = inParam;
+        return state.setIn(["stepsInfo", "period"], newValue);
+      },
+      reminderTimeChange(state, inParam) {
+        const { newValue } = inParam;
+        return state.setIn(["stepsInfo", "reminderTime"], newValue);
+      },
+      custodianChange(state, inParam) {
+        const { newValue } = inParam;
+        return state.setIn(["stepsInfo", "custodian"], newValue);
+      },
+      invoiceChange(state, inParam) {
+        const { newValue } = inParam;
+        return state.setIn(["stepsInfo", "invoice"], newValue);
+      },
+      dealerChange(state, inParam) {
+        const { newValue } = inParam;
+        return state.setIn(["stepsInfo", " dealer"], newValue);
+      },
+      payTimeChange(state, inParam) {
+        const { newValue } = inParam;
+        return state.setIn(["stepsInfo", "payTime"], newValue);
+      },
+      positionTimeChange(state, inParam) {
+        const { newValue } = inParam;
+        return state.setIn(["stepsInfo", "positionTime"], newValue);
+      },
+      doNextStep(state, inParam) {
+        const currentStepNumber = state.get("currentStepNumber");
         const theCurrentStepNumber =
           currentStepNumber > 3 ? 1 : currentStepNumber + 1;
-        return state.set("stepsInfo", "currentStepNumber", theCurrentStepNumber);
+        return state.set("currentStepNumber", theCurrentStepNumber);
+      },
+      doPreStep(state, inParam) {
+        const currentStepNumber = state.get("currentStepNumber");
+        const theCurrentStepNumber =
+          currentStepNumber <= 1 ? 3 : currentStepNumber - 1;
+        return state.set("currentStepNumber", theCurrentStepNumber);
+      },
+      reset(state, inParam) {
+        return state.set("currentStepNumber", 1);
       }
     },
     async: {}
