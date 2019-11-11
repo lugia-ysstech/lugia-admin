@@ -170,7 +170,6 @@ const getApplicationInfo = () => {
 };
 
 
-
 const getProjectInfo = () => {
 
   const data = [
@@ -299,6 +298,31 @@ const getProjectInfo = () => {
   return {data,total: 12};
 };
 
+const getCenterUserInfo = () => {
+
+  const data = {
+    sign:'There are many wild geese in the north, Don’t forget the elegant Zeng when\n' +
+    'the sun sets. it’s rainy in the south. A wisp of cooking smoke seems to be a \n' +
+    'fream for many returnees.',
+    curriculum:{
+      projectNumber: 18,
+      onlineProject: 12,
+      undone: 6,
+      workTime: 201
+    },
+    team:[
+      {logo:'lugia-icon-financial_heart_o',team:'大前端项目组'},
+      {logo:'lugia-icon-financial_like',team:'这个团队很skr'},
+      {logo:'lugia-icon-financial_smile_o',team:'设计师要嘤嘤嘤'},
+      {logo:'lugia-icon-logo_ysstech',team:'Lugia'},
+      {logo:'lugia-icon-financial_transfer_u',team:'只有一个小公主'},
+      {logo:'lugia-icon-financial_service',team:'火星炸地球'}
+    ]
+  };
+
+  return {data};
+};
+
 
 export default {
   "POST /api/personal/userInfo": function(req, res) {
@@ -312,5 +336,8 @@ export default {
   },
   "POST /api/personal/getProjectInfo": function(req, res) {
     res.json(getProjectInfo());
+  },
+  "POST /api/personalCenter/userInfo": function(req, res) {
+    res.json(getCenterUserInfo());
   },
 };
