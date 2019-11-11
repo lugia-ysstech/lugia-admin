@@ -9,6 +9,10 @@ import loginBg3 from "../../assets/images/color_img_theme_lucky.png";
 
 const {Row, Col} = Grid;
 
+const Container = styled.div`
+  text-align: left;
+`;
+
 const ProjectImgBox = styled.div`
    height: 205px;
    overflow: hidden;
@@ -166,26 +170,29 @@ export default class Application extends Component {
   render() {
     const {data = [], showDesc = false} = this.props;
     return (
-      <Row type="flex" justify="spaceBetween">
-        <Theme config={showDesc?theme:themeImage}>
-          {data && data.map( item => {
-            const {img ,title,create_time,desc,member} = item;
-            return <Col span={8}  xs={24}  md={12} lg={8} xl={8} xxl={8} >
-              <Card>
-                <ProjectImgBox>
-                  <Img  src={randomImg[Math.floor(Math.random()*4+1)]} />
-                </ProjectImgBox>
-                {showDesc &&<ProjectInfoBox>
-                  <Title>{title}</Title>
-                  <Text>{desc}</Text>
-                </ProjectInfoBox> }
+      <Container>
+        <Row type="flex" justify="spaceBetween">
+          <Theme config={showDesc?theme:themeImage}>
+            {data && data.map( item => {
+              const {img ,title,create_time,desc,member} = item;
+              return <Col span={8}  xs={24}  md={12} lg={8} xl={8} xxl={8} >
+                <Card>
+                  <ProjectImgBox>
+                    <Img  src={randomImg[Math.floor(Math.random()*4+1)]} />
+                  </ProjectImgBox>
+                  {showDesc &&<ProjectInfoBox>
+                    <Title>{title}</Title>
+                    <Text>{desc}</Text>
+                  </ProjectInfoBox> }
 
-              </Card>
+                </Card>
 
-            </Col> ;
-          })}
-        </Theme>
-      </Row>
+              </Col> ;
+            })}
+          </Theme>
+        </Row>
+      </Container>
+
 
     );
   }

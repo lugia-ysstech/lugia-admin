@@ -17,6 +17,7 @@ const randomImg={
 
 const UL = styled.ul`
   padding: 20px;
+  text-align: left;
 `;
 
 const Li = styled.li`

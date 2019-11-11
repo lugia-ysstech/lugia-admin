@@ -46,6 +46,9 @@ const Text = styled.div`
 const GroupBox = styled.div`
   margin: 10px;
 `;
+const TabsBox = styled.div`
+  text-align: center;
+`;
 
 const theme = {
   [Widget.Avatar]: {
@@ -61,7 +64,7 @@ const theme = {
     ContentBlock: {
       normal:{
         width: '100%',
-        height: 1600
+        height: 1200
       }
     },
     TitleContainer:{
@@ -189,7 +192,10 @@ class Center extends Component{
               </PageContent>
 
               <PageContent>
-                {this.getTabs()}
+                <TabsBox>
+                  {this.getTabs()}
+                </TabsBox>
+
               </PageContent>
         </Container>
       </Theme>
@@ -219,7 +225,7 @@ class Center extends Component{
       },
       {
         title: '关于页' ,
-        content:  <About data={projectInfo.data}/>,
+        content:  <About />,
         key: 'about',
       },
     ];

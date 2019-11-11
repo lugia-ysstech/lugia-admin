@@ -94,7 +94,6 @@ const theme = {
 };
 const themeSteps = {
   [Widget.Step]: {
-
       StepDescription:{
         normal: {
           margin: {
