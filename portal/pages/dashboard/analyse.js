@@ -80,7 +80,7 @@ const HeaderBoxContainer = styled.div`
 const HeaderTitle = styled.h3`
   font-size: 14px;
   font-weight: 900;
-  color: rgba(0, 0, 0, 0.8);
+  color: #333;
 `;
 
 const HeaderPercentBox = styled.div`
@@ -99,7 +99,7 @@ const HeaderPercentSpan = styled.span`
 const HeaderFooterBox = styled.div`
   font-size: 12px;
   line-height: 20px;
-  color: rgba(0, 0, 0, 0.8);
+  color: #333;
   text-align: right;
 `;
 
