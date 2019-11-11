@@ -39,7 +39,7 @@ const Text = styled.span`
 `;
 
 const FundTitle = styled.div`
-  color: rgba(0,0,0,.85);
+  color: #333;
   font-size: 14px;
   font-weight: bold;
   margin: 6px 0 ;
@@ -221,7 +221,8 @@ const theme = {
           bottom: 10,
           left: 20
         },
-        boxShadow: 0
+        boxShadow: 0,
+        border:0
       },
     },
     CardTitleTipLine:{
@@ -272,7 +273,8 @@ const themeCardInfo = {
           bottom: 10,
           left: 20
         },
-        boxShadow: 0
+        boxShadow: 0,
+        border:0
       },
     },
     CardTitleTipLine:{
@@ -294,7 +296,8 @@ const propertyCard = {
           bottom: 10,
           left: 20
         },
-        boxShadow: 0
+        boxShadow: 0,
+        border:0
       },
     },
     CardTitleTipLine:{
@@ -326,7 +329,8 @@ const cooperateCard = {
           bottom: 10,
           left: 20
         },
-        boxShadow: 0
+        boxShadow: 0,
+        border:0
       },
     },
     CardTitleTipLine:{
@@ -349,7 +353,8 @@ const HAvatarCardCard = {
           right: 40,
           left: 40
         },
-        boxShadow: 0
+        boxShadow: 0,
+        border:0
       },
     },
     CardTitleTipLine:{

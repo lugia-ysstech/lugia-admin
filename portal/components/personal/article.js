@@ -47,7 +47,7 @@ const Img = styled.img`
 
 
 const Title = styled.div`
-  color: rgba(0,0,0,.85);
+  color: #333;
   font-size: 16px;
   line-height: 24px;
   font-weight: 600;

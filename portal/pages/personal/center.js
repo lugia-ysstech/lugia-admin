@@ -30,7 +30,7 @@ const CenterContainer = styled.div`
 
 const Title = styled.div`
   margin: 20px 0 10px;
-  color: rgba(0,0,0,.85);
+  color: #333;
   font-size: 24px;
   line-height: 24px;
 `;

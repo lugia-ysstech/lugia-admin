@@ -20,6 +20,7 @@ const Content = styled.div`
   overflow: auto;
   flex: 1;
   padding: 0 60px;
+  color: #333;
 `;
 
 export default () => {

@@ -81,7 +81,8 @@ const theme = {
           bottom: 10,
           left: 20
         },
-        boxShadow: 0
+        boxShadow: 0,
+        border:0
       },
     },
     CardTitleTipLine:{
@@ -160,7 +161,8 @@ class Basic extends Component{
                     bottom: 10,
                     top: 20,
                   },
-                  boxShadow: 0
+                  boxShadow: 0,
+                  border:0
                 },
               },
               CardTitleTipLine:{
