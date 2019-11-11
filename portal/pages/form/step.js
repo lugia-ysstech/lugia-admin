@@ -1,6 +1,6 @@
 /**
  *
- * create by grguang
+ * create by liangguodong
  *
  * @flow
  */
@@ -18,56 +18,166 @@ import {
   NumberInput,
   Steps,
   AmountInput,
-  Avatar
+  Avatar,
+  DatePicker,
+  TimePicker,
+  Divider
 } from "@lugia/lugia-web";
 import styled from "styled-components";
 import Widget from "@lugia/lugia-web/dist/consts";
 import { connect } from "@lugia/lugiax";
 import stepForm from "../../models/form/step";
+import { getBorderRadius } from "@lugia/theme-utils";
+
+const { RangePicker } = DatePicker;
 
 const ItemContainer = styled.div`
   position: relative;
-  height: auto;
   zoom: 1;
-  display: block;
+  display: inline-block;
   box-sizing: border-box;
+  width: 48%;
   padding: 12px 0;
 `;
+
+const InlineContainer = styled.div`
+  display: inline-flex;
+  width: 100%;
+`;
+const InlineBlockContainer = styled.div`
+  display: inline-block;
+`;
+const BlockContainer = styled.div`
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 8px 0;
+`;
+const ThirdBlockContainer = styled(BlockContainer)`
+  text-align: center;
+`;
+const OperationContainer = styled.div`
+  display: inline-block;
+  width: 100%;
+  text-align: left;
+  margin: 15px 0;
+`;
+
 const StepContainer = styled(ItemContainer)`
   text-align: center;
   margin: 16px 0;
+  text-align: center;
+  width: 100%;
+`;
+const SecondStepContainer = styled(ItemContainer)`
+  text-align: center;
+  margin: 16px 0;
+  width: 600px;
+`;
+const ThirdStepsContentContainer = styled(SecondStepContainer)`
+  background: #fafafa;
+  border-radius: 4px;
+  border-radius: 4px;
+`;
+const MemoContainer = styled(ItemContainer)`
+  width: 100%;
 `;
 
 const ItemInnerContainer = styled.div`
   display: inline-block;
   box-sizing: border-box;
-  width: 40%;
+  width: 20%;
   text-align: right;
-  margin-right: 5px;
+  margin-right: 15px;
+  vertical-align: bottom;
+`;
+const MemoInnerContainer = styled.div`
+  display: inline-block;
+  box-sizing: border-box;
+  width: 10%;
+  text-align: right;
+  margin-right: 10px;
+  vertical-align: top;
 `;
 
 const ItemInputContainer = styled.div`
   display: inline-block;
   box-sizing: border-box;
-  width: 50%;
-  margin-left: 5px;
+  width: 60%;
+  vertical-align: top;
 `;
-const TitleContainer = styled.label`
+const OperationLeftContainer = styled.div`
+  display: inline-block;
+  box-sizing: border-box;
+  width: 12%;
+  vertical-align: top;
+`;
+const StepsSecondInputContainer = styled(ItemInputContainer)`
+  width: 40%;
+`;
+const Warpper = styled.div`
+  display: inline-block;
+  box-sizing: border-box;
+  width: 100%;
+`;
+const TitleText = styled.div`
   position: relative;
+  display: inline-block;
   height: 25px;
   line-height: 25px;
-  display: inline-block;
 `;
-const TitleText = styled.span`
+const StepsSecondTitleText = styled.div`
+  position: relative;
+  display: inline-block;
+  height: 25px;
+  line-height: 25px;
+  width: 80px;
+  font-size: 14px;
+  margin-right: 10px;
+`;
+const StepsSecondTitleRightText = styled(StepsSecondTitleText)`
+  text-align: right;
+`;
+const StepsSecondText = styled.div`
+  position: relative;
+  display: inline-block;
+  height: 25px;
+  line-height: 25px;
+  font-family: PingFangSC-Regular;
+  font-size: 14px;
+  color: #666666;
+`;
+const MemoText = styled.div`
   position: relative;
   display: inline-block;
   height: 25px;
   line-height: 25px;
 `;
-const SelectContainer = styled.div`
-  vertical-align: bottom;
-  display: inline-block;
+const MustStar = styled(TitleText)`
+  color: red;
+  font-size: 20px;
+  vertical-align: text-top;
 `;
+const PercentText = styled.span`
+  margin-left: 10px;
+  position: relative;
+  display: inline-block;
+  height: 25px;
+  line-height: 25px;
+  width: 10px;
+`;
+const ContentContainer = styled.div`
+  width: 100%;
+  height: 100px;
+  display: inline-block;
+  text-align: center;
+`;
+
+const SuccessText = styled.div`
+  margin-top: 30px;
+  font-size: 20px;
+`;
+
 const routes = [
   {
     path: "/dashboard/analyse",
@@ -84,187 +194,459 @@ const routes = [
 
 class StepForm extends Component {
   render() {
-    const {
-      onPayAccountChange,
-      onReceiptAccountChange,
-      onReceiptTypeChange,
-      onReceiptNameChange,
-      onTransferAmountChange
-    } = this.props;
-    const inputView = {
-      [Widget.Input]: {
-        Container: {
-          normal: {
-            width: 300
-          }
-        }
-      }
-    };
-
-    const getItem = data => () => {
-      return data.map(item => {
-        const {
-          title,
-          inputPlaceholder,
-          isAmount,
-          isSelect,
-          selectData,
-          selectView,
-          selectDefaultValue,
-          inputDefaultValue,
-          onChange,
-          amountOnChange,
-          onReceiptTypeChange,
-          accountInputView
-        } = item;
-        return (
-          <ItemContainer>
-            <ItemInnerContainer>
-              <TitleContainer>
-                <TitleText>{title}</TitleText>
-              </TitleContainer>
-            </ItemInnerContainer>
-            <ItemInputContainer>
-              {isSelect && (
-                <Theme config={selectView}>
-                  <SelectContainer>
-                    <Select
-                      createPortal
-                      data={selectData}
-                      displayField={"label"}
-                      defaultValue={selectDefaultValue}
-                      onChange={onReceiptTypeChange}
-                    />
-                  </SelectContainer>
-                </Theme>
-              )}
-              <Theme config={accountInputView || inputView}>
-                {!isAmount &&
-                  inputPlaceholder && (
-                    <Input placeholder={inputPlaceholder} onChange={onChange} />
-                  )}
-              </Theme>
-              {isAmount && (
-                <AmountInput
-                  defaultValue={inputDefaultValue}
-                  onChange={amountOnChange}
-                />
-              )}
-            </ItemInputContainer>
-          </ItemContainer>
-        );
-      });
-    };
-
     const steps = [
       {
-        title: "填写转账信息"
+        title: "创建任务",
+        currentStepNumber: 1
       },
       {
-        title: "确认转账信息"
+        title: "出具发票"
       },
       {
         title: "完成"
       }
     ];
-
+    const stepTheme = {
+      [Widget.Steps]: {
+        StepsOutContainer: {
+          normal: {
+            width: 600
+          }
+        }
+      }
+    };
     const getSteps = currentStepNumber => () => {
       return (
         <StepContainer>
-          <Steps data={steps} currentStepNumber={currentStepNumber || 1} />
+          <Theme config={stepTheme}>
+            <Steps
+              data={steps}
+              currentStepNumber={currentStepNumber}
+              desAlign={"center"}
+            />
+          </Theme>
         </StepContainer>
       );
     };
-    const payData = [
-      {
-        title: "付款账户",
-        isSelect: true,
-        selectData: [
-          {
-            value: "lugia-design@ysstech.com",
-            label: "lugia-design@ysstech.com"
-          }
-        ],
-        selectDefaultValue: "lugia-design@ysstech.com",
-        selectView: {
-          [Widget.Select]: {
-            InputTag: {
-              InputTagWrap: {
-                normal: {
-                  width: 300
-                }
-              }
+    const getFirstStepsView = currentStepNumber => {
+      if (currentStepNumber !== 1) {
+        return null;
+      }
+      return (
+        <div>
+          <Theme config={commonView}>
+            <Warpper>
+              <ItemContainer>
+                <ItemInnerContainer>
+                  <MustStar>*</MustStar>
+                  <TitleText>{"税费类型:"}</TitleText>
+                </ItemInnerContainer>
+                <ItemInputContainer>
+                  <Select
+                    createPortal
+                    data={selectData}
+                    displayField={"label"}
+                    placeholder={"财务报表"}
+                    onChange={this.props.typeChange}
+                  />
+                </ItemInputContainer>
+              </ItemContainer>
+              <ItemContainer>
+                <ItemInnerContainer>
+                  <MustStar>*</MustStar>
+                  <TitleText>{"托管行："}</TitleText>
+                </ItemInnerContainer>
+                <ItemInputContainer>
+                  <Select
+                    createPortal
+                    data={selectData}
+                    displayField={"label"}
+                    placeholder={"中国农业银行"}
+                    onChange={this.props.custodianChange}
+                  />
+                </ItemInputContainer>
+              </ItemContainer>
+            </Warpper>
+            <Warpper>
+              <ItemContainer>
+                <ItemInnerContainer>
+                  <MustStar>*</MustStar>
+                  <TitleText>{"税务归属："}</TitleText>
+                </ItemInnerContainer>
+                <ItemInputContainer>
+                  <Select
+                    createPortal
+                    data={selectData}
+                    displayField={"label"}
+                    placeholder={"XXX资产单元"}
+                    onChange={this.props.belongChange}
+                  />
+                </ItemInputContainer>
+              </ItemContainer>
+              <ItemContainer>
+                <ItemInnerContainer>
+                  <TitleText>{"券商:"}</TitleText>
+                </ItemInnerContainer>
+                <ItemInputContainer>
+                  <Input
+                    placeholder={"******"}
+                    onChange={this.props.dealerChange}
+                  />
+                </ItemInputContainer>
+              </ItemContainer>
+            </Warpper>
+            <Warpper>
+              <ItemContainer>
+                <ItemInnerContainer>
+                  <MustStar>*</MustStar>
+                  <TitleText>{"抵扣比例:"}</TitleText>
+                </ItemInnerContainer>
+                <ItemInputContainer>
+                  <NumberInput
+                    placeholder={10}
+                    onChange={this.props.deductionChange}
+                  />
+                  <PercentText>{"%"}</PercentText>
+                </ItemInputContainer>
+              </ItemContainer>
+              <ItemContainer>
+                <ItemInnerContainer>
+                  <MustStar>*</MustStar>
+                  <TitleText>{"发票:"}</TitleText>
+                </ItemInnerContainer>
+                <ItemInputContainer>
+                  <Select
+                    createPortal
+                    data={selectData}
+                    displayField={"label"}
+                    placeholder={"发票前置"}
+                    onChange={this.props.invoiceChange}
+                  />
+                </ItemInputContainer>
+              </ItemContainer>
+            </Warpper>
+          </Theme>
+          <Warpper>
+            <ItemContainer>
+              <ItemInnerContainer>
+                <MustStar>*</MustStar>
+                <TitleText>{"税费所属期间："}</TitleText>
+              </ItemInnerContainer>
+              <RangePicker
+                format={"YYYY-MM-DD"}
+                onChange={this.props.periodChange}
+              />
+            </ItemContainer>
+            <ItemContainer>
+              <ItemInnerContainer>
+                <MustStar>*</MustStar>
+                <TitleText>{"支付时间:"}</TitleText>
+              </ItemInnerContainer>
+              <TimePicker
+                placeholder={"选择时间"}
+                onChange={this.props.payTimeChange}
+              />
+            </ItemContainer>
+          </Warpper>
+          <Warpper>
+            <ItemContainer>
+              <ItemInnerContainer>
+                <MustStar>*</MustStar>
+                <TitleText>{"任务提醒时间："}</TitleText>
+              </ItemInnerContainer>
+              <TimePicker
+                placeholder={"选择时间"}
+                onChange={this.props.reminderTimeChange}
+              />
+            </ItemContainer>
+            <ItemContainer>
+              <ItemInnerContainer>
+                <MustStar>*</MustStar>
+                <TitleText>{"头寸时间"}</TitleText>
+              </ItemInnerContainer>
+              <TimePicker
+                placeholder={"选择时间"}
+                onChange={this.props.positionTimeChange}
+              />
+            </ItemContainer>
+          </Warpper>
+          <MemoContainer>
+            <MemoInnerContainer>
+              <MemoText>{"备注:"}</MemoText>
+            </MemoInnerContainer>
+            <ItemInputContainer>
+              <Theme config={inputMemoView}>
+                <Input onChange={this.props.memoChange} />
+              </Theme>
+            </ItemInputContainer>
+          </MemoContainer>
+          {getFirstStepsOperation}
+        </div>
+      );
+    };
+    const verticalDivider = {
+      [Widget.Divider]: {
+        VerticalDivider: {
+          normal: {
+            width: 2,
+            height: 170,
+            background: {
+              color: "#e8e8e8"
             }
           }
-        },
-        onChange: onPayAccountChange
+        }
       }
-    ];
-    const receiptData = [
-      {
-        title: "收款人姓名:",
-        inputPlaceholder: "Lugia",
-        onChange: onReceiptNameChange
+    };
+    const hDivider = {
+      [Widget.Divider]: {
+        HorizontalDivider: {
+          normal: {
+            background: {
+              color: "#e8e8e8"
+            },
+            margin: {
+              top: 20,
+              bottom: 20
+            }
+          }
+        }
       }
-    ];
+    };
+    const getSecondStepsView = currentStepNumber => {
+      if (currentStepNumber !== 2) {
+        return null;
+      }
+      return (
+        <StepContainer>
+          <SecondStepContainer>
+            <Theme config={commonView}>
+              <InlineContainer>
+                <BlockContainer>
+                  <BlockContainer>
+                    <StepsSecondTitleText>{"核算类型"}</StepsSecondTitleText>
+                    <StepsSecondText>{"财务报表"}</StepsSecondText>
+                  </BlockContainer>
+                  <BlockContainer>
+                    <StepsSecondTitleText>{"托管行"}</StepsSecondTitleText>
+                    <StepsSecondText>{"中国农业银行"}</StepsSecondText>
+                  </BlockContainer>
+                  <BlockContainer>
+                    <StepsSecondTitleText>{"税务归属"}</StepsSecondTitleText>
+                    <StepsSecondText>{"中国农业资产单元"}</StepsSecondText>
+                  </BlockContainer>
+                  <BlockContainer>
+                    <StepsSecondTitleText>{"抵扣比例"}</StepsSecondTitleText>
+                    <StepsSecondText>{"10%"}</StepsSecondText>
+                  </BlockContainer>
+                </BlockContainer>
+                <Theme config={verticalDivider}>
+                  <Divider type={"vertical"}> </Divider>
+                </Theme>
+                <BlockContainer>
+                  <BlockContainer>
+                    <StepsSecondTitleRightText>
+                      {"券商"}
+                    </StepsSecondTitleRightText>
+                    <StepsSecondText>{"农业银行"}</StepsSecondText>
+                  </BlockContainer>
+                  <BlockContainer>
+                    <StepsSecondTitleRightText>
+                      {"发票"}
+                    </StepsSecondTitleRightText>
+                    <StepsSecondText>{"发票前置"}</StepsSecondText>
+                  </BlockContainer>
+                  <BlockContainer>
+                    <StepsSecondTitleRightText>
+                      {"支付时间"}
+                    </StepsSecondTitleRightText>
+                    <StepsSecondText>{"2018年10月21日"}</StepsSecondText>
+                  </BlockContainer>
+                  <BlockContainer>
+                    <StepsSecondTitleRightText>
+                      {"头寸时间"}
+                    </StepsSecondTitleRightText>
+                    <StepsSecondText>{"2018年10月21日"}</StepsSecondText>
+                  </BlockContainer>
+                </BlockContainer>
+              </InlineContainer>
+            </Theme>
+            <Theme config={hDivider}>
+              <Divider> </Divider>
+            </Theme>
+            <InlineContainer>
+              <TitleText>{"出票机构"}</TitleText>
+              <StepsSecondInputContainer>
+                <Theme config={inputTicketView}>
+                  <Input
+                    placeholder={"深圳赢时胜技术股份有限公司"}
+                    onChange={this.props.ticketChange}
+                  />
+                </Theme>
+              </StepsSecondInputContainer>
+            </InlineContainer>
+            {getSecondStepsOperation}
+          </SecondStepContainer>
+        </StepContainer>
+      );
+    };
 
-    const receiptAccountData = [
-      {
-        title: "收款账户:",
-        isSelect: true,
-        selectDefaultValue: "支付宝",
-        selectData: [
-          { value: "支付宝", label: "支付宝" },
-          { value: "银行账户", label: "银行账户" }
-        ],
-        selectView: {
-          [Widget.Select]: {
-            InputTag: {
-              InputTagWrap: {
-                normal: {
-                  width: 100
-                }
-              }
+    const thirdStepsiconTheme = {
+      [Widget.Icon]: {
+        Icon: {
+          normal: {
+            fontSize: 56,
+            color: "#56c22d"
+          }
+        }
+      }
+    };
+    const getThirdStepsView = currentStepNumber => {
+      if (currentStepNumber !== 3) {
+        return null;
+      }
+      return (
+        <div>
+          <ContentContainer>
+            <Theme config={thirdStepsiconTheme}>
+              <Icon iconClass={"lugia-icon-reminder_check_circle"} />
+            </Theme>
+            <SuccessText>{"操作成功"}</SuccessText>
+          </ContentContainer>
+          <StepContainer>
+            <ThirdStepsContentContainer>
+              <ThirdBlockContainer>
+                <ThirdBlockContainer>
+                  <StepsSecondTitleRightText>
+                    {"托管行"}
+                  </StepsSecondTitleRightText>
+                  <StepsSecondText>{"中国农业银行"}</StepsSecondText>
+                </ThirdBlockContainer>
+                <ThirdBlockContainer>
+                  <StepsSecondTitleRightText>
+                    {"税务归属"}
+                  </StepsSecondTitleRightText>
+                  <StepsSecondText>{"中国农业资产单元"}</StepsSecondText>
+                </ThirdBlockContainer>
+                <ThirdBlockContainer>
+                  <StepsSecondTitleRightText>
+                    {"支付时间"}
+                  </StepsSecondTitleRightText>
+                  <StepsSecondText>{"2018年10月21日"}</StepsSecondText>
+                </ThirdBlockContainer>
+                <ThirdBlockContainer>
+                  <StepsSecondTitleRightText>
+                    {"头寸时间"}
+                  </StepsSecondTitleRightText>
+                  <StepsSecondText>{"2018年10月21日"}</StepsSecondText>
+                </ThirdBlockContainer>
+              </ThirdBlockContainer>
+            </ThirdStepsContentContainer>
+          </StepContainer>
+          {getThirdStepsOperation}
+        </div>
+      );
+    };
+    const saveButtonTheme = {
+      [Widget.Button]: {
+        Container: {
+          normal: {
+            borderRadius: getBorderRadius(16),
+            margin: {
+              right: 20
             }
           }
-        },
-        accountInputView: {
-          [Widget.Input]: {
-            Container: {
-              normal: {
-                width: 190,
-                margin: {
-                  left: 10
-                }
-              }
-            }
-          }
-        },
-        inputPlaceholder: "lugia-design@ysstech.com",
-        onReceiptTypeChange: onReceiptTypeChange,
-        onChange: onReceiptAccountChange
+        }
       }
-    ];
-    const transferData = [
-      {
-        title: "转账金额:",
-        inputDefaultValue: 500,
-        isAmount: true,
-        inputPlaceholder: "请输入衡量标准",
-        amountOnChange: onTransferAmountChange
-      }
-    ];
-    const getOperation = (
+    };
+    const getFirstStepsOperation = (
       <ItemContainer>
         <ItemInnerContainer />
         <ItemInputContainer>
-          <Button onClick={this.props.doNextStep} type={"primary"}>
-            {"下一步"}
-          </Button>
+          <Theme config={saveButtonTheme}>
+            <Button onClick={this.props.doNextStep} type={"primary"}>
+              {"下一步"}
+            </Button>
+            <Button onClick={this.props.reset}>重置</Button>
+          </Theme>
         </ItemInputContainer>
       </ItemContainer>
     );
-    const { currentStepNumber } = this.props;
+    const getSecondStepsOperation = (
+      <OperationContainer>
+        <OperationLeftContainer />
+        <InlineBlockContainer>
+          <Theme config={saveButtonTheme}>
+            <Button onClick={this.props.doNextStep} type={"primary"}>
+              {"下一步"}
+            </Button>
+            <Button onClick={this.props.doPreStep}>{"上一步"}</Button>
+          </Theme>
+        </InlineBlockContainer>
+      </OperationContainer>
+    );
+    const getThirdStepsOperation = (
+      <StepContainer>
+        <ItemInputContainer>
+          <Theme config={saveButtonTheme}>
+            <Button type={"primary"}>完成</Button>
+            <Button>查看明细</Button>
+          </Theme>
+        </ItemInputContainer>
+      </StepContainer>
+    );
+    const { currentStepNumber = 1 } = this.props;
+    const commonView = {
+      [Widget.NumberInput]: {
+        Container: {
+          normal: {
+            width: 310
+          }
+        }
+      },
+      [Widget.Input]: {
+        Container: {
+          normal: {
+            width: 330
+          }
+        }
+      },
+      [Widget.Select]: {
+        InputTag: {
+          InputTagWrap: {
+            normal: {
+              width: 330
+            }
+          }
+        }
+      }
+    };
+    const inputMemoView = {
+      [Widget.Input]: {
+        Container: {
+          normal: {
+            width: 970,
+            height: 100
+          }
+        }
+      }
+    };
+    const inputTicketView = {
+      [Widget.Input]: {
+        Container: {
+          normal: {
+            width: 400
+          }
+        }
+      }
+    };
+    const selectData = [
+      { value: "xxx", label: "xxxxx" },
+      { value: "xxx", label: "xxxxx" },
+      { value: "xxx", label: "xxxxx" },
+      { value: "xxx", label: "xxxxx" },
+      { value: "xxx", label: "xxxxx" },
+      { value: "xxx", label: "xxxxx" }
+    ];
     return (
       <Content>
         <PageHeader
@@ -273,14 +655,10 @@ class StepForm extends Component {
           desc={"将一个冗长或用户不熟悉的表单任务分成多个步骤，指导用户完成。"}
         />
         <PageContent>
-          <div>
-            {getSteps(currentStepNumber)()}
-            {getItem(payData)()}
-            {getItem(receiptAccountData)()}
-            {getItem(receiptData)()}
-            {getItem(transferData)()}
-            {getOperation}
-          </div>
+          {getSteps(currentStepNumber)()}
+          {getFirstStepsView(currentStepNumber)}
+          {getSecondStepsView(currentStepNumber)}
+          {getThirdStepsView(currentStepNumber)}
         </PageContent>
       </Content>
     );
@@ -290,20 +668,30 @@ class StepForm extends Component {
 const StepFormPage = connect(
   stepForm,
   state => {
-    const stepsInfo = stepForm.getState().get("stepForm");
-    const currentStepNumber = state.getIn([stepsInfo, "currentStepNumber"]);
+    const currentStepNumber = state.get("currentStepNumber");
     return {
       currentStepNumber
     };
   },
   mutations => {
     return {
-      onPayAccountChange: mutations.onTitleChange,
-      onReceiptAccountChange: mutations.onReceiptAccountChange,
-      onReceiptTypeChange: mutations.onReceiptTypeChange,
-      onReceiptNameChange: mutations.onReceiptNameChange,
-      onTransferAmountChange: mutations.onTransferAmountChange,
-      doNextStep: mutations.doNextStep
+      ticketChange: mutations.ticketChange,
+      memoChange: mutations.memoChange,
+
+      typeChange: mutations.typeChange,
+      belongChange: mutations.belongChange,
+      deductionChange: mutations.deductionChange,
+      periodChange: mutations.periodChange,
+      reminderTimeChange: mutations.reminderTimeChange,
+      custodianChange: mutations.custodianChange,
+      dealerChange: mutations.dealerChange,
+      invoiceChange: mutations.invoiceChange,
+      payTimeChange: mutations.payTimeChange,
+      positionTimeChange: mutations.positionTimeChange,
+
+      doNextStep: mutations.doNextStep,
+      doPreStep: mutations.doPreStep,
+      reset: mutations.reset
     };
   }
 )(StepForm);
