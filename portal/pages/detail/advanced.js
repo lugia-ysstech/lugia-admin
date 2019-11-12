@@ -39,7 +39,7 @@ const Text = styled.span`
 `;
 
 const FundTitle = styled.div`
-  color: rgba(0,0,0,.85);
+  color: #333;
   font-size: 14px;
   font-weight: bold;
   margin: 6px 0 ;
@@ -218,9 +218,11 @@ const theme = {
         width: '100%',
         height: 540,
         margin: {
-          bottom: 10
+          bottom: 10,
+          left: 20
         },
-        boxShadow: 0
+        boxShadow: 0,
+        border:0
       },
     },
     CardTitleTipLine:{
@@ -268,9 +270,11 @@ const themeCardInfo = {
         width: '100%',
         height: 200,
         margin: {
-          bottom: 10
+          bottom: 10,
+          left: 20
         },
-        boxShadow: 0
+        boxShadow: 0,
+        border:0
       },
     },
     CardTitleTipLine:{
@@ -289,9 +293,11 @@ const propertyCard = {
         width: '100%',
         height: 540,
         margin: {
-          bottom: 10
+          bottom: 10,
+          left: 20
         },
-        boxShadow: 0
+        boxShadow: 0,
+        border:0
       },
     },
     CardTitleTipLine:{
@@ -320,9 +326,11 @@ const cooperateCard = {
         width: '100%',
         height: 360,
         margin: {
-          bottom: 10
+          bottom: 10,
+          left: 20
         },
-        boxShadow: 0
+        boxShadow: 0,
+        border:0
       },
     },
     CardTitleTipLine:{
@@ -345,7 +353,8 @@ const HAvatarCardCard = {
           right: 40,
           left: 40
         },
-        boxShadow: 0
+        boxShadow: 0,
+        border:0
       },
     },
     CardTitleTipLine:{
@@ -430,7 +439,7 @@ class Advanced extends Component{
     ];
     return <Content>
         <PageHeader routes={routes} title={"高级详情页"} desc={'高级详情页完全展示一个信息的全部面貌，在高级详情页面尽量较少可操作项。'}/>
-        <PageContent>
+        {/*<PageContent>*/}
           <Theme config={themeCardInfo}>
             <Card type={'tip'} title={'厂家信息'}>
               <Block>
@@ -537,7 +546,7 @@ class Advanced extends Component{
             </Card>
           </Theme>
 
-        </PageContent>
+        {/*</PageContent>*/}
 
       </Content>
    ;

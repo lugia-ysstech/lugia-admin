@@ -6,7 +6,7 @@
  */
 import React from "react";
 import { go, Link } from "@lugia/lugiax-router";
-import { Icon, Avatar, Popover } from "@lugia/lugia-web";
+import { Icon, Avatar, Popover ,Theme, consts as Widget} from "@lugia/lugia-web";
 import styled from "styled-components";
 
 const HeaderContainer = styled.div`
@@ -83,8 +83,8 @@ const CommonIconWrap = styled.div`
 
 const AvatarWrap = styled.div`
   display: inline-block;
-  width: 40px;
-  height: 40px;
+  width: 32px;
+  height: 32px;
   position: relative;
   top: 50%;
   transform: translateY(-50%);
@@ -99,6 +99,17 @@ const Img = styled.img`
   width: 100%;
   height: 100%;
 `;
+const theme= {
+  [Widget.Avatar]: {
+    Container: {
+      normal: {
+        height: 32,
+        width: 32,
+        boxShadow:' 0 0 1px 1px  red'
+      },
+    },
+  },
+};
 
 export default class Header extends React.Component<> {
   render() {
@@ -157,22 +168,26 @@ export default class Header extends React.Component<> {
             </Popover>
           </CommonIconWrap>
           <AvatarWrap>
-            <Popover
-              placement="bottom"
-              action={"hover"}
-              description={[
-                <div onClick={e => this.onClick()}>退出登陆</div>
-              ]}
-            >
-              <div>
-                <Avatar
-                  shape={"circle"}
-                  src="http://192.168.102.73:8081/BigFrontend/Work/ued/lugia/raw/master/lugiaweb%E7%BB%84%E4%BB%B6/%E5%A4%B4%E5%83%8F/32.jpg"
-                  msgNum={99}
-                  size={"small"}
-                />
-              </div>
-            </Popover>
+            <Theme config={theme}>
+              <Popover
+                placement="bottom"
+                action={"hover"}
+                description={[
+                  <div onClick={e => this.onClick()}>退出登陆</div>
+                ]}
+              >
+                <div>
+                  <Avatar
+                    shape={"circle"}
+                    src="http://192.168.102.73:8081/BigFrontend/Work/ued/lugia/raw/master/lugiaweb%E7%BB%84%E4%BB%B6/%E5%A4%B4%E5%83%8F/32.jpg"
+                    msgNum={99}
+                    size={"small"}
+                    type={'img'}
+                  />
+                </div>
+              </Popover>
+            </Theme>
+
           </AvatarWrap>
         </ActionListContainer>
       </HeaderContainer>

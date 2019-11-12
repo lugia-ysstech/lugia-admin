@@ -5,11 +5,11 @@ const getUserInfo = () => {
   const data = {
     avatar:'',
     name:'Lugia 脆',
-    desc:'我是好人~~',
+    desc:'北方多鸿雁，日落江河莫忘旧人曾婀娜。南方多阴雨，一缕炊烟似是梦中多归客。',
     company:{
-      title:'Lugia 主要贡献者',
-      department:'lugia - frontend - 研究院 - yss',
-      position: '北京市朝阳区'
+      title:'赢时胜信息技术有限公司',
+      department:'中国·北京',
+      position: 'Lugia UI'
     },
     remarks:['Lugia','好人','呆萌','啊噢','笔芯','及其优秀的'],
     group:[
@@ -170,7 +170,6 @@ const getApplicationInfo = () => {
 };
 
 
-
 const getProjectInfo = () => {
 
   const data = [
@@ -299,6 +298,31 @@ const getProjectInfo = () => {
   return {data,total: 12};
 };
 
+const getCenterUserInfo = () => {
+
+  const data = {
+    sign:'There are many wild geese in the north, Don’t forget the elegant Zeng when\n' +
+    'the sun sets. it’s rainy in the south. A wisp of cooking smoke seems to be a \n' +
+    'fream for many returnees.',
+    curriculum:{
+      projectNumber: 18,
+      onlineProject: 12,
+      undone: 6,
+      workTime: 201
+    },
+    team:[
+      {logo:'lugia-icon-financial_heart_o',team:'大前端项目组'},
+      {logo:'lugia-icon-financial_like',team:'这个团队很skr'},
+      {logo:'lugia-icon-financial_smile_o',team:'设计师要嘤嘤嘤'},
+      {logo:'lugia-icon-logo_ysstech',team:'Lugia'},
+      {logo:'lugia-icon-financial_transfer_u',team:'只有一个小公主'},
+      {logo:'lugia-icon-financial_service',team:'火星炸地球'}
+    ]
+  };
+
+  return {data};
+};
+
 
 export default {
   "POST /api/personal/userInfo": function(req, res) {
@@ -312,5 +336,8 @@ export default {
   },
   "POST /api/personal/getProjectInfo": function(req, res) {
     res.json(getProjectInfo());
+  },
+  "POST /api/personalCenter/userInfo": function(req, res) {
+    res.json(getCenterUserInfo());
   },
 };

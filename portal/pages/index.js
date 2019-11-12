@@ -19,6 +19,8 @@ const Content = styled.div`
   flex-wrap: nowrap;
   overflow: auto;
   flex: 1;
+  padding: 0 20px;
+  color: #333;
 `;
 
 export default () => {

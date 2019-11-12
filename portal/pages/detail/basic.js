@@ -39,7 +39,8 @@ const StepsContainer = styled.div`
   transform: translate(0,-50);
   background: #FAFAFA;
   border-radius: 4px;
-  width: 60%;
+  width: 70%;
+  min-width: 900px;
   padding: 20px  20px 40px;
 `;
 
@@ -77,9 +78,11 @@ const theme = {
         width: '100%',
         height: 200,
         margin: {
-          bottom: 10
+          bottom: 10,
+          left: 20
         },
-        boxShadow: 0
+        boxShadow: 0,
+        border:0
       },
     },
     CardTitleTipLine:{
@@ -91,7 +94,6 @@ const theme = {
 };
 const themeSteps = {
   [Widget.Step]: {
-
       StepDescription:{
         normal: {
           margin: {
@@ -128,7 +130,7 @@ class Basic extends Component{
     return  <Content>
       <PageHeader routes={routes} title={"简单详情页"} desc={'简单详情页用于基础的详情信息的展现'} />
       <Theme config={theme}>
-        <PageContent>
+        {/*<PageContent>*/}
           <Card type={'tip'} title={'详细信息'}>
             <Block>
               {basicDetailInfo.map((item) => {
@@ -156,9 +158,10 @@ class Basic extends Component{
                   height: 420,
                   margin: {
                     bottom: 10,
-                    top: 40,
+                    top: 20,
                   },
-                  boxShadow: 0
+                  boxShadow: 0,
+                  border:0
                 },
               },
               CardTitleTipLine:{
@@ -206,7 +209,7 @@ class Basic extends Component{
           </Theme>
 
 
-        </PageContent>
+        {/*</PageContent>*/}
       </Theme>
     </Content>;
   }

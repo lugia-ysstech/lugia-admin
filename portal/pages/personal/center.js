@@ -11,7 +11,7 @@ import Content from "../../components/content";
 import PageContent from "../../components/page-content";
 import avatar from "../../assets/images/logo.png";
 import Article from "../../components/personal/article";
-import Application from "../../components/personal/application";
+import About from "../../components/personal/about";
 import Project from "../../components/personal/project";
 
 import {Grid,Avatar,consts as Widget,Theme,Label,Tabs,Icon,Divider,Button} from '@lugia/lugia-web';
@@ -30,18 +30,24 @@ const CenterContainer = styled.div`
 
 const Title = styled.div`
   margin: 20px 0 10px;
-  color: rgba(0,0,0,.85);
-  font-size: 16px;
+  color: #333;
+  font-size: 24px;
   line-height: 24px;
 `;
 const Text = styled.div`
   margin: 14px 0 ;
-  color: rgba(0,0,0,.85);
+  color: rgba(0,0,0,.45);
   font-size: 14px;
+  & i{
+  vertical-align: middle;
+  }
 `;
 
 const GroupBox = styled.div`
   margin: 10px;
+`;
+const TabsBox = styled.div`
+  text-align: center;
 `;
 
 const theme = {
@@ -58,7 +64,7 @@ const theme = {
     ContentBlock: {
       normal:{
         width: '100%',
-        height: 1600
+        height: 1200
       }
     },
     TitleContainer:{
@@ -94,6 +100,30 @@ const theme = {
         margin:{
           top: 20,
           bottom: 20
+        }
+      },
+    },
+  },
+  [Widget.Icon]: {
+    Icon: {
+      normal: {
+        margin:{
+          left: 30,
+          right: 4
+        }
+      },
+    },
+  },
+};
+const iconTheme = {
+  [Widget.Icon]: {
+    Icon: {
+      normal: {
+        margin:{
+          left: 50,
+        },
+        font: {
+          size: 20
         }
       },
     },
@@ -140,47 +170,33 @@ class Center extends Component{
     return <Content>
     <Theme config={theme}>
         <Container>
-          <Row>
-            <Col  xs={24}  md={24}  span={7}  >
               <PageContent>
                 <CenterContainer>
                   <Avatar type={'img'}  src={avatar} />
                   <Title>{userInfo.name}</Title>
                   <Label>{userInfo.desc}</Label>
-                </CenterContainer>
-                <Text><Icon iconClass={"lugia-icon-financial_audit"} />  {userInfo.company && userInfo.company.title}</Text>
-                <Text><Icon iconClass={"lugia-icon-financial_group"} />  {userInfo.company && userInfo.company.department}</Text>
-                <Text><Icon iconClass={"lugia-icon-financial_tag"} />  {userInfo.company && userInfo.company.position}</Text>
-                <Divider dashed={true}/>
-                <Text>标签</Text>
-                {userInfo.remarks && userInfo.remarks.map( item => {
-                  return <Button>{item}</Button>
-                })}
-                <Button> + </Button>
-                <Divider dashed={true}/>
-                <Text>团队</Text>
-                <Theme config={avatarTheme}>
-                <Row>
-                    {userInfo.group && userInfo.group.map( item => {
-                      const {logo,team} = item;
-                      return  <Col xs={24}  span={12}>
-                        <GroupBox>
-                          <Avatar type={'img'}  src={avatar} />
-                          <Label>{team}</Label>
-                        </GroupBox>
+                  <Text><Icon iconClass={"lugia-icon-financial_audit"} />  {userInfo.company && userInfo.company.title}
+                  <Icon iconClass={"lugia-icon-financial_group"} />  {userInfo.company && userInfo.company.department}
+                  <Icon iconClass={"lugia-icon-financial_tag"} />  {userInfo.company && userInfo.company.position}</Text>
 
-                      </Col>
-                    })}
-                </Row>
-                </Theme>
+                  <Text>
+                    <Theme config={iconTheme}>
+                      <Icon iconClass={"lugia-icon-logo_wechat"} />
+                      <Icon iconClass={"lugia-icon-logo_weibo_circle"} />
+                      <Icon iconClass={"lugia-icon-logo_QQ"} />
+                    </Theme>
+
+                  </Text>
+                </CenterContainer>
+
               </PageContent>
-            </Col>
-            <Col  xs={24}  md={24}  span={17} >
+
               <PageContent>
-                {this.getTabs()}
+                <TabsBox>
+                  {this.getTabs()}
+                </TabsBox>
+
               </PageContent>
-            </Col>
-          </Row>
         </Container>
       </Theme>
     </Content>
@@ -193,19 +209,24 @@ class Center extends Component{
 
     const tabsData=[
       {
-        title: `文章 ${articleInfo.total?'('+articleInfo.total+')':''}` ,
+        title: '表单页' ,
         content:  <Article data={articleInfo.data} />,
         key: 'article',
       },
       {
-        title: `应用 ${applicationInfo.total?'('+applicationInfo.total+')':''}` ,
-        content:  <Application data={applicationInfo.data} />,
+        title: '图片页' ,
+        content:  <Project data={projectInfo.data}/>,
         key: 'application',
       },
       {
-        title: `项目 ${projectInfo.total?'('+projectInfo.total+')':''}` ,
-        content:  <Project data={projectInfo.data}/>,
+        title: '选项卡' ,
+        content:  <Project data={projectInfo.data} showDesc/>,
         key: 'project',
+      },
+      {
+        title: '关于页' ,
+        content:  <About />,
+        key: 'about',
       },
     ];
     return  <Tabs data={tabsData} onChange={this.onChange} activityValue={activityValue}/>

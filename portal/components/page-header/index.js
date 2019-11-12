@@ -10,7 +10,7 @@ import { Breadcrumb } from "@lugia/lugia-web";
 
 const Wrap = styled.div`
   margin: 8px 0 20px;
-  background: #fff;
+  // background: #fff;
   padding: 16px 20px 0;
 `;
 const Title = styled.div`
