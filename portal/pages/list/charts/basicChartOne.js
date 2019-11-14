@@ -87,8 +87,6 @@ export default class Demo extends Component<any> {
       .label('name', {
         formatter: (text, item) => {
           const point = item.point; // 每个弧度对应的点
-          // let res = ;
-          // percent = (percent * 100).toFixed(2) + '%';
           return point['percent']*24;
         },
         textStyle:{
