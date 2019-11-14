@@ -169,27 +169,6 @@ const RowWall = styled.div`
   height: 20px;
 `;
 
-// class AmountCard extends React.Component<Object, Object> {
-//   render() {
-//     return (
-//       <CardContainer>
-//         <CardHeaderWrap>
-//           <IconWrap>iconfont</IconWrap>
-//           <h3>lugia产品发行工作单</h3>
-//         </CardHeaderWrap>
-//         <CardContentWrap>
-//           <p>上传人: &nbsp; <span>吱吱</span></p>
-//           <p>上传时间:&nbsp; <span>2018-08-08</span></p>
-//         </CardContentWrap>
-//         <CardEditorBarWrap>
-//           <Button type="primary" shape="round">下载</Button>
-//           <Button shape="round">删除</Button>
-//         </CardEditorBarWrap>
-//       </CardContainer>
-//     );
-//   }
-// }
-
 export default class BasicList extends Component {
   constructor(props){
     super(props);
