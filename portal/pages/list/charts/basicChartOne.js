@@ -10,19 +10,24 @@ import DataSet from "@antv/data-set";
 
 const data = [{ name: "eoi内存预算", value: 15 }, { name: "已申请量", value: 6 }, { name: "可申请余量", value: 3 }];
 
+export const getPath = (cfg) => {
+  let points = cfg.points;
+  let origin = cfg.origin._origin;
+  let percent = origin.value / 60;
+  let xWidth = points[2].x - points[1].x;
+  let width = xWidth * percent + 0.5;
+  return [
+    ["M", points[0].x, points[0].y],
+    ["L", points[1].x, points[1].y],
+    ["L", points[0].x + width, points[2].y],
+    ["L", points[0].x + width, points[3].y],
+    "Z"
+  ];
+};
+
 G2.Shape.registerShape("interval", "sliceShape", {
   draw: function draw(cfg, container) {
-    let points = cfg.points;
-    let origin = cfg.origin._origin;
-    let percent = origin.value / 60;
-    let xWidth = points[2].x - points[1].x;
-    let width = xWidth * percent + 0.5;
-    let path = [];
-    path.push(["M", points[0].x, points[0].y]);
-    path.push(["L", points[1].x, points[1].y]);
-    path.push(["L", points[0].x + width, points[2].y]);
-    path.push(["L", points[0].x + width, points[3].y]);
-    path.push("Z");
+    let path = getPath(cfg);
     path = this.parsePath(path);
     return container.addShape("path", {
       attrs: {
