@@ -9,9 +9,9 @@ import Content from "../../components/content";
 import { Breadcrumb, consts as Widget, Button, Radio, Input, Icon, Avatar, Theme, Progress } from "@lugia/lugia-web";
 import styled from "styled-components";
 
-import GChartOne from "./charts/basicChartOne";
-import GChartTwo from "./charts/basicChartTwo";
-import GChartThree from "./charts/basicChartThree";
+import GChartLeft from "./charts/basicChartOne";
+import GChartMiddle from "./charts/basicChartTwo";
+import GChartRight from "./charts/basicChartThree";
 
 const RadioButton = Radio.Button;
 const RadioGroup = Radio.Group;
@@ -31,7 +31,7 @@ const GraphContentWrap = styled.div`
   display: flex;
   justify-content: space-between;
 `;
-const SecContainer = styled.div`
+const SingleGraphContainer = styled.div`
   height: 258px;  
   width: 30%;
 `;
@@ -302,15 +302,15 @@ export default class BasicList extends Component {
         {/*上部图表*/}
         <FirstContentWrap>
           <GraphContentWrap>
-            <SecContainer>
-              <GChartOne/>
-            </SecContainer>
-            <SecContainer>
-              <GChartTwo/>
-            </SecContainer>
-            <SecContainer>
-              <GChartThree/>
-            </SecContainer>
+            <SingleGraphContainer>
+              <GChartLeft/>
+            </SingleGraphContainer>
+            <SingleGraphContainer>
+              <GChartMiddle/>
+            </SingleGraphContainer>
+            <SingleGraphContainer>
+              <GChartRight/>
+            </SingleGraphContainer>
           </GraphContentWrap>
         </FirstContentWrap>
 
