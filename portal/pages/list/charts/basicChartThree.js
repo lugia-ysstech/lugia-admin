@@ -12,12 +12,12 @@ const data = [{ name: "eoi内存预算", value: 18 }, { name: "已申请量", va
 
 G2.Shape.registerShape("interval", "sliceShape", {
   draw: function draw(cfg, container) {
-    var points = cfg.points;
-    var origin = cfg.origin._origin;
-    var percent = origin.value / 60;
-    var xWidth = points[2].x - points[1].x;
-    var width = xWidth * percent + 0.5;
-    var path = [];
+    let points = cfg.points;
+    let origin = cfg.origin._origin;
+    let percent = origin.value / 60;
+    let xWidth = points[2].x - points[1].x;
+    let width = xWidth * percent + 0.5;
+    let path = [];
     path.push(["M", points[0].x, points[0].y]);
     path.push(["L", points[1].x, points[1].y]);
     path.push(["L", points[0].x + width, points[2].y]);
