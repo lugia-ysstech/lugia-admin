@@ -354,7 +354,7 @@ const HAvatarCardCard = {
           left: 40
         },
         boxShadow: 0,
-        border:0
+        border: getBorder({ color: '#e8e8e8', width: 1, style: 'solid' }),
       },
     },
     CardTitleTipLine:{

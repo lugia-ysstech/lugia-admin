@@ -36,7 +36,7 @@ const ItemContainer = styled.div`
   zoom: 1;
   display: inline-block;
   box-sizing: border-box;
-  width: 48%;
+  width: 49%;
   padding: 12px 0;
 `;
 
@@ -105,6 +105,13 @@ const ItemInputContainer = styled.div`
   box-sizing: border-box;
   width: 60%;
   vertical-align: top;
+  text-align:right;
+`;
+const   RightItemInputContainer= styled(ItemInputContainer)`
+  width: 75%;
+`;
+const MomeInputContainer = styled(ItemInputContainer)`
+  width: 86%;
 `;
 const OperationLeftContainer = styled.div`
   display: inline-block;
@@ -254,7 +261,7 @@ class StepForm extends Component {
               <ItemContainer>
                 <ItemInnerContainer>
                   <MustStar>*</MustStar>
-                  <TitleText>{"托管行："}</TitleText>
+                  <TitleText>{"托管行:"}</TitleText>
                 </ItemInnerContainer>
                 <ItemInputContainer>
                   <Select
@@ -374,11 +381,11 @@ class StepForm extends Component {
             <MemoInnerContainer>
               <MemoText>{"备注:"}</MemoText>
             </MemoInnerContainer>
-            <ItemInputContainer>
+            <MomeInputContainer>
               <Theme config={inputMemoView}>
                 <Input onChange={this.props.memoChange} />
               </Theme>
-            </ItemInputContainer>
+            </MomeInputContainer>
           </MemoContainer>
           {getFirstStepsOperation}
         </div>
@@ -614,7 +621,7 @@ class StepForm extends Component {
         InputTag: {
           InputTagWrap: {
             normal: {
-              width: 330
+              width: 450
             }
           }
         }
@@ -624,7 +631,7 @@ class StepForm extends Component {
       [Widget.Input]: {
         Container: {
           normal: {
-            width: 970,
+            width: "100%",
             height: 100
           }
         }

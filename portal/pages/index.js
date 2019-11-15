@@ -19,7 +19,7 @@ const Content = styled.div`
   flex-wrap: nowrap;
   overflow: auto;
   flex: 1;
-  padding: 0 20px;
+  padding: 0 4px;
   color: #333;
 `;
 
