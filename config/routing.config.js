@@ -9,16 +9,16 @@ export default [
         text: "分析页",
         render: () => import("../portal/pages/dashboard/analyse")
       },
-      {
-        value: "/dashboard/monitor",
-        text: "监控页",
-        render: () => import("../portal/pages/dashboard/monitor")
-      },
-      {
-        value: "/dashboard/desk",
-        text: "工作台",
-        render: () => import("../portal/pages/dashboard/desk")
-      }
+      // {
+      //   value: "/dashboard/monitor",
+      //   text: "监控页",
+      //   render: () => import("../portal/pages/dashboard/monitor")
+      // },
+      // {
+      //   value: "/dashboard/desk",
+      //   text: "工作台",
+      //   render: () => import("../portal/pages/dashboard/desk")
+      // }
     ]
   },
   {
@@ -63,27 +63,27 @@ export default [
         text: "卡片列表",
         render: () => import("../portal/pages/list/card-list")
       },
-      {
-        value: "/list/search",
-        text: "搜索列表",
-        children: [
-          {
-            value: "/list/search/article",
-            text: "文章列表",
-            render: () => import("../portal/pages/list/article")
-          },
-          {
-            value: "/list/search/projects",
-            text: "项目列表",
-            render: () => import("../portal/pages/list/projects")
-          },
-          {
-            value: "/list/search/applications",
-            text: "应用列表",
-            render: () => import("../portal/pages/list/applications")
-          }
-        ]
-      }
+      // {
+      //   value: "/list/search",
+      //   text: "搜索列表",
+      //   children: [
+      //     {
+      //       value: "/list/search/article",
+      //       text: "文章列表",
+      //       render: () => import("../portal/pages/list/article")
+      //     },
+      //     {
+      //       value: "/list/search/projects",
+      //       text: "项目列表",
+      //       render: () => import("../portal/pages/list/projects")
+      //     },
+      //     {
+      //       value: "/list/search/applications",
+      //       text: "应用列表",
+      //       render: () => import("../portal/pages/list/applications")
+      //     }
+      //   ]
+      // }
     ]
   },
   {
@@ -159,10 +159,10 @@ export default [
       }
     ]
   },
-  {
-    value: "/user",
-    text: "用户管理",
-    icon: "lugia-icon-financial_user",
-    render: () => import("../portal/pages/user")
-  },
+  // {
+  //   value: "/user",
+  //   text: "用户管理",
+  //   icon: "lugia-icon-financial_user",
+  //   render: () => import("../portal/pages/user")
+  // },
 ];
