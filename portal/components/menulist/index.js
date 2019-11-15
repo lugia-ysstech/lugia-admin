@@ -19,10 +19,10 @@ const NavContainer = styled.div`
 `;
 
 const Title = styled.div`
-  padding: 20px;
-  padding-bottom: 30px;
+  padding: 10px 0 10px;
+  text-align: center;
   & > img {
-    width: 60px;
+    width: 84px;
   }
 `;
 
@@ -69,7 +69,7 @@ class List extends React.Component<any> {
         Tree: {
           TreeWrap: {
             normal: {
-              width: 220,
+              width: 210,
               height,
               padding: {
                 right: 10,
@@ -80,10 +80,10 @@ class List extends React.Component<any> {
           TreeItem: {
             TreeItemWrap: {
               normal: {
-                height: 50,
+                height: 40,
                 padding: {
                   right: 0,
-                  left: 0
+                  left: 5
                 }
               }
             },

@@ -2,7 +2,7 @@ export default [
   {
     value: "/dashboard",
     text: "Dashboard",
-    icon: "lugia-icon-financial_sad",
+    icon: "lugia-icon-financial_monitoring",
     children: [
       {
         value: "/dashboard/analyse",
@@ -89,7 +89,7 @@ export default [
   {
     value: "/detail",
     text: "详情页",
-    icon: "lugia-icon-financial_sad_o",
+    icon: "lugia-icon-financial_questionnaire",
     children: [
       {
         value: "/detail/basic-detail",
