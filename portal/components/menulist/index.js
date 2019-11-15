@@ -83,7 +83,7 @@ class List extends React.Component<any> {
                 height: 40,
                 padding: {
                   right: 0,
-                  left: 5
+                  left: 0
                 }
               }
             },
