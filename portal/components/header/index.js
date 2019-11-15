@@ -6,7 +6,8 @@
  */
 import React from "react";
 import { go, Link } from "@lugia/lugiax-router";
-import { Icon, Avatar, Popover ,Theme, consts as Widget} from "@lugia/lugia-web";
+import { Icon, Avatar, Popover ,Theme, consts as Widget,Input} from "@lugia/lugia-web";
+import { getBorder, getBoxShadow,getBorderRadius } from '@lugia/theme-utils';
 import styled from "styled-components";
 
 const HeaderContainer = styled.div`
@@ -32,41 +33,18 @@ const ActionListContainer = styled.div`
 `;
 
 const InputWrap = styled.div`
-  margin-right: 30px;
   height: 32px;
-  width: 151px;
-  background: #f5f5f9;
   border-radius: 30px;
   padding: 0 10px;
   display: inline-block;
   position: relative;
-  top: 50%;
+  top: 54%;
   transform: translateY(-60%);
 `;
 
-const SearchButton = styled.div`
-  display: inline-block;
-  height: 20px;
-  width: 20px;
-  font-size: 16px;
-  color: #999999;
-  position: relative;
-  top: 50%;
-  transform: translateY(-50%);
-`;
 
-const Input = styled.input`
-  width: 100px;
-  height: 28px;
-  margin-left: 8px;
-  border: 0;
-  outline: 0;
-  font-size: 12px;
-  background: #f5f5f9;
-  color: #999999;
-  position: relative;
-  top: 50%;
-  transform: translateY(-50%);
+const InputContainer = styled.div`
+  display: inline-block;
 `;
 
 const CommonIconWrap = styled.div`
@@ -89,16 +67,11 @@ const AvatarWrap = styled.div`
   top: 50%;
   transform: translateY(-50%);
   border-radius: 50%;
-  // overflow: hidden;
   vertical-align: top;
   cursor: pointer;
   margin-left: 26px;
 `;
 
-const Img = styled.img`
-  width: 100%;
-  height: 100%;
-`;
 const theme= {
   [Widget.Avatar]: {
     Container: {
@@ -106,6 +79,46 @@ const theme= {
         height: 32,
         width: 32,
         boxShadow:' 0 0 1px 1px  red'
+      },
+    },
+  },
+};
+const inputTheme= {
+  [Widget.Input]: {
+    Container: {
+      normal: {
+        height: 32,
+        width: 200,
+        borderRadius:getBorderRadius(28),
+        border: getBorder({width: 1,color:'transparent'}),
+        background: {
+          color: '#f5f5f9'
+        }
+      },
+      hover: {
+        borderRadius:getBorderRadius(28)
+      },
+    },
+    Placeholder: {
+      normal: {
+        color: '#ccc',
+      },
+    },
+    InputPrefix: {
+      normal: {
+        fontSize: 14,
+      },
+    },
+  },
+};
+const iconTheme= {
+  [Widget.Icon]: {
+    Icon: {
+      normal: {
+
+      },
+      hover: {
+        color: '#4d63ff'
       },
     },
   },
@@ -120,53 +133,62 @@ export default class Header extends React.Component<> {
         </SwitchMenuListButton>
         <ActionListContainer>
           <InputWrap>
-            <SearchButton>
-              <Icon iconClass="lugia-icon-financial_search" />
-            </SearchButton>
-            <Input placeholder={"站内搜索"} />
+            <InputContainer>
+              <Theme config={inputTheme}>
+                <Input placeholder={"站内搜索"}  prefix={<Icon
+                  iconClass="lugia-icon-financial_search"
+                />} />
+              </Theme>
+            </InputContainer>
           </InputWrap>
 
-          <CommonIconWrap>
-            <Popover
-              placement="bottom"
-              action={"hover"}
-              description={[
-                <div onClick={e => this.goDoc()}>使用文档</div>
-              ]}
-            >
-              <div>
-                <Icon iconClass="lugia-icon-financial_folder_open" />
-              </div>
-            </Popover>
-          </CommonIconWrap>
+          <Theme config={iconTheme}>
+            <CommonIconWrap>
+              <Popover
+                placement="bottom"
+                action={"hover"}
+                description={[
+                  <div onClick={e => this.goDoc()}>使用文档</div>
+                ]}
+                showClearButton={false}
+              >
+                <div>
+                  <Icon iconClass="lugia-icon-financial_folder_open" />
+                </div>
+              </Popover>
+            </CommonIconWrap>
 
-          <CommonIconWrap>
-            <Popover
-              placement="bottom"
-              action={"hover"}
-              description={
-                <div onClick={e => this.goPersonalCenter()}>个人中心</div>
-              }
-            >
-              <div>
-                <Icon iconClass="lugia-icon-financial_home" />
-              </div>
-            </Popover>
-          </CommonIconWrap>
+            <CommonIconWrap>
+              <Popover
+                placement="bottom"
+                action={"hover"}
+                description={
+                  <div onClick={e => this.goPersonalCenter()}>个人中心</div>
+                }
+                showClearButton={false}
+              >
+                <div>
+                  <Icon iconClass="lugia-icon-financial_home" />
+                </div>
+              </Popover>
+            </CommonIconWrap>
 
-          <CommonIconWrap>
-            <Popover
-              placement="bottom"
-              action={"hover"}
-              description={[
-                <div onClick={e => this.goSetting()}>个人设置</div>,
-              ]}
-            >
-              <div>
-                <Icon iconClass="lugia-icon-financial_setting" />
-              </div>
-            </Popover>
-          </CommonIconWrap>
+            <CommonIconWrap>
+              <Popover
+                placement="bottom"
+                action={"hover"}
+                description={[
+                  <div onClick={e => this.goSetting()}>个人设置</div>,
+                ]}
+                showClearButton={false}
+              >
+                <div>
+                  <Icon iconClass="lugia-icon-financial_setting" />
+                </div>
+              </Popover>
+            </CommonIconWrap>
+          </Theme>
+
           <AvatarWrap>
             <Theme config={theme}>
               <Popover
@@ -175,6 +197,7 @@ export default class Header extends React.Component<> {
                 description={[
                   <div onClick={e => this.onClick()}>退出登陆</div>
                 ]}
+                showClearButton={false}
               >
                 <div>
                   <Avatar
