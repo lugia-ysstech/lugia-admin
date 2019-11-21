@@ -28,14 +28,17 @@ const routes = [
   }
 ];
 
+const Container =  styled.div`
+width: 100%;
+`;
 
 export const Block = styled.div`
-  margin: 20px 0;
+  margin: 10px 0;
   text-align: ${ props => props.align || 'left'};
 `;
 
 const StepsContainer = styled.div`
-  margin: 60px auto 40px;
+  margin: 50px auto 40px;
   transform: translate(0,-50);
   background: #FAFAFA;
   border-radius: 4px;
@@ -75,11 +78,12 @@ const theme = {
   [Widget.Card]: {
     Container: {
       normal: {
-        width: '100%',
-        height: 200,
+        width: '97%',
+        height: 180,
         margin: {
           bottom: 10,
-          left: 20
+          left: 20,
+          right: 20
         },
         boxShadow: 0,
         border:0
@@ -88,6 +92,14 @@ const theme = {
     CardTitleTipLine:{
       normal: {
         width: 6,
+      },
+    },
+    CardTitle:{
+      normal: {
+        margin: {
+          left: -8
+        },
+        padding: 0
       },
     }
   },
@@ -129,8 +141,9 @@ class Basic extends Component{
     const {basicDetailInfo,basicStepsInfo:{data,steps},} = this.props;
     return  <Content>
       <PageHeader routes={routes} title={"简单详情页"} desc={'简单详情页用于基础的详情信息的展现'} />
-      <Theme config={theme}>
-        {/*<PageContent>*/}
+      <Container>
+        <Theme config={theme}>
+          {/*<PageContent>*/}
           <Card type={'tip'} title={'详细信息'}>
             <Block>
               {basicDetailInfo.map((item) => {
@@ -154,11 +167,12 @@ class Basic extends Component{
             [Widget.Card]: {
               Container: {
                 normal: {
-                  width: '100%',
-                  height: 420,
+                  width: '97%',
+                  height: 410,
                   margin: {
                     bottom: 10,
                     top: 20,
+                    right: 20
                   },
                   boxShadow: 0,
                   border:0
@@ -173,7 +187,7 @@ class Basic extends Component{
           }} >
             <Card type={'tip'} title={'进度流程'}>
               <Block align={'center'}>
-                <Steps orientation="horizontal" stepType={'dot'}>
+                <Steps orientation="horizontal" stepType={'dot'}  desAlign={'center'}>
                   {
                     steps && steps.map( item => {
                       const {title,stepStatus} = item;
@@ -183,34 +197,36 @@ class Basic extends Component{
                 </Steps>
               </Block>
 
-                <StepsContainer>
-                  <Theme config={themeSteps}>
-                    <Steps orientation="vertical" stepType={'dot'}>
-                      {
-                        data && data.map( item => {
-                          const {title,stepStatus,description} = item;
-                          return  <Step title={title} stepStatus={stepStatus} isDashed={true}
-                                        description={
-                                          description && description.map( descItem => {
-                                            const {date,desc} = descItem;
-                                            return <div> {date && <Date>{date}</Date>}<Date>{desc}</Date></div>
-                                          })
+              <StepsContainer>
+                <Theme config={themeSteps}>
+                  <Steps orientation="vertical" stepType={'dot'}>
+                    {
+                      data && data.map( item => {
+                        const {title,stepStatus,description} = item;
+                        return  <Step title={title} stepStatus={stepStatus} isDashed={true}
+                                      description={
+                                        description && description.map( descItem => {
+                                          const {date,desc} = descItem;
+                                          return <div> {date && <Date>{date}</Date>}<Date>{desc}</Date></div>
+                                        })
 
-                                        }
-                          />;
-                        })
-                      }
-                    </Steps>
-                  </Theme>
+                                      }
+                        />;
+                      })
+                    }
+                  </Steps>
+                </Theme>
 
-                </StepsContainer>
+              </StepsContainer>
 
             </Card>
           </Theme>
 
 
-        {/*</PageContent>*/}
-      </Theme>
+          {/*</PageContent>*/}
+        </Theme>
+      </Container>
+
     </Content>;
   }
 

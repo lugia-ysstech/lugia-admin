@@ -2,10 +2,18 @@ import React, {Component} from 'react';
 import styled from "styled-components";
 import {Button, Avatar, Theme, Label, Icon, Divider, consts as Widget, Card, Grid,Tooltip} from "@lugia/lugia-web";
 import { getBorder, getBorderRadius, getBoxShadow } from '@lugia/theme-utils';
-import loginBg from "../../assets/images/color_img_theme_jiguang.png";
-import loginBg1 from "../../assets/images/color_img_theme_bingjing.png";
-import loginBg2 from "../../assets/images/color_img_theme_huixing.png";
-import loginBg3 from "../../assets/images/color_img_theme_lucky.png";
+import loginBg from "../../assets/images/copy0.png";
+import loginBg1 from "../../assets/images/copy1.png";
+import loginBg2 from "../../assets/images/copy3.png";
+import loginBg3 from "../../assets/images/copy4.png";
+import loginBg4 from "../../assets/images/copy5.png";
+import loginBg5 from "../../assets/images/copy6.png";
+import loginBg6 from "../../assets/images/copy7.png";
+import loginBg7 from "../../assets/images/copy2.png";
+import loginBg8 from "../../assets/images/copy8.png";
+import loginBg9 from "../../assets/images/copy9.png";
+import loginBg10 from "../../assets/images/copy10.png";
+import loginBg11 from "../../assets/images/copy11.png";
 
 const {Row, Col} = Grid;
 
@@ -16,10 +24,11 @@ const Container = styled.div`
 const ProjectImgBox = styled.div`
    height: 205px;
    overflow: hidden;
+   border-radius: ${props => props.radius?'':'4px'}
 `;
 
 const Img = styled.img`
-    width: 100%;
+    height: 100%;
 `;
 
 
@@ -134,10 +143,10 @@ const themeImage = {
           // right:  40
         },
         borderRadius:{
-          topLeft:0,
-          topRight:0,
-          bottomLeft:0,
-          bottomRight:0
+          topLeft:4,
+          topRight:4,
+          bottomLeft:4,
+          bottomRight:4
         },
         boxShadow: 'none',
         height: 207
@@ -163,7 +172,15 @@ const randomImg={
   '1':loginBg,
   '2':loginBg1,
   '3':loginBg2,
-  '4':loginBg3
+  '4':loginBg3,
+  '5':loginBg4,
+  '6':loginBg5,
+  '7':loginBg6,
+  '8':loginBg7,
+  '9':loginBg8,
+  '10':loginBg9,
+  '11':loginBg10,
+  '12':loginBg11
 };
 
 export default class Application extends Component {
@@ -173,12 +190,12 @@ export default class Application extends Component {
       <Container>
         <Row type="flex" justify="spaceBetween">
           <Theme config={showDesc?theme:themeImage}>
-            {data && data.map( item => {
+            {data && data.map( (item,index) => {
               const {img ,title,create_time,desc,member} = item;
               return <Col span={8}  xs={24}  md={12} lg={8} xl={8} xxl={8} >
                 <Card>
-                  <ProjectImgBox>
-                    <Img  src={randomImg[Math.floor(Math.random()*4+1)]} />
+                  <ProjectImgBox radius={showDesc}>
+                    <Img  src={randomImg[index+1]} />
                   </ProjectImgBox>
                   {showDesc &&<ProjectInfoBox>
                     <Title>{title}</Title>
