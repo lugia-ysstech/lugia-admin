@@ -18,8 +18,10 @@ const Title = styled.div`
 `;
 const Text = styled.div`
    font-size: 14px;
+   line-height: 20px;
     color: #666666;
     margin: 10px 0;
+     text-align: ${props => props.align || 'left'}
 `;
 const TextMark = styled.div`
    font-size: 18px;
@@ -36,20 +38,25 @@ const FlexBox = styled.div`
 `;
 
 const GroupBox = styled.div`
-   // display: inline-block;
-   width: 154px;
+   width: 24%;
    font-size: 14px;
     color: #333;
-    margin: 10px 30px 10px 0;
+    margin: 10px 0 0;
     padding: 10px;
     border: 1px solid #e8e8e8;
     border-radius: 4px;
+    vertical-align: text-top;
+    & i {
+    vertical-align: text-top;
+    }
 `;
 
 const MapBox = styled.div`
-   width: 95%;
-   min-width: 502px;
+   width: 100%;
+   min-width: 522px;
    height: 296px;
+   margin: 16px 0 0;
+
 `;
 
 const theme = {
@@ -81,7 +88,7 @@ const theme = {
     return (
       <Container>
         <Title>个人签名：</Title>
-        <Text>{userInfo.sign}</Text>
+        <Text align={'justify'}>{userInfo.sign}</Text>
         <Title>个人履历：</Title>
         {userInfo.curriculum &&
           <FlexBox justify={'space-between'}>
@@ -105,7 +112,7 @@ const theme = {
         }
         <Title>加入的团队：</Title>
         <Theme config={theme}>
-          <FlexBox justify={'flex-start'}>
+          <FlexBox justify={'space-between'}>
           {userInfo.team && userInfo.team.map( item => {
             const {logo,team} = item;
             return <GroupBox>
@@ -122,6 +129,7 @@ const theme = {
             <Marker position={{longitude: 116.516007, latitude: 39.937022}} />
           </Map>
         </MapBox>
+        <Text align={'center'}> <Icon iconClass={'lugia-icon-financial_environment'} /> 北京市朝阳区青年路达美中心T2 16层</Text>
 
 
       </Container>
