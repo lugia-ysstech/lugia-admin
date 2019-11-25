@@ -6,7 +6,7 @@
  */
 import React, { Component } from "react";
 import styled from "styled-components";
-import { Breadcrumb } from "@lugia/lugia-web";
+import { Breadcrumb ,consts as Widget,Theme} from "@lugia/lugia-web";
 
 const Wrap = styled.div`
   padding:18px 20px;
@@ -20,16 +20,37 @@ const Title = styled.div`
 const Description = styled.div`
   font-size: 14px;
   line-height: 1.4;
-  padding-top: 4px;
+  padding-top: 6px;
   color:#666;
 `;
+const theme = {
+  [Widget.Breadcrumb]: {
+    BreadcrumbItem: {
+      Text: {
+        normal: {
 
+          last: {
+            color: '#333',
+          },
+        },
+        hover: {
+          color: '#4d63ff',
+        },
+      },
+
+    },
+  },
+
+};
 export default class PageHeader extends Component {
   render() {
     const { routes = [], title, desc } = this.props;
     return (
       <Wrap>
-        <Breadcrumb routes={routes} />
+        <Theme config={theme}>
+          <Breadcrumb routes={routes} />
+        </Theme>
+
         {title && <Title>{title}</Title>}
         {desc && <Description>{desc}</Description>}
       </Wrap>
