@@ -15,7 +15,16 @@ import { Theme,Tabs,consts as Widget , Button, Divider,Steps,Card,Table,Avatar,S
 import { Block ,Label,DescLabel ,FlexBox} from "./basic";
 import advanced from "../../models/detail/advanced";
 import {connect} from "@lugia/lugiax";
-import avatar from "../../assets/images/logo.png";
+import mega from "../../assets/images/mega.png";
+import g from "../../assets/images/g.png";
+import tx1 from "../../assets/images/ym.jpg";
+import tx2 from "../../assets/images/jb.jpg";
+import tx3 from "../../assets/images/gd.jpg";
+import tx4 from "../../assets/images/jx.jpg";
+import tx5 from "../../assets/images/rg.jpg";
+import tx6 from "../../assets/images/cx.jpg";
+import tx7 from "../../assets/images/yq.jpg";
+import tx8 from "../../assets/images/zf.jpg";
 
 
 const routes = [
@@ -42,7 +51,7 @@ const FundTitle = styled.div`
   color: #333;
   font-size: 14px;
   font-weight: bold;
-  margin: 6px 0 ;
+  margin: ${props => props.margin || '6px 0 '};
 `;
 
 const Link = styled.a`
@@ -60,11 +69,14 @@ const UserInfoWrap = styled.div`
 
 const InfoContainer = styled.div`
    border: 1px solid #e8e8e8;
+   border-radius: 8px;
+   margin: 20px 0 0;
+   overflow: hidden;
 `;
 
 
 const InfoTitle = styled.div`
-   padding: 12px 24px ;
+   padding: 12px 20px ;
    font-size: 14px;
    background: #fafafa;
 `;
@@ -215,10 +227,10 @@ const theme = {
   [Widget.Card]: {
     Container: {
       normal: {
-        width: '100%',
+        width: '97%',
         height: 540,
         margin: {
-          bottom: 10,
+          bottom: 20,
           left: 20
         },
         boxShadow: 0,
@@ -229,13 +241,24 @@ const theme = {
       normal: {
         width: 6,
       },
+    },
+    CardTitle:{
+      normal: {
+        margin: {
+          left: -8
+        },
+        padding: 0
+      },
     }
   },
   [Widget.Tabs]: {
     ContentBlock: {
       normal:{
         width: '100%',
-        height: 400
+        height: 400,
+        padding: {
+          top: 20
+        }
       }
     },
     TitleContainer:{
@@ -267,10 +290,10 @@ const themeCardInfo = {
   [Widget.Card]: {
     Container: {
       normal: {
-        width: '100%',
+        width: '97%',
         height: 200,
         margin: {
-          bottom: 10,
+          bottom: 20,
           left: 20
         },
         boxShadow: 0,
@@ -280,6 +303,14 @@ const themeCardInfo = {
     CardTitleTipLine:{
       normal: {
         width: 6,
+      },
+    },
+    CardTitle:{
+      normal: {
+        margin: {
+          left: -8
+        },
+        padding: 0
       },
     }
   },
@@ -290,11 +321,14 @@ const propertyCard = {
   [Widget.Card]: {
     Container: {
       normal: {
-        width: '100%',
-        height: 540,
+        width: '97%',
+        height: 3570,
         margin: {
-          bottom: 10,
+          bottom: 20,
           left: 20
+        },
+        padding: {
+          bottom: 25
         },
         boxShadow: 0,
         border:0
@@ -303,6 +337,14 @@ const propertyCard = {
     CardTitleTipLine:{
       normal: {
         width: 6,
+      },
+    },
+    CardTitle:{
+      normal: {
+        margin: {
+          left: -8
+        },
+        padding: 0
       },
     }
   },
@@ -323,10 +365,10 @@ const cooperateCard = {
   [Widget.Card]: {
     Container: {
       normal: {
-        width: '100%',
+        width: '97%',
         height: 360,
         margin: {
-          bottom: 10,
+          bottom: 20,
           left: 20
         },
         boxShadow: 0,
@@ -337,6 +379,14 @@ const cooperateCard = {
       normal: {
         width: 6,
       },
+    },
+    CardTitle:{
+      normal: {
+        margin: {
+          left: -8
+        },
+        padding: 0
+      },
     }
   },
 
@@ -346,12 +396,12 @@ const HAvatarCardCard = {
   [Widget.Card]: {
     Container: {
       normal: {
-        width: 300,
+        width: '23%',
         height: 120,
         margin: {
           bottom: 30,
-          right: 40,
-          left: 40
+          right: 0,
+          left: 0
         },
         boxShadow: 0,
         border: getBorder({ color: '#e8e8e8', width: 1, style: 'solid' }),
@@ -365,8 +415,9 @@ const HAvatarCardCard = {
     CardTitle:{
       normal: {
         margin:{
-          top: 15
-        }
+          top: 15,
+          left: 10
+        },
       }
     },
     CardAvatarContainer: {
@@ -390,7 +441,6 @@ const HAvatarCardCard = {
   },
 
 };
-
 
 export const defaultData = [
   {
@@ -437,9 +487,18 @@ class Advanced extends Component{
         key: '操作日志三',
       },
     ];
+    const tx = {
+       tx1 :tx1,
+     tx2 :tx2,
+     tx3 :tx3,
+     tx4 :tx4,
+     tx5 :tx5,
+     tx6 :tx6,
+     tx7 :tx7,
+     tx8 :tx8,
+    };
     return <Content>
         <PageHeader routes={routes} title={"高级详情页"} desc={'高级详情页完全展示一个信息的全部面貌，在高级详情页面尽量较少可操作项。'}/>
-        {/*<PageContent>*/}
           <Theme config={themeCardInfo}>
             <Card type={'tip'} title={'厂家信息'}>
               <Block>
@@ -471,19 +530,20 @@ class Advanced extends Component{
                         <Divider/>
                         <UserInfoWrap>
                           <Theme config={dividerTheme}>
-                            {data.map( list => {
+                            {data.map( (list,index) => {
                               const {title:liTitle,link,desc} = list;
                               return <React.Fragment>
                                 <FlexBox>
-                                  <Avatar type={'img'}  src={avatar} />
+                                  <Avatar type={'img'}  src={index % 2 ===0? g : mega} />
                                   <HeaderContent>
-                                    <FundTitle>{liTitle}</FundTitle>
+                                    <FundTitle >{liTitle}</FundTitle>
                                     <Text>{desc}</Text>
                                     {link && <Link href={link.url} target={'_blank'}>{link.text} > </Link>}
 
                                   </HeaderContent>
                                 </FlexBox>
-                                <Divider/>
+                                  {index !== data.length -1 &&  <Divider/>}
+
                               </React.Fragment> ;
 
                             })}
@@ -503,7 +563,7 @@ class Advanced extends Component{
                 {advancedOrderInfo.info && advancedOrderInfo.info.map((infoItem) => {
                   const {title,desc,status} = infoItem;
                   return <React.Fragment>
-                    <FundTitle>{title}</FundTitle>
+                    <FundTitle margin={'18px 0 6px'}>{title}</FundTitle>
                     <FlexBox justify={'space-between'}>
                       <Text>{desc}</Text> <Switch defaultValue={status} />
                     </FlexBox>
@@ -525,15 +585,15 @@ class Advanced extends Component{
           <Theme config={cooperateCard}>
             <Card type={'tip'} title={'合作者'}>
               <Block>
-                <FlexBox >
+                <FlexBox justify={'space-between'}>
                   <Theme config={HAvatarCardCard}>
-                    { advancedOrderInfo.cooperate && advancedOrderInfo.cooperate.map( item => {
+                    { advancedOrderInfo.cooperate && advancedOrderInfo.cooperate.map( (item,index)  => {
                       const {name,desc} = item;
                       return <Card
                         type={"avatar"}
                         title={name}
                         description={desc}
-                        avatar={avatar}
+                        avatar={tx[`tx${index+1}`]}
                         shadow={"hover"}
                       />
                     })}
@@ -546,7 +606,6 @@ class Advanced extends Component{
             </Card>
           </Theme>
 
-        {/*</PageContent>*/}
 
       </Content>
    ;

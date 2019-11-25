@@ -108,12 +108,12 @@ const getOperateLog = (req) => {
   const requestBody = req.body;
   const {searchInfo ='操作日志一'} = requestBody;
   const columns = [
-    {title: '用户ID', dataIndex: 'id', key:'id',width:100},
-    {title: '使用者', dataIndex: 'name', key:'name',width:100},
-    {title: '邮箱', dataIndex: 'email', key:'email',width:100},
-    {title: '手机号', dataIndex: 'phone', key:'phone',width:100},
-    {title: '使用时间', dataIndex: 'times', key:'times',width:100},
-    {title: '状态', dataIndex: 'status', key:'status',width:100},
+    {title: '用户ID', dataIndex: 'id', key:'id',width:100,align:'center'},
+    {title: '使用者', dataIndex: 'name', key:'name',width:100,align:'center'},
+    {title: '邮箱', dataIndex: 'email', key:'email',width:200,align:'center'},
+    {title: '手机号', dataIndex: 'phone', key:'phone',width:100,align:'center'},
+    {title: '使用时间', dataIndex: 'times', key:'times',width:100,align:'center'},
+    {title: '状态', dataIndex: 'status', key:'status',width:100,align:'center'},
   ];
 
   const data ={
@@ -190,11 +190,13 @@ const getAdvancedOrderInfo = (req) => {
     ],
     cooperate:[
       {name:'玉萌萌',desc:'Lugia UED'},
-      {name:'脆卜卜',desc:'Lugia 高级UI交互设计师'},
-      {name:'椰果果',desc:'Lugia product manager'},
-      {name:'夹心心',desc:'Lugia UI'},
+      {name:'京卜卜',desc:'Lugia 高级UI交互设计师'},
+      {name:'果冻冻',desc:'Lugia product manager'},
+      {name:'果心心',desc:'Lugia 负责人'},
       {name:'瑞逛逛',desc:'Lugia 人机交互专家'},
       {name:'脆霞霞',desc:'Lugia 前端工程师'},
+      {name:'梨软软',desc:'Lugia 前端工程师'},
+      {name:'珍丰丰',desc:'Lugia UI'},
     ]
   };
   return {...data};
