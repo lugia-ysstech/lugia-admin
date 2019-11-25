@@ -14,6 +14,8 @@ const HeaderContainer = styled.div`
   height: 60px;
   background: #ffffff;
   position: relative;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  z-index: 100;
 `;
 
 const SwitchMenuListButton = styled.div`
