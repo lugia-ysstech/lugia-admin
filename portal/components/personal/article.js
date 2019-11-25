@@ -2,16 +2,22 @@ import React, {Component} from 'react';
 import styled from "styled-components";
 import { Button,Avatar, Theme,Label ,Icon,Divider,consts as Widget ,} from "@lugia/lugia-web";
 import avatar from "../../assets/images/mega.png";
-import loginBg from "../../assets/images/color_img_theme_jiguang.png";
-import loginBg1 from "../../assets/images/color_img_theme_bingjing.png";
-import loginBg2 from "../../assets/images/color_img_theme_huixing.png";
-import loginBg3 from "../../assets/images/color_img_theme_lucky.png";
+import loginBg from "../../assets/images/copy0.png";
+import loginBg1 from "../../assets/images/copy1.png";
+import loginBg2 from "../../assets/images/copy3.png";
+import loginBg3 from "../../assets/images/copy4.png";
+import loginBg4 from "../../assets/images/copy5.png";
+import loginBg5 from "../../assets/images/copy6.png";
+import loginBg6 from "../../assets/images/copy7.png";
 
 const randomImg={
   '1':loginBg,
   '2':loginBg1,
   '3':loginBg2,
-  '4':loginBg3
+  '4':loginBg3,
+  '5':loginBg4,
+  '6':loginBg5,
+  '7':loginBg6
 };
 
 
@@ -32,11 +38,12 @@ const RemarkBox = styled.div`
 const FlexBox = styled.div`
   display: flex;
   justify-content: ${props => props.justify || 'flex-start'};
+  align-items: center;
 `;
 
 const ProjectImgBox = styled.div`
-    width: 178px;
-   height: 117px;
+    width: 180px;
+   height: 120px;
    overflow: hidden;
    margin: 0 20px  0 0 ;
 `;
@@ -56,7 +63,7 @@ const Title = styled.div`
 
 const Text = styled.div`
   margin: 2px 0 8px;
-  color: rgba(0,0,0,.65);
+  color: #666;
   font-size: 14px;
   line-height: 22px;
 `;
@@ -140,15 +147,19 @@ const theme = {
       },
     },
     ButtonText: {
+      normal: {
+        color:'#666',
+      },
       hover: {
-        color:'rgba(0,0,0,0.45)',
+        color:'#888',
       },
     },
   },
   [Widget.Label]: {
-    LabelConfig: {
+    Container: {
       normal: {
         color:'rgba(0,0,0,.45)',
+        width: 'auto',
         margin: {
           // left: 6,
           right: 6,
@@ -181,7 +192,8 @@ const theme = {
     Icon: {
       normal: {
         margin:{
-          left: 15
+          left: 15,
+          right: 0
         }
       },
     },
@@ -196,12 +208,12 @@ export default class Article extends Component {
     return (
      <UL>
        <Theme config={theme}>
-       {data.map( item => {
+       {data.map( (item,index) => {
           const {title,remark,text,img,author,link,create_time,star,support,message} = item;
          return <Li>
            <FlexBox>
              <ProjectImgBox>
-               <Img  src={randomImg[Math.floor(Math.random()*4+1)]} />
+               <Img  src={randomImg[index+1]} />
              </ProjectImgBox>
              <Container>
                <Title>{title}</Title>

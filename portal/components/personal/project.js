@@ -29,6 +29,7 @@ const ProjectImgBox = styled.div`
 
 const Img = styled.img`
     height: 100%;
+    width: 100%;
 `;
 
 
@@ -51,6 +52,7 @@ const Text = styled.div`
 
 const FlexBox = styled.div`
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
 `;
 const AvatarBox = styled.div`
@@ -66,13 +68,15 @@ const theme = {
           // right:  40
         },
         borderRadius:{
-          topLeft:0,
-          topRight:0,
-          bottomLeft:0,
-          bottomRight:0
+          topLeft:4,
+          topRight:4,
+          bottomLeft:4,
+          bottomRight:4
         },
-        boxShadow: 'none',
-        height: 320
+        border: 0,
+        boxShadow: getBoxShadow('0 0 6px  rgba(0,0,0,0.2)'),
+        height: 320,
+        width: '24%'
       },
     },
     CardTitle: {
@@ -140,7 +144,7 @@ const themeImage = {
       normal: {
         margin:{
           bottom: 16,
-          // right:  40
+          right:  0
         },
         borderRadius:{
           topLeft:4,
@@ -148,8 +152,13 @@ const themeImage = {
           bottomLeft:4,
           bottomRight:4
         },
-        boxShadow: 'none',
-        height: 207
+        border: 0,
+        height: 205,
+        width: '24%',
+        boxShadow: getBoxShadow('0 0 6px  rgba(0,0,0,0.2)')
+      },
+      hover: {
+        border: 0,
       },
     },
     CardTitle: {
@@ -188,12 +197,11 @@ export default class Application extends Component {
     const {data = [], showDesc = false} = this.props;
     return (
       <Container>
-        <Row type="flex" justify="spaceBetween">
+        <FlexBox>
           <Theme config={showDesc?theme:themeImage}>
             {data && data.map( (item,index) => {
               const {img ,title,create_time,desc,member} = item;
-              return <Col span={8}  xs={24}  md={12} lg={8} xl={8} xxl={8} >
-                <Card>
+              return <Card>
                   <ProjectImgBox radius={showDesc}>
                     <Img  src={randomImg[index+1]} />
                   </ProjectImgBox>
@@ -202,12 +210,10 @@ export default class Application extends Component {
                     <Text>{desc}</Text>
                   </ProjectInfoBox> }
 
-                </Card>
-
-              </Col> ;
+                </Card>;
             })}
           </Theme>
-        </Row>
+        </FlexBox>
       </Container>
 
 
