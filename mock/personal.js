@@ -4,7 +4,7 @@ const getUserInfo = () => {
 
   const data = {
     avatar:'',
-    name:'Lugia 脆',
+    name:'Asyllabear',
     desc:'北方多鸿雁，日落江河莫忘旧人曾婀娜。南方多阴雨，一缕炊烟似是梦中多归客。',
     company:{
       title:'赢时胜信息技术有限公司',
@@ -316,7 +316,9 @@ const getCenterUserInfo = () => {
       {logo:'lugia-icon-financial_smile_o',team:'设计师要嘤嘤嘤'},
       {logo:'lugia-icon-logo_ysstech',team:'Lugia'},
       {logo:'lugia-icon-financial_transfer_u',team:'只有一个小公主'},
-      {logo:'lugia-icon-financial_service',team:'火星炸地球'}
+      {logo:'lugia-icon-financial_service',team:'火星炸地球'},
+      {logo:'lugia-icon-financial_cloud',team:'棉裤腰厂'},
+      {logo:'lugia-icon-financial_filter',team:'喝水水'}
     ]
   };
 

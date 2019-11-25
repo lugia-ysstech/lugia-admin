@@ -13,6 +13,7 @@ import avatar from "../../assets/images/logo.png";
 import Article from "../../components/personal/article";
 import About from "../../components/personal/about";
 import Project from "../../components/personal/project";
+import tx6 from "../../assets/images/cx.jpg";
 
 import {Grid,Avatar,consts as Widget,Theme,Label,Tabs,Icon,Divider,Button} from '@lugia/lugia-web';
 import center from "../../models/personal/center";
@@ -29,17 +30,17 @@ const CenterContainer = styled.div`
 
 
 const Title = styled.div`
-  margin: 20px 0 10px;
+  margin: 10px 0 10px;
   color: #333;
   font-size: 24px;
   line-height: 24px;
 `;
 const Text = styled.div`
-  margin: 14px 0 ;
+  margin: 10px 0 0 -44px;
   color: rgba(0,0,0,.45);
   font-size: 14px;
   & i{
-  vertical-align: middle;
+    vertical-align: text-top;
   }
 `;
 
@@ -88,8 +89,11 @@ const theme = {
     Container: {
       normal: {
         height: 22,
+        width: '100%',
+        textAlign:'center',
         margin:{
-          right: 10
+          right: 10,
+          top: 5
         }
       },
     },
@@ -121,6 +125,7 @@ const iconTheme = {
       normal: {
         margin:{
           left: 50,
+          right: 10
         },
         font: {
           size: 20
@@ -172,12 +177,12 @@ class Center extends Component{
         <Container>
               <PageContent>
                 <CenterContainer>
-                  <Avatar type={'img'}  src={avatar} />
+                  <Avatar type={'img'}  src={tx6} />
                   <Title>{userInfo.name}</Title>
                   <Label>{userInfo.desc}</Label>
-                  <Text><Icon iconClass={"lugia-icon-financial_audit"} />  {userInfo.company && userInfo.company.title}
-                  <Icon iconClass={"lugia-icon-financial_group"} />  {userInfo.company && userInfo.company.department}
-                  <Icon iconClass={"lugia-icon-financial_tag"} />  {userInfo.company && userInfo.company.position}</Text>
+                  <Text><Icon iconClass={"lugia-icon-financial_home"} />  {userInfo.company && userInfo.company.title}
+                  <Icon iconClass={"lugia-icon-financial_environment"} />  {userInfo.company && userInfo.company.department}
+                  <Icon iconClass={"lugia-icon-financial_contacts"} />  {userInfo.company && userInfo.company.position}</Text>
 
                   <Text>
                     <Theme config={iconTheme}>
@@ -229,7 +234,7 @@ class Center extends Component{
         key: 'about',
       },
     ];
-    return  <Tabs data={tabsData} onChange={this.onChange} activityValue={activityValue}/>
+    return  <Tabs data={tabsData} onChange={this.onChange} activityValue={'about'}/>
   };
 
   onChange = (res) => {
