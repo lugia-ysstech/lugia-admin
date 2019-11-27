@@ -6,7 +6,7 @@ import Main from "./App";
 import PageLoading from "./components/pageloading";
 
 const history = createBrowserHistory();
-async function checkAuthorityeData(query) {
+async function checkAuthorityData(query) {
   const { value, name: userName } = query;
 
   const resp = await fetch("/api/checkAuthority", {
@@ -34,7 +34,7 @@ const App = createApp(
   {
     loading: PageLoading,
     async onBeforeGo({ url }) {
-      const result = await checkAuthorityeData({ value: url, name: "admin" });
+      const result = await checkAuthorityData({ value: url, name: "admin" });
       const { status } = result;
       if (
         url === "/Dashboard" ||
