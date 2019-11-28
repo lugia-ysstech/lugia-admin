@@ -7,8 +7,6 @@ import PageLoading from "./components/pageloading";
 
 const history = createBrowserHistory();
 async function checkAuthorityData(query) {
-  const { value, name: userName } = query;
-
   const resp = await fetch("/api/checkAuthority", {
     method: "Post",
     body: JSON.stringify({ query }),
