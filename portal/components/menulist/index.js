@@ -54,8 +54,7 @@ class List extends React.Component<any> {
   };
 
   render() {
-    const a = menuList.getState("menuState") || {};
-    const { menuState = {} } = a.toJS();
+    const { menuState = {} } = this.props;
     let { value } = menuState;
     if (!value) {
       const { value: stateValue } = this.state;
@@ -161,8 +160,7 @@ const MenuList = connect(
   menuList,
   state => {
     return {
-      value: state.get("value"),
-
+      menuState: state.get('menuState').toJS?state.get('menuState').toJS():state.get('menuState')
     };
   },
   mutations => {
