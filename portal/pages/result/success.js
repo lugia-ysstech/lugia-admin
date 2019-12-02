@@ -9,14 +9,11 @@ import Content from "../../components/content";
 import PageContent from "../../components/page-content";
 import {
   Theme,
-  Tabs,
-  Avatar,
-  Input,
   Button,
-  Select,
   Icon,
   Card,
-  Steps
+  Steps,
+  Breadcrumb
 } from "@lugia/lugia-web";
 import styled from "styled-components";
 import Widget from "@lugia/lugia-web/dist/consts";
@@ -31,78 +28,128 @@ const ContentContainer = styled.div`
   display: inline-block;
   text-align: center;
 `;
+export const BreadcrumbWrap = styled.div`
+  width: 100%;
+`;
+const SuccessText = styled.div`
+  margin-top: 30px;
+  font-size: 24px;
+`;
+const SuccessDesTextWrap = styled.div`
+  width: 50%;
+  line-height: 20px;
+  min-width: 740px;
+  margin: 10px auto;
+  margin-bottom: 0;
+  font-size: 14px;
+  color: gray;
+`;
+const SuccessDesText = styled.p`
+  line-height: 20px;
+`;
+const PorcessContentWrap = styled.div`
+  width: 65.3%;
+  min-width: 1000px;
+  margin: 0 auto;
+`;
 const CardContentContainer = styled.div`
   width: 100%;
-  height: 100px;
+  height: 115px;
   display: inline-block;
-  text-align: center;
+  text-align: left;
   margin-top: 20px;
-`;
-const TitleContainer = styled.tr`
-  display: table-row;
-  border-color: inherit;
+  padding: 0 140px;
 `;
 const DesContainer = styled.table`
   width: 100%;
   table-layout: fixed;
   margin-bottom: 20px;
 `;
+const TitleContainer = styled.tr`
+  display: table-row;
+  border-color: inherit;
+`;
 const Title = styled.td`
   display: inline-block;
   text-align: left;
   width: 33%;
 `;
-const SuccessText = styled.div`
-  margin-top: 30px;
-  font-size: 20px;
+const FooterContainer = styled.div`
+  width: 100%;
+  height: 120px;
+  padding-top: 20px;
+  text-align: center;
 `;
-const SuccessDesText = styled.div`
-  margin-top: 20px;
-  font-size: 12px;
-  color: gray;
-  margin-bottom: 40px;
-`;
-
-const buttonView = {
-  [Widget.Button]: {
-    Container: {
-      normal: {
-        margin: {
-          right: 10
-        }
-      }
-    }
-  }
-};
 
 const cardThemeConfig = {
   [Widget.Card]: {
     Container: {
       normal: {
         width: "100%",
-        height: 260,
+        height: 237,
         margin: {
-          top: 30
+          top: 24
         },
+        padding: {
+          left: 0
+        },
+        border: 'none',
+        boxShadow: 'none',
         background: {
-          color:"#f6f6f6"
+          color:"#F8F8F8"
         }
       }
     },
     CardTitle: {
       normal: {
-        height: 30,
-        fontSize: 20,
+        height: 25,
+        fontSize: 18,
+        //字体加粗未开
+        // fontWeight: 900,
         margin: {
-          top: 20
+          top: 20,
+          left: 130
+        }
+      }
+    }
+  },
+  [Widget.Steps]:{
+    StepOutContainer:{
+      normal: {
+        width: 200,
+        margin: {
+          left: 30
         }
       }
     }
   },
   [Widget.Step]: {
+    StepOutContainer:{
+      normal: {
+        width: 240
+      }
+    },
     StepDescription: {
       normal: {
-        width:200
+        width:200,
+        fontSize: 12,
+        color: '#666',
+        margin: {
+          top: 13
+        },
+      }
+    }
+  }
+};
+const buttonView = {
+  [Widget.Button]: {
+    Container: {
+      normal: {
+        width: 80,
+        height: 32,
+        margin: {
+          right: 20
+        }
       }
     }
   }
@@ -112,8 +159,11 @@ const iconTheme = {
   [Widget.Icon]: {
     Icon: {
       normal: {
-        fontSize: 56,
+        fontSize: 88,
         color: "#56c22d",
+        margin: {
+          top: 74
+        }
       }
     }
   }
@@ -121,68 +171,146 @@ const iconTheme = {
 
  class ResultSuccess extends Component {
   render() {
+    const config = {
+      [Widget.Breadcrumb]: {
+        BreadcrumbWrap: {
+          normal: {
+            width: 185,
+            height: 22,
+            padding: {
+              left: 0,
+            },
+            margin: {
+              left: 14,
+              right: 0,
+              top: 20,
+              bottom: 20,
+            },
+            background: {
+              color: '#F5F5F9',
+            },
+          },
+        },
+        BreadcrumbItem: {
+          ItemWrap: {
+            normal: {
+              width: 120,
+              padding: {
+                left: 0,
+              },
+              margin: {},
+              nth0: { width: 500 },
+            },
+          },
+
+          Text: {
+            normal: {
+              fontFamily: 'PingFangSC-Regular',
+              color: '#999',
+              fontSize: 16,
+              last: {
+                color: '#2A2A2A',
+              },
+            },
+          },
+
+          Separator: {
+            normal: {
+              color: '#666',
+              fontSize: 16,
+              margin: {
+                top: 6,
+                left: 4,
+                right: 3,
+              },
+              last: {
+                color: '#4d63ff',
+              },
+            },
+          },
+        },
+      },
+    };
     return (
       <Content>
+        {/*页头*/}
+        <BreadcrumbWrap>
+          <Breadcrumb separator={'>'} lastSeparator={''} theme={config}>
+            <Breadcrumb.Item href="a">首页</Breadcrumb.Item>
+            <Breadcrumb.Item href="b">结果页</Breadcrumb.Item>
+            <Breadcrumb.Item href="c">成功页</Breadcrumb.Item>
+          </Breadcrumb>
+        </BreadcrumbWrap>
+        {/*页中内容*/}
         <PageContent>
+          {/*成功信息*/}
           <ContentContainer>
               <Theme config={iconTheme}>
                 <Icon iconClass={"lugia-icon-reminder_check_circle"} />
+                <SuccessText>{"提交成功"}</SuccessText>
+                <SuccessDesTextWrap>
+                  <SuccessDesText>
+                    提交结果页用于反馈一系列操作任务的处理结果， 如果仅是简单操作，使用 Message 全局提示反馈即可。
+                  </SuccessDesText>
+                  <SuccessDesText>
+                    本文字区域可以展示简单的补充说明，如果有类似展示 “单据”的需求，下面这个灰色区域可以呈现比较复杂的内容
+                  </SuccessDesText>
+                </SuccessDesTextWrap>
               </Theme>
-            <SuccessText>{"提交成功"}</SuccessText>
-            <SuccessDesText>
-              {
-                "提交结果页用于反馈一系列操作任务的处理结果， 如果仅是简单操作，使用 Message 全局提示反馈即可。 本文字区域可以展示简单的补充说明，如果有类似展示 “单据”的需求，下面这个灰色区域可以呈现比较复杂的内容。"
-              }
-            </SuccessDesText>
           </ContentContainer>
-          <Theme config={cardThemeConfig}>
-            <Card
-              title={"项目名称"}
-              content={
-                <CardContentContainer>
-                  <DesContainer>
-                    <TitleContainer>
-                      <Title> {"项目Id:  23421"}</Title>
-                      <Title> {"负责人:  23421"}</Title>
-                      <Title> {"生效时间 : 2016-12-12 ~ 2017-12-12"}</Title>
-                    </TitleContainer>
-                  </DesContainer>
-                  <Steps orientation="horizontal" stepType={"dot"} desAlign={'center'}>
-                    <Step
-                      title="创建项目"
-                      stepStatus="finish"
-                      description={
-                        [
-                          <div>{"曲丽丽"}</div>,
-                          <div>{"2016-12-12 12:32"}</div>]
-                      }
-                    />
-                    <Step
-                      description={
-                        <desContainer>
-                          <div>{"周毛毛"}</div>
-                        </desContainer>
-                      }
-                      title="部门初审"
-                      stepStatus="finish"
-                    />
-                    <Step
-                      title="财务复核"
-                      stepStatus="wait"
-                    />
-                    <Step title="完成" stepStatus="wait"  />
-                  </Steps>
-                </CardContentContainer>
-              }
-            />
-          </Theme>
-          <CardContentContainer>
-            <Theme config={buttonView}>
-              <Button type={"primary"} onClick={this.props.goBack}>{"返回列表"}</Button>
-              <Button onClick={this.props.goDetails}>{"查看项目"}</Button>
-              <Button onClick={this.props.doPrint}>{"打印"}</Button>
+          {/*流程信息*/}
+          <PorcessContentWrap>
+            <Theme config={cardThemeConfig}>
+              <Card
+                title={"项目名称"}
+                content={
+                  <CardContentContainer>
+                    <DesContainer>
+                      <TitleContainer>
+                        <Title> {"项目Id:  23421"}</Title>
+                        <Title> {"负责人:  23421"}</Title>
+                        <Title> {"生效时间 : 2016-12-12 ~ 2017-12-12"}</Title>
+                      </TitleContainer>
+                    </DesContainer>
+                    <Steps orientation="horizontal" stepType={"dot"} desAlign={'center'}>
+                      <Step
+                        title="创建项目"
+                        stepStatus="finish"
+                        description={
+                          [
+                            <div>{"曲丽丽"}</div>,
+                            <div>{"2016-12-12 12:32"}</div>
+                          ]
+                        }
+                      />
+                      <Step
+                        description={
+                          <desContainer>
+                            <div>{"周毛毛"}</div>
+                          </desContainer>
+                        }
+                        title="部门初审"
+                        stepStatus="finish"
+                      />
+                      <Step
+                        title="财务复核"
+                        stepStatus="wait"
+                      />
+                      <Step title="完成" stepStatus="wait"  />
+                    </Steps>
+                  </CardContentContainer>
+                }
+              />
             </Theme>
-          </CardContentContainer>
+          </PorcessContentWrap>
+          {/*页脚*/}
+          <FooterContainer>
+            <Theme config={buttonView}>
+              <Button type={"primary"} shape={'round'} onClick={this.props.goBack}>{"返回列表"}</Button>
+              <Button shape={'round'} onClick={this.props.goDetails}>{"查看项目"}</Button>
+              <Button shape={'round'} onClick={this.props.doPrint}>{"打印"}</Button>
+            </Theme>
+          </FooterContainer>
         </PageContent>
       </Content>
     );
@@ -191,10 +319,6 @@ const iconTheme = {
 
 const SuccessPage = connect(
   success,
-  state => {
-    return {
-    };
-  },
   mutations => {
     return {
       goBack: mutations.goBack,
