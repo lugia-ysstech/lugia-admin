@@ -9,14 +9,10 @@ import Content from "../../components/content";
 import PageContent from "../../components/page-content";
 import {
   Theme,
-  Tabs,
-  Avatar,
-  Input,
   Button,
-  Select,
   Icon,
   Card,
-  Steps
+  Breadcrumb
 } from "@lugia/lugia-web";
 import styled from "styled-components";
 import Widget from "@lugia/lugia-web/dist/consts";
@@ -29,11 +25,23 @@ const ContentContainer = styled.div`
   display: inline-block;
   text-align: center;
 `;
+const BreadcrumbWrap = styled.div`
+  width: 100%;
+`;
+const CardOutWrap = styled.div`
+  width: 80%;
+  min-width: 600px;
+  height: 133px;
+  margin: 20px auto;
+  background: #F8F8F8;
+`;
 const CardContentContainer = styled.div`
   width: 100%;
   height: 100px;
   display: inline-block;
   text-align: center;
+  position: relative;
+  top: -14px;
 `;
 const TitleContainer = styled.div`
   width: 100%;
@@ -45,120 +53,196 @@ const TitleContainer = styled.div`
 const Title = styled.td`
   display: inline-block;
   text-align: left;
-  font-size: 12px;
+  font-size: 14px;
   margin: 0 10px;
-`;
-const Operation = styled.td`
-  display: inline-block;
-  text-align: left;
-  font-size: 12px;
-  color: #4d63ff;
 `;
 const SuccessText = styled.div`
   margin-top: 30px;
-  font-size: 20px;
+  font-size: 24px;
+  line-height: 33px;
+  color: #333;
 `;
 const SuccessDesText = styled.div`
-  margin-top: 20px;
-  font-size: 12px;
-  color: gray;
-  margin-bottom: 40px;
+  line-height: 20px;
+  margin-top: 10px;
+  font-size: 14px;
+  color: #666;
 `;
 
-const buttonView = {
-  [Widget.Button]: {
-    Container: {
-      normal: {
-        margin: {
-          top: 30
-        }
-      }
-    }
-  }
-};
-
-const cardThemeConfig = {
-  [Widget.Card]: {
-    Container: {
-      normal: {
-        width: "100%",
-        height: 160,
-        margin: {
-          top: 30
-        },
-        background:{
-          color:"#f6f6f6"
-        }
-      },
-    },
-    CardTitle: {
-      normal: {
-        fontSize: 14,
-        margin: {
-          top: 10
-        }
-      }
-    }
-  },
-  [Widget.Icon]: {
-    Icon: {
-      normal: {
-        fontSize: 10,
-        color: "#f22735"
-      }
-    }
-  }
-};
-
-const iconTheme = {
-  [Widget.Icon]: {
-    Icon: {
-      normal: {
-        fontSize: 56,
-        color: "#f22735"
-      }
-    }
-  }
-};
+const FooterWrap = styled.div`
+  width: 100%;
+  height: 122px;
+  text-align: center;
+`;
 
 class failedDemo extends Component {
   render() {
+
+    const config = {
+      [Widget.Breadcrumb]: {
+        BreadcrumbWrap: {
+          normal: {
+            width: 185,
+            height: 22,
+            padding: {
+              left: 0,
+            },
+            margin: {
+              left: 14,
+              right: 0,
+              top: 20,
+              bottom: 20,
+            },
+            background: {
+              color: '#F5F5F9',
+            },
+          },
+        },
+        BreadcrumbItem: {
+          ItemWrap: {
+            normal: {
+              width: 120,
+              padding: {
+                left: 0,
+              },
+              margin: {},
+              nth0: { width: 500 },
+            },
+          },
+
+          Text: {
+            normal: {
+              fontFamily: 'PingFangSC-Regular',
+              color: '#999',
+              fontSize: 16,
+              last: {
+                color: '#2A2A2A',
+              },
+            },
+          },
+
+          Separator: {
+            normal: {
+              color: '#666',
+              fontSize: 16,
+              margin: {
+                top: 6,
+                left: 4,
+                right: 3,
+              },
+              last: {
+                color: '#4d63ff',
+              },
+            },
+          },
+        },
+      },
+    };
+    const cardThemeConfig = {
+      [Widget.Card]: {
+        Container: {
+          normal: {
+            width: "100%",
+            height: '100%',
+            background:{
+              color:"#f6f6f6"
+            },
+            padding: {
+              top: 4,
+              right: 141,
+              left: 141,
+            },
+            border: 'none',
+            boxShadow: 'none'
+          },
+        },
+        CardTitle: {
+          normal: {
+            fontSize: 18,
+            margin: {
+              top: 0
+            }
+          }
+        }
+      },
+      [Widget.Icon]: {
+        Icon: {
+          normal: {
+            fontSize: 10,
+            color: "#f22735"
+          }
+        }
+      }
+    };
+    const iconTheme = {
+      [Widget.Icon]: {
+        Icon: {
+          normal: {
+            fontSize: 88,
+            color: "#f22735",
+            margin: {
+              top: 76
+            }
+          }
+        }
+      }
+    };
+    const buttonView = {
+      [Widget.Button]: {
+        Container: {
+          normal: {
+            width: 80,
+            height: 32
+          }
+        }
+      }
+    };
+
     return (
       <Content>
+        {/*页头*/}
+        <BreadcrumbWrap>
+          <Breadcrumb separator={'>'} lastSeparator={''} theme={config}>
+            <Breadcrumb.Item href="a">首页</Breadcrumb.Item>
+            <Breadcrumb.Item href="b">结果页</Breadcrumb.Item>
+            <Breadcrumb.Item href="c">失败页</Breadcrumb.Item>
+          </Breadcrumb>
+        </BreadcrumbWrap>
+        {/*内容*/}
         <PageContent>
           <ContentContainer>
             <Theme config={iconTheme}>
               <Icon iconClass={"lugia-icon-reminder_close_circle"} />
+              <SuccessText>{"提交失败"}</SuccessText>
+              <SuccessDesText>
+                {"请核对并修改以下信息后，再重新提交。"}
+              </SuccessDesText>
             </Theme>
-            <SuccessText>{"提交失败"}</SuccessText>
-            <SuccessDesText>
-              {"请核对并修改以下信息后，再重新提交。"}
-            </SuccessDesText>
           </ContentContainer>
-          <Theme config={cardThemeConfig}>
-            <Card
-              title={"您提交的内容有如下错误："}
-              description={
-                <CardContentContainer>
-                  <TitleContainer>
-                    <Icon iconClass={"lugia-icon-reminder_close_circle_o"} />
-                    <Title> {"您的账户已被冻结"}</Title>
-                    <Operation> {"立即解冻>"}</Operation>
-                  </TitleContainer>
-                  <TitleContainer>
-                    <Icon iconClass={"lugia-icon-reminder_close_circle_o"} />
-                    <Title> {"您的账户还不具备申请资格"}</Title>
-                    <Operation> {"立即解冻>"}</Operation>
-                  </TitleContainer>
-                </CardContentContainer>
-              }
-            />
-          </Theme>
-          <CardContentContainer>
-            <Theme config={buttonView}>
-              <Button type={"primary"} onClick={this.props.goBack}>{"返回修改"}</Button>
+          <CardOutWrap>
+            <Theme config={cardThemeConfig}>
+              <Card
+                title={"您提交的内容有如下错误："}
+                description={
+                  <CardContentContainer>
+                    <TitleContainer>
+                      <Icon iconClass={"lugia-icon-reminder_close_circle_o"} />
+                      <Title> {"您的账户已被冻结"}</Title>
+                    </TitleContainer>
+                    <TitleContainer>
+                      <Icon iconClass={"lugia-icon-reminder_close_circle_o"} />
+                      <Title> {"您的账户还不具备申请资格"}</Title>
+                    </TitleContainer>
+                  </CardContentContainer>
+                }
+              />
             </Theme>
-          </CardContentContainer>
+          </CardOutWrap>
+          <FooterWrap>
+            <Theme config={buttonView}>
+              <Button type={"primary"} shape={'round'} onClick={this.props.goBack}>{"返回修改"}</Button>
+            </Theme>
+          </FooterWrap>
         </PageContent>
       </Content>
     );
@@ -167,10 +251,6 @@ class failedDemo extends Component {
 
 const FailedPage = connect(
   failed,
-  state => {
-    return {
-    };
-  },
   mutations => {
     return {
       goBack: mutations.goBack,
