@@ -234,7 +234,7 @@ class Center extends Component{
         key: 'about',
       },
     ];
-    return  <Tabs data={tabsData} onChange={this.onChange} activityValue={'about'}/>
+    return  <Tabs data={tabsData} onChange={this.onChange} activityValue={activityValue}/>
   };
 
   onChange = (res) => {
