@@ -36,7 +36,7 @@ const ItemContainer = styled.div`
   zoom: 1;
   display: inline-block;
   box-sizing: border-box;
-  width: 49%;
+  width: 50%;
   padding: 12px 0;
 `;
 
@@ -87,10 +87,14 @@ const ItemInnerContainer = styled.div`
   display: inline-block;
   box-sizing: border-box;
   width: 20%;
-  text-align: right;
-  margin-right: 15px;
+  margin-right: 8px;
   vertical-align: bottom;
+  text-align: right;
 `;
+const RightInputContainer = styled(ItemInnerContainer)`
+  width: 23%;
+`;
+
 const MemoInnerContainer = styled.div`
   display: inline-block;
   box-sizing: border-box;
@@ -105,13 +109,13 @@ const ItemInputContainer = styled.div`
   box-sizing: border-box;
   width: 60%;
   vertical-align: top;
-  text-align:right;
 `;
-const   RightItemInputContainer= styled(ItemInputContainer)`
-  width: 75%;
+const RightItemInputContainer = styled(ItemInputContainer)`
+  width: 73%;
+  text-align: right;
 `;
 const MomeInputContainer = styled(ItemInputContainer)`
-  width: 86%;
+  width: 88%;
 `;
 const OperationLeftContainer = styled.div`
   display: inline-block;
@@ -259,11 +263,11 @@ class StepForm extends Component {
                 </ItemInputContainer>
               </ItemContainer>
               <ItemContainer>
-                <ItemInnerContainer>
+                <RightInputContainer>
                   <MustStar>*</MustStar>
                   <TitleText>{"托管行:"}</TitleText>
-                </ItemInnerContainer>
-                <ItemInputContainer>
+                </RightInputContainer>
+                <RightItemInputContainer>
                   <Select
                     createPortal
                     data={selectData}
@@ -271,14 +275,14 @@ class StepForm extends Component {
                     placeholder={"中国农业银行"}
                     onChange={this.props.custodianChange}
                   />
-                </ItemInputContainer>
+                </RightItemInputContainer>
               </ItemContainer>
             </Warpper>
             <Warpper>
               <ItemContainer>
                 <ItemInnerContainer>
                   <MustStar>*</MustStar>
-                  <TitleText>{"税务归属："}</TitleText>
+                  <TitleText>{"税务归属:"}</TitleText>
                 </ItemInnerContainer>
                 <ItemInputContainer>
                   <Select
@@ -291,15 +295,15 @@ class StepForm extends Component {
                 </ItemInputContainer>
               </ItemContainer>
               <ItemContainer>
-                <ItemInnerContainer>
+                <RightInputContainer>
                   <TitleText>{"券商:"}</TitleText>
-                </ItemInnerContainer>
-                <ItemInputContainer>
+                </RightInputContainer>
+                <RightItemInputContainer>
                   <Input
                     placeholder={"******"}
                     onChange={this.props.dealerChange}
                   />
-                </ItemInputContainer>
+                </RightItemInputContainer>
               </ItemContainer>
             </Warpper>
             <Warpper>
@@ -313,15 +317,15 @@ class StepForm extends Component {
                     placeholder={10}
                     onChange={this.props.deductionChange}
                   />
-                  <PercentText>{"%"}</PercentText>
+                  {/*<PercentText>{"%"}</PercentText>*/}
                 </ItemInputContainer>
               </ItemContainer>
               <ItemContainer>
-                <ItemInnerContainer>
+                <RightInputContainer>
                   <MustStar>*</MustStar>
                   <TitleText>{"发票:"}</TitleText>
-                </ItemInnerContainer>
-                <ItemInputContainer>
+                </RightInputContainer>
+                <RightItemInputContainer>
                   <Select
                     createPortal
                     data={selectData}
@@ -329,7 +333,7 @@ class StepForm extends Component {
                     placeholder={"发票前置"}
                     onChange={this.props.invoiceChange}
                   />
-                </ItemInputContainer>
+                </RightItemInputContainer>
               </ItemContainer>
             </Warpper>
           </Theme>
@@ -337,7 +341,7 @@ class StepForm extends Component {
             <ItemContainer>
               <ItemInnerContainer>
                 <MustStar>*</MustStar>
-                <TitleText>{"税费所属期间："}</TitleText>
+                <TitleText>{"税费所属期间:"}</TitleText>
               </ItemInnerContainer>
               <RangePicker
                 format={"YYYY-MM-DD"}
@@ -345,21 +349,23 @@ class StepForm extends Component {
               />
             </ItemContainer>
             <ItemContainer>
-              <ItemInnerContainer>
+              <RightInputContainer>
                 <MustStar>*</MustStar>
                 <TitleText>{"支付时间:"}</TitleText>
-              </ItemInnerContainer>
-              <TimePicker
-                placeholder={"选择时间"}
-                onChange={this.props.payTimeChange}
-              />
+              </RightInputContainer>
+              <RightItemInputContainer>
+                <TimePicker
+                  placeholder={"选择时间"}
+                  onChange={this.props.payTimeChange}
+                />
+              </RightItemInputContainer>
             </ItemContainer>
           </Warpper>
           <Warpper>
             <ItemContainer>
               <ItemInnerContainer>
                 <MustStar>*</MustStar>
-                <TitleText>{"任务提醒时间："}</TitleText>
+                <TitleText>{"任务提醒时间:"}</TitleText>
               </ItemInnerContainer>
               <TimePicker
                 placeholder={"选择时间"}
@@ -367,14 +373,16 @@ class StepForm extends Component {
               />
             </ItemContainer>
             <ItemContainer>
-              <ItemInnerContainer>
+              <RightInputContainer>
                 <MustStar>*</MustStar>
                 <TitleText>{"头寸时间"}</TitleText>
-              </ItemInnerContainer>
-              <TimePicker
-                placeholder={"选择时间"}
-                onChange={this.props.positionTimeChange}
-              />
+              </RightInputContainer>
+              <RightItemInputContainer>
+                <TimePicker
+                  placeholder={"选择时间"}
+                  onChange={this.props.positionTimeChange}
+                />
+              </RightItemInputContainer>
             </ItemContainer>
           </Warpper>
           <MemoContainer>
@@ -606,23 +614,21 @@ class StepForm extends Component {
       [Widget.NumberInput]: {
         Container: {
           normal: {
-            width: 310
+            width: 400
           }
         }
       },
       [Widget.Input]: {
         Container: {
           normal: {
-            width: 330
+            width: "96%"
           }
         }
       },
       [Widget.Select]: {
-        InputTag: {
-          InputTagWrap: {
-            normal: {
-              width: 450
-            }
+        Container: {
+          normal: {
+            width: 400
           }
         }
       }
