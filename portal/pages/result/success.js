@@ -34,6 +34,7 @@ export const BreadcrumbWrap = styled.div`
 const SuccessText = styled.div`
   margin-top: 30px;
   font-size: 24px;
+  font-weight: bold;
 `;
 const SuccessDesTextWrap = styled.div`
   width: 50%;
@@ -42,14 +43,13 @@ const SuccessDesTextWrap = styled.div`
   margin: 10px auto;
   margin-bottom: 0;
   font-size: 14px;
-  color: gray;
+  color: #666;
 `;
 const SuccessDesText = styled.p`
   line-height: 20px;
 `;
 const PorcessContentWrap = styled.div`
-  width: 65.3%;
-  min-width: 1000px;
+  width: 940px;
   margin: 0 auto;
 `;
 const CardContentContainer = styled.div`
@@ -57,13 +57,13 @@ const CardContentContainer = styled.div`
   height: 115px;
   display: inline-block;
   text-align: left;
-  margin-top: 20px;
-  padding: 0 140px;
+  margin-top: 17px;
+  padding-left: 140px;
 `;
 const DesContainer = styled.table`
   width: 100%;
   table-layout: fixed;
-  margin-bottom: 20px;
+  margin-bottom: 24px;
 `;
 const TitleContainer = styled.tr`
   display: table-row;
@@ -72,7 +72,13 @@ const TitleContainer = styled.tr`
 const Title = styled.td`
   display: inline-block;
   text-align: left;
-  width: 33%;
+  width: 200px;
+  &.time{
+    width: 300px;
+  }
+  &> span{
+    font-weight: 600;
+  }
 `;
 const FooterContainer = styled.div`
   width: 100%;
@@ -103,11 +109,12 @@ const cardThemeConfig = {
     CardTitle: {
       normal: {
         height: 25,
-        fontSize: 18,
-        //字体加粗未开
-        // fontWeight: 900,
+        font: {
+          size: 18,
+          weight: 600
+        },
         margin: {
-          top: 20,
+          top: 4,
           left: 130
         }
       }
@@ -126,7 +133,7 @@ const cardThemeConfig = {
   [Widget.Step]: {
     StepOutContainer:{
       normal: {
-        width: 240
+        width: 210
       }
     },
     StepDescription: {
@@ -267,15 +274,24 @@ const iconTheme = {
                   <CardContentContainer>
                     <DesContainer>
                       <TitleContainer>
-                        <Title> {"项目Id:  23421"}</Title>
-                        <Title> {"负责人:  23421"}</Title>
-                        <Title> {"生效时间 : 2016-12-12 ~ 2017-12-12"}</Title>
+                        <Title>
+                          <span>{"项目Id: "}</span>
+                          {"12323"}
+                        </Title>
+                        <Title>
+                          <span>{"负责人:  "}</span>
+                          {"夹心心"}
+                        </Title>
+                        <Title className={'time'}>
+                          <span>{"生效时间:  "}</span>
+                          {"2018-12-12 ~ 2018-12-30"}
+                        </Title>
                       </TitleContainer>
                     </DesContainer>
-                    <Steps orientation="horizontal" stepType={"dot"} desAlign={'center'}>
+                    <Steps orientation="horizontal" size={'normal'} desAlign={'center'}>
                       <Step
-                        title="创建项目"
-                        stepStatus="finish"
+                        title="创建任务"
+                        stepStatus="process"
                         description={
                           [
                             <div>{"曲丽丽"}</div>,
@@ -290,7 +306,7 @@ const iconTheme = {
                           </desContainer>
                         }
                         title="部门初审"
-                        stepStatus="finish"
+                        stepStatus="next"
                       />
                       <Step
                         title="财务复核"
