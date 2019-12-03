@@ -112,7 +112,7 @@ const ItemInputContainer = styled.div`
 `;
 const RightItemInputContainer = styled(ItemInputContainer)`
   width: 73%;
-  text-align: right;
+  text-align: left;
 `;
 const MomeInputContainer = styled(ItemInputContainer)`
   width: 88%;
@@ -614,21 +614,21 @@ class StepForm extends Component {
       [Widget.NumberInput]: {
         Container: {
           normal: {
-            width: 400
+            width: 450
           }
         }
       },
       [Widget.Input]: {
         Container: {
           normal: {
-            width: "96%"
+            width: 450
           }
         }
       },
       [Widget.Select]: {
         Container: {
           normal: {
-            width: 400
+            width: 450
           }
         }
       }
