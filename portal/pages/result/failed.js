@@ -47,6 +47,7 @@ const TitleContainer = styled.div`
   width: 100%;
   vertical-align: inherit;
   border-color: inherit;
+  color: #333;
   text-align: left;
   margin:15px 0;
 `;
@@ -59,6 +60,7 @@ const Title = styled.td`
 const SuccessText = styled.div`
   margin-top: 30px;
   font-size: 24px;
+  font-weight: bold;
   line-height: 33px;
   color: #333;
 `;
@@ -159,6 +161,9 @@ class failedDemo extends Component {
         CardTitle: {
           normal: {
             fontSize: 18,
+            font:{
+              weight: 600
+            },
             margin: {
               top: 0
             }
