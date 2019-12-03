@@ -1,6 +1,6 @@
 {
   "name": "@lugia/scaffolding-admin",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "keywords": [
     "lugia",
     "lugia-admin",
@@ -37,7 +37,7 @@
   "license": "Apache License 2.0",
   "devDependencies": {
     "@lugia/mega-jest": "^1.3.2",
-    "@lugia/mega-scripts": "^1.4.8",
+    "@lugia/mega-scripts": "^1.4.9",
     "babel-plugin-import": "1.12.0"
   },
   "files": [
