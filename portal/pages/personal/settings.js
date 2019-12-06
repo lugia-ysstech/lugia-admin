@@ -5,8 +5,6 @@
  * @flow
  */
 import React, { Component } from "react";
-import PageContent from "../../components/page-content";
-import Content from "../../components/content";
 import styled from "styled-components";
 import Widget from "@lugia/lugia-web/dist/consts";
 import {
@@ -20,136 +18,224 @@ import {
   Icon,
   Divider,
   Upload,
-  Card,
-  Checkbox
+  Checkbox,
+  Radio
 } from "@lugia/lugia-web";
 import { connect } from "@lugia/lugiax";
 import setting from "../../models/personal/setting";
 import { getBorderRadius } from "@lugia/theme-utils";
 
+const RadioGroup = Radio.Group;
+
+const TabsContainer = styled.div`
+  width: 100%;
+  height: 100%;
+  padding: 0 14px;
+  > div{
+    >div{
+      >div{
+        padding: 0;
+      }
+    }
+  }
+`;
 const Container = styled.div`
   width: 100%;
-  height: 600px;
+  min-width: 700px;
+  height: 1500px;
   display: inline-flex;
-  padding: 8px 40px;
-`;
-const InnerContainer = styled.div`
-  width: 400px;
+  padding: 20px 30px 0;  
+  border-left: 10px solid #f5f5f9;
 `;
 const InnerInputContainer = styled.div`
-  flex: 1;
+  min-width: 455px;
+  display: flex;
+  flex-direction: column;
 `;
+const InnerContainer = styled.div`
+  width: 260px;
+  padding-top: 25px;
+`;
+
 const RightContainer = styled.div`
   display: block;
   text-align: center;
   margin-bottom: 20px;
+  &.uploadButton{  
+    >div{
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      >div{
+        >span{
+          background: #fff;
+          color: #333;
+        }
+      }
+    }
+  }
 `;
-const TabsContainer = styled.div`
-  width: 100%;
-  height: 100%;
-`;
-const OutContainer = styled.ul`
-  height: 100%;
-  list-style: none;
-`;
-const ItemContainer = styled.li`
-  display: inline-flex;
-  align-items: center;
-  padding: 12px 0;
-  height: 80px;
-  width: 100%;
-`;
-
 const SafeItemContainer = styled.div`
   align-items: center;
   padding: 12px 0;
   height: 60px;
   width: 100%;
 `;
-const SafeIconContainer = styled.div`
-  display: inline-flex;
-  align-items: center;
-  padding: 12px 0;
-  height: 60px;
-  width: 100%;
-`;
-const CheckboxContainer = styled.div`
-  display: flex;
-`;
-const CheckboxInnerContainer = styled.div`
-  display: inline-block;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 30px;
-`;
 const ItemInnerContainer = styled.div`
-  flex: 1 1;
-  align-items: flex-start;
-  margin-bottom: 20px;
-`;
-const NewItemInnerContainer = styled.div`
-  flex: 1 1;
-  align-items: flex-start;
-  margin-bottom: 20px;
-  display: inline-block;
-`;
-const Title = styled.div`
-  display: block;
-  font-size: 14px;
-  margin: 10px 0;
+  float: left;
+  margin-right: 20px;
 `;
 const OperationText = styled.div`
-  list-style: none;
-  height: 25px;
-  line-height: 25px;
+  width: 38px;
+  height: 20px;
+  line-height: 20px;
   color: #4d63ff;
-  width: 100px;
 `;
-const TitleText = styled.div`
-  height: 25px;
-  line-height: 25px;
-`;
+
 const SafeTitleText = styled.div`
-  height: 25px;
-  line-height: 25px;
-  font-size: 16px;
+  height: 20px;
+  line-height: 20px;
+  font-size: 14px;
   flex: none;
-  width: 70px;
+  width: 64px;
   display: inline-block;
 `;
 const VersionTitleText = styled.div`
-  height: 25px;
-  line-height: 25px;
-  font-size: 16px;
-  display: inline-block;
-`;
-const SafeInnerTitleText = styled.div`
-  height: 25px;
-  line-height: 25px;
-  font-size: 16px;
-  display: inline-block;
-  width: 100%;
-`;
-const SafeDescText = styled.div`
-  height: 25px;
-  line-height: 25px;
+  height: 20px;
+  line-height: 20px;
   font-size: 14px;
   display: inline-block;
-  color: gray;
-  width: 100%;
 `;
 const SelectContainer = styled.div`
   vertical-align: bottom;
   display: inline-block;
-`;
-const ProvinceSelectContainer = styled(SelectContainer)`
-  margin-right: 10px;
 `;
 const QuickLoginWrapper = styled.div`
   width: 60%;
   font-size: 36px;
   display: inline-flex;
   flex-wrap: wrap;
+`;
+const IconWrap = styled.div`
+  width: 28px;
+  height: 28px;
+  margin-right: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  &.wechat {
+    background: #86DB46;
+  };
+  &.weibo {
+    background: #E6172D;
+  };
+  &.facebook {
+    background: #4469B0;
+  };
+  &.twitter {
+    background: #29A3EF;
+  };
+  &.QQ {
+    background: #51BCFF;
+  };
+`;
+const HeadWrap = styled.div`
+  height: 25px;
+  margin-bottom: 26px;
+`;
+const ItemWrap = styled.div`
+  margin-bottom: 20px;
+  box-sizing: border-box;
+  &>label{
+    width: 42px;
+    line-height: 32px;
+    font-size: 14px;
+    color: #333;
+    float: left;
+  }
+`;
+const AddtionWrap = styled.div`
+  margin-top: 17px;
+  padding-left: 42px;
+  &>Button: nth-child(1) {
+    margin-right: 20px;
+    width: 110px;
+  }
+  &>Button: nth-child(2) {
+    width: 76px;
+  }
+`;
+const SecurityItemWrap = styled.div`
+  margin-bottom: 20px;
+  min-width: 870px;
+  box-sizing: border-box;
+  &>label{
+    width: 64px;
+    line-height: 32px;
+    font-size: 14px;
+    color: #333;
+    float: left;
+  }
+`;
+const FieldContentWrap = styled.div`
+  width: 800px;
+  padding-top: 5px;
+  float: left;
+`;
+const FieldItemWrap = styled.div`
+  height: 40px;
+  margin-bottom: 10px;
+`;
+const CheckboxInnerContainer = styled.div`
+  float: left;
+  width: 30px;
+`;
+const ItemContentWrap = styled.div`
+  float: left;
+`;
+const SafeInnerTitleText = styled.div`
+  line-height: 20px;
+  font-size: 14px;
+  color: #333;
+`;
+const SafeDescText = styled.div`
+  line-height: 20px;
+  font-size: 12px;
+  color: #999;
+`;
+const MessageInnerContainer = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  &>.MessageHeadTitle {
+    margin: 0;
+  }
+`;
+const ItemContainer = styled.div`
+  align-items: center;
+  height: 80px;
+  padding: 18px 5px 15px 0;
+  position: relative;
+`;
+const MessageItemTitle= styled.div`
+  font-weight: bold;
+  font-size: 14px;
+  color: #333;
+  line-height: 20px;
+  margin-bottom: 5px;
+`;
+const MessageItemContent = styled.div`
+  font-size: 12px;
+  color: #999;
+  height: 25px;
+  line-height: 17px;
+`;
+const SwitchWarp = styled.div`
+  margin-right: 20px;
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  margin-top: -10px;
 `;
 
 function changeBrowserWidth() {
@@ -168,74 +254,24 @@ class Setting extends Component {
       onEmailChange,
       onNameChange,
       onPersonDescChange,
-      onStreetChange,
-      onAreaCodeChange,
-      onTelNumberChange,
       onCountryChange,
       onProvinceChange,
       onCityChange
     } = this.props;
-    const safeItems = [
-      {
-        title: "账户密码",
-        desc: "当前密码强度 :强",
-        operationText: "修改"
-      },
-      {
-        title: "密保手机",
-        desc: "已绑定手机 :123456789123",
-        operationText: "修改"
-      },
-      {
-        title: "密保问题",
-        desc: "未设置密保问题,密保问题可有效保护账户安全",
-        operationText: "设置"
-      },
-      {
-        title: "备用邮箱",
-        desc: "已绑定邮箱 :123456897@125.com",
-        operationText: "修改"
-      },
-      {
-        title: "MFA设备",
-        desc: "未绑定MFA设备,绑定后.可以二次确认",
-        operationText: "绑定"
-      }
-    ];
-    const idItems = [
-      {
-        icon: "lugia-icon-financial_tools",
-        title: "绑定淘宝",
-        desc: "当前未绑定淘宝 ",
-        operationText: "绑定"
-      },
-      {
-        icon: "lugia-icon-financial_group",
-        title: "绑定支付宝",
-        desc: "当前未绑定淘宝 ",
-        operationText: "绑定"
-      },
-      {
-        icon: "lugia-icon-financial_pic_left",
-        title: "绑定钉钉",
-        desc: "当前未绑定淘宝 ",
-        operationText: "绑定"
-      }
-    ];
     const msgItems = [
       {
-        title: "账户密码",
-        desc: "其他用户的消息将以站内信的形式通知 ",
+        title: "异地登陆",
+        desc: "当有异地登陆您的账号密码时，给予消息提醒",
         hasSwitch: true
       },
       {
-        title: "账户密码",
-        desc: "其他用户的消息将以站内信的形式通知 ",
+        title: "数据修改基于消息提醒",
+        desc: "当有数据进行最新更改时候数据 ",
         hasSwitch: true
       },
       {
-        title: "账户密码",
-        desc: "其他用户的消息将以站内信的形式通知 ",
+        title: "数据修改基于消息提醒",
+        desc: "当有数据进行最新更改时候数据",
         hasSwitch: true
       }
     ];
@@ -252,47 +288,60 @@ class Setting extends Component {
     };
     const avatarConfig = {
       [Widget.Avatar]: {
-        SrcAvatar: { normal: { width: 160, height: 160 } }
+        SrcAvatar: { normal: { width: 150, height: 150 } }
+      },
+      [Widget.Upload]: {
+        UploadLiType: {
+          normal: {
+            background: 'red'
+          }
+        }
       }
     };
 
     const getItem = data => () => {
-      return data.map(item => {
-        const { title, desc, operationText, icon, hasSwitch } = item;
-        const leftIcon = icon ? (
-          <Theme config={iconTheme}>
-            <Icon iconClass={icon} />
-          </Theme>
-        ) : null;
-        const Operation = operationText ? (
-          <OperationText> {operationText}</OperationText>
-        ) : hasSwitch ? (
-          <Switch />
-        ) : null;
-        return [
-          <ItemContainer>
-            {leftIcon}
-            <ItemInnerContainer>
-              <TitleText>{title}</TitleText>
-              <TitleText>{desc}</TitleText>
-            </ItemInnerContainer>
-            {Operation}
-          </ItemContainer>,
-          <Divider />
-        ];
-      });
+      return (
+        <MessageInnerContainer>
+          <HeadWrap className={'MessageHeadTitle'}>
+            <h2>消息通知</h2>
+          </HeadWrap>
+          {data.map(item => {
+            const { title, desc, operationText, icon, hasSwitch } = item;
+            const leftIcon = icon ? (
+              <Theme config={iconTheme}>
+                <Icon iconClass={icon} />
+              </Theme>
+            ) : null;
+            const Operation = operationText ? (
+              <OperationText> {operationText}</OperationText>
+            ) : hasSwitch ? (
+              <Switch defaultValue={true} />
+            ) : null;
+            return [
+              <ItemContainer>
+                {leftIcon}
+                <ItemInnerContainer>
+                  <MessageItemTitle>{title}</MessageItemTitle>
+                  <MessageItemContent>{desc}</MessageItemContent>
+                </ItemInnerContainer>
+                <SwitchWarp>
+                  {Operation}
+                </SwitchWarp>
+              </ItemContainer>,
+              <Divider />
+            ];
+          })}
+        </MessageInnerContainer>
+      )
     };
     const getInputItem = data => () => {
       return data.map(item => {
         const {
-          hasTitle = true,
-          title,
           inputPlaceholder,
           inputConfig,
           onChange
         } = item;
         return [
-          hasTitle && <Title> {title}</Title>,
           <ItemInnerContainer>
             <Theme config={inputConfig}>
               <Input placeholder={inputPlaceholder} onChange={onChange} />
@@ -304,14 +353,11 @@ class Setting extends Component {
     const getSelectItem = data => () => {
       return data.map(item => {
         const {
-          hasTitle = true,
-          title,
           selectData,
           selectDefaultValue,
           selectConfig
         } = item;
         return [
-          hasTitle && <Title> {title}</Title>,
           <ItemInnerContainer>
             <Theme config={selectConfig}>
               <SelectContainer>
@@ -327,31 +373,14 @@ class Setting extends Component {
         ];
       });
     };
-    const emailData = [
-      {
-        title: "邮箱",
-        inputPlaceholder: "lugia-design@ysstech.com",
-        inputConfig: {
-          [Widget.Input]: {
-            Container: {
-              normal: {
-                width: 310
-              }
-            }
-          }
-        },
-        onChange: onEmailChange
-      }
-    ];
     const nameData = [
       {
-        title: "昵称",
-        inputPlaceholder: "lugia",
+        inputPlaceholder: "Asyllabear",
         inputConfig: {
           [Widget.Input]: {
             Container: {
               normal: {
-                width: 310
+                width: 390,
               }
             }
           }
@@ -359,82 +388,80 @@ class Setting extends Component {
         onChange: onNameChange
       }
     ];
-    const desData = [
+    const emailData = [
       {
-        title: "个人简介",
-        inputPlaceholder: "个人简介",
+        inputPlaceholder: "Asyllabear@gmail.com",
         inputConfig: {
           [Widget.Input]: {
             Container: {
               normal: {
-                width: 310,
-                height: 100
+                width: 390
+              }
+            }
+          }
+        },
+        onChange: onEmailChange
+      }
+    ];
+    const languelData = [
+      {
+        inputPlaceholder: "英语",
+        inputConfig: {
+          [Widget.Input]: {
+            Container: {
+              normal: {
+                width: 390
+              }
+            }
+          }
+        },
+        onChange: onEmailChange
+      }
+    ];
+    const twitterData = [
+      {
+        inputPlaceholder: "Jason John",
+        inputConfig: {
+          [Widget.Input]: {
+            Container: {
+              normal: {
+                width: 390
+              }
+            }
+          }
+        },
+        onChange: onEmailChange
+      }
+    ];
+    const desData = [
+      {
+        inputPlaceholder: "北方多鸿雁，日落江河莫忘旧人曾婀娜。",
+        inputConfig: {
+          [Widget.Input]: {
+            Container: {
+              normal: {
+                width: 390,
+                height: 80
               }
             },
-            margin: {
-              top: 10,
-              bottom: 10
-            }
+            Input: {
+              normal: {
+                padding: {
+                  top: 0,
+                  right: 16,
+                  bottom: 50,
+                  left: 10
+                }
+              }
+            },
           }
         },
         onChange: onPersonDescChange
       }
     ];
-    const streetData = [
-      {
-        title: "街道地址",
-        inputPlaceholder: "达美中心T2 16层",
-        inputConfig: {
-          [Widget.Input]: {
-            Container: {
-              normal: {
-                width: 310
-              }
-            }
-          }
-        },
-        onChange: onStreetChange
-      }
-    ];
-    const telAreaCodeData = [
-      {
-        title: "联系电话",
-        inputPlaceholder: "010",
-        inputConfig: {
-          [Widget.Input]: {
-            Container: {
-              normal: {
-                width: 60,
-                margin: {
-                  right: 10
-                }
-              }
-            }
-          }
-        },
-        onChange: onAreaCodeChange
-      }
-    ];
-    const telNumberData = [
-      {
-        inputPlaceholder: "88088888",
-        hasTitle: false,
-        inputConfig: {
-          [Widget.Input]: {
-            Container: {
-              normal: {
-                width: 240
-              }
-            }
-          }
-        },
-        onChange: onTelNumberChange
-      }
-    ];
     const countryData = [
       {
-        title: "国家/地区:",
-        selectDefaultValue: "中国",
+        selectDefaultValue: "国家",
         selectData: [
           { value: "中国", label: "中国" },
           { value: "中国", label: "中国" }
@@ -444,7 +471,7 @@ class Setting extends Component {
             InputTag: {
               InputTagWrap: {
                 normal: {
-                  width: 310
+                  width: 100
                 }
               }
             }
@@ -453,17 +480,28 @@ class Setting extends Component {
         onChange: onCountryChange
       }
     ];
+    const radioView = {
+      [Widget.Radio]:{
+        Container: {
+          normal: {
+            margin: {
+              right: 30
+            }
+          }
+        }
+      }
+    };
     const provinceData = [
       {
-        title: "所在省市:",
-        selectDefaultValue: "北京市",
+        title: "省份:",
+        selectDefaultValue: "省份",
         selectData: [{ value: "北京市", label: "北京市" }],
         selectConfig: {
           [Widget.Select]: {
             InputTag: {
               InputTagWrap: {
                 normal: {
-                  width: 140
+                  width: 100
                 }
               }
             }
@@ -474,7 +512,7 @@ class Setting extends Component {
     ];
     const cityData = [
       {
-        selectDefaultValue: "朝阳区",
+        selectDefaultValue: "城市",
         hasTitle: false,
         selectData: [
           { value: "朝阳区", label: "朝阳区" },
@@ -495,10 +533,58 @@ class Setting extends Component {
       }
     ];
     const { browserWidth } = this.state;
-    const flexDirection = browserWidth > 800 ? "row-reverse" : "column";
 
     const settingContent = [
-      <Container style={{ flexDirection: flexDirection }}>
+      <Container>
+        <InnerInputContainer>
+          <HeadWrap>
+            <h2>编辑个人设置</h2>
+          </HeadWrap>
+          <ItemWrap>
+            <label>昵称:</label>
+            {getInputItem(nameData)()}
+          </ItemWrap>
+          <ItemWrap>
+            <label>邮箱:</label>
+            {getInputItem(emailData)()}
+          </ItemWrap>
+          <ItemWrap>
+            <label>语言:</label>
+            {getInputItem(languelData)()}
+          </ItemWrap>
+          <ItemWrap>
+            <label>推特:</label>
+            {getInputItem(twitterData)()}
+          </ItemWrap>
+          <ItemWrap>
+            <label>介绍:</label>
+            {getInputItem(desData)()}
+          </ItemWrap>
+          <ItemWrap>
+            <label>性别:</label>
+            <Theme config={radioView}>
+              <RadioGroup defaultValue="2">
+                <Radio value="1">男</Radio>
+                <Radio value="2">女</Radio>
+                <Radio value="3">保密</Radio>
+              </RadioGroup>
+            </Theme>
+          </ItemWrap>
+          <ItemWrap>
+            <label>位置:</label>
+            {getSelectItem(countryData)()}
+            {getSelectItem(provinceData)()}
+            {getSelectItem(cityData)()}
+          </ItemWrap>
+          <AddtionWrap>
+            <Button onClick={this.props.doUpdateUserInfo} type={"primary"} shape={'round'}>
+              保存更改
+            </Button>
+            <Button type={"default"} shape={'round'}>
+              重置
+            </Button>
+          </AddtionWrap>
+        </InnerInputContainer>
         <InnerContainer>
           <Theme config={avatarConfig}>
             <RightContainer>
@@ -507,70 +593,27 @@ class Setting extends Component {
                 src="https://gw.alipayobjects.com/zos/antfincdn/XAosXuNZyF/BiazfanxmamNRoxxVxka.png"
               />
             </RightContainer>
-            <RightContainer>
+            <RightContainer className={'uploadButton'}>
               <Upload
                 areaType={"button"}
                 icon={"lugia-icon-financial_download"}
                 onClick={this.props.doUpdateAvatar}
               >
-                更换头像
               </Upload>
             </RightContainer>
           </Theme>
         </InnerContainer>
-        <InnerInputContainer>
-          <h2>基本设置</h2>
-          {getInputItem(emailData)()}
-          {getInputItem(nameData)()}
-          {getInputItem(desData)()}
-          {getSelectItem(countryData)()}
-          <SelectContainer>
-            <ProvinceSelectContainer>
-              {getSelectItem(provinceData)()}
-            </ProvinceSelectContainer>
-            <SelectContainer>{getSelectItem(cityData)()}</SelectContainer>
-          </SelectContainer>
-
-          {getInputItem(streetData)()}
-          <SelectContainer>
-            <SelectContainer>{getInputItem(telAreaCodeData)()}</SelectContainer>
-            <SelectContainer>{getInputItem(telNumberData)()} </SelectContainer>
-          </SelectContainer>
-          <div>
-            <Button onClick={this.props.doUpdateUserInfo} type={"primary"}>
-              更新基本信息
-            </Button>
-          </div>
-        </InnerInputContainer>
       </Container>
     ];
-    const theIconTheme = type => {
-      let theColor;
-      switch (type) {
-        case "wechat":
-          theColor = "#50B674";
-          break;
-        case "QQ":
-          theColor = "#68A5E1";
-          break;
-        case "weibo":
-          theColor = "#EA5D5C";
-          break;
-        case "dingding":
-          theColor = "#5DA6FB";
-          break;
-        default:
-          theColor = `#333`;
-          break;
-      }
+    const theIconTheme = () => {
+      let theColor = '#fff';
       return {
         [Widget.Icon]: {
           Icon: {
             normal: {
+              fontSize: 18,
               color: theColor,
-              margin: {
-                right: 20
-              }
+              background: 'blue'
             }
           }
         }
@@ -583,6 +626,10 @@ class Setting extends Component {
             borderRadius: getBorderRadius(16),
             margin: {
               right: 20
+            },
+            padding: {
+              left: 27,
+              right: 27
             }
           }
         }
@@ -592,121 +639,145 @@ class Setting extends Component {
       [Widget.Button]: {
         Container: {
           normal: {
+            height: 32,
+            width: 90,
+            font: {
+              size: 14
+            },
             margin: {
               left: 20
             }
+          }
+        },
+        ButtonText: {
+          normal: {
+            color: '#333'
           }
         }
       }
     };
     const getSafeSetting = (
       <InnerInputContainer>
-        <h2>安全设置</h2>
-
-        <SafeIconContainer>
-          <SafeTitleText>账号:</SafeTitleText>
+        <HeadWrap>
+          <h2>安全设置</h2>
+        </HeadWrap>
+        <SecurityItemWrap>
+          <label>账号:</label>
           <QuickLoginWrapper>
-            <Theme config={theIconTheme("wechat")}>
-              <Icon iconClass="lugia-icon-logo_wechat" />
-            </Theme>
-            <Theme config={theIconTheme("weibo")}>
-              <Icon iconClass="lugia-icon-logo_weibo" />
-            </Theme>
-            <Theme config={theIconTheme("facebook")}>
-              <Icon iconClass="lugia-icon-logo_facebook" />
-            </Theme>
-            <Theme config={theIconTheme("QQ")}>
-              <Icon iconClass="lugia-icon-logo_QQ" />
-            </Theme>
+            <IconWrap className={'wechat'}>
+              <Theme config={theIconTheme("wechat")}>
+                <Icon iconClass="lugia-icon-logo_wechat" />
+              </Theme>
+            </IconWrap>
+            <IconWrap className={'weibo'}>
+              <Theme config={theIconTheme("weibo")}>
+                <Icon iconClass="lugia-icon-logo_weibo" />
+              </Theme>
+            </IconWrap>
+            <IconWrap className={'facebook'}>
+              <Theme config={theIconTheme("facebook")}>
+                <Icon iconClass="lugia-icon-logo_facebook" />
+              </Theme>
+            </IconWrap>
+            <IconWrap className={'twitter'}>
+              <Theme config={theIconTheme("twitter")}>
+                <Icon iconClass="lugia-icon-logo_twitter" />
+              </Theme>
+            </IconWrap>
+            <IconWrap className={'QQ'}>
+              <Theme config={theIconTheme("QQ")}>
+                <Icon iconClass="lugia-icon-logo_QQ" />
+              </Theme>
+            </IconWrap>
+
           </QuickLoginWrapper>
-        </SafeIconContainer>
-        <SafeItemContainer>
-          <SafeTitleText>路径:</SafeTitleText> <Input onChange={this.props.pathChange} />
-        </SafeItemContainer>
-        <CheckboxContainer>
-          <SafeTitleText>领域:</SafeTitleText>
-          <div>
-            <SafeIconContainer>
+        </SecurityItemWrap>
+        <SecurityItemWrap>
+          <label>路径:</label>
+          <Input onChange={this.props.pathChange} />
+          <Input onChange={this.props.pathChange} />
+        </SecurityItemWrap>
+        <SecurityItemWrap>
+          <label>领域:</label>
+          <FieldContentWrap>
+            <FieldItemWrap>
               <CheckboxInnerContainer>
                 <Checkbox />
               </CheckboxInnerContainer>
-              <div>
+              <ItemContentWrap>
                 <SafeInnerTitleText>
                   Api 访问经过身份验证的用户的API
                 </SafeInnerTitleText>
                 <SafeDescText>
                   以用户身份完全访问lugia pro,包括所有的组和项目进行读/写
                 </SafeDescText>
-              </div>
-            </SafeIconContainer>
-            <SafeIconContainer>
+              </ItemContentWrap>
+            </FieldItemWrap>
+            <FieldItemWrap>
               <CheckboxInnerContainer>
                 <Checkbox />
               </CheckboxInnerContainer>
-              <div>
+              <ItemContentWrap>
                 <SafeInnerTitleText>
                   Read-user 读取经过身份验证的用户个人信息
                 </SafeInnerTitleText>
                 <SafeDescText>
                   对用户的个人资料信息的只读访问权限,例如用户名,公共电子邮件和全名
                 </SafeDescText>
-              </div>
-            </SafeIconContainer>
-            <SafeIconContainer>
+              </ItemContentWrap>
+            </FieldItemWrap>
+            <FieldItemWrap>
               <CheckboxInnerContainer>
                 <Checkbox />
               </CheckboxInnerContainer>
-              <NewItemInnerContainer>
+              <ItemContentWrap>
                 <SafeInnerTitleText>
-                  sudo
-                  以系统中的任何用户身份执行API操作(如果经过身份验证的用户是管理员)
+                  以系统中的任何用户身份执行API操作（如果经过身份验证的用户是管理员）
                 </SafeInnerTitleText>
                 <SafeDescText>
                   访问Sudo功能，以系统中的任何用户身份执行API操作（仅适用于管理员）
                 </SafeDescText>
-              </NewItemInnerContainer>
-            </SafeIconContainer>
-            <SafeIconContainer>
+              </ItemContentWrap>
+            </FieldItemWrap>
+            <FieldItemWrap>
               <CheckboxInnerContainer>
                 <Checkbox />
               </CheckboxInnerContainer>
-              <NewItemInnerContainer>
+              <ItemContentWrap>
                 <SafeInnerTitleText>
                   read_repository 读取存储
                 </SafeInnerTitleText>
-                <SafeDescText>读取储存库</SafeDescText>
-              </NewItemInnerContainer>
-            </SafeIconContainer>
-            <SafeIconContainer>
+                <SafeDescText>
+                  读取储存库
+                </SafeDescText>
+              </ItemContentWrap>
+            </FieldItemWrap>
+            <FieldItemWrap>
               <CheckboxInnerContainer>
                 <Checkbox />
               </CheckboxInnerContainer>
-              <div>
+              <ItemContentWrap>
                 <SafeInnerTitleText>
                   openid 使用OpenID Connect 进行身份验证
                 </SafeInnerTitleText>
                 <SafeDescText>
-                  使用Lugia
-                  pro进行身份认证的能力，以及对用户的配置文件信息和组成员身份的只读访问权限
+                  使用Lugia pro进行身份认证的能力，以及对用户的配置文件信息和组成员身份的只读访问权限
                 </SafeDescText>
-              </div>
-            </SafeIconContainer>
-          </div>
-        </CheckboxContainer>
+              </ItemContentWrap>
+            </FieldItemWrap>
+          </FieldContentWrap>
+        </SecurityItemWrap>
 
-        <SafeItemContainer>
+        <SecurityItemWrap>
           <SafeTitleText>关于pro :</SafeTitleText>
           <VersionTitleText>当前版本</VersionTitleText>
           <VersionTitleText>1.5.9 </VersionTitleText>
-          <VersionTitleText>
             <Theme config={feedbackButtonTheme}>
               <Button>意见反馈</Button>
             </Theme>
-          </VersionTitleText>
-        </SafeItemContainer>
+        </SecurityItemWrap>
         <SafeItemContainer>
           <SafeTitleText />
-
           <QuickLoginWrapper>
             <Theme config={saveButtonTheme}>
               <Button type="primary">保存修改</Button>
@@ -718,59 +789,65 @@ class Setting extends Component {
     );
     const defaultData = [
       {
-        title: "基本设置",
+        title: "个人信息",
         content: settingContent
       },
       {
         title: "安全设置",
-        content: <OutContainer>{getSafeSetting}</OutContainer>
+        content: <Container>{getSafeSetting}</Container>
       },
       {
-        title: "账号绑定",
-        content: <OutContainer> {getItem(idItems)()}</OutContainer>
-      },
-      {
-        title: "新消息通知",
-        content: <OutContainer> {getItem(msgItems)()}</OutContainer>
+        title: "消息通知",
+        content: <Container> {getItem(msgItems)()}</Container>
       }
     ];
     const config = {
       [Widget.Tabs]: {
+        WindowContainer: {
+          normal: {
+            padding: {
+              top: 0
+            }
+          }
+        },
         ContentBlock: {
           normal: {
-            width: 1350,
-            height: 1500
+            width: '100%',
+            height: 1500,
+            padding: {
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+            }
           }
         },
         TabHeader: {
           DefaultTabPan: {
             normal: {
               width: 150,
-              height: 40,
+              height: 58,
               margin: {
                 top: 4,
+                right: 20,
                 bottom: 8
               }
             }
-          }
+          },
         }
       }
     };
     const position = browserWidth > 800 ? "left" : "top";
     return (
-      <Content>
-        <PageContent>
-          <Theme config={config}>
-            <TabsContainer>
-              <Tabs
-                tabType={"line"}
-                tabPosition={position}
-                data={defaultData}
-              />
-            </TabsContainer>
-          </Theme>
-        </PageContent>
-      </Content>
+      <Theme config={config}>
+        <TabsContainer>
+          <Tabs
+            tabType={"line"}
+            tabPosition={position}
+            data={defaultData}
+          />
+        </TabsContainer>
+      </Theme>
     );
   }
   componentDidMount() {
