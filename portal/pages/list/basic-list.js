@@ -6,7 +6,7 @@
  */
 import React, { Component } from "react";
 import Content from "../../components/content";
-import { Breadcrumb, consts as Widget, Button, Radio, Input, Icon, Avatar, Theme, Progress } from "@lugia/lugia-web";
+import { Breadcrumb, consts as Widget, Button, Radio, Input, Avatar, Theme, Progress } from "@lugia/lugia-web";
 import styled from "styled-components";
 
 import GChartLeft from "./charts/basicChartOne";
@@ -37,69 +37,67 @@ const SingleGraphContainer = styled.div`
 `;
 
 //下部列表
-const SecContentWrap = styled.div`
-  width: 100%;
+
+
+//列表项
+//控制条
+const ListContentWrap = styled.div`
+  background: #fff;
+  margin: 30px 14px 0;
+  border-radius: 4px;
 `;
-//表头
+const ActionBar = styled.div`
+  height: 65px;
+  padding: 20px 14px 13px;
+  display: flex;
+  justify-content: space-between;
+`;
 const ListHeader = styled.div`
   width: 100%;
-  height: 55px;
+  height: 32px;
   color: #333;
-  padding: 22px 14px 0;
 `;
 const ListHeaderMark = styled.div`
    width: 6px;
    height: 20px;
+   margin-bottom: 4px;
    background: #4D68FF;
    border-radius: 3px;
    display: inline-block;
 `;
 const ListHeaderContent = styled.p`
    font-size: 18px;
-   line-height: 25px;
+   font-weight: 600;
+   line-height: 32px;
    color: #333;
    font: PingFangSC-Medium;
    display: inline-block;
    vertical-align: bottom;
    margin-left: 6px;
 `;
-
-//列表项
-//控制条
-const ListContentWrap = styled.div`
-  background: #fff;
-  margin: 0 14px;
-  border-radius: 4px;
-`;
-const ActionBar = styled.div`
-  height: 65px;
-  padding: 20px 14px;
-  display: flex;
-  justify-content: space-between;
-  > Button {
-    width: 120px;
-    height: 32px;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-    text-align: center;
-    font: PingFangSC-Regular;
-    line-height: 22px;
-    color: #666;
-  }
-`;
 const ActionBarLeftWrap = styled.div`
   display: flex;
   justify-content: right;
   font-size: 14px;
-`;
-const InputWrapper = styled.div`
-  margin-left: 8px;
-  display: inline-block;
-  font-size: 14px;
+  > button {
+    width: 96px;
+    height: 32px;
+    font: PingFangSC-Regular;
+    >span {
+      >span {
+        line-height: 32px;
+        color: #4D63FF;
+        .jiahao {
+          font-size: 25px;
+          vertical-align: bottom;
+        }
+      }
+    }
+  }
 `;
 //列表区域
 const ListContent = styled.div`
-  padding: 14px 14px;
+  padding: 0px 14px;
   font: PingFangSC-Regular;
   font-size: 14px;
 `;
@@ -117,35 +115,54 @@ const ItemHeader = styled.div`
   justify-content: space-between;
 `;
 const AvatarWrap = styled.div`
-  min-width: 200px;
+  min-width: 300px;
 `;
 const AvatarInfor = styled.div`
   display: inline-block;
   vertical-align: top;
-  width: 150px;
+  width: 200px;
   height: 43px;
-  margin-left: 7px;
-  > p {
+  margin-left: 14px;
+  > p: nth-child(1) {
+    color: #333;
+    line-height: 20px;
+  };
+  > p: nth-child(2) {
+    color: #999;
     line-height: 20px;
   }
 `;
 const ItemApplicantInfor = styled.div`
   width: 305px;
+  margin-right: 40px;
   display: flex;
   justify: space-between;
 `;
 const ItemApplicantName = styled.div`
   width: 100px;
-  & > p {
+  margin-right: 40px;
+  > p: nth-child(1) {
+    color: #666;
     line-height: 20px;
     text-align: center;
-  }
+  };
+  > p: nth-child(2) {
+    color: #333;
+    line-height: 20px;
+    text-align: center;
+  };
 `;
 const ItemApplicantTime = styled.div`
-    & > p {
+  > p: nth-child(1) {
+    color: #666;
     line-height: 20px;
     text-align: left;
-  }
+  };
+  > p: nth-child(2) {
+    color: #333;
+    line-height: 20px;
+    text-align: left;
+  };
 `;
 const ItemInfor = styled.div`
   width: 455px;
@@ -154,28 +171,16 @@ const ItemInfor = styled.div`
   justify-content: space-between;
 `;
 const ItemInforProgress = styled.div`
-  width: 188px;
+  width: 210px;
   height: 16px;
 `;
 const ItemInforEditor = styled.div`
   color: blue;
+  margin-right: 20px;
   & > span: nth-child(2) {
     color: red;
   }
 `;
-
-class SearchIcon extends React.Component<IconProps> {
-  static displayName = Widget.SearchIcon;
-  render() {
-    return (
-      <Icon
-        iconClass="lugia-icon-financial_search"
-        key="refresh"
-        {...this.props}
-      />
-    );
-  }
-}
 
 export default class BasicList extends Component {
   constructor(props){
@@ -243,17 +248,34 @@ export default class BasicList extends Component {
         },
       },
       [Widget.Button]: {
+        Container: {
+          normal:{
+            border:{
+              width: 1,
+              style: 'solid',
+              color: '#4D63FF'
+            }
+          }
+        },
         ButtonText: {
           normal: {
-            font: {size: 16, weight: 500},
+            font: {size: 14, weight: 500},
+            color: '#4D63FF'
           }
         }
       },
       [Widget.RadioGroup]: {
         Container: {
           normal: {
-            // width: 209,
-            height: 32
+            width: 210,
+            height: 32,
+            font: {
+              size: 14
+            },
+            margin: {
+              left: 20,
+              right: -20
+            }
           }
         },
         //单个按钮属性设置失效
@@ -313,265 +335,254 @@ export default class BasicList extends Component {
             </SingleGraphContainer>
           </GraphContentWrap>
         </FirstContentWrap>
-
         {/*下部列表*/}
-        <SecContentWrap>
-          {/*表头*/}
-          <ListHeader>
-            <ListHeaderMark />
-            <ListHeaderContent>申请列表</ListHeaderContent>
-          </ListHeader>
-          {/*列表项*/}
-          <ListContentWrap>
-            <ActionBar>
-              <Theme config={config}>
+        <ListContentWrap>
+          <ActionBar>
+            <Theme config={config}>
+              <ListHeader>
+                <ListHeaderMark />
+                <ListHeaderContent>申请列表</ListHeaderContent>
+              </ListHeader>
+              <ActionBarLeftWrap>
                 <Button>
-                  <span style={{fontSize: 26,verticalAlign: 'text-bottom'}}>+ </span>
+                  <span className={'jiahao'}>+ </span>
                   新增申请
                 </Button>
-              </Theme>
-              <ActionBarLeftWrap>
-                <Theme config={config}>
-                  <RadioGroup childType="button" onChange={this.onChange} defaultValue="1">
-                    <RadioButton value="1">全部</RadioButton>
-                    <RadioButton value="2">已完成</RadioButton>
-                    <RadioButton value="3">未完成</RadioButton>
-                  </RadioGroup>
-                  <InputWrapper>
-                    <Input viewClass="register" prefix={<SearchIcon />} placeholder={'搜索内容'} />
-                  </InputWrapper>
-                </Theme>
+                <RadioGroup childType="button" onChange={this.onChange} defaultValue="1">
+                  <RadioButton value="1">全部</RadioButton>
+                  <RadioButton value="2">已完成</RadioButton>
+                  <RadioButton value="3">未完成</RadioButton>
+                </RadioGroup>
               </ActionBarLeftWrap>
-            </ActionBar>
-            <ListContent>
-              <ListItemWrap>
-                <ItemHeader>
-                  <AvatarWrap>
-                    <Theme config={view}>
-                      <Avatar shape={"square"} size={"large"} name={"lugia"} />
-                      <AvatarInfor>
-                        <p>标题一</p>
-                        <p>ysstech.com</p>
-                      </AvatarInfor>
-                    </Theme>
-                  </AvatarWrap>
-                  <ItemApplicantInfor>
-                    <ItemApplicantName>
-                      <p>申请人</p>
-                      <p>洛奇亚</p>
-                    </ItemApplicantName>
-                    <ItemApplicantTime>
-                      <p>申请时间</p>
-                      <p>2018-08-08 12:00:00</p>
-                    </ItemApplicantTime>
-                  </ItemApplicantInfor>
-                </ItemHeader>
-                <ItemInfor>
-                  <ItemInforProgress>
-                    <Progress percent={30} showType="inside" status="active" />
-                  </ItemInforProgress>
-                  <ItemInforEditor>
-                    <span>编辑 | </span>
-                    <span>删除</span>
-                  </ItemInforEditor>
-                </ItemInfor>
-              </ListItemWrap>
-              <ListItemWrap>
-                <ItemHeader>
-                  <AvatarWrap>
-                    <Theme config={view}>
-                      <Avatar shape={"square"} size={"large"} name={"lugia"} />
-                      <AvatarInfor>
-                        <p>标题一</p>
-                        <p>ysstech.com</p>
-                      </AvatarInfor>
-                    </Theme>
-                  </AvatarWrap>
-                  <ItemApplicantInfor>
-                    <ItemApplicantName>
-                      <p>申请人</p>
-                      <p>洛奇亚</p>
-                    </ItemApplicantName>
-                    <ItemApplicantTime>
-                      <p>申请时间</p>
-                      <p>2018-08-08 12:00:00</p>
-                    </ItemApplicantTime>
-                  </ItemApplicantInfor>
-                </ItemHeader>
-                <ItemInfor>
-                  <ItemInforProgress>
-                    <Progress percent={70} showType="inside" status="error" />
-                  </ItemInforProgress>
-                  <ItemInforEditor>
-                    <span>编辑 | </span>
-                    <span>删除</span>
-                  </ItemInforEditor>
-                </ItemInfor>
-              </ListItemWrap>
-              <ListItemWrap>
-                <ItemHeader>
-                  <AvatarWrap>
-                    <Theme config={view}>
-                      <Avatar shape={"square"} size={"large"} name={"lugia"} />
-                      <AvatarInfor>
-                        <p>标题一</p>
-                        <p>ysstech.com</p>
-                      </AvatarInfor>
-                    </Theme>
-                  </AvatarWrap>
-                  <ItemApplicantInfor>
-                    <ItemApplicantName>
-                      <p>申请人</p>
-                      <p>洛奇亚</p>
-                    </ItemApplicantName>
-                    <ItemApplicantTime>
-                      <p>申请时间</p>
-                      <p>2018-08-08 12:00:00</p>
-                    </ItemApplicantTime>
-                  </ItemApplicantInfor>
-                </ItemHeader>
-                <ItemInfor>
-                  <ItemInforProgress>
-                    <Progress percent={100} showType="inside" />
-                  </ItemInforProgress>
-                  <ItemInforEditor>
-                    <span>编辑 | </span>
-                    <span>删除</span>
-                  </ItemInforEditor>
-                </ItemInfor>
-              </ListItemWrap>
-              <ListItemWrap>
-                <ItemHeader>
-                  <AvatarWrap>
-                    <Theme config={view}>
-                      <Avatar shape={"square"} size={"large"} name={"lugia"} />
-                      <AvatarInfor>
-                        <p>标题一</p>
-                        <p>ysstech.com</p>
-                      </AvatarInfor>
-                    </Theme>
-                  </AvatarWrap>
-                  <ItemApplicantInfor>
-                    <ItemApplicantName>
-                      <p>申请人</p>
-                      <p>洛奇亚</p>
-                    </ItemApplicantName>
-                    <ItemApplicantTime>
-                      <p>申请时间</p>
-                      <p>2018-08-08 12:00:00</p>
-                    </ItemApplicantTime>
-                  </ItemApplicantInfor>
-                </ItemHeader>
-                <ItemInfor>
-                  <ItemInforProgress>
-                    <Progress percent={60} showType="inside" status="active" />
-                  </ItemInforProgress>
-                  <ItemInforEditor>
-                    <span>编辑 | </span>
-                    <span>删除</span>
-                  </ItemInforEditor>
-                </ItemInfor>
-              </ListItemWrap>
-              <ListItemWrap>
-                <ItemHeader>
-                  <AvatarWrap>
-                    <Theme config={view}>
-                      <Avatar shape={"square"} size={"large"} name={"lugia"} />
-                      <AvatarInfor>
-                        <p>标题一</p>
-                        <p>ysstech.com</p>
-                      </AvatarInfor>
-                    </Theme>
-                  </AvatarWrap>
-                  <ItemApplicantInfor>
-                    <ItemApplicantName>
-                      <p>申请人</p>
-                      <p>洛奇亚</p>
-                    </ItemApplicantName>
-                    <ItemApplicantTime>
-                      <p>申请时间</p>
-                      <p>2018-08-08 12:00:00</p>
-                    </ItemApplicantTime>
-                  </ItemApplicantInfor>
-                </ItemHeader>
-                <ItemInfor>
-                  <ItemInforProgress>
-                    <Progress percent={80} showType="inside" status="active" />
-                  </ItemInforProgress>
-                  <ItemInforEditor>
-                    <span>编辑 | </span>
-                    <span>删除</span>
-                  </ItemInforEditor>
-                </ItemInfor>
-              </ListItemWrap>
-              <ListItemWrap>
-                <ItemHeader>
-                  <AvatarWrap>
-                    <Theme config={view}>
-                      <Avatar shape={"square"} size={"large"} name={"lugia"} />
-                      <AvatarInfor>
-                        <p>标题一</p>
-                        <p>ysstech.com</p>
-                      </AvatarInfor>
-                    </Theme>
-                  </AvatarWrap>
-                  <ItemApplicantInfor>
-                    <ItemApplicantName>
-                      <p>申请人</p>
-                      <p>洛奇亚</p>
-                    </ItemApplicantName>
-                    <ItemApplicantTime>
-                      <p>申请时间</p>
-                      <p>2018-08-08 12:00:00</p>
-                    </ItemApplicantTime>
-                  </ItemApplicantInfor>
-                </ItemHeader>
-                <ItemInfor>
-                  <ItemInforProgress>
-                    <Progress percent={80} showType="inside" status="active" />
-                  </ItemInforProgress>
-                  <ItemInforEditor>
-                    <span>编辑 | </span>
-                    <span>删除</span>
-                  </ItemInforEditor>
-                </ItemInfor>
-              </ListItemWrap>
-              <ListItemWrap>
-                <ItemHeader>
-                  <AvatarWrap>
-                    <Theme config={view}>
-                      <Avatar shape={"square"} size={"large"} name={"lugia"} />
-                      <AvatarInfor>
-                        <p>标题一</p>
-                        <p>ysstech.com</p>
-                      </AvatarInfor>
-                    </Theme>
-                  </AvatarWrap>
-                  <ItemApplicantInfor>
-                    <ItemApplicantName>
-                      <p>申请人</p>
-                      <p>洛奇亚</p>
-                    </ItemApplicantName>
-                    <ItemApplicantTime>
-                      <p>申请时间</p>
-                      <p>2018-08-08 12:00:00</p>
-                    </ItemApplicantTime>
-                  </ItemApplicantInfor>
-                </ItemHeader>
-                <ItemInfor>
-                  <ItemInforProgress>
-                    <Progress percent={30} showType="inside" status="active" />
-                  </ItemInforProgress>
-                  <ItemInforEditor>
-                    <span>编辑 | </span>
-                    <span>删除</span>
-                  </ItemInforEditor>
-                </ItemInfor>
-              </ListItemWrap>
-            </ListContent>
-          </ListContentWrap>
-        </SecContentWrap>
-
+            </Theme>
+          </ActionBar>
+          <ListContent>
+            <ListItemWrap>
+              <ItemHeader>
+                <AvatarWrap>
+                  <Theme config={view}>
+                    <Avatar shape={"square"} size={"large"} name={"lugia"} />
+                    <AvatarInfor>
+                      <p>Lugia mega Desion</p>
+                      <p>lugia mega交互设计师</p>
+                    </AvatarInfor>
+                  </Theme>
+                </AvatarWrap>
+                <ItemApplicantInfor>
+                  <ItemApplicantName>
+                    <p>申请人</p>
+                    <p>夹心心</p>
+                  </ItemApplicantName>
+                  <ItemApplicantTime>
+                    <p>申请时间</p>
+                    <p>2019/04/18 14:23:04</p>
+                  </ItemApplicantTime>
+                </ItemApplicantInfor>
+              </ItemHeader>
+              <ItemInfor>
+                <ItemInforProgress>
+                  <Progress percent={80} showType="inside" status="active" />
+                </ItemInforProgress>
+                <ItemInforEditor>
+                  <span>编辑 | </span>
+                  <span>删除</span>
+                </ItemInforEditor>
+              </ItemInfor>
+            </ListItemWrap>
+            <ListItemWrap>
+              <ItemHeader>
+                <AvatarWrap>
+                  <Theme config={view}>
+                    <Avatar shape={"square"} size={"large"} name={"lugia"} />
+                    <AvatarInfor>
+                      <p>Lugia Web</p>
+                      <p>负责lugia web全栈前端设计</p>
+                    </AvatarInfor>
+                  </Theme>
+                </AvatarWrap>
+                <ItemApplicantInfor>
+                  <ItemApplicantName>
+                    <p>申请人</p>
+                    <p>李软软</p>
+                  </ItemApplicantName>
+                  <ItemApplicantTime>
+                    <p>申请时间</p>
+                    <p>2019/03/08 11:40:22</p>
+                  </ItemApplicantTime>
+                </ItemApplicantInfor>
+              </ItemHeader>
+              <ItemInfor>
+                <ItemInforProgress>
+                  <Progress percent={70} showType="inside" status="error" />
+                </ItemInforProgress>
+                <ItemInforEditor>
+                  <span>编辑 | </span>
+                  <span>删除</span>
+                </ItemInforEditor>
+              </ItemInfor>
+            </ListItemWrap>
+            <ListItemWrap>
+              <ItemHeader>
+                <AvatarWrap>
+                  <Theme config={view}>
+                    <Avatar shape={"square"} size={"large"} name={"lugia"} />
+                    <AvatarInfor>
+                      <p>Lugia scripts</p>
+                      <p>lugia scripts架构</p>
+                    </AvatarInfor>
+                  </Theme>
+                </AvatarWrap>
+                <ItemApplicantInfor>
+                  <ItemApplicantName>
+                    <p>申请人</p>
+                    <p>阵风风</p>
+                  </ItemApplicantName>
+                  <ItemApplicantTime>
+                    <p>申请时间</p>
+                    <p>2018/12/08 21:23:51</p>
+                  </ItemApplicantTime>
+                </ItemApplicantInfor>
+              </ItemHeader>
+              <ItemInfor>
+                <ItemInforProgress>
+                  <Progress percent={100} showType="inside" />
+                </ItemInforProgress>
+                <ItemInforEditor>
+                  <span>编辑 | </span>
+                  <span>删除</span>
+                </ItemInforEditor>
+              </ItemInfor>
+            </ListItemWrap>
+            <ListItemWrap>
+              <ItemHeader>
+                <AvatarWrap>
+                  <Theme config={view}>
+                    <Avatar shape={"square"} size={"large"} name={"lugia"} />
+                    <AvatarInfor>
+                      <p>Lugia admin</p>
+                      <p>lugia admin样式</p>
+                    </AvatarInfor>
+                  </Theme>
+                </AvatarWrap>
+                <ItemApplicantInfor>
+                  <ItemApplicantName>
+                    <p>申请人</p>
+                    <p>果冻冻</p>
+                  </ItemApplicantName>
+                  <ItemApplicantTime>
+                    <p>申请时间</p>
+                    <p>2017/12/08 12:01:12</p>
+                  </ItemApplicantTime>
+                </ItemApplicantInfor>
+              </ItemHeader>
+              <ItemInfor>
+                <ItemInforProgress>
+                  <Progress percent={60} showType="inside" status="active" />
+                </ItemInforProgress>
+                <ItemInforEditor>
+                  <span>编辑 | </span>
+                  <span>删除</span>
+                </ItemInforEditor>
+              </ItemInfor>
+            </ListItemWrap>
+            <ListItemWrap>
+              <ItemHeader>
+                <AvatarWrap>
+                  <Theme config={view}>
+                    <Avatar shape={"square"} size={"large"} name={"lugia"} />
+                    <AvatarInfor>
+                      <p>Lugia mega desktop </p>
+                      <p>lugia mega桌面应用功能研发</p>
+                    </AvatarInfor>
+                  </Theme>
+                </AvatarWrap>
+                <ItemApplicantInfor>
+                  <ItemApplicantName>
+                    <p>申请人</p>
+                    <p>翠霞霞</p>
+                  </ItemApplicantName>
+                  <ItemApplicantTime>
+                    <p>申请时间</p>
+                    <p>2017/08/18 14:10:41</p>
+                  </ItemApplicantTime>
+                </ItemApplicantInfor>
+              </ItemHeader>
+              <ItemInfor>
+                <ItemInforProgress>
+                  <Progress percent={80} showType="inside" status="active" />
+                </ItemInforProgress>
+                <ItemInforEditor>
+                  <span>编辑 | </span>
+                  <span>删除</span>
+                </ItemInforEditor>
+              </ItemInfor>
+            </ListItemWrap>
+            <ListItemWrap>
+              <ItemHeader>
+                <AvatarWrap>
+                  <Theme config={view}>
+                    <Avatar shape={"square"} size={"large"} name={"lugia"} />
+                    <AvatarInfor>
+                      <p>洛奇亚组件库</p>
+                      <p>lugia组件库研发</p>
+                    </AvatarInfor>
+                  </Theme>
+                </AvatarWrap>
+                <ItemApplicantInfor>
+                  <ItemApplicantName>
+                    <p>申请人</p>
+                    <p>瑞光光</p>
+                  </ItemApplicantName>
+                  <ItemApplicantTime>
+                    <p>申请时间</p>
+                    <p>2017/04/14 10:31:43</p>
+                  </ItemApplicantTime>
+                </ItemApplicantInfor>
+              </ItemHeader>
+              <ItemInfor>
+                <ItemInforProgress>
+                  <Progress percent={80} showType="inside" status="active" />
+                </ItemInforProgress>
+                <ItemInforEditor>
+                  <span>编辑 | </span>
+                  <span>删除</span>
+                </ItemInforEditor>
+              </ItemInfor>
+            </ListItemWrap>
+            <ListItemWrap>
+              <ItemHeader>
+                <AvatarWrap>
+                  <Theme config={view}>
+                    <Avatar shape={"square"} size={"large"} name={"lugia"} />
+                    <AvatarInfor>
+                      <p>Lugia web design</p>
+                      <p>lugia web官网交互设计</p>
+                    </AvatarInfor>
+                  </Theme>
+                </AvatarWrap>
+                <ItemApplicantInfor>
+                  <ItemApplicantName>
+                    <p>申请人</p>
+                    <p>雨萌萌</p>
+                  </ItemApplicantName>
+                  <ItemApplicantTime>
+                    <p>申请时间</p>
+                    <p>2014/03/17 05:12:30</p>
+                  </ItemApplicantTime>
+                </ItemApplicantInfor>
+              </ItemHeader>
+              <ItemInfor>
+                <ItemInforProgress>
+                  <Progress percent={30} showType="inside" status="active" />
+                </ItemInforProgress>
+                <ItemInforEditor>
+                  <span>编辑 | </span>
+                  <span>删除</span>
+                </ItemInforEditor>
+              </ItemInfor>
+            </ListItemWrap>
+          </ListContent>
+        </ListContentWrap>
       </Content>
     )}
 }
