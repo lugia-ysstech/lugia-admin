@@ -38,7 +38,7 @@ G2.Shape.registerShape("interval", "sliceShape", {
   }
 });
 
-export default class Demo extends Component<any> {
+export default class Demo extends Component<> {
   render() {
     return <div id="GChartOne" />;
   }
@@ -70,10 +70,10 @@ export default class Demo extends Component<any> {
       offsetX: -100,
       offsetY: -50,
       textStyle:{
-        fontSize: 14
-      }
+        fontSize: 14,
+        fill:'#333'
+      },
     });
-
     chart
       .intervalStack()
       .position("value")

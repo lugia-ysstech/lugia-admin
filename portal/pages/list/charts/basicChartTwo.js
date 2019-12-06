@@ -9,7 +9,7 @@ import G2 from "@antv/g2";
 import DataSet from "@antv/data-set";
 import getPath from './basicChartOne';
 
-const data = [{ name: "eoi内存预算", value: 18 }, { name: "已申请量", value: 5 }, { name: "可申请余量", value: 4 }];
+const data = [{ name: "服务器内存预算", value: 18 }, { name: "已申请量", value: 5 }, { name: "可申请余量", value: 4 }];
 
 G2.Shape.registerShape("interval", "sliceShape", {
   draw: function draw(cfg, container) {
@@ -24,7 +24,7 @@ G2.Shape.registerShape("interval", "sliceShape", {
   }
 });
 
-export default class Demo extends Component<any> {
+export default class Demo extends Component<> {
   render() {
     return <div id="GChartTwo" />;
   }
@@ -57,7 +57,8 @@ export default class Demo extends Component<any> {
       offsetX: -100,
       offsetY: -50,
       textStyle:{
-        fontSize: 14
+        fontSize: 14,
+        fill:'#333'
       }
     });
 
