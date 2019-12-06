@@ -28,7 +28,7 @@ const GraphContentWrap = styled.div`
   border-radius: 4px;
 `;
 const SecContainer = styled.div`
-  padding: 24px 18px;
+  padding: 24px 18px 34px;
   font-size: 12px;
   text-align: center;
 `;
@@ -55,9 +55,17 @@ const ListItemTopRight = styled.div`
   min-width: 120px;
   line-height: 50px;
   font-size: 36px;
+  font-weight: 600;
   font-family: PingFangSC-Semibold;
   vertical-align: bottom;
   color: #4D68FF;
+  display: flex;
+  justify-content: flex-end;
+  >.smallFont {
+    font-size:16px;
+    box-sizing: border-box;
+    padding-top: 6px;
+  }
 `;
 const ListItemBottom = styled.div`
   width: 100%;
@@ -66,9 +74,9 @@ const ListItemBottom = styled.div`
 const ItemInforProgress = styled.div`
   width: 100%;
   text-align: left;
-  > Progress {
+  > div {
     height: 6px;
-    margin: 0;
+    margin-right: 10px;
   }
   > button {
     background: none;
@@ -80,33 +88,11 @@ const ItemInforProgress = styled.div`
 const SecContentWrap = styled.div`
   width: 100%;
 `;
-//表头
-const ListHeader = styled.div`
-  width: 100%;
-  height: 55px;
-  color: #333;
-  padding: 22px 14px 0;
-`;
-const ListHeaderMark = styled.div`
-   width: 6px;
-   height: 20px;
-   background: #4D68FF;
-   border-radius: 3px;
-   display: inline-block;
-`;
-const ListHeaderContent = styled.p`
-   font-size: 18px;
-   line-height: 25px;
-   color: #333;
-   font: PingFangSC-Medium;
-   display: inline-block;
-   vertical-align: bottom;
-   margin-left: 6px;
-`;
+
 //列表区域
 const ListContentWrap = styled.div`
   background: #fff;
-  margin: 0 14px;
+  margin: 30px 12px;
   border-radius: 4px;
   background: #F5F5F9;
 `;
@@ -115,6 +101,11 @@ const ListContent = styled.div`
   font-size: 14px;
   > Row {
     margin-bottom: 20px;
+  };
+  >div {
+    >div {
+      padding: 0 15px 30px;
+    }
   }
 `;
 const CardContainer = styled.div`
@@ -131,13 +122,42 @@ const CardHeaderWrap = styled.div`
     line-height: 25px;
     font-size: 18px;
     color: #333;
+  };
+  >h3 {
+    font-size: 18px;
   }
 `;
 const IconWrap = styled.div`
   margin:0 auto 12px;;
   width: 40px;
   height: 40px;
-  line-height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &.excle {
+    color: #4D68FF;
+  };
+  &.pic {
+    color: #FAAD14;
+  };
+  &.person {
+    color: #FAAD14;
+  };
+  &.word {
+    color: #7C9EFE;
+  };
+  &.wenhao {
+    color: #FAAD14;
+  };
+  &.tubiao{
+    color: #9DD1FF;
+  };
+  &.wenjian{
+    color: #7C9EFE;
+  };
+  &.fengjing{
+    color: #6FBDFF;
+  };
 `;
 const CardContentWrap = styled.div`
   width: 100%;
@@ -163,10 +183,6 @@ const CardEditorBarWrap = styled.div`
   & > button: nth-child(2) {
     margin-right: 0;
   }
-`;
-const RowWall = styled.div`
-  width: 100%;
-  height: 20px;
 `;
 
 export default class BasicList extends Component {
@@ -246,7 +262,7 @@ export default class BasicList extends Component {
               top: 10,
               bottom: 10,
             },
-            fontSize: 20,
+            fontSize: 34,
           },
           hover: {
             color: '#4d63ff',
@@ -283,14 +299,13 @@ export default class BasicList extends Component {
                       <p>所有项目收入</p>
                     </ListItemTopLeft>
                     <ListItemTopRight>
-                      <span style = {{fontSize:16 }}>¥</span>
+                      <span className={'smallFont'}>¥</span>
                       <span>109</span>
                     </ListItemTopRight>
                   </ListItemTop>
                   <ListItemBottom>
                     <ItemInforProgress>
                       <Progress percent={60} status="active" size="small" />
-                      <button>设置</button>
                     </ItemInforProgress>
                   </ListItemBottom>
                 </SecContainer>
@@ -304,13 +319,12 @@ export default class BasicList extends Component {
                     </ListItemTopLeft>
                     <ListItemTopRight>
                       <span>1899</span>
-                      <span style = {{fontSize:16 }}> &nbsp;&nbsp;人</span>
+                      <span className={'smallFont'}> &nbsp;&nbsp;人</span>
                     </ListItemTopRight>
                   </ListItemTop>
                   <ListItemBottom>
                     <ItemInforProgress>
                       <Progress percent={80} status="active" size="small" />
-                      <button>设置</button>
                     </ItemInforProgress>
                   </ListItemBottom>
                 </SecContainer>
@@ -330,7 +344,6 @@ export default class BasicList extends Component {
                   <ListItemBottom>
                     <ItemInforProgress>
                       <Progress percent={80} status="active" size="small" />
-                      <button>设置</button>
                     </ItemInforProgress>
                   </ListItemBottom>
                 </SecContainer>
@@ -350,7 +363,6 @@ export default class BasicList extends Component {
                   <ListItemBottom>
                     <ItemInforProgress>
                       <Progress percent={20} status="active" size="small" />
-                      <button>设置</button>
                     </ItemInforProgress>
                   </ListItemBottom>
                 </SecContainer>
@@ -361,12 +373,6 @@ export default class BasicList extends Component {
 
         {/*下部列表*/}
         <SecContentWrap>
-          {/*表头*/}
-          <ListHeader>
-            <ListHeaderMark />
-            <ListHeaderContent>卡片列表</ListHeaderContent>
-          </ListHeader>
-          {/*列表项*/}
           <ListContentWrap>
             <ListContent>
               <Row
@@ -378,16 +384,16 @@ export default class BasicList extends Component {
                 <Col span={6}>
                   <CardContainer>
                     <CardHeaderWrap>
-                      <IconWrap>
+                      <IconWrap className={'excle'}>
                         <Theme config={view}>
                           <Icon iconClass='lugia-icon-financial_excle' />
                         </Theme>
                       </IconWrap>
-                      <h3>lugia产品发行工作单</h3>
+                      <h3>lugia用户手册</h3>
                     </CardHeaderWrap>
                     <CardContentWrap>
-                      <p>上传人: &nbsp; <span>吱吱</span></p>
-                      <p>上传时间:&nbsp; <span>2018-08-08</span></p>
+                      <p>上传人: &nbsp; <span>夹心心</span></p>
+                      <p>上传时间:&nbsp; <span>2019/04/19</span></p>
                     </CardContentWrap>
                     <CardEditorBarWrap>
                       <Button type="primary" shape="round">下载</Button>
@@ -398,16 +404,16 @@ export default class BasicList extends Component {
                 <Col span={6}>
                   <CardContainer>
                     <CardHeaderWrap>
-                      <IconWrap>
+                      <IconWrap className={'pic'}>
                         <Theme config={view}>
                           <Icon iconClass='lugia-icon-financial_word' />
                         </Theme>
                       </IconWrap>
-                      <h3>lugia产品发行工作单</h3>
+                      <h3>lugia logo</h3>
                     </CardHeaderWrap>
                     <CardContentWrap>
-                      <p>上传人: &nbsp; <span>吱吱</span></p>
-                      <p>上传时间:&nbsp; <span>2018-08-08</span></p>
+                      <p>上传人: &nbsp; <span>雨萌萌</span></p>
+                      <p>上传时间:&nbsp; <span>2019/02/12</span></p>
                     </CardContentWrap>
                     <CardEditorBarWrap>
                       <Button type="primary" shape="round">下载</Button>
@@ -418,16 +424,16 @@ export default class BasicList extends Component {
                 <Col span={6}>
                   <CardContainer>
                     <CardHeaderWrap>
-                      <IconWrap>
+                      <IconWrap className={'person'}>
                         <Theme config={view}>
                           <Icon iconClass='lugia-icon-financial_group' />
                         </Theme>
                       </IconWrap>
-                      <h3>lugia产品发行工作单</h3>
+                      <h3>lugia用户调研报告</h3>
                     </CardHeaderWrap>
                     <CardContentWrap>
-                      <p>上传人: &nbsp; <span>吱吱</span></p>
-                      <p>上传时间:&nbsp; <span>2018-08-08</span></p>
+                      <p>上传人: &nbsp; <span>果冻冻</span></p>
+                      <p>上传时间:&nbsp; <span>2018/12/30</span></p>
                     </CardContentWrap>
                     <CardEditorBarWrap>
                       <Button type="primary" shape="round">下载</Button>
@@ -438,7 +444,7 @@ export default class BasicList extends Component {
                 <Col span={6}>
                   <CardContainer>
                     <CardHeaderWrap>
-                      <IconWrap>
+                      <IconWrap className={'word'}>
                         <Theme config={view}>
                           <Icon iconClass='lugia-icon-financial_word' />
                         </Theme>
@@ -446,8 +452,8 @@ export default class BasicList extends Component {
                       <h3>lugia产品发行工作单</h3>
                     </CardHeaderWrap>
                     <CardContentWrap>
-                      <p>上传人: &nbsp; <span>吱吱</span></p>
-                      <p>上传时间:&nbsp; <span>2018-08-08</span></p>
+                      <p>上传人: &nbsp; <span>翠霞霞</span></p>
+                      <p>上传时间:&nbsp; <span>2018/11/09</span></p>
                     </CardContentWrap>
                     <CardEditorBarWrap>
                       <Button type="primary" shape="round">下载</Button>
@@ -456,7 +462,6 @@ export default class BasicList extends Component {
                   </CardContainer>
                 </Col>
               </Row>
-              <RowWall/>
               <Row
                 gutter={{ xs: 8, sm: 16, md: 24, lg: 24, xl: 24, xxl: 24 }}
                 type="flex"
@@ -466,16 +471,16 @@ export default class BasicList extends Component {
                 <Col span={6}>
                   <CardContainer>
                     <CardHeaderWrap>
-                      <IconWrap>
+                      <IconWrap className={'wenhao'}>
                         <Theme config={view}>
                           <Icon iconClass='lugia-icon-financial_file_unknown' />
                         </Theme>
                       </IconWrap>
-                      <h3>lugia产品发行工作单</h3>
+                      <h3>Bug错误汇总报告</h3>
                     </CardHeaderWrap>
                     <CardContentWrap>
-                      <p>上传人: &nbsp; <span>吱吱</span></p>
-                      <p>上传时间:&nbsp; <span>2018-08-08</span></p>
+                      <p>上传人: &nbsp; <span>瑞光光</span></p>
+                      <p>上传时间:&nbsp; <span>2018/08/02</span></p>
                     </CardContentWrap>
                     <CardEditorBarWrap>
                       <Button type="primary" shape="round">下载</Button>
@@ -486,16 +491,16 @@ export default class BasicList extends Component {
                 <Col span={6}>
                   <CardContainer>
                     <CardHeaderWrap>
-                      <IconWrap>
+                      <IconWrap className={'tubiao'}>
                         <Theme config={view}>
                           <Icon iconClass='lugia-icon-financial_histogram' />
                         </Theme>
                       </IconWrap>
-                      <h3>lugia产品发行工作单</h3>
+                      <h3>lugia产品计划表</h3>
                     </CardHeaderWrap>
                     <CardContentWrap>
-                      <p>上传人: &nbsp; <span>吱吱</span></p>
-                      <p>上传时间:&nbsp; <span>2018-08-08</span></p>
+                      <p>上传人: &nbsp; <span>阵风风</span></p>
+                      <p>上传时间:&nbsp; <span>2018/07/28</span></p>
                     </CardContentWrap>
                     <CardEditorBarWrap>
                       <Button type="primary" shape="round">下载</Button>
@@ -506,16 +511,16 @@ export default class BasicList extends Component {
                 <Col span={6}>
                   <CardContainer>
                     <CardHeaderWrap>
-                      <IconWrap>
+                      <IconWrap className={'wenjian'}>
                         <Theme config={view}>
                           <Icon iconClass='lugia-icon-financial_filing_cabinet' />
                         </Theme>
                       </IconWrap>
-                      <h3>lugia产品发行工作单</h3>
+                      <h3>Lugia Desktop</h3>
                     </CardHeaderWrap>
                     <CardContentWrap>
-                      <p>上传人: &nbsp; <span>吱吱</span></p>
-                      <p>上传时间:&nbsp; <span>2018-08-08</span></p>
+                      <p>上传人: &nbsp; <span>李软软</span></p>
+                      <p>上传时间:&nbsp; <span>2018/06/14</span></p>
                     </CardContentWrap>
                     <CardEditorBarWrap>
                       <Button type="primary" shape="round">下载</Button>
@@ -526,16 +531,16 @@ export default class BasicList extends Component {
                 <Col span={6}>
                   <CardContainer>
                     <CardHeaderWrap>
-                      <IconWrap>
+                      <IconWrap className={'fengjing'}>
                         <Theme config={view}>
                           <Icon iconClass='lugia-icon-financial_add_pic' />
                         </Theme>
                       </IconWrap>
-                      <h3>lugia产品发行工作单</h3>
+                      <h3>lugia数据总计</h3>
                     </CardHeaderWrap>
                     <CardContentWrap>
-                      <p>上传人: &nbsp; <span>吱吱</span></p>
-                      <p>上传时间:&nbsp; <span>2018-08-08</span></p>
+                      <p>上传人: &nbsp; <span>李显显</span></p>
+                      <p>上传时间:&nbsp; <span>2018/06/09</span></p>
                     </CardContentWrap>
                     <CardEditorBarWrap>
                       <Button type="primary" shape="round">下载</Button>
