@@ -161,17 +161,42 @@ const getFooterInfo = () => {
   return { interactData };
 };
 
+const getYearsTrendInfo = () => {
+  const yearsTrendData = [
+    { time: "01月", 仓位: 57, 深沪003: -1 },
+    { time: "02月", 仓位: 63, 深沪003: -0.3 },
+    { time: "03月", 仓位: 59, 深沪003: -0.5 },
+    { time: "04月", 仓位: 40, 深沪003: -0.2 },
+    { time: "05月", 仓位: 59, 深沪003: 0.4 },
+    { time: "06月", 仓位: 50, 深沪003: 0.3 },
+    { time: "07月", 仓位: 53, 深沪003: -0.2 },
+    { time: "08月", 仓位: 69, 深沪003: 0 },
+    { time: "09月", 仓位: 58, 深沪003: 0.3 },
+    { time: "10月", 仓位: 40, 深沪003: 0.65 },
+    { time: "11月", 仓位: 50, 深沪003: 0.38 },
+    { time: "12月", 仓位: 43, 深沪003: 0.6 }
+  ];
+  return { yearsTrendData };
+};
+
+
+
+
 export default {
-  "POST /api/dashboard/headerInfo": function(req, res) {
+  "POST /api/dashboard/headerInfo": function (req, res) {
     res.json(getHeaderDataInfo());
   },
-  "POST /api/dashboard/contentInfo": function(req, res) {
+  "POST /api/dashboard/contentInfo": function (req, res) {
     res.json(getContentDataInfo());
   },
-  "POST /api/dashboard/secInfo": function(req, res) {
+  "POST /api/dashboard/secInfo": function (req, res) {
     res.json(getSecDataInfo());
   },
-  "POST /api/dashboard/footerInfo": function(req, res) {
+  "POST /api/dashboard/footerInfo": function (req, res) {
     res.json(getFooterInfo());
-  }
+  },
+
+  "POST /api/dashboard/yearsTrendInfo": function (req, res) {
+    res.json(getYearsTrendInfo());
+  },
 };

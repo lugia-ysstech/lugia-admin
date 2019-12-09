@@ -10,7 +10,7 @@ import { Navmenu, Theme, consts as Widget } from "@lugia/lugia-web";
 import logo from "../../assets/images/pro_logo.png";
 import menuList from "../../models/menuList";
 import { connect } from "@lugia/lugiax";
-import routingConfig from "../../../config/routing.config";
+import Security from "../../models/security";
 
 const NavContainer = styled.div`
   display: inline-block;
@@ -36,13 +36,13 @@ class List extends React.Component<any> {
   }
 
   componentDidMount() {
-    const viewHeight =  this.getWindowHeight();
+    const viewHeight = this.getWindowHeight();
     this.setState({
       value: window.location.pathname,
       height: viewHeight
     });
     window.onresize = () => {
-      const viewHeight =  this.getWindowHeight();
+      const viewHeight = this.getWindowHeight();
       this.setState({
         height: viewHeight
       });
@@ -50,18 +50,18 @@ class List extends React.Component<any> {
   }
 
   getWindowHeight = () => {
-    return  document.body.clientHeight - 122;
+    return document.body.clientHeight - 122;
   };
 
   render() {
-    const { menuState = {} } = this.props;
+    const { menuState = {}, routeData } = this.props;
     let { value } = menuState;
     if (!value) {
       const { value: stateValue } = this.state;
       value = stateValue;
     }
 
-    const {height = 600} = this.state;
+    const { height = 600 } = this.state;
 
     const theme = {
       [Widget.NavMenu]: {
@@ -136,36 +136,45 @@ class List extends React.Component<any> {
         <Title>
           <img src={logo} />
         </Title>
-        <Navmenu
-          theme={theme}
-          value={value}
-          pathSeparator={"@"}
-          themeStyle={"dark"}
-          onSelect={this.props.onSelect}
-          inlineType={"ellipse"}
-          data={routingConfig}
-          switchIconNames={{
-            open: "lugia-icon-direction_caret_up",
-            close: "lugia-icon-direction_caret_down"
-          }}
-          step={60}
-          autoHeight={false}
-          inlineExpandAll={true}
-        />
+        {routeData.length !== 0 && (
+          <Navmenu
+            theme={theme}
+            value={value}
+            pathSeparator={"@"}
+            themeStyle={"dark"}
+            onSelect={this.props.onSelect}
+            inlineType={"ellipse"}
+            data={routeData}
+            switchIconNames={{
+              open: "lugia-icon-direction_caret_up",
+              close: "lugia-icon-direction_caret_down"
+            }}
+            step={60}
+            autoHeight={false}
+            inlineExpandAll={true}
+          />
+        )}
       </NavContainer>
     );
   }
 }
 const MenuList = connect(
-  menuList,
+  [menuList, Security],
   state => {
+    const [menuList, Security] = state;
     return {
-      menuState: state.get('menuState').toJS?state.get('menuState').toJS():state.get('menuState')
+      menuState: menuList.get("menuState").toJS
+        ? menuList.get("menuState").toJS()
+        : menuList.get("menuState"),
+      routeData: Security.get("routeData").toJS
+        ? Security.get("routeData").toJS()
+        : Security.get("routeData")
     };
   },
   mutations => {
+    const [menuList] = mutations;
     return {
-      onSelect: mutations.onSelect
+      onSelect: menuList.onSelect
     };
   }
 )(List);

@@ -4,7 +4,8 @@ import { createApp, go, render } from "@lugia/lugiax-router";
 import "@lugia/lugia-web/dist/css/global.css";
 import Main from "./App";
 import PageLoading from "./components/pageloading";
-
+import Security from "./models/security";
+import doRequest from "./components/utils/requestFunction";
 const history = createBrowserHistory();
 async function checkAuthorityData(query) {
   const resp = await fetch("/api/checkAuthority", {
@@ -22,6 +23,52 @@ async function checkAuthorityData(query) {
     });
   return resp;
 }
+
+async function getAllRouteData() {
+  let allRouteData = Security.getState().get("allRouteData").toJS
+    ? Security.getState()
+        .get("allRouteData")
+        .toJS()
+    : Security.getState().get("allRouteData");
+
+  if (allRouteData.length === 0) {
+    const { routeData } = await doRequest("/api/routeMock", {
+      method: "POST"
+    });
+    allRouteData = routeData;
+    Security.mutations.setAllRouteData(routeData);
+  }
+
+  return allRouteData;
+}
+
+function getFilterRouteData(accessIds, allRouteData) {
+  const filterData = [];
+  allRouteData &&
+    allRouteData.forEach(item => {
+      const { children, id } = item;
+      let singleFilterData;
+
+      const hasPermission = accessIds.indexOf(id) !== -1;
+      if (hasPermission) {
+        singleFilterData = item;
+      }
+
+      const childrenMap = children && getFilterRouteData(accessIds, children);
+      if (childrenMap && childrenMap.length > 0) {
+        singleFilterData = item;
+        singleFilterData.children = childrenMap;
+      }
+
+      singleFilterData && filterData.push(singleFilterData);
+    });
+  return filterData;
+}
+
+function setFilterRouteData(filterRouteData) {
+  Security.mutations.setRouteData(filterRouteData);
+}
+
 const App = createApp(
   {
     "/": {
@@ -32,8 +79,48 @@ const App = createApp(
   {
     loading: PageLoading,
     async onBeforeGo({ url }) {
-      const result = await checkAuthorityData({ value: url, name: "admin" });
+      if (url === "/404") {
+        return true;
+      }
+
+      const isLoginPage =
+        url === "/login" ||
+        url === "/register/register" ||
+        url === "/register/registerSuccess";
+      if (isLoginPage) {
+        return true;
+      }
+
+      const token = window.localStorage.getItem("token");
+      if (!(token || isLoginPage)) {
+        window.localStorage.setItem("originUrl", url);
+        go({ url: "/login" });
+      }
+
+      const allRouteData = await getAllRouteData();
+
+      const { accessIds } = await doRequest("/api/userAccessIdsAndApiUrls", {
+        method: "POST"
+      });
+
+      const filterRouteData = getFilterRouteData(accessIds, allRouteData);
+
+      if (
+        JSON.stringify(filterRouteData).indexOf(url) === -1 &&
+        url !== "/404"
+      ) {
+        go({ url: "/404" });
+        return false;
+      }
+
+      setFilterRouteData(filterRouteData);
+
+      const result = await checkAuthorityData({
+        value: url,
+        name: "admin"
+      });
       const { status } = result;
+
       if (
         url === "/Dashboard" ||
         url === "/" ||
@@ -57,5 +144,8 @@ const App = createApp(
 );
 
 render(() => {
+  // window.onbeforeunload = () => {
+  //   window.localStorage.clear();
+  // };
   return <App />;
 }, "root");
