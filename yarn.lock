@@ -1330,10 +1330,10 @@
     events "^3.0.0"
     rxjs "^6.3.3"
 
-"@lugia/lugia-web@1.1.9-alpha-0":
-  version "1.1.9-alpha-0"
-  resolved "https://registry.yarnpkg.com/@lugia/lugia-web/-/lugia-web-1.1.9-alpha-0.tgz#b562e1acd8c23f49b15bbd59fdab357c1efa3583"
-  integrity sha512-RB+2cPzoHum5L0Iv5G4csS4wdV/p0e1LQBlCZwWZr1MOqXekEZ6XZwktlmVX9nVzsCtHHXUTUGT4zWO9nvPnkg==
+"@lugia/lugia-web@^1.1.8":
+  version "1.1.8"
+  resolved "https://registry.yarnpkg.com/@lugia/lugia-web/-/lugia-web-1.1.8.tgz#a4af87e482ce7e153f0e786f5432688de968baa4"
+  integrity sha512-4XaPP+n7s/gm+OFn5Rssu0FzMJbB1r5YFDtTzz+NqCx2A9Bp9P1CFenfUeiX63gWtyyIc64bSFZcsPEeuViZuQ==
   dependencies:
     "@lugia/css" "^1.0.18"
     "@lugia/listener" "^1.0.2"
