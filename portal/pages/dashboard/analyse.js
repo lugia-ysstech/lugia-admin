@@ -400,28 +400,12 @@ const checkbuttonView = {
 function changeBrowserWidth() {
   return document.documentElement.clientWidth;
 }
-class Analyse extends Component<any> {
+class Analyse extends Component<> {
   constructor(props) {
     super(props);
     this.state = {
       browserWidth: changeBrowserWidth()
     };
-
-    const {
-      getHeaderInfo,
-      getContentInfo,
-      getSecInfo,
-      getFooterInfo,
-      getYearsTrendInfo
-    } = props;
-    // getHeaderInfo().then(() => {
-    //   getContentInfo().then(() => {
-    //     getSecInfo().then(() => {
-    //       getFooterInfo();
-    //     });
-    //   });
-    // });
-    // getYearsTrendInfo();
   }
 
   getHeaderColSpan = browserWidth => {
@@ -540,17 +524,6 @@ class Analyse extends Component<any> {
   render() {
     const { browserWidth } = this.state;
     const headerSpan = this.getHeaderColSpan(browserWidth);
-
-    const {
-      headerInfo,
-      intervalData,
-      secInfo,
-      interactData,
-      yearsTrendData
-    } = this.props;
-    console.log("yearsTrendData", yearsTrendData);
-    const { visitsData, payData } = headerInfo;
-    const { averageSearchData, salesData, searchUserData } = secInfo;
 
     return (
       <Container>
