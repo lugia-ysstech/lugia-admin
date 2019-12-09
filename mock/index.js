@@ -16,6 +16,7 @@ import detail from "./detailMock";
 import personal from "./personal";
 import form from "./form";
 import dashboard from "./dashboard";
+import routeMock from "./routeMock";
 
 export default {
   ...random,
@@ -23,5 +24,6 @@ export default {
   ...detail,
   ...personal,
   ...form,
-  ...dashboard
+  ...dashboard,
+  ...routeMock
 };
