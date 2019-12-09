@@ -28,8 +28,6 @@ export default class Demo extends Component<any> {
   }
 
   componentDidMount() {
-    // const { data = [] } = this.props;
-    console.log("data", data);
     const chart = new G2.Chart({
       id: "yearstrend",
       forceFit: true,
@@ -77,7 +75,6 @@ export default class Demo extends Component<any> {
           fill: "#6495ED"
         },
         formatter: val => {
-          console.log("val", parseFloat(val));
           if (val === "-1.5") {
             return;
           }
