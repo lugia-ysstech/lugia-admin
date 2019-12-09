@@ -159,6 +159,12 @@ export default [
       }
     ]
   },
+  {
+    value:"/mobilePanel",
+    text: "移动板块",
+    icon: "lugia-icon-logo_windows_o",
+    render: () => import("../portal/pages/mobilePanel/mobilePanel")
+  }
   // {
   //   value: "/user",
   //   text: "用户管理",
