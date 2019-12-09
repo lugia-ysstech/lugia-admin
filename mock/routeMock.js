@@ -164,7 +164,7 @@ const getRouteDataInfo = () => {
     },
 
     {
-      id: "9",
+      id: "8",
       value: "/mobilePanel",
       text: "移动板块",
       icon: "lugia-icon-logo_windows_o",
@@ -176,7 +176,7 @@ const getRouteDataInfo = () => {
 };
 
 const getUserAccessIdsAndApiUrlsInfo = () => {
-  const accessIds = ["1", "2", "8", "9"];
+  const accessIds = ["1", "2", "4", "5", "6", "7", "8"];
   const apiUrls = [];
   return {
     accessIds,
