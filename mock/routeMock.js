@@ -165,6 +165,21 @@ const getRouteDataInfo = () => {
 
     {
       id: "8",
+      value: "/demo",
+      text: "Demo",
+      icon: "lugia-icon-financial_user",
+      children: [
+        {
+          id: "8-1",
+          value: "/demo/demo",
+          text: "Demo页面1",
+          render: () => import("../portal/pages/demo/demo")
+        }
+      ]
+    },
+
+    {
+      id: "9",
       value: "/mobilePanel",
       text: "移动板块",
       icon: "lugia-icon-logo_windows_o",
@@ -176,7 +191,7 @@ const getRouteDataInfo = () => {
 };
 
 const getUserAccessIdsAndApiUrlsInfo = () => {
-  const accessIds = ["1", "2", "4", "5", "6", "7", "8"];
+  const accessIds = ["1", "2", "8", "9"];
   const apiUrls = [];
   return {
     accessIds,
