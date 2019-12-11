@@ -8,7 +8,6 @@ import config from "./IndexModular/index";
 import { initGridItems, initLocalStorageGridItem, defaultConfig, CreatGridItemKey } from "./gridLayout";
 import { FloatingWindow, Modal, ChooseView } from "./component";
 import { GridItemContainer, DeleteWrap } from "./css";
-import { throwStatement } from "@babel/types";
 const GridLayout = WidthProvider(ReactGridLayout);
 const layoutStyle = {
   background: "#F5F5F9"
