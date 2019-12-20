@@ -92,7 +92,7 @@ class SuccessDemo extends Component {
                 verticalAlign: "middle"
               }}
               src={
-                "https://lugia.oss-cn-beijing.aliyuncs.com/static/lugia-logo.3376ef06.png"
+                "https://lugia.oss-cn-beijing.aliyuncs.com/lugia-site/logo_dark.png"
               }
             />
           </TitleContainer>
