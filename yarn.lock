@@ -1314,8 +1314,8 @@
 
 "@lugia/devtools-material@^1.0.35":
   version "1.0.35"
-  resolved "https://registry.npm.taobao.org/@lugia/devtools-material/download/@lugia/devtools-material-1.0.35.tgz#97c819acf8580f4fab7fa6afc227ac6bad72852d"
-  integrity sha1-l8gZrPhYD0+rf6avwiesa61yhS0=
+  resolved "https://registry.npmjs.org/@lugia/devtools-material/-/devtools-material-1.0.35.tgz#97c819acf8580f4fab7fa6afc227ac6bad72852d"
+  integrity sha512-G/LiKwrQKLy3cOX0wsFGh2sgydHUEx5Ue/wUn2OpB2jWxsRvR3RLBFENT2UvI7PlNzFoFp1csdOuTxC03b84Nw==
   dependencies:
     babel-runtime "^6.26.0"
     immutable "^3.8.2"
@@ -1465,8 +1465,8 @@
 
 "@lugia/mega-scripts@^1.4.9":
   version "1.4.9"
-  resolved "https://registry.npm.taobao.org/@lugia/mega-scripts/download/@lugia/mega-scripts-1.4.9.tgz#2de64fa9c9ecad639a8e78520fff4960eba841b9"
-  integrity sha1-LeZPqcnsrWOajnhSD/9JYOuoQbk=
+  resolved "https://registry.npmjs.org/@lugia/mega-scripts/-/mega-scripts-1.4.9.tgz#2de64fa9c9ecad639a8e78520fff4960eba841b9"
+  integrity sha512-LWcCoJMz5R3Jxzev0bQpOyio2nZR0DlwgWxxvmZZr4rx+qKIXB7YSNJ5AsrlpteUO0OOHlKMpUjI+2FHHO+HJg==
   dependencies:
     "@babel/core" "7.4.3"
     "@babel/runtime" "^7.1.5"
@@ -1533,8 +1533,8 @@
 
 "@lugia/mega-webpack@^1.4.9":
   version "1.4.9"
-  resolved "https://registry.npm.taobao.org/@lugia/mega-webpack/download/@lugia/mega-webpack-1.4.9.tgz#29c7930c4307b0fbfb5ec3e17e778ca8516125bb"
-  integrity sha1-KceTDEMHsPv7XsPhfneMqFFhJbs=
+  resolved "https://registry.npmjs.org/@lugia/mega-webpack/-/mega-webpack-1.4.9.tgz#29c7930c4307b0fbfb5ec3e17e778ca8516125bb"
+  integrity sha512-E/eeHGz76aR+ZqH9pwn9fr31dTt1Snh4hfGTgrrTY4VcI9YhO9PO2YRBPFuuRbdIiRodcQVRTnTyVQumBRab6w==
   dependencies:
     "@babel/core" "7.1.5"
     "@babel/runtime" "^7.5.5"
