@@ -7,6 +7,8 @@
 import React from "react";
 import styled from "styled-components";
 import { Navmenu, Theme, consts as Widget } from "@lugia/lugia-web";
+import RoutingConfig from "../../../config/routing.config";
+import Authenticate from "../../authenticate";
 import logo from "../../assets/images/pro_logo.png";
 import menuList from "../../models/menuList";
 import { connect } from "@lugia/lugiax";
@@ -25,7 +27,6 @@ const Title = styled.div`
     width: 84px;
   }
 `;
-
 
 class List extends React.Component<any> {
   constructor(props) {
@@ -131,12 +132,16 @@ class List extends React.Component<any> {
         }
       }
     };
+    const { authenticateSwitch } = Authenticate;
+
+    const filterRouterData = authenticateSwitch ? routeData : RoutingConfig;
+
     return (
       <NavContainer>
         <Title>
           <img src={logo} />
         </Title>
-        {routeData.length !== 0 && (
+        {filterRouterData.length !== 0 && (
           <Navmenu
             theme={theme}
             value={value}
@@ -144,7 +149,7 @@ class List extends React.Component<any> {
             themeStyle={"dark"}
             onSelect={this.props.onSelect}
             inlineType={"ellipse"}
-            data={routeData}
+            data={filterRouterData}
             switchIconNames={{
               open: "lugia-icon-direction_caret_up",
               close: "lugia-icon-direction_caret_down"
