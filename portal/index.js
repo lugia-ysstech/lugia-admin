@@ -4,6 +4,8 @@ import { createApp, go, render } from "@lugia/lugiax-router";
 import "@lugia/lugia-web/dist/css/global.css";
 import Main from "./App";
 import PageLoading from "./components/pageloading";
+import RoutingConfig from "../config/routing.config";
+import Authenticate from "./authenticate";
 import Security from "./models/security";
 import doRequest from "./components/utils/requestFunction";
 const history = createBrowserHistory();
@@ -97,13 +99,18 @@ const App = createApp(
         go({ url: "/login" });
       }
 
-      const allRouteData = await getAllRouteData();
+      const { authenticateSwitch } = Authenticate;
+      let filterRouteData = RoutingConfig;
+      if (authenticateSwitch) {
+        const allRouteData = await getAllRouteData();
 
-      const { accessIds } = await doRequest("/api/userAccessIdsAndApiUrls", {
-        method: "POST"
-      });
+        const { accessIds } = await doRequest("/api/userAccessIdsAndApiUrls", {
+          method: "POST"
+        });
 
-      const filterRouteData = getFilterRouteData(accessIds, allRouteData);
+        filterRouteData = getFilterRouteData(accessIds, allRouteData);
+        setFilterRouteData(filterRouteData);
+      }
 
       if (
         JSON.stringify(filterRouteData).indexOf(url) === -1 &&
@@ -112,8 +119,6 @@ const App = createApp(
         go({ url: "/404" });
         return false;
       }
-
-      setFilterRouteData(filterRouteData);
 
       const result = await checkAuthorityData({
         value: url,
