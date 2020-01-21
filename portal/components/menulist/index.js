@@ -67,7 +67,7 @@ class List extends React.Component<any> {
     const theme = {
       [Widget.NavMenu]: {
         Tree: {
-          TreeWrap: {
+          Container: {
             normal: {
               width: 210,
               height,

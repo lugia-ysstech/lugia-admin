@@ -53,11 +53,11 @@ export default [
         text: "查询表格",
         render: () => import("../portal/pages/list/table-list")
       },
-      {
-        value: "/list/basic-list",
-        text: "标准列表",
-        render: () => import("../portal/pages/list/basic-list")
-      },
+      // {
+      //   value: "/list/basic-list",
+      //   text: "标准列表",
+      //   render: () => import("../portal/pages/list/basic-list")
+      // },
       {
         value: "/list/card-list",
         text: "卡片列表",
