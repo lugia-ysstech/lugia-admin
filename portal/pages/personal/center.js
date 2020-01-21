@@ -64,11 +64,15 @@ const theme = {
   [Widget.Tabs]: {
     ContentBlock: {
       normal:{
-        width: '100%',
-        height: 1200
+        width: '100%'
       }
     },
     TitleContainer:{
+      normal:{
+        textAlign:'center'
+      }
+    },
+    Container:{
       normal:{
         width: '100%',
       }

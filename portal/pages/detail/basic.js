@@ -79,7 +79,6 @@ const theme = {
     Container: {
       normal: {
         width: '97%',
-        height: 180,
         margin: {
           bottom: 10,
           left: 20,
@@ -94,28 +93,53 @@ const theme = {
         width: 6,
       },
     },
-    CardTitle:{
+    CardTitleHeadContainer:{
       normal: {
-        margin: {
-          left: -8
-        },
-        padding: 0
+       height: 30
       },
-    }
+    },
+    CardContent:{
+      normal: {
+       padding: {
+         left: 10
+       }
+      },
+    },
   },
 };
 const themeSteps = {
   [Widget.Step]: {
-      StepDescription:{
-        normal: {
-          margin: {
-            top: -20,
-            bottom: 32,
-            left: 120
-          },
 
+    FinishStepDescription:{
+      normal: {
+        width: 600,
+        margin: {
+          top: -20,
+          bottom: 32,
+          left: 120
         },
-      }
+      },
+    },
+    ProcessStepDescription:{
+      normal: {
+        width: 600,
+        margin: {
+          top: -20,
+          bottom: 32,
+          left: 120
+        },
+      },
+    },
+    NextStepDescription:{
+      normal: {
+        width: 600,
+        margin: {
+          top: -20,
+          bottom: 32,
+          left: 120
+        },
+      },
+    }
   },
 
 };
@@ -168,7 +192,6 @@ class Basic extends Component{
               Container: {
                 normal: {
                   width: '97%',
-                  height: 410,
                   margin: {
                     bottom: 10,
                     top: 20,
@@ -199,7 +222,7 @@ class Basic extends Component{
 
               <StepsContainer>
                 <Theme config={themeSteps}>
-                  <Steps orientation="vertical" stepType={'dot'}>
+                  <Steps orientation="vertical" stepType={'dot'} >
                     {
                       data && data.map( item => {
                         const {title,stepStatus,description} = item;
@@ -207,7 +230,7 @@ class Basic extends Component{
                                       description={
                                         description && description.map( descItem => {
                                           const {date,desc} = descItem;
-                                          return <div> {date && <Date>{date}</Date>}<Date>{desc}</Date></div>
+                                          return <div style={{textAlign: 'left'}}> {date && <Date>{date}</Date>}<Date>{desc}</Date></div>
                                         })
 
                                       }
