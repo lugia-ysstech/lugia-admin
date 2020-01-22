@@ -6,6 +6,7 @@
  */
 import React, { Component } from "react";
 import Content from "../../components/content";
+import PageHeader from "../../components/page-header";
 import PageContent from "../../components/page-content";
 import {
   Theme,
@@ -80,66 +81,6 @@ const FooterWrap = styled.div`
 class failedDemo extends Component {
   render() {
 
-    const config = {
-      [Widget.Breadcrumb]: {
-        BreadcrumbWrap: {
-          normal: {
-            width: 185,
-            height: 22,
-            padding: {
-              left: 0,
-            },
-            margin: {
-              left: 14,
-              right: 0,
-              top: 20,
-              bottom: 20,
-            },
-            background: {
-              color: '#F5F5F9',
-            },
-          },
-        },
-        BreadcrumbItem: {
-          ItemWrap: {
-            normal: {
-              width: 120,
-              padding: {
-                left: 0,
-              },
-              margin: {},
-              nth0: { width: 500 },
-            },
-          },
-
-          Text: {
-            normal: {
-              fontFamily: 'PingFangSC-Regular',
-              color: '#999',
-              fontSize: 16,
-              last: {
-                color: '#2A2A2A',
-              },
-            },
-          },
-
-          Separator: {
-            normal: {
-              color: '#666',
-              fontSize: 16,
-              margin: {
-                top: 6,
-                left: 4,
-                right: 3,
-              },
-              last: {
-                color: '#4d63ff',
-              },
-            },
-          },
-        },
-      },
-    };
     const cardThemeConfig = {
       [Widget.Card]: {
         Container: {
@@ -202,17 +143,22 @@ class failedDemo extends Component {
         }
       }
     };
-
+    const routes = [
+      {
+        path: "/dashboard/analyse",
+        title: "首页"
+      },
+      {
+        title: "结果页"
+      },
+      {
+        title: "失败页"
+      }
+    ];
     return (
       <Content>
         {/*页头*/}
-        <BreadcrumbWrap>
-          <Breadcrumb separator={'>'} lastSeparator={''} theme={config}>
-            <Breadcrumb.Item href="a">首页</Breadcrumb.Item>
-            <Breadcrumb.Item href="b">结果页</Breadcrumb.Item>
-            <Breadcrumb.Item href="c">失败页</Breadcrumb.Item>
-          </Breadcrumb>
-        </BreadcrumbWrap>
+        <PageHeader routes={routes}  />
         {/*内容*/}
         <PageContent>
           <ContentContainer>

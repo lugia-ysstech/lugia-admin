@@ -9,8 +9,6 @@ import { Breadcrumb, consts as Widget, Grid, Button,  Input, Table, Pagination }
 import {
   Content,
   HeaderWrap,
-  BreadcrumbWrap,
-  HeaderContentWrap,
   ContentWrap,
   SecContentWrap,
   SearchBarWrap,
@@ -20,9 +18,22 @@ import {
   ListContentWrap,
   PaginationWrap,
   PaginationPositionWrap
-} from './style/tableListStyle'
+} from './style/tableListStyle';
+import PageHeader from "../../components/page-header";
 
 const {Row, Col} = Grid;
+const routes = [
+  {
+    path: "/dashboard/analyse",
+    title: "首页"
+  },
+  {
+    title: "列表页"
+  },
+  {
+    title: "查询表格页"
+  }
+];
 const columns = [{
   title: '用户ID', dataIndex: 'nameID', width: 100,
 }, {
@@ -57,62 +68,6 @@ export default class TableList extends Component {
   }
   render() {
     const config = {
-      [Widget.Breadcrumb]: {
-        BreadcrumbWrap: {
-          normal: {
-            width: 220,
-            height: 22,
-            padding: {
-              left: 0,
-            },
-            margin: {
-              left: 14,
-              right: 0,
-              top: 20,
-              bottom: 20,
-            },
-            background: {
-              color: '#F5F5F9',
-            },
-          },
-        },
-        BreadcrumbItem: {
-          ItemWrap: {
-            normal: {
-              width: 120,
-              padding: {
-                left: 0,
-              },
-              margin: {},
-              nth0: {width: 500},
-            },
-          },
-          Text: {
-            normal: {
-              fontFamily: 'PingFangSC-Regular',
-              color: '#999',
-              fontSize: 16,
-              last: {
-                color: '#2A2A2A',
-              },
-            },
-          },
-          Separator: {
-            normal: {
-              color: '#666',
-              fontSize: 16,
-              margin: {
-                top: 6,
-                left: 4,
-                right: 3,
-              },
-              last: {
-                color: '#4d63ff',
-              },
-            },
-          },
-        },
-      },
       [Widget.Input]: {
         Container: {
           normal: {
@@ -140,17 +95,7 @@ export default class TableList extends Component {
 
         {/*页头*/}
         <HeaderWrap>
-          <BreadcrumbWrap>
-            <Breadcrumb separator={'>'} lastSeparator={''} theme={config}>
-              <Breadcrumb.Item href="a">首页</Breadcrumb.Item>
-              <Breadcrumb.Item href="b">列表页</Breadcrumb.Item>
-              <Breadcrumb.Item href="c">基础查询表格</Breadcrumb.Item>
-            </Breadcrumb>
-          </BreadcrumbWrap>
-          <HeaderContentWrap>
-            <p className={'headerTitle'}>基础查询表格</p>
-            <p>常用于对单项大数据表格的查看和查询</p>
-          </HeaderContentWrap>
+          <PageHeader routes={routes} title={"基础查询表格"} desc={'常用于对单项大数据表格的查看和查询'} />
         </HeaderWrap>
 
         {/*内容*/}
