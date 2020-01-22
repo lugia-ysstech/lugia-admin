@@ -8,6 +8,7 @@ import React, { Component } from "react";
 import Content from "../../components/content";
 import { Breadcrumb, consts as Widget, Grid, Progress, Button, Theme, Icon} from "@lugia/lugia-web";
 import styled from "styled-components";
+import PageHeader from "../../components/page-header";
 
 import 'core-js/es6/map';
 import 'core-js/es6/set';
@@ -16,9 +17,6 @@ import 'core-js/es6/string';
 const {Row, Col} = Grid;
 
 //上部图表
-const BreadcrumbWrap = styled.div`
-  width: 100%;
-`;
 const FirstContentWrap = styled.div`
   width: 100%;
 `;
@@ -184,6 +182,18 @@ const CardEditorBarWrap = styled.div`
     margin-right: 0;
   }
 `;
+const routes = [
+  {
+    path: "/dashboard/analyse",
+    title: "首页"
+  },
+  {
+    title: "列表页"
+  },
+  {
+    title: "卡片列表页"
+  }
+];
 
 export default class BasicList extends Component {
   constructor(props){
@@ -191,66 +201,6 @@ export default class BasicList extends Component {
     this.state = null;
   }
   render() {
-    const config = {
-      [Widget.Breadcrumb]: {
-        BreadcrumbWrap: {
-          normal: {
-            width: 185,
-            height: 22,
-            padding: {
-              left: 0,
-            },
-            margin: {
-              left: 14,
-              right: 0,
-              top: 20,
-              bottom: 20,
-            },
-            background: {
-              color: '#F5F5F9',
-            },
-          },
-        },
-        BreadcrumbItem: {
-          ItemWrap: {
-            normal: {
-              width: 120,
-              padding: {
-                left: 0,
-              },
-              margin: {},
-              nth0: { width: 500 },
-            },
-          },
-
-          Text: {
-            normal: {
-              fontFamily: 'PingFangSC-Regular',
-              color: '#999',
-              fontSize: 16,
-              last: {
-                color: '#2A2A2A',
-              },
-            },
-          },
-
-          Separator: {
-            normal: {
-              color: '#666',
-              fontSize: 16,
-              margin: {
-                top: 6,
-                left: 4,
-                right: 3,
-              },
-              last: {
-                color: '#4d63ff',
-              },
-            },
-          },
-        },
-      },
-    };
 
     const view = {
       [Widget.Icon]: {
@@ -274,14 +224,7 @@ export default class BasicList extends Component {
     return(
       <Content>
         {/*页头*/}
-        <BreadcrumbWrap>
-          <Breadcrumb separator={'>'} lastSeparator={''} theme={config}>
-            <Breadcrumb.Item href="a">首页</Breadcrumb.Item>
-            <Breadcrumb.Item href="b">列表页</Breadcrumb.Item>
-            <Breadcrumb.Item href="c">卡片列表</Breadcrumb.Item>
-          </Breadcrumb>
-        </BreadcrumbWrap>
-
+        <PageHeader routes={routes} title={"卡片列表页"} />
         {/*上部图表*/}
         <FirstContentWrap>
           <GraphContentWrap>

@@ -127,12 +127,10 @@ class TableList extends Component {
         ],
         selectView: {
           [Widget.Select]: {
-            InputTag: {
-              InputTagWrap: {
-                normal: {
+            Container: {
+             normal: {
                   width: 200
-                }
-              }
+             }
             }
           }
         },
@@ -151,12 +149,10 @@ class TableList extends Component {
         ],
         selectView: {
           [Widget.Select]: {
-            InputTag: {
-              InputTagWrap: {
-                normal: {
+            Container: {
+             normal: {
                   width: 200
                 }
-              }
             }
           }
         },
@@ -188,12 +184,10 @@ class TableList extends Component {
         ],
         selectView: {
           [Widget.Select]: {
-            InputTag: {
-              InputTagWrap: {
-                normal: {
+            Container: {
+             normal: {
                   width: 200
                 }
-              }
             }
           }
         },
@@ -212,12 +206,10 @@ class TableList extends Component {
         ],
         selectView: {
           [Widget.Select]: {
-            InputTag: {
-              InputTagWrap: {
-                normal: {
+            Container: {
+             normal: {
                   width: 200
                 }
-              }
             }
           }
         },
@@ -235,12 +227,10 @@ class TableList extends Component {
         ],
         selectView: {
           [Widget.Select]: {
-            InputTag: {
-              InputTagWrap: {
-                normal: {
+            Container: {
+             normal: {
                   width: 200
                 }
-              }
             }
           }
         },
@@ -353,6 +343,13 @@ class TableList extends Component {
         CardContent: {
           normal: {
             padding: 0
+          }
+        }
+      },
+      [Widget.Select]: {
+        Container: {
+          normal: {
+            width: 200
           }
         }
       }

@@ -337,64 +337,67 @@ class StepForm extends Component {
               </ItemContainer>
             </Warpper>
           </Theme>
-          <Warpper>
-            <ItemContainer>
-              <ItemInnerContainer>
-                <MustStar>*</MustStar>
-                <TitleText>{"税费所属期间:"}</TitleText>
-              </ItemInnerContainer>
-              <RangePicker
-                format={"YYYY-MM-DD"}
-                onChange={this.props.periodChange}
-              />
-            </ItemContainer>
-            <ItemContainer>
-              <RightInputContainer>
-                <MustStar>*</MustStar>
-                <TitleText>{"支付时间:"}</TitleText>
-              </RightInputContainer>
-              <RightItemInputContainer>
+          <Theme config={rangePicker}>
+            <Warpper>
+              <ItemContainer>
+                <ItemInnerContainer>
+                  <MustStar>*</MustStar>
+                  <TitleText>{"税费所属期间:"}</TitleText>
+                </ItemInnerContainer>
+                <RangePicker
+                  format={"YYYY-MM-DD"}
+                  onChange={this.props.periodChange}
+                />
+              </ItemContainer>
+              <ItemContainer>
+                <RightInputContainer>
+                  <MustStar>*</MustStar>
+                  <TitleText>{"支付时间:"}</TitleText>
+                </RightInputContainer>
+                <RightItemInputContainer>
+                  <TimePicker
+                    placeholder={"选择时间"}
+                    onChange={this.props.payTimeChange}
+                  />
+                </RightItemInputContainer>
+              </ItemContainer>
+            </Warpper>
+            <Warpper>
+              <ItemContainer>
+                <ItemInnerContainer>
+                  <MustStar>*</MustStar>
+                  <TitleText>{"任务提醒时间:"}</TitleText>
+                </ItemInnerContainer>
                 <TimePicker
                   placeholder={"选择时间"}
-                  onChange={this.props.payTimeChange}
+                  onChange={this.props.reminderTimeChange}
                 />
-              </RightItemInputContainer>
-            </ItemContainer>
-          </Warpper>
-          <Warpper>
-            <ItemContainer>
-              <ItemInnerContainer>
-                <MustStar>*</MustStar>
-                <TitleText>{"任务提醒时间:"}</TitleText>
-              </ItemInnerContainer>
-              <TimePicker
-                placeholder={"选择时间"}
-                onChange={this.props.reminderTimeChange}
-              />
-            </ItemContainer>
-            <ItemContainer>
-              <RightInputContainer>
-                <MustStar>*</MustStar>
-                <TitleText>{"头寸时间"}</TitleText>
-              </RightInputContainer>
-              <RightItemInputContainer>
-                <TimePicker
-                  placeholder={"选择时间"}
-                  onChange={this.props.positionTimeChange}
-                />
-              </RightItemInputContainer>
-            </ItemContainer>
-          </Warpper>
-          <MemoContainer>
-            <MemoInnerContainer>
-              <MemoText>{"备注:"}</MemoText>
-            </MemoInnerContainer>
-            <MomeInputContainer>
-              <Theme config={inputMemoView}>
-                <Input onChange={this.props.memoChange} />
-              </Theme>
-            </MomeInputContainer>
-          </MemoContainer>
+              </ItemContainer>
+              <ItemContainer>
+                <RightInputContainer>
+                  <MustStar>*</MustStar>
+                  <TitleText>{"头寸时间"}</TitleText>
+                </RightInputContainer>
+                <RightItemInputContainer>
+                  <TimePicker
+                    placeholder={"选择时间"}
+                    onChange={this.props.positionTimeChange}
+                  />
+                </RightItemInputContainer>
+              </ItemContainer>
+            </Warpper>
+            <MemoContainer>
+              <MemoInnerContainer>
+                <MemoText>{"备注:"}</MemoText>
+              </MemoInnerContainer>
+              <MomeInputContainer>
+                <Theme config={inputMemoView}>
+                  <Input onChange={this.props.memoChange} />
+                </Theme>
+              </MomeInputContainer>
+            </MemoContainer>
+          </Theme>
+
           {getFirstStepsOperation}
         </div>
       );
@@ -648,6 +651,22 @@ class StepForm extends Component {
         Container: {
           normal: {
             width: 400
+          }
+        }
+      }
+    };
+    const rangePicker = {
+      [Widget.RangePicker]: {
+        Container: {
+          normal: {
+            width: 450
+          }
+        }
+      },
+      [Widget.TimePicker]: {
+        Container: {
+          normal: {
+            width: 450
           }
         }
       }

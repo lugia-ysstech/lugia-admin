@@ -228,7 +228,7 @@ const theme = {
     Container: {
       normal: {
         width: '97%',
-        height: 540,
+        // height: 540,
         margin: {
           bottom: 20,
           left: 20
@@ -242,14 +242,18 @@ const theme = {
         width: 6,
       },
     },
-    CardTitle:{
+    CardTitleHeadContainer:{
       normal: {
-        margin: {
-          left: -8
-        },
-        padding: 0
+        height: 30
       },
-    }
+    },
+    CardContent:{
+      normal: {
+        padding: {
+          left: 10
+        }
+      },
+    },
   },
   [Widget.Tabs]: {
     ContentBlock: {
@@ -291,7 +295,6 @@ const themeCardInfo = {
     Container: {
       normal: {
         width: '97%',
-        height: 200,
         margin: {
           bottom: 20,
           left: 20
@@ -305,14 +308,59 @@ const themeCardInfo = {
         width: 6,
       },
     },
-    CardTitle:{
+    CardTitleHeadContainer:{
       normal: {
-        margin: {
-          left: -8
-        },
-        padding: 0
+        height: 30
       },
-    }
+    },
+    CardContent:{
+      normal: {
+        padding: {
+          left: 10
+        },
+        margin: {
+          bottom: 10
+        },
+      },
+    },
+  },
+  ...dividerTheme
+};
+
+
+const connectCardInfo = {
+  [Widget.Card]: {
+    Container: {
+      normal: {
+        width: '97%',
+        margin: {
+          bottom: 20,
+          left: 20
+        },
+        boxShadow: 0,
+        border:0
+      },
+    },
+    CardTitleTipLine:{
+      normal: {
+        width: 6,
+      },
+    },
+    CardTitleHeadContainer:{
+      normal: {
+        height: 30
+      },
+    },
+    CardContent:{
+      normal: {
+        padding: {
+          left: 10
+        },
+        margin: {
+          bottom: 10
+        },
+      },
+    },
   },
   ...dividerTheme
 };
@@ -322,7 +370,6 @@ const propertyCard = {
     Container: {
       normal: {
         width: '97%',
-        height: 3570,
         margin: {
           bottom: 20,
           left: 20
@@ -331,7 +378,8 @@ const propertyCard = {
           bottom: 25
         },
         boxShadow: 0,
-        border:0
+        border:0,
+        minHeight: 'auto'
       },
     },
     CardTitleTipLine:{
@@ -339,14 +387,18 @@ const propertyCard = {
         width: 6,
       },
     },
-    CardTitle:{
+    CardTitleHeadContainer:{
       normal: {
-        margin: {
-          left: -8
-        },
-        padding: 0
+        height: 30
       },
-    }
+    },
+    CardContent:{
+      normal: {
+        padding: {
+          left: 10
+        },
+      },
+    },
   },
   [Widget.Avatar]: {
     Container: {
@@ -366,7 +418,7 @@ const cooperateCard = {
     Container: {
       normal: {
         width: '97%',
-        height: 360,
+        // height: 3600,
         margin: {
           bottom: 20,
           left: 20
@@ -380,14 +432,18 @@ const cooperateCard = {
         width: 6,
       },
     },
-    CardTitle:{
+    CardTitleHeadContainer:{
       normal: {
-        margin: {
-          left: -8
-        },
-        padding: 0
+        height: 30
       },
-    }
+    },
+    CardContent:{
+      normal: {
+        padding: {
+          left: 10
+        }
+      },
+    },
   },
 
 };
@@ -412,13 +468,17 @@ const HAvatarCardCard = {
         width: 6,
       },
     },
-    CardTitle:{
+    CardTitleHeadContainer:{
       normal: {
-        margin:{
-          top: 15,
+        height: 30
+      },
+    },
+    CardContent:{
+      normal: {
+        padding: {
           left: 10
-        },
-      }
+        }
+      },
     },
     CardAvatarContainer: {
       normal: {
@@ -512,68 +572,68 @@ class Advanced extends Component{
             </Card>
           </Theme>
 
-          <Theme config={propertyCard}>
-            <Card type={'tip'} title={'资产信息'}>
-              <Block>
-                {advancedUserInfo && advancedUserInfo.map( item => {
-                  const {type,title,data,head} = item;
-                  return <React.Fragment>
-                    {title?<Label>{title}</Label>:null}
-                    {type === '1'? <FlexBox justify={'flex-start'}>
-                        {data.map( list => {
-                          const {text,value} = list;
-                          return  <Label width='33%'>{text}	：<Text>{value}</Text> </Label>
-                        })}
-                      </FlexBox>
-                      :<InfoContainer>
-                        <InfoTitle>{head}</InfoTitle>
-                        <Divider/>
-                        <UserInfoWrap>
-                          <Theme config={dividerTheme}>
-                            {data.map( (list,index) => {
-                              const {title:liTitle,link,desc} = list;
-                              return <React.Fragment>
-                                <FlexBox>
-                                  <Avatar type={'img'}  src={index % 2 ===0? g : mega} />
-                                  <HeaderContent>
-                                    <FundTitle >{liTitle}</FundTitle>
-                                    <Text>{desc}</Text>
-                                    {link && <Link href={link.url} target={'_blank'}>{link.text} > </Link>}
+          {/*<Theme config={propertyCard}>*/}
+            {/*<Card type={'tip'} title={'资产信息'}>*/}
+              {/*<Block>*/}
+                {/*{advancedUserInfo && advancedUserInfo.map( item => {*/}
+                  {/*const {type,title,data,head} = item;*/}
+                  {/*return <div>*/}
+                    {/*{title?<Label>{title}</Label>:null}*/}
+                    {/*{type === '1'? <FlexBox justify={'flex-start'}>*/}
+                        {/*{data.map( list => {*/}
+                          {/*const {text,value} = list;*/}
+                          {/*return  <Label width='33%'>{text}	：<Text>{value}</Text> </Label>*/}
+                        {/*})}*/}
+                      {/*</FlexBox>*/}
+                      {/*:<InfoContainer>*/}
+                        {/*<InfoTitle>{head}</InfoTitle>*/}
+                        {/*<Divider/>*/}
+                        {/*<UserInfoWrap>*/}
+                          {/*<Theme config={dividerTheme}>*/}
+                            {/*{data.map( (list,index) => {*/}
+                              {/*const {title:liTitle,link,desc} = list;*/}
+                              {/*return <React.Fragment>*/}
+                                {/*<FlexBox>*/}
+                                  {/*<Avatar type={'img'}  src={index % 2 ===0? g : mega} />*/}
+                                  {/*<HeaderContent>*/}
+                                    {/*<FundTitle >{liTitle}</FundTitle>*/}
+                                    {/*<Text>{desc}</Text>*/}
+                                    {/*{link && <Link href={link.url} target={'_blank'}>{link.text} > </Link>}*/}
 
-                                  </HeaderContent>
-                                </FlexBox>
-                                  {index !== data.length -1 &&  <Divider/>}
+                                  {/*</HeaderContent>*/}
+                                {/*</FlexBox>*/}
+                                  {/*{index !== data.length -1 &&  <Divider/>}*/}
 
-                              </React.Fragment> ;
+                              {/*</React.Fragment> ;*/}
 
-                            })}
-                          </Theme>
+                            {/*})}*/}
+                          {/*</Theme>*/}
 
-                        </UserInfoWrap>
-                      </InfoContainer>}
-                  </React.Fragment>
-                })}
-              </Block>
-            </Card>
-          </Theme>
+                        {/*</UserInfoWrap>*/}
+                      {/*</InfoContainer>}*/}
+                  {/*</div>*/}
+                {/*})}*/}
+              {/*</Block>*/}
+            {/*</Card>*/}
+          {/*</Theme>*/}
 
-          <Theme config={themeCardInfo}>
-            <Card type={'tip'} title={'信息关联记录'}>
-              <Block>
-                {advancedOrderInfo.info && advancedOrderInfo.info.map((infoItem) => {
-                  const {title,desc,status} = infoItem;
-                  return <React.Fragment>
-                    <FundTitle margin={'18px 0 6px'}>{title}</FundTitle>
-                    <FlexBox justify={'space-between'}>
-                      <Text>{desc}</Text> <Switch defaultValue={status} />
-                    </FlexBox>
+          {/*<Theme config={connectCardInfo}>*/}
+            {/*<Card type={'tip'} title={'信息关联记录'}>*/}
+              {/*<Block>*/}
+                {/*{advancedOrderInfo.info && advancedOrderInfo.info.map((infoItem) => {*/}
+                  {/*const {title,desc,status} = infoItem;*/}
+                  {/*return <React.Fragment>*/}
+                    {/*<FundTitle margin={'18px 0 6px'}>{title}</FundTitle>*/}
+                    {/*<FlexBox justify={'space-between'}>*/}
+                      {/*<Text>{desc}</Text> <Switch defaultValue={status} />*/}
+                    {/*</FlexBox>*/}
 
-                    <Divider/>
-                  </React.Fragment>;
-                })}
-              </Block>
-            </Card>
-          </Theme>
+                    {/*<Divider/>*/}
+                  {/*</React.Fragment>;*/}
+                {/*})}*/}
+              {/*</Block>*/}
+            {/*</Card>*/}
+          {/*</Theme>*/}
 
           <Theme config={theme}>
             <Card type={'tip'} title={'使用明细'}>
@@ -582,29 +642,30 @@ class Advanced extends Component{
               </Block>
             </Card>
           </Theme>
-          <Theme config={cooperateCard}>
-            <Card type={'tip'} title={'合作者'}>
-              <Block>
-                <FlexBox justify={'space-between'}>
-                  <Theme config={HAvatarCardCard}>
-                    { advancedOrderInfo.cooperate && advancedOrderInfo.cooperate.map( (item,index)  => {
-                      const {name,desc} = item;
-                      return <Card
-                        type={"avatar"}
-                        title={name}
-                        description={desc}
-                        avatar={tx[`tx${index+1}`]}
-                        shadow={"hover"}
-                      />
-                    })}
 
-                  </Theme>
+          {/*<Theme config={cooperateCard}>*/}
+            {/*<Card type={'tip'} title={'合作者'}>*/}
+              {/*<Block>*/}
+                {/*<FlexBox justify={'space-between'}>*/}
+                  {/*<Theme config={HAvatarCardCard}>*/}
+                    {/*{ advancedOrderInfo.cooperate && advancedOrderInfo.cooperate.map( (item,index)  => {*/}
+                      {/*const {name,desc} = item;*/}
+                      {/*return <Card*/}
+                        {/*type={"avatar"}*/}
+                        {/*title={name}*/}
+                        {/*description={desc}*/}
+                        {/*avatar={tx[`tx${index+1}`]}*/}
+                        {/*shadow={"hover"}*/}
+                      {/*/>*/}
+                    {/*})}*/}
 
-                </FlexBox>
+                  {/*</Theme>*/}
 
-              </Block>
-            </Card>
-          </Theme>
+                {/*</FlexBox>*/}
+
+              {/*</Block>*/}
+            {/*</Card>*/}
+          {/*</Theme>*/}
 
 
       </Content>
