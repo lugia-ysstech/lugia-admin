@@ -7,7 +7,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Navmenu, Theme, consts as Widget } from "@lugia/lugia-web";
-import RoutingConfig from "../../../config/routing.config";
+import RoutingConfig from "../../../config/cusRouting.config";
 import Authenticate from "../../authenticate";
 import logo from "../../assets/images/pro_logo.png";
 import menuList from "../../models/menuList";

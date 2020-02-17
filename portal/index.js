@@ -4,7 +4,7 @@ import { createApp, go, render } from "@lugia/lugiax-router";
 import "@lugia/lugia-web/dist/css/global.css";
 import Main from "./App";
 import PageLoading from "./components/pageloading";
-import RoutingConfig from "../config/routing.config";
+import RoutingConfig from "../config/cusRouting.config";
 import Authenticate from "./authenticate";
 import Security from "./models/security";
 import doRequest from "./components/utils/requestFunction";

@@ -1,6 +1,6 @@
 import { Redirect } from "@lugia/lugiax-router";
 import React from "react";
-import routingConfig from "../config/routing.config";
+import routingConfig from "../config/cusRouting.config";
 
 const getRouters = (routingConfig, routes) => {
   const rout = routes || {};
