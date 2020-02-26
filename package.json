@@ -17,9 +17,9 @@
     "build": "lugia-scripts build",
     "test": "lugia-scripts test -w",
     "stylelint": "stylelint",
-    "lint": "eslint --ext .js portal",
-    "lint:fix": "eslint --fix --ext .js portal",
-    "lint:css": "stylelint  portal/**/*.js",
+    "lint": "eslint --ext .js src config",
+    "lint:fix": "eslint --fix --ext .js src config",
+    "lint:css": "stylelint  src/**/*.js",
     "lint-staged": "lint-staged"
   },
   "dependencies": {
@@ -80,8 +80,12 @@
   "files": [
     "config",
     "mock",
-    "portal",
-    "portal",
+    "src",
+    ".eslintignore",
+    ".eslintrc",
+    ".prettierrc",
+    ".stylelintrc",
+    "src",
     "public",
     "test",
     ".editorconfig",

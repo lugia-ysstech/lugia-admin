@@ -1,5 +1,5 @@
-import routing from "./routing.config";
+import routing from './routing.config';
 
 const cusRouting = [];
 
-export default [...routing, ...cusRouting];
+export default [...routing, ...cusRouting,];

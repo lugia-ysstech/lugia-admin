@@ -1,65 +1,63 @@
-import { join } from "path";
-import megaDesktopConfig from "./config/mega.desktop.config.json";
+import { join, } from 'path';
+import megaDesktopConfig from './config/mega.desktop.config.json';
 
 export default {
   disableCSSModules: true,
   cssModulesWithAffix: true,
-  entry: "./portal/index.js",
-  publicPath: "/",
+  entry: './src/index.js',
+  publicPath: '/',
   alias: {
-    "@": join(__dirname, "./src")
+    '@': join(__dirname, './src'),
   },
   dllDependenciesExcludes: [],
-  extraBabelIncludes: [/decamelize/],
+  extraBabelIncludes: [/decamelize/,],
   extraBabelPlugins: [
     [
-      "import",
+      'import',
       {
-        libraryName: "@lugia/lugia-web",
-        libraryDirectory: "dist"
+        libraryName: '@lugia/lugia-web',
+        libraryDirectory: 'dist',
       },
-      "@lugia/lugia-web"
+      '@lugia/lugia-web',
     ],
     [
-      "import",
+      'import',
       {
-        libraryName: "@/components",
-        libraryDirectory: "",
-        camel2DashComponentName: false
+        libraryName: '@/components',
+        libraryDirectory: '',
+        camel2DashComponentName: false,
       },
-      "@/components"
-    ]
+      '@/components',
+    ],
   ],
-  applyWebpack(webpackConfig, { webpack, merge }) {
+  applyWebpack(webpackConfig, { webpack, merge, }) {
     return webpackConfig;
   },
   generator(api) {
     const {
       appPath,
-      pkg: { version }
+      pkg: { version, },
     } = api.getApp();
     const verbose = api.isVerbose();
-    const { fs, mergeObj } = api._utils();
+    const { fs, mergeObj, } = api._utils();
 
     fs.writeJSONSync(
-      join(appPath, "./config/mega.desktop.config.json"),
+      join(appPath, './config/mega.desktop.config.json'),
       mergeObj(megaDesktopConfig, {
         extraMega: {
           engines: {
-            scaffolding: { version }
-          }
-        }
+            scaffolding: { version, },
+          },
+        },
       }),
       {
-        spaces: 2
+        spaces: 2,
       }
     );
 
     if (verbose) {
       console.log(
-        `update scaffolding(${
-          megaDesktopConfig.extraMega.engines.scaffolding.name
-        }) version: ${version}`
+        `update scaffolding(${megaDesktopConfig.extraMega.engines.scaffolding.name}) version: ${version}`
       );
     }
 
@@ -67,10 +65,10 @@ export default {
       delete pkg.files;
       return {
         ...pkg,
-        version: "1.0.0",
-        private: true
+        version: '1.0.0',
+        private: true,
       };
     });
   },
-  ...megaDesktopConfig
+  ...megaDesktopConfig,
 };
