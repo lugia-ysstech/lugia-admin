@@ -10,7 +10,7 @@ const getRouteDataInfo = () => {
           id: "1-1",
           value: "/dashboard/analyse",
           text: "分析页",
-          render: () => import("../portal/pages/dashboard/analyse")
+          render: () => import("../src/pages/dashboard/analyse")
         }
       ]
     },
@@ -24,19 +24,19 @@ const getRouteDataInfo = () => {
           id: "2-1",
           value: "/form/basic-form",
           text: "基础表单",
-          render: () => import("../portal/pages/form/basic")
+          render: () => import("../src/pages/form/basic")
         },
         {
           id: "2-2",
           value: "/form/step-form",
           text: "分步表单",
-          render: () => import("../portal/pages/form/step")
+          render: () => import("../src/pages/form/step")
         },
         {
           id: "2-3",
           value: "/form/advanced-form",
           text: "高级表单",
-          render: () => import("../portal/pages/form/advanced")
+          render: () => import("../src/pages/form/advanced")
         }
       ]
     },
@@ -50,21 +50,21 @@ const getRouteDataInfo = () => {
           id: "3-1",
           value: "/list/table-list",
           text: "查询表格",
-          render: () => import("../portal/pages/list/table-list")
+          render: () => import("../src/pages/list/table-list")
         },
         {
           id: "3-2",
 
           value: "/list/basic-list",
           text: "标准列表",
-          render: () => import("../portal/pages/list/basic-list")
+          render: () => import("../src/pages/list/basic-list")
         },
         {
           id: "3-3",
 
           value: "/list/card-list",
           text: "卡片列表",
-          render: () => import("../portal/pages/list/card-list")
+          render: () => import("../src/pages/list/card-list")
         }
       ]
     },
@@ -79,14 +79,14 @@ const getRouteDataInfo = () => {
 
           value: "/detail/basic-detail",
           text: "基础详情页",
-          render: () => import("../portal/pages/detail/basic")
+          render: () => import("../src/pages/detail/basic")
         },
         {
           id: "4-2",
 
           value: "/detail/advanced-detail",
           text: "高级详情页",
-          render: () => import("../portal/pages/detail/advanced")
+          render: () => import("../src/pages/detail/advanced")
         }
       ]
     },
@@ -101,14 +101,14 @@ const getRouteDataInfo = () => {
 
           value: "/result/success",
           text: "成功页",
-          render: () => import("../portal/pages/result/success")
+          render: () => import("../src/pages/result/success")
         },
         {
           id: "5-2",
 
           value: "/result/failed",
           text: "失败页",
-          render: () => import("../portal/pages/result/failed")
+          render: () => import("../src/pages/result/failed")
         }
       ]
     },
@@ -123,21 +123,21 @@ const getRouteDataInfo = () => {
 
           value: "/abnormal/403",
           text: "403",
-          render: () => import("../portal/pages/abnormal/403")
+          render: () => import("../src/pages/abnormal/403")
         },
         {
           id: "6-2",
 
           value: "/abnormal/404",
           text: "404",
-          render: () => import("../portal/pages/abnormal/404")
+          render: () => import("../src/pages/abnormal/404")
         },
         {
           id: "6-3",
 
           value: "/abnormal/500",
           text: "500",
-          render: () => import("../portal/pages/abnormal/500")
+          render: () => import("../src/pages/abnormal/500")
         }
       ]
     },
@@ -151,14 +151,14 @@ const getRouteDataInfo = () => {
           id: "7-1",
           value: "/personal/center",
           text: "个人中心",
-          render: () => import("../portal/pages/personal/center")
+          render: () => import("../src/pages/personal/center")
         },
         {
           id: "7-2",
 
           value: "/personal/settings",
           text: "个人设置",
-          render: () => import("../portal/pages/personal/settings")
+          render: () => import("../src/pages/personal/settings")
         }
       ]
     },
@@ -168,7 +168,7 @@ const getRouteDataInfo = () => {
       value: "/mobilePanel",
       text: "移动板块",
       icon: "lugia-icon-logo_windows_o",
-      render: () => import("../portal/pages/mobilePanel/mobilePanel")
+      render: () => import("../src/pages/mobilePanel/mobilePanel")
     }
   ];
 
