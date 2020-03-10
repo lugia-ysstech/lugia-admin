@@ -7,7 +7,7 @@ export default {
   entry: './portal/index.js',
   publicPath: '/',
   alias: {
-    '@': join(__dirname, './portal'),
+    '@': join(__dirname, './src'),
   },
   dllDependenciesExcludes: [],
   extraBabelIncludes: [/decamelize/,],
