@@ -1298,10 +1298,10 @@
     babel-plugin-transform-react-remove-prop-types "0.4.24"
     core-js "^3.1.4"
 
-"@lugia/combine@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.npm.taobao.org/@lugia/combine/download/@lugia/combine-1.0.1.tgz#1b037ea931b358712e144042469a18410a64cbcb"
-  integrity sha1-GwN+qTGzWHEuFEBCRpoYQQpky8s=
+"@lugia/combine@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.npm.taobao.org/@lugia/combine/download/@lugia/combine-1.0.2.tgz#f1f83ce6e474f612a1a55989dadccab75d0f788f"
+  integrity sha1-8fg85uR09hKhpVmJ2tzKt10PeI8=
 
 "@lugia/css@^1.0.19":
   version "1.0.19"
@@ -1311,10 +1311,10 @@
     "@babel/runtime" "^7.4.5"
     decamelize "^3.2.0"
 
-"@lugia/devtools-conversion@^1.0.32":
-  version "1.0.32"
-  resolved "https://registry.yarnpkg.com/@lugia/devtools-conversion/-/devtools-conversion-1.0.32.tgz#f0b980ddc3f6b2df6e199027cf7344f0e22f53e8"
-  integrity sha512-7ManKfC6xN4kM1HaSvG8HuKuP+pjtIw++SvwUr6Ho2FmUnOx9Gjwr9iS47ajKzrS9Iuyn4VTUl5lcDTDgFu9iw==
+"@lugia/devtools-conversion@^1.0.35":
+  version "1.0.35"
+  resolved "https://registry.npm.taobao.org/@lugia/devtools-conversion/download/@lugia/devtools-conversion-1.0.35.tgz#7f3a5e32fad0b4f6f266fa906937544937349485"
+  integrity sha1-fzpeMvrQtPbyZvqQaTdUSTc0lIU=
   dependencies:
     "@lugia/devtools-core" "^1.0.15"
     "@lugia/lugiad-core" "^1.0.5"
@@ -1339,6 +1339,11 @@
     immutable "^3.8.2"
     yargs "^13.2.2"
 
+"@lugia/dict@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.npm.taobao.org/@lugia/dict/download/@lugia/dict-1.0.1.tgz#b7b0b44986b44a5ee9121dc4a7c3fca4c0edf41f"
+  integrity sha1-t7C0SYa0Sl7pEh3Ep8P8pMDt9B8=
+
 "@lugia/listener@^1.0.4":
   version "1.0.4"
   resolved "https://registry.npm.taobao.org/@lugia/listener/download/@lugia/listener-1.0.4.tgz#bd42c8d154c997003ea82971106be434b840ddf8"
@@ -1348,12 +1353,13 @@
     events "^3.0.0"
     rxjs "^6.3.3"
 
-"@lugia/lugia-web@^1.2.2-alpha-2":
-  version "1.2.2-alpha-2"
-  resolved "https://registry.yarnpkg.com/@lugia/lugia-web/-/lugia-web-1.2.2-alpha-2.tgz#93d4504bdd1f0988d63467d9c590be55aff95f23"
-  integrity sha512-DRTGQJE0pSj8lOaC8LaVyNsS59trxgRWrJD03DDg688F/Iwry6g8yoH/WrrISrZxpN2YxHYpj87c9+Oins2ZUg==
+"@lugia/lugia-web@^1.2.2":
+  version "1.2.2"
+  resolved "https://registry.npm.taobao.org/@lugia/lugia-web/download/@lugia/lugia-web-1.2.2.tgz#e608878d2430636537e1f93e8a3ad3183f41fe18"
+  integrity sha1-5giHjSQwY2U34fk+ijrTGD9B/hg=
   dependencies:
     "@lugia/css" "^1.0.19"
+    "@lugia/dict" "^1.0.1"
     "@lugia/listener" "^1.0.4"
     "@lugia/math" "^1.0.9"
     "@lugia/object-utils" "^1.0.15"
@@ -1392,13 +1398,13 @@
   dependencies:
     chai "^4.1.2"
 
-"@lugia/lugiad-loader@^1.2.13":
-  version "1.2.13"
-  resolved "https://registry.yarnpkg.com/@lugia/lugiad-loader/-/lugiad-loader-1.2.13.tgz#940c6e36c41780dfcd3dddfe89da4ed0ccc3c6bc"
-  integrity sha512-ZLLx0rjyWJxjpLFiE9qtKvGlyHUH3gVMiQiVhH3KBMwW5v113Cc1fUg9XG7B6AjtWyVVv7BeA6KMyGLc2XnLsg==
+"@lugia/lugiad-loader@^1.2.16":
+  version "1.2.16"
+  resolved "https://registry.npm.taobao.org/@lugia/lugiad-loader/download/@lugia/lugiad-loader-1.2.16.tgz#982ba44b441d37835090e51432cb159e56f72c69"
+  integrity sha1-mCukS0QdN4NQkOUUMssVnlb3LGk=
   dependencies:
     "@babel/runtime" "^7.4.3"
-    "@lugia/devtools-conversion" "^1.0.32"
+    "@lugia/devtools-conversion" "^1.0.35"
     loader-utils "1.2.3"
 
 "@lugia/lugiax-common@^1.0.1":
@@ -1406,44 +1412,43 @@
   resolved "https://registry.npm.taobao.org/@lugia/lugiax-common/download/@lugia/lugiax-common-1.0.1.tgz#9df8981c1e95ff4fd3381c1fb63dfaa4a78e22b5"
   integrity sha1-nfiYHB6V/0/TOBwftj36pKeOIrU=
 
-"@lugia/lugiax-core@^1.1.2":
-  version "1.1.2"
-  resolved "https://registry.npm.taobao.org/@lugia/lugiax-core/download/@lugia/lugiax-core-1.1.2.tgz#2010d4045085dd8ab13fb333e94d666e1071fa9a"
-  integrity sha1-IBDUBFCF3YqxP7Mz6U1mbhBx+po=
+"@lugia/lugiax-core@^1.1.3":
+  version "1.1.3"
+  resolved "https://registry.npm.taobao.org/@lugia/lugiax-core/download/@lugia/lugiax-core-1.1.3.tgz#870ba2f6aa103bc712064fb82dfd87432d8ce1bf"
+  integrity sha1-hwui9qoQO8cSBk+4Lf2HQy2M4b8=
   dependencies:
     "@lugia/lugiax-common" "^1.0.1"
     "@lugia/type-utils" "^1.0.6"
     immutable "^3.8.2"
     redux "^4.0.0"
-    redux-immutable "^4.0.0"
     redux-saga "^0.16.0"
 
-"@lugia/lugiax-data@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.npm.taobao.org/@lugia/lugiax-data/download/@lugia/lugiax-data-1.0.1.tgz#19058dbf04d9f80eabc7380ddcba94d229a765c6"
-  integrity sha1-GQWNvwTZ+A6rxzgN3LqU0imnZcY=
+"@lugia/lugiax-data@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.npm.taobao.org/@lugia/lugiax-data/download/@lugia/lugiax-data-1.0.2.tgz#863ce005cb90952b38d5e0a1644a0b078923cb80"
+  integrity sha1-hjzgBcuQlSs41eChZEoLB4kjy4A=
   dependencies:
     "@lugia/lugiax-common" "^1.0.1"
     is-plain-object "^3.0.0"
     shortid "^2.2.15"
 
-"@lugia/lugiax-router@^1.1.7":
-  version "1.1.7"
-  resolved "https://registry.npm.taobao.org/@lugia/lugiax-router/download/@lugia/lugiax-router-1.1.7.tgz#0c8318996bec272f528a7551d25f9f17b46b35be"
-  integrity sha1-DIMYmWvsJy9SinVR0l+fF7RrNb4=
+"@lugia/lugiax-router@^1.1.9":
+  version "1.1.9"
+  resolved "https://registry.npm.taobao.org/@lugia/lugiax-router/download/@lugia/lugiax-router-1.1.9.tgz#9e8606028033d9e71ff5e1adee1824a0f4a32c8a"
+  integrity sha1-noYGAoAz2ecf9eGt7hgkoPSjLIo=
   dependencies:
-    "@lugia/lugiax" "^1.1.5"
+    "@lugia/lugiax" "^1.1.7"
     react-loadable "^5.5.0"
     react-router "^4.3.1"
 
-"@lugia/lugiax@^1.1.5":
-  version "1.1.5"
-  resolved "https://registry.yarnpkg.com/@lugia/lugiax/-/lugiax-1.1.5.tgz#a01e56a4f14f0b8cd8e536b8ca4eaf5596ea01a6"
-  integrity sha512-ExM8VMFbtkcclptikk+U5qIv5LxYCaR1OuMey/BTBOGwX2Vgp72ZnrnN+lbNaWAWNPHAepoNI2YTrEuGgGO7BQ==
+"@lugia/lugiax@^1.1.7":
+  version "1.1.7"
+  resolved "https://registry.npm.taobao.org/@lugia/lugiax/download/@lugia/lugiax-1.1.7.tgz#9f6c6d42064588f4c62460fdeb9e913d4a5452bb"
+  integrity sha1-n2xtQgZFiPTGJGD9656RPUpUUrs=
   dependencies:
-    "@lugia/combine" "^1.0.1"
-    "@lugia/lugiax-core" "^1.1.2"
-    "@lugia/lugiax-data" "^1.0.1"
+    "@lugia/combine" "^1.0.2"
+    "@lugia/lugiax-core" "^1.1.3"
+    "@lugia/lugiax-data" "^1.0.2"
     hoist-non-react-statics "^3.3.2"
     immutable "^3.8.2"
 
@@ -1498,19 +1503,19 @@
     ts-jest-babel-7 "^22.0.7"
     typescript "^3.4.5"
 
-"@lugia/mega-scripts@^1.4.18":
-  version "1.4.18"
-  resolved "https://registry.yarnpkg.com/@lugia/mega-scripts/-/mega-scripts-1.4.18.tgz#f2df0ea1bc2e2c74fde280b23196bcdf8203641f"
-  integrity sha512-hhKLb1eE33HvnLJqp7CHMRt9ME4FcTXrB4exQ8tOU/XhgZ7UoUhD4l/xS2D9g0mXFTeZYmSe97fEpOwxtzaI8g==
+"@lugia/mega-scripts@^1.4.21":
+  version "1.4.21"
+  resolved "https://registry.npm.taobao.org/@lugia/mega-scripts/download/@lugia/mega-scripts-1.4.21.tgz#c4803d1821577f05ac782056f0de9377bfeba231"
+  integrity sha1-xIA9GCFXfwWseCBW8N6Td7/rojE=
   dependencies:
     "@babel/core" "7.4.3"
     "@babel/runtime" "^7.1.5"
     "@lugia/babel-preset-mega" "^1.1.2"
-    "@lugia/devtools-conversion" "^1.0.32"
+    "@lugia/devtools-conversion" "^1.0.35"
     "@lugia/devtools-material" "^1.0.40"
     "@lugia/mega-config" "^1.2.1"
     "@lugia/mega-utils" "^1.5.1"
-    "@lugia/mega-webpack" "^1.4.17"
+    "@lugia/mega-webpack" "^1.4.20"
     babel-plugin-add-module-exports "^1.0.0"
     body-parser "^1.18.3"
     browser-sync "^2.26.3"
@@ -1566,15 +1571,15 @@
     username "^4.1.0"
     which "^1.3.1"
 
-"@lugia/mega-webpack@^1.4.17":
-  version "1.4.17"
-  resolved "https://registry.yarnpkg.com/@lugia/mega-webpack/-/mega-webpack-1.4.17.tgz#00257079d7281be52518383aa82d580d15e89311"
-  integrity sha512-7E6RALYo/99vNQiBGiq5bJebji8DOOAmGTuKdhi8n3ywF8dX0bXVzdU3CFym2/bYKrtoZImxr3RBzENqWTvgLg==
+"@lugia/mega-webpack@^1.4.20":
+  version "1.4.20"
+  resolved "https://registry.npm.taobao.org/@lugia/mega-webpack/download/@lugia/mega-webpack-1.4.20.tgz#c64a33cba35c1bfd4f1b970aaeca2637731e512d"
+  integrity sha1-xkozy6NcG/1PG5cKrsomN3MeUS0=
   dependencies:
     "@babel/core" "7.1.5"
     "@babel/runtime" "^7.5.5"
     "@lugia/babel-preset-mega" "^1.1.2"
-    "@lugia/lugiad-loader" "^1.2.13"
+    "@lugia/lugiad-loader" "^1.2.16"
     "@lugia/mega-utils" "^1.5.1"
     assert "^1.4.1"
     autoprefixer "^8.6.5"
