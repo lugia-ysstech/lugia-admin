@@ -7,7 +7,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { consts as Widget, Navmenu, } from '@lugia/lugia-web';
-import RoutingConfig from '../../../config/cusRouting.config';
+import SideNavConfig from '../../../config/sideNav.config';
 import Authenticate from '../../authenticate';
 import logo from '../../assets/images/pro_logo.png';
 import menuList from '../../models/menuList';
@@ -134,7 +134,7 @@ class List extends React.Component {
     };
     const { authenticateSwitch, } = Authenticate;
 
-    const filterRouterData = authenticateSwitch ? routeData : RoutingConfig;
+    const filterRouterData = authenticateSwitch ? routeData : SideNavConfig;
 
     return (
       <NavContainer>

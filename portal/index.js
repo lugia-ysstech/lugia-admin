@@ -76,6 +76,9 @@ const App = createApp(
   {
     '/': {
       component: Main,
+      verify() {
+        return true;
+      },
     },
   },
   history,
@@ -87,9 +90,7 @@ const App = createApp(
       }
 
       const isLoginPage =
-        url === '/login' ||
-        url === '/register/register' ||
-        url === '/register/registerSuccess';
+        url === '/login' || url === '/register/register' || url === '/register/registerSuccess';
       if (isLoginPage) {
         return true;
       }
@@ -113,10 +114,7 @@ const App = createApp(
         setFilterRouteData(filterRouteData);
       }
 
-      if (
-        JSON.stringify(filterRouteData).indexOf(url) === -1 &&
-        url !== '/404'
-      ) {
+      if (JSON.stringify(filterRouteData).indexOf(url) === -1 && url !== '/404') {
         go({ url: '/404', });
         return false;
       }

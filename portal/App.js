@@ -1,5 +1,5 @@
 import React from 'react';
-import { createRoute, Redirect, } from '@lugia/lugiax-router';
+import {createRoute, Redirect,} from '@lugia/lugiax-router';
 import Pages from './pages';
 
 export const firstRouter = {
@@ -21,6 +21,9 @@ export const firstRouter = {
   '/': {
     // exact: true,
     component: Pages,
+    verify() {
+      return true;
+    },
   },
   NotFound: {
     isHidden: true,
