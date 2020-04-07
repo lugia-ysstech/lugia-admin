@@ -25,7 +25,7 @@
   "dependencies": {
     "@antv/data-set": "^0.10.2",
     "@antv/g2": "^3.5.8",
-    "@lugia/lugia-web": "1.2.2-alpha-7",
+    "@lugia/lugia-web": "1.2.3-alpha-27",
     "@lugia/lugiax": "1.1.8",
     "@lugia/lugiax-router": "^1.1.11",
     "history": "4.9.0",

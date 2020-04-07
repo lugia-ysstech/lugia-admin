@@ -5,6 +5,14 @@ import MenuList from '../components/menulist';
 import '../App.css';
 import styled from 'styled-components';
 import router from '../router';
+import { topNav, } from '../../config/routing.config';
+
+const Container = styled.div`
+  margin: 0 auto;
+  background: #f5f5f9;
+  height: 100%;
+  ${() => (topNav ? '' : 'display: flex')}
+`;
 
 const ContentContainer = styled.div`
   display: flex;
@@ -25,12 +33,12 @@ const Content = styled.div`
 
 export default () => {
   return (
-    <div className="app">
+    <Container>
       <MenuList />
       <ContentContainer>
         <Header />
         <Content>{createRoute(router)}</Content>
       </ContentContainer>
-    </div>
+    </Container>
   );
 };
