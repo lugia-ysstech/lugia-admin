@@ -14,7 +14,7 @@ import logo from '../../assets/images/pro_logo.png';
 import menuList from '../../models/menuList';
 import { connect, } from '@lugia/lugiax';
 import Security from '../../models/security';
-import { topNav, } from '../../../config/routing.config';
+import AllPages, { topNav, } from '../../../config/routing.config';
 
 function getNavContainerCSS() {
   return topNav
@@ -163,6 +163,13 @@ class List extends React.Component {
     return condition ? target : defaultTarget;
   };
 
+  getRouterData = (topNav, TopNavConfig, SideNavConfig) => {
+    const sideNavData = SideNavConfig.length !== 0 ? SideNavConfig : AllPages;
+    const topNavData = TopNavConfig.length !== 0 ? TopNavConfig : AllPages;
+
+    return topNav ? topNavData : sideNavData;
+  };
+
   render() {
     const { menuState = {}, routeData, } = this.props;
     let { value, } = menuState;
@@ -175,7 +182,7 @@ class List extends React.Component {
     const filterRouterData = this.getTargetOrDefaultTarget(
       authenticateSwitch,
       routeData,
-      this.getTargetOrDefaultTarget(topNav, TopNavConfig, SideNavConfig)
+      this.getRouterData(topNav, TopNavConfig, SideNavConfig)
     );
     const mode = this.getTargetOrDefaultTarget(topNav, 'horizontal', 'inline');
     const autoHeight = this.getTargetOrDefaultTarget(topNav, true, false);
