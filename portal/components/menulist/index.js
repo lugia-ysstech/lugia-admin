@@ -7,25 +7,49 @@
 import React from 'react';
 import styled from 'styled-components';
 import { consts as Widget, Navmenu, } from '@lugia/lugia-web';
-import RoutingConfig from '../../../config/cusRouting.config';
+import SideNavConfig from '../../../config/sideNav.config';
+import TopNavConfig from '../../../config/topNav.config';
 import Authenticate from '../../authenticate';
 import logo from '../../assets/images/pro_logo.png';
 import menuList from '../../models/menuList';
 import { connect, } from '@lugia/lugiax';
 import Security from '../../models/security';
+import AllPages, { topNav, } from '../../../config/routing.config';
+
+function getNavContainerCSS() {
+  return topNav
+    ? `
+    display:flex;
+    background: #000033;
+    `
+    : `
+    display: inline-block;
+    background: #000033;
+    height: 100%;
+  `;
+}
+
+function getTitleCSS() {
+  return topNav
+    ? `
+    width: 160px;
+    margin: auto 0;
+    `
+    : `
+    padding: 10px 0 10px;
+  `;
+}
 
 const NavContainer = styled.div`
-  display: inline-block;
-  background: #000033;
-  height: 100%;
+  ${getNavContainerCSS}
 `;
 
 const Title = styled.div`
-  padding: 10px 0 10px;
   text-align: center;
   & > img {
     width: 84px;
   }
+  ${getTitleCSS}
 `;
 
 class List extends React.Component {
@@ -37,34 +61,35 @@ class List extends React.Component {
   }
 
   componentDidMount() {
-    const viewHeight = this.getWindowHeight();
-    this.setState({
-      value: window.location.pathname,
-      height: viewHeight,
-    });
-    window.onresize = () => {
+    if (topNav) {
+      this.setState({
+        value: window.location.pathname,
+      });
+    } else {
       const viewHeight = this.getWindowHeight();
       this.setState({
+        value: window.location.pathname,
         height: viewHeight,
       });
-    };
+      window.onresize = () => {
+        const viewHeight = this.getWindowHeight();
+        this.setState({
+          height: viewHeight,
+        });
+      };
+    }
   }
 
   getWindowHeight = () => {
     return document.body.clientHeight - 122;
   };
 
-  render() {
-    const { menuState = {}, routeData, } = this.props;
-    let { value, } = menuState;
-    if (!value) {
-      const { value: stateValue, } = this.state;
-      value = stateValue;
+  getNavTheme = () => {
+    if (topNav) {
+      return {};
     }
-
     const { height = 600, } = this.state;
-
-    const theme = {
+    return {
       [Widget.NavMenu]: {
         Tree: {
           Container: {
@@ -132,10 +157,36 @@ class List extends React.Component {
         },
       },
     };
+  };
+
+  getTargetOrDefaultTarget = (condition, target, defaultTarget) => {
+    return condition ? target : defaultTarget;
+  };
+
+  getRouterData = (topNav, TopNavConfig, SideNavConfig) => {
+    const sideNavData = SideNavConfig.length !== 0 ? SideNavConfig : AllPages;
+    const topNavData = TopNavConfig.length !== 0 ? TopNavConfig : AllPages;
+
+    return topNav ? topNavData : sideNavData;
+  };
+
+  render() {
+    const { menuState = {}, routeData, } = this.props;
+    let { value, } = menuState;
+    if (!value) {
+      const { value: stateValue, } = this.state;
+      value = stateValue;
+    }
+
     const { authenticateSwitch, } = Authenticate;
-
-    const filterRouterData = authenticateSwitch ? routeData : RoutingConfig;
-
+    const filterRouterData = this.getTargetOrDefaultTarget(
+      authenticateSwitch,
+      routeData,
+      this.getRouterData(topNav, TopNavConfig, SideNavConfig)
+    );
+    const mode = this.getTargetOrDefaultTarget(topNav, 'horizontal', 'inline');
+    const autoHeight = this.getTargetOrDefaultTarget(topNav, true, false);
+    const theme = this.getNavTheme();
     return (
       <NavContainer>
         <Title>
@@ -148,15 +199,17 @@ class List extends React.Component {
             pathSeparator={'@'}
             themeStyle={'dark'}
             onSelect={this.props.onSelect}
+            mode={mode}
             inlineType={'ellipse'}
+            action={'hover'}
             data={filterRouterData}
             switchIconNames={{
               open: 'lugia-icon-direction_caret_up',
               close: 'lugia-icon-direction_caret_down',
             }}
             step={60}
-            autoHeight={false}
             inlineExpandAll={true}
+            autoHeight={autoHeight}
           />
         )}
       </NavContainer>
