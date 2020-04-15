@@ -95,21 +95,6 @@
     ]
   },
   {
-    "value": "/personal",
-    "text": "个人页",
-    "icon": "lugia-icon-financial_user",
-    "children": [
-      {
-        "value": "/personal/center",
-        "text": "个人中心"
-      },
-      {
-        "value": "/personal/settings",
-        "text": "个人设置"
-      }
-    ]
-  },
-  {
     "value": "/mobilePanel",
     "text": "移动板块",
     "icon": "lugia-icon-logo_windows_o"
