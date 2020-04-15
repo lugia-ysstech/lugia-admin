@@ -9,7 +9,7 @@ const ModalContainer = styled.div`
   left: ${props => props.position.left || '50%'};
   top: ${props => props.position.top || '50%'};
   transform: ${props => (props.position.left ? '' : 'translate(-50%,-50%)')};
-  background: #ffffff;
+  background: #fff;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
   border-radius: 4px;
   padding: 18px;
@@ -17,24 +17,21 @@ const ModalContainer = styled.div`
 `;
 const ModalContent = styled.div`
   line-height: 22px;
-  font-family: PingFangSC-Medium;
   font-size: 16px;
   color: #50575d;
 `;
 const ModalIcon = styled.span`
-  font-family: PingFangSC-Medium;
   font-size: 18px;
   color: #f22735;
   vertical-align: middle;
-  margin-right:12px;
+  margin-right: 12px;
 `;
 const ModalFooter = styled.div`
   padding-bottom: 16px;
   padding-top: 16px;
-  font-family: PingFangSC-Regular;
   font-size: 14px;
-  display:flex;
-  justify-content:center;
+  display: flex;
+  justify-content: center;
 `;
 const ButtonOk = styled.span`
   width: 66px;
@@ -42,7 +39,7 @@ const ButtonOk = styled.span`
   line-height: 24px;
   background: #f22735;
   border-radius: 4px;
-  color: #ffffff;
+  color: #fff;
   text-align: center;
   display: inline-block;
   vertical-align: middle;
@@ -58,7 +55,7 @@ const ButtonCancel = styled.span`
   text-align: center;
   display: inline-block;
   vertical-align: middle;
-  margin-left:10px;
+  margin-left: 10px;
   cursor: pointer;
 `;
 class Modal extends React.PureComponent {
@@ -83,7 +80,7 @@ class Modal extends React.PureComponent {
   customEvent = () => {
     this.props.deleteEvent();
     this.remove();
-  }
+  };
   componentWillUnmount() {
     this.props.maskNode.removeEventListener('click', this.handleClick);
   }
@@ -111,23 +108,23 @@ class Modal extends React.PureComponent {
 Modal.deleteAlter = option => {
   let maskNode = document.getElementById('_motaiduihuak');
   const bodyOverflow = document.body.style.overflow;
-  if(!maskNode){
+  if (!maskNode) {
     maskNode = document.createElement('div');
-    maskNode.id= '_motaiduihuak';
-    maskNode.style.position='fixed';
-    maskNode.style.top=0;
-    maskNode.style.right=0;
-    maskNode.style.bottom=0;
-    maskNode.style.left=0;
-    maskNode.style.background ='rgba(0, 0, 0, 0.3)';
+    maskNode.id = '_motaiduihuak';
+    maskNode.style.position = 'fixed';
+    maskNode.style.top = 0;
+    maskNode.style.right = 0;
+    maskNode.style.bottom = 0;
+    maskNode.style.left = 0;
+    maskNode.style.background = 'rgba(0, 0, 0, 0.3)';
     document.body.appendChild(maskNode);
-  }else{
+  } else {
     maskNode.style.display = 'block';
     maskNode.style.visibility = 'visible';
   }
   document.body.style.overflow = 'hidden';
-  const config = {...option,bodyOverflow,maskNode,};
-  ReactDom.render(<Modal {...config} />,maskNode);
+  const config = { ...option, bodyOverflow, maskNode, };
+  ReactDom.render(<Modal {...config} />, maskNode);
 };
 
 export default Modal;

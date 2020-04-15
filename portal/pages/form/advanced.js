@@ -4,7 +4,17 @@ import PageHeader from '../../components/page-header';
 import PageContent from '../../components/page-content';
 import Widget from '@lugia/lugia-web/dist/consts';
 import styled from 'styled-components';
-import { AutoComplete, Card, DatePicker, Grid, Input, Select, Table, Theme, TimePicker, } from '@lugia/lugia-web';
+import {
+  AutoComplete,
+  Card,
+  DatePicker,
+  Grid,
+  Input,
+  Select,
+  Table,
+  Theme,
+  TimePicker,
+} from '@lugia/lugia-web';
 import { connect, } from '@lugia/lugiax';
 import advanced from '../../models/form/advanced';
 
@@ -112,9 +122,9 @@ class TableList extends Component {
         selectView: {
           [Widget.Select]: {
             Container: {
-             normal: {
-                  width: 200,
-             },
+              normal: {
+                width: 200,
+              },
             },
           },
         },
@@ -134,9 +144,9 @@ class TableList extends Component {
         selectView: {
           [Widget.Select]: {
             Container: {
-             normal: {
-                  width: 200,
-                },
+              normal: {
+                width: 200,
+              },
             },
           },
         },
@@ -169,9 +179,9 @@ class TableList extends Component {
         selectView: {
           [Widget.Select]: {
             Container: {
-             normal: {
-                  width: 200,
-                },
+              normal: {
+                width: 200,
+              },
             },
           },
         },
@@ -191,9 +201,9 @@ class TableList extends Component {
         selectView: {
           [Widget.Select]: {
             Container: {
-             normal: {
-                  width: 200,
-                },
+              normal: {
+                width: 200,
+              },
             },
           },
         },
@@ -212,9 +222,9 @@ class TableList extends Component {
         selectView: {
           [Widget.Select]: {
             Container: {
-             normal: {
-                  width: 200,
-                },
+              normal: {
+                width: 200,
+              },
             },
           },
         },
@@ -258,15 +268,7 @@ class TableList extends Component {
 
     const getItem = data => () => {
       return data.map(item => {
-        const {
-          title,
-          placeholder,
-          isSelect,
-          selectData,
-          selectView,
-          isAuto,
-          onChange,
-        } = item;
+        const { title, placeholder, isSelect, selectData, selectView, isAuto, onChange, } = item;
         return (
           <ItemContainer>
             <ItemInnerContainer>
@@ -275,12 +277,11 @@ class TableList extends Component {
               </TitleContainer>
             </ItemInnerContainer>
             <ItemInputContainer>
-              {!isSelect &&
-                !isAuto && (
-                  <Theme config={inputView}>
-                    <Input placeholder={placeholder} onChange={onChange} />
-                  </Theme>
-                )}
+              {!isSelect && !isAuto && (
+                <Theme config={inputView}>
+                  <Input placeholder={placeholder} onChange={onChange} />
+                </Theme>
+              )}
               {isAuto && (
                 <Theme config={inputView}>
                   <AutoComplete placeholder={placeholder} onChange={onChange} />
@@ -320,7 +321,7 @@ class TableList extends Component {
             height: 30,
             margin: {
               top: 20,
-              left:10,
+              left: 10,
             },
           },
         },
@@ -351,7 +352,7 @@ class TableList extends Component {
             height: 30,
             margin: {
               top: 20,
-              left:10,
+              left: 10,
             },
           },
         },
@@ -398,24 +399,43 @@ class TableList extends Component {
       { name: 'Uzi', id: 36, address: 'some where', key: '3', },
     ];
     const { staffsInfo, storageInfo, taskInfo, } = this.props;
-    const theNameData=storageInfo&&storageInfo.data&&storageInfo.data.nameData?storageInfo.data.nameData:nameData;
-    const theIpData=storageInfo&&storageInfo.data&&storageInfo.data.ipData?storageInfo.data.ipData:ipData;
-    const theManagerData=storageInfo&&storageInfo.data&&storageInfo.data.managerData?storageInfo.data.managerData:managerData;
-    const theApprovalData=storageInfo&&storageInfo.data&&storageInfo.data.approvalData?storageInfo.data.approvalData:approvalData;
+    const theNameData =
+      storageInfo && storageInfo.data && storageInfo.data.nameData
+        ? storageInfo.data.nameData
+        : nameData;
+    const theIpData =
+      storageInfo && storageInfo.data && storageInfo.data.ipData ? storageInfo.data.ipData : ipData;
+    const theManagerData =
+      storageInfo && storageInfo.data && storageInfo.data.managerData
+        ? storageInfo.data.managerData
+        : managerData;
+    const theApprovalData =
+      storageInfo && storageInfo.data && storageInfo.data.approvalData
+        ? storageInfo.data.approvalData
+        : approvalData;
 
-    const theWorkData=taskInfo&&taskInfo.data&&taskInfo.data.workData?taskInfo.data.workData:workData;
-    const theWorkDesData=taskInfo&&taskInfo.data&&taskInfo.data.workDesData?taskInfo.data.workDesData:workDesData;
-    const theWorkerData=taskInfo&&taskInfo.data&&taskInfo.data.workerData?taskInfo.data.workerData:workerData;
-    const theResponsibleData=taskInfo&&taskInfo.data&&taskInfo.data.responsibleData?taskInfo.data.responsibleData:responsibleData;
-    const theWorkTypeData=taskInfo&&taskInfo.data&&taskInfo.data.workTypeData?taskInfo.data.workTypeData:workTypeData;
+    const theWorkData =
+      taskInfo && taskInfo.data && taskInfo.data.workData ? taskInfo.data.workData : workData;
+    const theWorkDesData =
+      taskInfo && taskInfo.data && taskInfo.data.workDesData
+        ? taskInfo.data.workDesData
+        : workDesData;
+    const theWorkerData =
+      taskInfo && taskInfo.data && taskInfo.data.workerData ? taskInfo.data.workerData : workerData;
+    const theResponsibleData =
+      taskInfo && taskInfo.data && taskInfo.data.responsibleData
+        ? taskInfo.data.responsibleData
+        : responsibleData;
+    const theWorkTypeData =
+      taskInfo && taskInfo.data && taskInfo.data.workTypeData
+        ? taskInfo.data.workTypeData
+        : workTypeData;
     return (
       <Content>
         <PageHeader
           routes={routes}
           title={'高级表单'}
-          desc={
-            '表单页用于向用户收集或验证信息，基础表单常见于数据项较少的表单场景。'
-          }
+          desc={'表单页用于向用户收集或验证信息，基础表单常见于数据项较少的表单场景。'}
         />
         <PageContent>
           <Theme config={cardThemeConfig}>
@@ -433,9 +453,7 @@ class TableList extends Component {
                     </Col>
                   </Row>
                   <Row>
-                    <Col span={6}>
-                      {getItem(theApprovalData)()}
-                    </Col>
+                    <Col span={6}>{getItem(theApprovalData)()}</Col>
                     <Col span={16} offset={2}>
                       {getDataItem}
                     </Col>
@@ -501,9 +519,7 @@ const AdvancedFormPage = connect(
       storageInfo: state.get('storageInfo').toJS
         ? state.get('storageInfo').toJS()
         : state.get('storageInfo'),
-      taskInfo: state.get('taskInfo').toJS
-        ? state.get('taskInfo').toJS()
-        : state.get('taskInfo'),
+      taskInfo: state.get('taskInfo').toJS ? state.get('taskInfo').toJS() : state.get('taskInfo'),
     };
   },
   mutations => {

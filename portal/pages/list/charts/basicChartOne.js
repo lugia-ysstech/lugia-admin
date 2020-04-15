@@ -8,7 +8,11 @@ import React, { Component, } from 'react';
 import G2 from '@antv/g2';
 import DataSet from '@antv/data-set';
 
-const data = [{ name: 'eoi内存预算', value: 15, }, { name: '已申请量', value: 6, }, { name: '可申请余量', value: 3, },];
+const data = [
+  { name: 'eoi内存预算', value: 15, },
+  { name: '已申请量', value: 6, },
+  { name: '可申请余量', value: 3, },
+];
 
 export const getPath = cfg => {
   const points = cfg.points;
@@ -69,19 +73,15 @@ export default class Demo extends Component<> {
       position: 'right-bottom',
       offsetX: -100,
       offsetY: -50,
-      textStyle:{
+      textStyle: {
         fontSize: 14,
-        fill:'#333',
+        fill: '#333',
       },
     });
     chart
       .intervalStack()
       .position('value')
-      .color('name', [
-        '#33f',
-        '#aaf',
-        '#f88',
-      ])
+      .color('name', ['#33f', '#aaf', '#f88',])
       .shape('interval')
       .tooltip('name*value', (name, value) => {
         return {
@@ -92,9 +92,9 @@ export default class Demo extends Component<> {
       .label('name', {
         formatter: (text, item) => {
           const point = item.point; // 每个弧度对应的点
-          return point.percent*24;
+          return point.percent * 24;
         },
-        textStyle:{
+        textStyle: {
           fontSize: 16,
           fill: '#fff',
         },

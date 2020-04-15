@@ -23,7 +23,6 @@ import tx6 from '../../assets/images/cx.jpg';
 import tx7 from '../../assets/images/yq.jpg';
 import tx8 from '../../assets/images/zf.jpg';
 
-
 const routes = [
   {
     path: '/dashboard/analyse',
@@ -38,10 +37,11 @@ const routes = [
 ];
 
 const HeaderContent = styled.div`
+  display: block;
 `;
 
 const Text = styled.span`
-  color: rgba(0,0,0,.55);
+  color: rgba(0, 0, 0, 0.55);
 `;
 
 const FundTitle = styled.div`
@@ -55,37 +55,32 @@ const Link = styled.a`
   display: block;
   color: #4d63ff;
   font-size: 14px;
-  margin: 10px 0 ;
+  margin: 10px 0;
 `;
-
 
 const UserInfoWrap = styled.div`
-   padding: 20px;
+  padding: 20px;
 `;
-
 
 const InfoContainer = styled.div`
-   border: 1px solid #e8e8e8;
-   border-radius: 8px;
-   margin: 20px 0 0;
-   overflow: hidden;
+  border: 1px solid #e8e8e8;
+  border-radius: 8px;
+  margin: 20px 0 0;
+  overflow: hidden;
 `;
-
 
 const InfoTitle = styled.div`
-   padding: 12px 20px ;
-   font-size: 14px;
-   background: #fafafa;
+  padding: 12px 20px;
+  font-size: 14px;
+  background: #fafafa;
 `;
-
-
 
 const theme = {
   [Widget.Button]: {
     Container: {
       normal: {
         height: 30,
-        margin:{
+        margin: {
           left: 10,
         },
       },
@@ -106,25 +101,25 @@ const theme = {
         hover: {
           background: '#fff',
           color: '#333',
-          border:{
-            top:{
+          border: {
+            top: {
               width: 1,
-              color:'#4d63ff',
+              color: '#4d63ff',
               style: 'solid',
             },
-            bottom:{
+            bottom: {
               width: 1,
-              color:'#4d63ff',
+              color: '#4d63ff',
               style: 'solid',
             },
-            left:{
+            left: {
               width: 1,
-              color:'#4d63ff',
+              color: '#4d63ff',
               style: 'solid',
             },
-            right:{
+            right: {
               width: 1,
-              color:'#4d63ff',
+              color: '#4d63ff',
               style: 'solid',
             },
           },
@@ -145,80 +140,77 @@ const theme = {
             left: 15,
             right: 15,
           },
-          border:{
-            top:{
+          border: {
+            top: {
               width: 1,
-              color:'#4d63ff',
+              color: '#4d63ff',
               style: 'solid',
             },
-            bottom:{
+            bottom: {
               width: 1,
-              color:'#4d63ff',
+              color: '#4d63ff',
               style: 'solid',
             },
-            left:{
+            left: {
               width: 1,
-              color:'#4d63ff',
+              color: '#4d63ff',
               style: 'solid',
             },
-            right:{
+            right: {
               width: 1,
-              color:'#4d63ff',
+              color: '#4d63ff',
               style: 'solid',
             },
           },
           background: '#fff',
           color: '#333',
-
         },
         hover: {
           background: '#fff',
           color: '#333',
-          border:{
-            top:{
+          border: {
+            top: {
               width: 1,
-              color:'#4d63ff',
+              color: '#4d63ff',
               style: 'solid',
             },
-            bottom:{
+            bottom: {
               width: 1,
-              color:'#4d63ff',
+              color: '#4d63ff',
               style: 'solid',
             },
-            left:{
+            left: {
               width: 1,
-              color:'#4d63ff',
+              color: '#4d63ff',
               style: 'solid',
             },
-            right:{
+            right: {
               width: 1,
-              color:'#4d63ff',
+              color: '#4d63ff',
               style: 'solid',
             },
           },
-
         },
       },
     },
   },
   [Widget.Steps]: {
     StepsOutContainer: {
-     normal:{
-       margin:{
-         top: 10,
-         bottom: 10,
-       },
-       height: 160,
-       width: '80%',
-     },
+      normal: {
+        margin: {
+          top: 10,
+          bottom: 10,
+        },
+        height: 160,
+        width: '80%',
+      },
     },
     Step: {
-      StepLine:{
-        normal:{
+      StepLine: {
+        normal: {
           width: 400,
         },
       },
-
     },
   },
   [Widget.Card]: {
@@ -231,20 +223,20 @@ const theme = {
           left: 20,
         },
         boxShadow: 0,
-        border:0,
+        border: 0,
       },
     },
-    CardTitleTipLine:{
+    CardTitleTipLine: {
       normal: {
         width: 6,
       },
     },
-    CardTitleHeadContainer:{
+    CardTitleHeadContainer: {
       normal: {
         height: 30,
       },
     },
-    CardContent:{
+    CardContent: {
       normal: {
         padding: {
           left: 10,
@@ -254,7 +246,7 @@ const theme = {
   },
   [Widget.Tabs]: {
     ContentBlock: {
-      normal:{
+      normal: {
         width: '100%',
         height: 400,
         padding: {
@@ -262,16 +254,15 @@ const theme = {
         },
       },
     },
-    TitleContainer:{
-      normal:{
+    TitleContainer: {
+      normal: {
         width: '100%',
       },
     },
   },
-
 };
 
-const dividerTheme ={
+const dividerTheme = {
   [Widget.Divider]: {
     HorizontalDivider: {
       normal: {
@@ -279,13 +270,10 @@ const dividerTheme ={
           top: 10,
           bottom: 16,
         },
-
       },
     },
   },
 };
-
-
 
 const themeCardInfo = {
   [Widget.Card]: {
@@ -297,20 +285,20 @@ const themeCardInfo = {
           left: 20,
         },
         boxShadow: 0,
-        border:0,
+        border: 0,
       },
     },
-    CardTitleTipLine:{
+    CardTitleTipLine: {
       normal: {
         width: 6,
       },
     },
-    CardTitleHeadContainer:{
+    CardTitleHeadContainer: {
       normal: {
         height: 30,
       },
     },
-    CardContent:{
+    CardContent: {
       normal: {
         padding: {
           left: 10,
@@ -324,7 +312,6 @@ const themeCardInfo = {
   ...dividerTheme,
 };
 
-
 const connectCardInfo = {
   [Widget.Card]: {
     Container: {
@@ -335,20 +322,20 @@ const connectCardInfo = {
           left: 20,
         },
         boxShadow: 0,
-        border:0,
+        border: 0,
       },
     },
-    CardTitleTipLine:{
+    CardTitleTipLine: {
       normal: {
         width: 6,
       },
     },
-    CardTitleHeadContainer:{
+    CardTitleHeadContainer: {
       normal: {
         height: 30,
       },
     },
-    CardContent:{
+    CardContent: {
       normal: {
         padding: {
           left: 10,
@@ -375,21 +362,21 @@ const propertyCard = {
           bottom: 25,
         },
         boxShadow: 0,
-        border:0,
+        border: 0,
         minHeight: 'auto',
       },
     },
-    CardTitleTipLine:{
+    CardTitleTipLine: {
       normal: {
         width: 6,
       },
     },
-    CardTitleHeadContainer:{
+    CardTitleHeadContainer: {
       normal: {
         height: 30,
       },
     },
-    CardContent:{
+    CardContent: {
       normal: {
         padding: {
           left: 10,
@@ -402,7 +389,7 @@ const propertyCard = {
       normal: {
         height: 24,
         width: 24,
-        margin:{
+        margin: {
           right: 15,
         },
       },
@@ -421,20 +408,20 @@ const cooperateCard = {
           left: 20,
         },
         boxShadow: 0,
-        border:0,
+        border: 0,
       },
     },
-    CardTitleTipLine:{
+    CardTitleTipLine: {
       normal: {
         width: 6,
       },
     },
-    CardTitleHeadContainer:{
+    CardTitleHeadContainer: {
       normal: {
         height: 30,
       },
     },
-    CardContent:{
+    CardContent: {
       normal: {
         padding: {
           left: 10,
@@ -442,7 +429,6 @@ const cooperateCard = {
       },
     },
   },
-
 };
 
 const HAvatarCardCard = {
@@ -460,17 +446,17 @@ const HAvatarCardCard = {
         border: getBorder({ color: '#e8e8e8', width: 1, style: 'solid', }),
       },
     },
-    CardTitleTipLine:{
+    CardTitleTipLine: {
       normal: {
         width: 6,
       },
     },
-    CardTitleHeadContainer:{
+    CardTitleHeadContainer: {
       normal: {
         height: 30,
       },
     },
-    CardContent:{
+    CardContent: {
       normal: {
         padding: {
           left: 10,
@@ -479,24 +465,22 @@ const HAvatarCardCard = {
     },
     CardAvatarContainer: {
       normal: {
-        margin:{
+        margin: {
           right: 5,
           left: 25,
           top: 25,
         },
       },
     },
-    CardAvatar:{
-      SrcAvatar:{
+    CardAvatar: {
+      SrcAvatar: {
         normal: {
           height: 70,
           width: 70,
         },
       },
-
     },
   },
-
 };
 
 export const defaultData = [
@@ -508,183 +492,194 @@ export const defaultData = [
   },
 ];
 
-
-class Advanced extends Component{
-
+class Advanced extends Component {
   constructor(props) {
     super(props);
     this.state = {};
-    const {getAdvancedUserInfo,getAdvancedTableInfo,getAdvancedOrderInfo,} = props;
+    const { getAdvancedUserInfo, getAdvancedTableInfo, getAdvancedOrderInfo, } = props;
     getAdvancedOrderInfo().then(() => {
       getAdvancedUserInfo().then(() => {
         getAdvancedTableInfo();
       });
     });
-
   }
 
-
   render() {
-    const {advancedUserInfo,advancedTableInfo,advancedOrderInfo,} = this.props;
+    const { advancedUserInfo, advancedTableInfo, advancedOrderInfo, } = this.props;
 
-    const tabsData=[
+    const tabsData = [
       {
         title: '操作日志一',
-        content:  <Table columns={advancedTableInfo.columns} data={advancedTableInfo.data} />,
+        content: <Table columns={advancedTableInfo.columns} data={advancedTableInfo.data} />,
         key: '操作日志一',
       },
       {
         title: '操作日志二',
-        content:  <Table columns={advancedTableInfo.columns} data={advancedTableInfo.data} />,
+        content: <Table columns={advancedTableInfo.columns} data={advancedTableInfo.data} />,
         key: '操作日志二',
       },
       {
         title: '操作日志三',
-        content:  <Table columns={advancedTableInfo.columns} data={advancedTableInfo.data} />,
+        content: <Table columns={advancedTableInfo.columns} data={advancedTableInfo.data} />,
         key: '操作日志三',
       },
     ];
     const tx = {
-       tx1,
-     tx2,
-     tx3,
-     tx4,
-     tx5,
-     tx6,
-     tx7,
-     tx8,
+      tx1,
+      tx2,
+      tx3,
+      tx4,
+      tx5,
+      tx6,
+      tx7,
+      tx8,
     };
-    return <Content>
-        <PageHeader routes={routes} title={'高级详情页'} desc={'高级详情页完全展示一个信息的全部面貌，在高级详情页面尽量较少可操作项。'}/>
-          <Theme config={themeCardInfo}>
-            <Card type={'tip'} title={'厂家信息'}>
-              <Block>
-                <FlexBox>
-                  {advancedOrderInfo.data && advancedOrderInfo.data.map(dataItem => {
-                    const {text,value,} = dataItem;
-                    return <Label>{text}：<DescLabel> {value} </DescLabel></Label>;
-                    })}
-                </FlexBox>
-              </Block>
-            </Card>
-          </Theme>
+    return (
+      <Content>
+        <PageHeader
+          routes={routes}
+          title={'高级详情页'}
+          desc={'高级详情页完全展示一个信息的全部面貌，在高级详情页面尽量较少可操作项。'}
+        />
+        <Theme config={themeCardInfo}>
+          <Card type={'tip'} title={'厂家信息'}>
+            <Block>
+              <FlexBox>
+                {advancedOrderInfo.data &&
+                  advancedOrderInfo.data.map(dataItem => {
+                    const { text, value, } = dataItem;
+                    return (
+                      <Label>
+                        {text}：<DescLabel> {value} </DescLabel>
+                      </Label>
+                    );
+                  })}
+              </FlexBox>
+            </Block>
+          </Card>
+        </Theme>
 
-          {/*<Theme config={propertyCard}>*/}
-            {/*<Card type={'tip'} title={'资产信息'}>*/}
-              {/*<Block>*/}
-                {/*{advancedUserInfo && advancedUserInfo.map( item => {*/}
-                  {/*const {type,title,data,head} = item;*/}
-                  {/*return <div>*/}
-                    {/*{title?<Label>{title}</Label>:null}*/}
-                    {/*{type === '1'? <FlexBox justify={'flex-start'}>*/}
-                        {/*{data.map( list => {*/}
-                          {/*const {text,value} = list;*/}
-                          {/*return  <Label width='33%'>{text}	：<Text>{value}</Text> </Label>*/}
-                        {/*})}*/}
-                      {/*</FlexBox>*/}
-                      {/*:<InfoContainer>*/}
-                        {/*<InfoTitle>{head}</InfoTitle>*/}
-                        {/*<Divider/>*/}
-                        {/*<UserInfoWrap>*/}
-                          {/*<Theme config={dividerTheme}>*/}
-                            {/*{data.map( (list,index) => {*/}
-                              {/*const {title:liTitle,link,desc} = list;*/}
-                              {/*return <React.Fragment>*/}
-                                {/*<FlexBox>*/}
-                                  {/*<Avatar type={'img'}  src={index % 2 ===0? g : mega} />*/}
-                                  {/*<HeaderContent>*/}
-                                    {/*<FundTitle >{liTitle}</FundTitle>*/}
-                                    {/*<Text>{desc}</Text>*/}
-                                    {/*{link && <Link href={link.url} target={'_blank'}>{link.text} > </Link>}*/}
+        {/*<Theme config={propertyCard}>*/}
+        {/*<Card type={'tip'} title={'资产信息'}>*/}
+        {/*<Block>*/}
+        {/*{advancedUserInfo && advancedUserInfo.map( item => {*/}
+        {/*const {type,title,data,head} = item;*/}
+        {/*return <div>*/}
+        {/*{title?<Label>{title}</Label>:null}*/}
+        {/*{type === '1'? <FlexBox justify={'flex-start'}>*/}
+        {/*{data.map( list => {*/}
+        {/*const {text,value} = list;*/}
+        {/*return  <Label width='33%'>{text}	：<Text>{value}</Text> </Label>*/}
+        {/*})}*/}
+        {/*</FlexBox>*/}
+        {/*:<InfoContainer>*/}
+        {/*<InfoTitle>{head}</InfoTitle>*/}
+        {/*<Divider/>*/}
+        {/*<UserInfoWrap>*/}
+        {/*<Theme config={dividerTheme}>*/}
+        {/*{data.map( (list,index) => {*/}
+        {/*const {title:liTitle,link,desc} = list;*/}
+        {/*return <React.Fragment>*/}
+        {/*<FlexBox>*/}
+        {/*<Avatar type={'img'}  src={index % 2 ===0? g : mega} />*/}
+        {/*<HeaderContent>*/}
+        {/*<FundTitle >{liTitle}</FundTitle>*/}
+        {/*<Text>{desc}</Text>*/}
+        {/*{link && <Link href={link.url} target={'_blank'}>{link.text} > </Link>}*/}
 
-                                  {/*</HeaderContent>*/}
-                                {/*</FlexBox>*/}
-                                  {/*{index !== data.length -1 &&  <Divider/>}*/}
+        {/*</HeaderContent>*/}
+        {/*</FlexBox>*/}
+        {/*{index !== data.length -1 &&  <Divider/>}*/}
 
-                              {/*</React.Fragment> ;*/}
+        {/*</React.Fragment> ;*/}
 
-                            {/*})}*/}
-                          {/*</Theme>*/}
+        {/*})}*/}
+        {/*</Theme>*/}
 
-                        {/*</UserInfoWrap>*/}
-                      {/*</InfoContainer>}*/}
-                  {/*</div>*/}
-                {/*})}*/}
-              {/*</Block>*/}
-            {/*</Card>*/}
-          {/*</Theme>*/}
+        {/*</UserInfoWrap>*/}
+        {/*</InfoContainer>}*/}
+        {/*</div>*/}
+        {/*})}*/}
+        {/*</Block>*/}
+        {/*</Card>*/}
+        {/*</Theme>*/}
 
-          {/*<Theme config={connectCardInfo}>*/}
-            {/*<Card type={'tip'} title={'信息关联记录'}>*/}
-              {/*<Block>*/}
-                {/*{advancedOrderInfo.info && advancedOrderInfo.info.map((infoItem) => {*/}
-                  {/*const {title,desc,status} = infoItem;*/}
-                  {/*return <React.Fragment>*/}
-                    {/*<FundTitle margin={'18px 0 6px'}>{title}</FundTitle>*/}
-                    {/*<FlexBox justify={'space-between'}>*/}
-                      {/*<Text>{desc}</Text> <Switch defaultValue={status} />*/}
-                    {/*</FlexBox>*/}
+        {/*<Theme config={connectCardInfo}>*/}
+        {/*<Card type={'tip'} title={'信息关联记录'}>*/}
+        {/*<Block>*/}
+        {/*{advancedOrderInfo.info && advancedOrderInfo.info.map((infoItem) => {*/}
+        {/*const {title,desc,status} = infoItem;*/}
+        {/*return <React.Fragment>*/}
+        {/*<FundTitle margin={'18px 0 6px'}>{title}</FundTitle>*/}
+        {/*<FlexBox justify={'space-between'}>*/}
+        {/*<Text>{desc}</Text> <Switch defaultValue={status} />*/}
+        {/*</FlexBox>*/}
 
-                    {/*<Divider/>*/}
-                  {/*</React.Fragment>;*/}
-                {/*})}*/}
-              {/*</Block>*/}
-            {/*</Card>*/}
-          {/*</Theme>*/}
+        {/*<Divider/>*/}
+        {/*</React.Fragment>;*/}
+        {/*})}*/}
+        {/*</Block>*/}
+        {/*</Card>*/}
+        {/*</Theme>*/}
 
-          <Theme config={theme}>
-            <Card type={'tip'} title={'使用明细'}>
-              <Block>
-                  <Tabs onChange={this.onChange} data={tabsData} />
-              </Block>
-            </Card>
-          </Theme>
+        <Theme config={theme}>
+          <Card type={'tip'} title={'使用明细'}>
+            <Block>
+              <Tabs onChange={this.onChange} data={tabsData} />
+            </Block>
+          </Card>
+        </Theme>
 
-          {/*<Theme config={cooperateCard}>*/}
-            {/*<Card type={'tip'} title={'合作者'}>*/}
-              {/*<Block>*/}
-                {/*<FlexBox justify={'space-between'}>*/}
-                  {/*<Theme config={HAvatarCardCard}>*/}
-                    {/*{ advancedOrderInfo.cooperate && advancedOrderInfo.cooperate.map( (item,index)  => {*/}
-                      {/*const {name,desc} = item;*/}
-                      {/*return <Card*/}
-                        {/*type={"avatar"}*/}
-                        {/*title={name}*/}
-                        {/*description={desc}*/}
-                        {/*avatar={tx[`tx${index+1}`]}*/}
-                        {/*shadow={"hover"}*/}
-                      {/*/>*/}
-                    {/*})}*/}
+        {/*<Theme config={cooperateCard}>*/}
+        {/*<Card type={'tip'} title={'合作者'}>*/}
+        {/*<Block>*/}
+        {/*<FlexBox justify={'space-between'}>*/}
+        {/*<Theme config={HAvatarCardCard}>*/}
+        {/*{ advancedOrderInfo.cooperate && advancedOrderInfo.cooperate.map( (item,index)  => {*/}
+        {/*const {name,desc} = item;*/}
+        {/*return <Card*/}
+        {/*type={"avatar"}*/}
+        {/*title={name}*/}
+        {/*description={desc}*/}
+        {/*avatar={tx[`tx${index+1}`]}*/}
+        {/*shadow={"hover"}*/}
+        {/*/>*/}
+        {/*})}*/}
 
-                  {/*</Theme>*/}
+        {/*</Theme>*/}
 
-                {/*</FlexBox>*/}
+        {/*</FlexBox>*/}
 
-              {/*</Block>*/}
-            {/*</Card>*/}
-          {/*</Theme>*/}
-
-
+        {/*</Block>*/}
+        {/*</Card>*/}
+        {/*</Theme>*/}
       </Content>
-   ;
+    );
   }
 
   onChange = res => {
     const { activityValue, } = res;
-    const {getAdvancedTableInfo,} = this.props;
+    const { getAdvancedTableInfo, } = this.props;
     getAdvancedTableInfo(activityValue);
   };
-
 }
 
 const AdvancedPage = connect(
   advanced,
   state => {
     return {
-      advancedUserInfo: state.get('advancedUserInfo').toJS?state.get('advancedUserInfo').toJS():state.get('advancedUserInfo'),
-      advancedOrderInfo: state.get('advancedOrderInfo').toJS?state.get('advancedOrderInfo').toJS():state.get('advancedOrderInfo'),
-      advancedSteps: state.get('advancedSteps').toJS?state.get('advancedSteps').toJS():state.get('advancedSteps'),
-      advancedTableInfo: state.get('advancedTableInfo').toJS?state.get('advancedTableInfo').toJS():state.get('advancedTableInfo'),
+      advancedUserInfo: state.get('advancedUserInfo').toJS
+        ? state.get('advancedUserInfo').toJS()
+        : state.get('advancedUserInfo'),
+      advancedOrderInfo: state.get('advancedOrderInfo').toJS
+        ? state.get('advancedOrderInfo').toJS()
+        : state.get('advancedOrderInfo'),
+      advancedSteps: state.get('advancedSteps').toJS
+        ? state.get('advancedSteps').toJS()
+        : state.get('advancedSteps'),
+      advancedTableInfo: state.get('advancedTableInfo').toJS
+        ? state.get('advancedTableInfo').toJS()
+        : state.get('advancedTableInfo'),
     };
   },
   mutations => {
@@ -697,7 +692,5 @@ const AdvancedPage = connect(
 )(Advanced);
 
 export default () => {
-  return (
-    <AdvancedPage/>
-  );
+  return <AdvancedPage />;
 };

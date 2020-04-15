@@ -7,7 +7,10 @@
 import React, { Component, } from 'react';
 import G2 from '@antv/g2';
 
-const data = [{ type: '股票', value: 30, }, { type: '基金', value: 25, },];
+const data = [
+  { type: '股票', value: 30, },
+  { type: '基金', value: 25, },
+];
 
 G2.Shape.registerShape('interval', 'sliceShape', {
   draw: function draw(cfg, container) {
@@ -54,10 +57,7 @@ export default class Demo extends Component {
     chart
       .intervalStack()
       .position('value')
-      .color('type', [
-        'r(0.1, 0.04, 0.1) 0:#eee 1:#4d63ff',
-        'r(0.1, 0.04, 0.1)) 0:#eee 1:#CD6839',
-      ])
+      .color('type', ['r(0.1, 0.04, 0.1) 0:#eee 1:#4d63ff', 'r(0.1, 0.04, 0.1)) 0:#eee 1:#CD6839',])
       .shape('sliceShape');
     chart.render();
   }

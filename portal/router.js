@@ -1,11 +1,11 @@
-import { Redirect } from '@lugia/lugiax-router';
+import { Redirect, } from '@lugia/lugiax-router';
 import React from 'react';
 import routingConfig from '../src/config/router/cusRouting.config';
 
 const getRouters = (routingConfig, routes) => {
   const rout = routes || {};
   routingConfig.forEach(item => {
-    const { component, value, render } = item;
+    const { component, value, render, } = item;
     if (component) {
       rout[value] = {
         exact: true,
@@ -17,7 +17,7 @@ const getRouters = (routingConfig, routes) => {
         render,
       };
     } else {
-      const { children } = item;
+      const { children, } = item;
       rout[value] = {
         exact: true,
         render: async () => {

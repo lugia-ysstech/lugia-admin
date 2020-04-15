@@ -1,6 +1,6 @@
 import React from 'react';
-import { createBrowserHistory } from 'history';
-import { createApp, go, render } from '@lugia/lugiax-router';
+import { createBrowserHistory, } from 'history';
+import { createApp, go, render, } from '@lugia/lugiax-router';
 import '@lugia/lugia-web/dist/css/global.css';
 import Main from './App';
 import PageLoading from './components/pageloading';
@@ -13,8 +13,8 @@ const history = createBrowserHistory();
 async function checkAuthorityData(query) {
   const resp = await fetch('/api/checkAuthority', {
     method: 'Post',
-    body: JSON.stringify({ query }),
-    headers: new Headers({ 'Content-Type': 'application/json' }),
+    body: JSON.stringify({ query, }),
+    headers: new Headers({ 'Content-Type': 'application/json', }),
   })
     .then(response => {
       if (response.ok) {
@@ -35,7 +35,7 @@ async function getAllRouteData() {
     : Security.getState().get('allRouteData');
 
   if (allRouteData.length === 0) {
-    const { routeData } = await doRequest('/api/routeMock', {
+    const { routeData, } = await doRequest('/api/routeMock', {
       method: 'POST',
     });
     allRouteData = routeData;
@@ -49,7 +49,7 @@ function getFilterRouteData(accessIds, allRouteData) {
   const filterData = [];
   allRouteData &&
     allRouteData.forEach(item => {
-      const { children, id } = item;
+      const { children, id, } = item;
       let singleFilterData;
 
       const hasPermission = accessIds.indexOf(id) !== -1;
@@ -84,7 +84,7 @@ const App = createApp(
   history,
   {
     loading: PageLoading,
-    async onBeforeGo({ url }) {
+    async onBeforeGo({ url, }) {
       if (url === '/404') {
         return true;
       }
@@ -98,15 +98,15 @@ const App = createApp(
       const token = window.localStorage.getItem('token');
       if (!(token || isLoginPage)) {
         window.localStorage.setItem('originUrl', url);
-        go({ url: '/login' });
+        go({ url: '/login', });
       }
 
-      const { authenticateSwitch } = Authenticate;
+      const { authenticateSwitch, } = Authenticate;
       let filterRouteData = RoutingConfig;
       if (authenticateSwitch) {
         const allRouteData = await getAllRouteData();
 
-        const { accessIds } = await doRequest('/api/userAccessIdsAndApiUrls', {
+        const { accessIds, } = await doRequest('/api/userAccessIdsAndApiUrls', {
           method: 'POST',
         });
 
@@ -115,7 +115,7 @@ const App = createApp(
       }
 
       if (JSON.stringify(filterRouteData).indexOf(url) === -1 && url !== '/404') {
-        go({ url: '/404' });
+        go({ url: '/404', });
         return false;
       }
 
@@ -123,7 +123,7 @@ const App = createApp(
         value: url,
         name: 'admin',
       });
-      const { status } = result;
+      const { status, } = result;
 
       if (
         url === '/Dashboard' ||
@@ -138,10 +138,10 @@ const App = createApp(
         return true;
       }
       if (status === 500) {
-        go({ url: '/500' });
+        go({ url: '/500', });
       }
       if (status === 403) {
-        go({ url: '/403' });
+        go({ url: '/403', });
       }
     },
   }

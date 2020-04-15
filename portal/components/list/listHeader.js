@@ -13,24 +13,20 @@ import { Button, consts as Widget, Input, Tabs, Theme, } from '@lugia/lugia-web'
 
 import { go, } from '@lugia/lugiax-router';
 
-const HeaderContent = styled.div`
-
-`;
+const HeaderContent = styled.div``;
 const CenterContent = styled.div`
   text-align: center;
   & * {
-      vertical-align: middle;
+    vertical-align: middle;
   }
 `;
-
-
 
 const theme = {
   [Widget.Button]: {
     Container: {
       normal: {
         height: 30,
-        margin:{
+        margin: {
           // left: 10
         },
         borderRadius: {
@@ -63,7 +59,6 @@ const theme = {
           bottomRight: 0,
           topLeft: 4,
           topRight: 0,
-
         },
       },
     },
@@ -81,17 +76,16 @@ const theme = {
       },
     },
   },
-
 };
 
-const map={
-  article:'文章',
-  projects:'项目',
-  applications:'应用',
+const map = {
+  article: '文章',
+  projects: '项目',
+  applications: '应用',
 };
 
-export default class ListHeader extends Component{
-  routes:Array<Object>;
+export default class ListHeader extends Component {
+  routes: Array<Object>;
 
   constructor(props) {
     super(props);
@@ -99,48 +93,60 @@ export default class ListHeader extends Component{
   }
 
   render() {
-    if(!this.routes){
+    if (!this.routes) {
       this.routes = this.getRouter();
     }
-    const {activityValue,} = this.props;
-    return  <Content>
-      <PageHeader routes={this.routes} title={`搜索列表(${map[activityValue]})`} desc={this.getHeaderDesc()}/>
-    </Content>;
+    const { activityValue, } = this.props;
+    return (
+      <Content>
+        <PageHeader
+          routes={this.routes}
+          title={`搜索列表(${map[activityValue]})`}
+          desc={this.getHeaderDesc()}
+        />
+      </Content>
+    );
   }
 
   getHeaderDesc = () => {
     const defaultData = [
       {
         title: '文章',
-        key:'article',
+        key: 'article',
       },
       {
         title: '项目',
-        key:'projects',
+        key: 'projects',
       },
       {
         title: '应用',
-        key:'applications',
+        key: 'applications',
       },
     ];
-    const {activityValue = 'article',} = this.props;
-    return <HeaderContent>
-      <Theme config={theme}>
-        <CenterContent>
-          <Input placeholder={'请输入'}/><Button type="primary" >搜索</Button>
-        </CenterContent>
+    const { activityValue = 'article', } = this.props;
+    return (
+      <HeaderContent>
+        <Theme config={theme}>
+          <CenterContent>
+            <Input placeholder={'请输入'} />
+            <Button type="primary">搜索</Button>
+          </CenterContent>
 
-        <Tabs data={defaultData} hideContent activityValue={activityValue}  onTabClick={this.onTabClick} />
-      </Theme>
-
-    </HeaderContent>
-      ;
+          <Tabs
+            data={defaultData}
+            hideContent
+            activityValue={activityValue}
+            onTabClick={this.onTabClick}
+          />
+        </Theme>
+      </HeaderContent>
+    );
   };
 
   getRouter = () => {
-    const {activityValue,} = this.props;
+    const { activityValue, } = this.props;
 
-    return  [
+    return [
       {
         path: '/dashboard/analyse',
         title: '首页',
@@ -155,9 +161,7 @@ export default class ListHeader extends Component{
   };
 
   onTabClick = res => {
-    const {activityValue,} = res;
-    go({ url: '/list/search/'+ activityValue,});
-
-  }
-
+    const { activityValue, } = res;
+    go({ url: '/list/search/' + activityValue, });
+  };
 }

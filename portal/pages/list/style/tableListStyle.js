@@ -16,12 +16,10 @@ export const HeaderContentWrap = styled.div`
   width: 100%;
   padding: 0 0 22px 14px;
   font-size: 16px;
-  font-family: PingFangSC-Regular;
   color: #666;
   line-height: 22px;
   & .headerTitle {
     font-size: 18px;
-    font-family: PingFangSC-Medium;
     color: #333;
     line-height: 25px;
     margin-bottom: 4px;
@@ -39,17 +37,17 @@ export const SecContentWrap = styled.div`
   padding: 20px 25px;
   border-radius: 5px;
   background: #fff;
-  & > .fold{
+  & > .fold {
     display: none;
   }
-  & > .unfold{
+  & > .unfold {
     display: none;
   }
 `;
 export const SearchBarWrap = styled.div`
   width: 100%;
   padding: 15px 0 20px 0;
-  border-bottom: 1px solid #E8E8E8;
+  border-bottom: 1px solid #e8e8e8;
   > label {
     line-height: 20px;
     font-size: 14px;
@@ -84,7 +82,7 @@ export const PaginationWrap = styled.div`
   width: 100%;
   height: 60px;
   padding-top: 25px;
-  position:relative;
+  position: relative;
 `;
 export const PaginationPositionWrap = styled.div`
   position: absolute;

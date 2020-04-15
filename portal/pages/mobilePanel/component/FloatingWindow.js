@@ -26,7 +26,7 @@ const inputView = {
   },
 };
 const NumberInputConfig = {
-  max:100,
+  max: 100,
   min: 0,
   step: 2,
   size: 'small',
@@ -43,12 +43,8 @@ class FloatingWindow extends PureComponent {
   static getDerivedStateFromProps(nextProps, prevState) {
     const { floatingWindowState: newValue, gridMargin, } = nextProps;
     if (prevState) {
-      const { floatingWindowState: oldValue, horizontal, vertical,} = prevState;
-      if (
-        newValue === oldValue &&
-        horizontal === gridMargin[0] &&
-        vertical === gridMargin[1]
-      ) {
+      const { floatingWindowState: oldValue, horizontal, vertical, } = prevState;
+      if (newValue === oldValue && horizontal === gridMargin[0] && vertical === gridMargin[1]) {
         return null;
       }
     }
@@ -87,9 +83,7 @@ class FloatingWindow extends PureComponent {
         <FloatingWindowcontent
           style={{
             transform:
-              floatingWindowState === 0 || floatingWindowState === 2
-                ? 'scale(0,0)'
-                : 'scale(1,1)',
+              floatingWindowState === 0 || floatingWindowState === 2 ? 'scale(0,0)' : 'scale(1,1)',
           }}
         >
           <div className="lable" key="x">

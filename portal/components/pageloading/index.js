@@ -10,10 +10,10 @@ import { PageLoading, } from '@lugia/lugia-web';
 import styled from 'styled-components';
 
 const getKeyFrame = props => {
-  const {urls,} = props;
+  const { urls, } = props;
   const res = [];
   let imgIndex = 0;
-  for (let i = 0; i < 100; i+=4) {
+  for (let i = 0; i < 100; i += 4) {
     const url = urls[imgIndex++];
     res.push(`${i}%  { background-image: url(${url});}`);
   }
@@ -37,10 +37,13 @@ const Box = styled.div`
   left: 50%;
   top: 50%;
   background: no-repeat center center;
-
-  transform: translate(-50%,-50%);`;
+  transform: translate(-50%, -50%);
+`;
 
 export default () => {
-
-  return <Box><PageLoading time={2} loading urls={urls}/></Box>;
+  return (
+    <Box>
+      <PageLoading time={2} loading urls={urls} />
+    </Box>
+  );
 };

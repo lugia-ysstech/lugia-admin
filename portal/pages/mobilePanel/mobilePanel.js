@@ -4,7 +4,12 @@ import { Icon, } from '@lugia/lugia-web';
 import ThemeProvider from '@lugia/theme-hoc';
 import './css/grid-layout.css';
 import config from './IndexModular/index';
-import { CreatGridItemKey, defaultConfig, initGridItems, initLocalStorageGridItem, } from './gridLayout';
+import {
+  CreatGridItemKey,
+  defaultConfig,
+  initGridItems,
+  initLocalStorageGridItem,
+} from './gridLayout';
 import { ChooseView, FloatingWindow, Modal, } from './component';
 import { DeleteWrap, GridItemContainer, } from './css';
 
@@ -68,8 +73,8 @@ class MobilePanel extends Component {
   };
   onResizeStop = (layout, oldItem, newItem, placeholder, e, element) => {
     const { gridItems, } = this.state;
-    for(let i =0; i<gridItems.length; i++){
-      if(gridItems[i].key === newItem.i){
+    for (let i = 0; i < gridItems.length; i++) {
+      if (gridItems[i].key === newItem.i) {
         gridItems[i].w = newItem.w;
         gridItems[i].h = newItem.h;
         break;
@@ -90,8 +95,8 @@ class MobilePanel extends Component {
   onDragStop = (layout, oldItem, newItem, placeholder, e, element) => {
     this.move = false;
     const { gridItems, } = this.state;
-    for(let i =0; i<gridItems.length; i++){
-      if(gridItems[i].key === newItem.i){
+    for (let i = 0; i < gridItems.length; i++) {
+      if (gridItems[i].key === newItem.i) {
         gridItems[i].x = newItem.x;
         gridItems[i].y = newItem.y;
         break;
@@ -102,13 +107,8 @@ class MobilePanel extends Component {
    * 选择单个面板并显示控件选择框
    */
   selectedPanel = layout => {
-    if (layout.id === this.state.selectLayout || this.state.isEdit === false)
-      return false;
-    if (
-      this.layoutState !== 'move' &&
-      this.layoutState !== 'resize' &&
-      this.state.isEdit
-    ) {
+    if (layout.id === this.state.selectLayout || this.state.isEdit === false) return false;
+    if (this.layoutState !== 'move' && this.layoutState !== 'resize' && this.state.isEdit) {
       this.setState({
         selectLayout: layout.key,
         // isEdit: false,
@@ -129,11 +129,14 @@ class MobilePanel extends Component {
           isEdit: true,
           selectLayout: '',
         })
-      : this.setState({
-          floatingWindowState: 0,
-          isEdit: false,
-          selectLayout: '',
-        },this.saveGridItemsInfo);
+      : this.setState(
+          {
+            floatingWindowState: 0,
+            isEdit: false,
+            selectLayout: '',
+          },
+          this.saveGridItemsInfo
+        );
   };
   /**
    * 关闭操作面板
@@ -171,23 +174,29 @@ class MobilePanel extends Component {
           return item.key !== selectLayout;
         });
         deleteModular
-          ? this.setState({
-              gridItems: [...newitems,],
-              selectLayout: '',
-              listImg: [
-                ...listImg,
-                {
-                  title: deleteModular.title,
-                  thumbnail: deleteModular.src,
-                  id: deleteModular.id,
-                  component: deleteModular.component,
-                },
-              ],
-            },this.saveGridItemsInfo)
-          : this.setState({
-              gridItems: [...newitems,],
-              selectLayout: '',
-            },this.saveGridItemsInfo);
+          ? this.setState(
+              {
+                gridItems: [...newitems,],
+                selectLayout: '',
+                listImg: [
+                  ...listImg,
+                  {
+                    title: deleteModular.title,
+                    thumbnail: deleteModular.src,
+                    id: deleteModular.id,
+                    component: deleteModular.component,
+                  },
+                ],
+              },
+              this.saveGridItemsInfo
+            )
+          : this.setState(
+              {
+                gridItems: [...newitems,],
+                selectLayout: '',
+              },
+              this.saveGridItemsInfo
+            );
       },
     });
   };
@@ -226,16 +235,19 @@ class MobilePanel extends Component {
         break;
       }
     }
-    this.setState({
-      gridItems: [...gridItems,],
-      selectLayout: '',
-      modelSelect: '',
-      listImg: [...listImg,],
-    },this.saveGridItemsInfo);
+    this.setState(
+      {
+        gridItems: [...gridItems,],
+        selectLayout: '',
+        modelSelect: '',
+        listImg: [...listImg,],
+      },
+      this.saveGridItemsInfo
+    );
   };
   // 取消事件
   cancelSelect = () => {
-    this.setState({ selectLayout: '',  modelSelect: '',});
+    this.setState({ selectLayout: '', modelSelect: '', });
   };
   // 选择展示内容
   selectModule = item => {
@@ -244,7 +256,7 @@ class MobilePanel extends Component {
   // 修改子项间距
   changeGridMargin = margin => {
     this.setState({ gridMargin: margin, });
-  }
+  };
   // 添加新拖拽区域
   addGridItem = () => {
     const { gridItems, } = this.state;
@@ -252,7 +264,7 @@ class MobilePanel extends Component {
     let maxY = 0;
     let maxH = 0;
     gridItems.forEach(item => {
-      if(item.y > maxY){
+      if (item.y > maxY) {
         maxY = item.y;
         maxH = item.h;
       }
@@ -260,18 +272,18 @@ class MobilePanel extends Component {
     gridItems.push({
       key: `grid_${CreatGridItemKey()}`,
       x: 0,
-      y: maxY+maxH,
+      y: maxY + maxH,
       w: defaultConfig.modularWidth,
       h: defaultConfig.modularHeight,
     });
-    this.setState({gridItems: [...gridItems,],});
+    this.setState({ gridItems: [...gridItems,], });
     document.getElementById('react-grid-layout');
-  }
+  };
   /**
    * 保存Gird信息
    */
   saveGridItemsInfo = () => {
-    const { gridCols, gridMargin, gridRowHeight, gridItems,} = this.state;
+    const { gridCols, gridMargin, gridRowHeight, gridItems, } = this.state;
     const newGridItems = [];
     gridItems.forEach(obj => {
       newGridItems.push({
@@ -289,8 +301,8 @@ class MobilePanel extends Component {
       rowHeight: gridRowHeight,
       gridItems: newGridItems,
     };
-    localStorage.setItem('name',JSON.stringify(gridItemInfo));
-  }
+    localStorage.setItem('name', JSON.stringify(gridItemInfo));
+  };
   render() {
     const {
       gridItems,
@@ -349,13 +361,11 @@ class MobilePanel extends Component {
           floatingWindowState={floatingWindowState}
           openOperationPanel={this.openOperationPanel}
           hiddenOperationPanel={this.hiddenOperationPanel}
-          selectedSwitchDragAndOpenOperationPanel={
-            this.selectedSwitchDragAndOpenOperationPanel
-          }
+          selectedSwitchDragAndOpenOperationPanel={this.selectedSwitchDragAndOpenOperationPanel}
           gridMargin={margin}
-          changeGridMargin= {this.changeGridMargin}
-          addGridItem= {this.addGridItem}
-          sliderVale = {cols}
+          changeGridMargin={this.changeGridMargin}
+          addGridItem={this.addGridItem}
+          sliderVale={cols}
         />
         {selectLayout && (
           <ChooseView

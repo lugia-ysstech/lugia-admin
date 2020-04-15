@@ -43,7 +43,7 @@ class ChooseView extends PureComponent {
     // 可是窗口宽度
     const viewingAreaWidth = (this.viewingAreaWidth = this.viewingArea.clientWidth);
     // 每一个子项宽度
-    if(this.itemContainer && this.itemContainer.children.length>0){
+    if (this.itemContainer && this.itemContainer.children.length > 0) {
       const itemWidth = this.itemContainer.children[0].offsetWidth;
       // 步长
       this.itemStepWidth = itemWidth + 16;
@@ -111,9 +111,7 @@ class ChooseView extends PureComponent {
       animation,
     } = this.state;
     return (
-      <CarouselContainer
-        style={{ bottom: animation ? '16px' : '-300px', }}
-      >
+      <CarouselContainer style={{ bottom: animation ? '16px' : '-300px', }}>
         <CarouselWarp>
           <NextButton
             disabled={preDisabled}
@@ -138,10 +136,7 @@ class ChooseView extends PureComponent {
               }}
             >
               {listImg.map((item, index) => (
-                <CarouselItem
-                  last={index === listImg.length - 1}
-                  key={`modurl_${index}`}
-                >
+                <CarouselItem last={index === listImg.length - 1} key={`modurl_${index}`}>
                   <ImgWrap
                     className={item.id === modelSelect ? 'modelSelect' : ''}
                     onClick={() => this.props.selectModule(item)}

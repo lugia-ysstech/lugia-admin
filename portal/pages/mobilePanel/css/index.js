@@ -101,12 +101,10 @@ export const FloatingWindowcontent = styled.div`
   }
   .lable span {
     flex: 1;
-    font-family: PingFangSC-Regular;
     font-size: 12px;
     color: #50575d;
   }
   .lable i {
-    font-family: PingFangSC-Regular;
     font-size: 10px;
     color: #747e90;
     line-height: 17px;
@@ -123,7 +121,6 @@ export const FloatingWindowcontent = styled.div`
   }
   .input_cols_wrap .input_cols_lable {
     flex: 1;
-    font-family: PingFangSC-Regular;
     font-size: 12px;
     color: #50575d;
     line-height: 17px;
@@ -141,11 +138,11 @@ export const ShrinkWrap = CSSComponent({
   className: 'ShrinkWrap',
   normal: {
     selectNames: [['color',],],
-    defaultTheme: { color: '#666666', },
+    defaultTheme: { color: '#666', },
   },
   hover: {
     selectNames: [['color',],],
-    defaultTheme: { color: '#4D68FF', },
+    defaultTheme: { color: '#4d68ff', },
   },
   active: {
     selectNames: [['color',],],
@@ -189,12 +186,10 @@ export const AddPanelWrap = CSSComponent({
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: ;
     border-radius: 12px;
     height: 24px;
-    font-family: PingFangSC-Regular;
     font-size: 12px;
-    color: #ffffff;
+    color: #fff;
     text-align: center;
     cursor: pointer;
     margin-top: 20px;
@@ -233,7 +228,7 @@ export const NextButton = CSSComponent({
   },
   hover: {
     selectNames: [['color',],],
-    defaultTheme: { color: '#4D68FF', },
+    defaultTheme: { color: '#4d68ff', },
   },
   active: {
     selectNames: [['color',],],
@@ -262,7 +257,7 @@ export const PreButton = CSSComponent({
   },
   hover: {
     selectNames: [['color',],],
-    defaultTheme: { color: '#4D68FF', },
+    defaultTheme: { color: '#4d68ff', },
   },
   active: {
     selectNames: [['color',],],
@@ -275,7 +270,7 @@ export const PreButton = CSSComponent({
   css: css`
     display: inline-block;
     position: absolute;
-    right: 0px;
+    right: 0;
     width: 32px;
     text-align: center;
   `,
@@ -300,7 +295,7 @@ export const ImgWrap = styled.div`
   width: 230px;
   height: 170px;
   padding: 8px 8px;
-  background: #ffffff;
+  background: #fff;
   border: 1px solid #e8e8e8;
   img {
     width: 100%;
@@ -312,7 +307,6 @@ export const ImgTitle = styled.p`
   line-height: 18px;
   padding: 6px 0 4px 0;
   margin: 0;
-  font-family: PingFangSC-Regular;
   font-size: 12px;
   color: #747e90;
   text-align: center;
@@ -322,7 +316,6 @@ export const OperationWrap = styled.div`
   position: absolute;
   right: 32px;
   bottom: 16px;
-  font-family: PingFangSC-Regular;
   font-size: 12px;
 `;
 
@@ -354,9 +347,8 @@ export const OperationUseWrap = CSSComponent({
     height: 24px;
     line-height: 24px;
     text-align: center;
-    background-image: ;
     border-radius: 16px;
-    color: #ffffff;
+    color: #fff;
     cursor: pointer;
   `,
   option: { hover: true, active: true, },
@@ -369,8 +361,8 @@ export const OperationCanleWrap = CSSComponent({
   normal: {
     selectNames: [['color',], ['border',],],
     defaultTheme: {
-      color: '#4D68FF',
-      border: getBorder({ color: '#4D68FF', width: 1, style: 'solid', }),
+      color: '#4d68ff',
+      border: getBorder({ color: '#4d68ff', width: 1, style: 'solid', }),
     },
   },
   hover: {
@@ -393,7 +385,7 @@ export const OperationCanleWrap = CSSComponent({
     height: 24px;
     line-height: 24px;
     text-align: center;
-    background: #ffffff;
+    background: #fff;
     border-radius: 16px;
     margin-left: 8px;
     cursor: pointer;
@@ -424,7 +416,6 @@ export const DeleteWrap = CSSComponent({
     display: inline-block;
     width: 16px;
     height: 16px;
-    color: ;
     font-size: 16px;
     line-height: 16px;
     background: #fff;

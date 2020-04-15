@@ -28,7 +28,7 @@ const CardOutWrap = styled.div`
   min-width: 600px;
   height: 133px;
   margin: 20px auto;
-  background: #F8F8F8;
+  background: #f8f8f8;
 `;
 const CardContentContainer = styled.div`
   width: 100%;
@@ -44,7 +44,7 @@ const TitleContainer = styled.div`
   border-color: inherit;
   color: #333;
   text-align: left;
-  margin:15px 0;
+  margin: 15px 0;
 `;
 const Title = styled.td`
   display: inline-block;
@@ -74,15 +74,14 @@ const FooterWrap = styled.div`
 
 class failedDemo extends Component {
   render() {
-
     const cardThemeConfig = {
       [Widget.Card]: {
         Container: {
           normal: {
             width: '100%',
             height: '100%',
-            background:{
-              color:'#f6f6f6',
+            background: {
+              color: '#f6f6f6',
             },
             padding: {
               top: 4,
@@ -96,7 +95,7 @@ class failedDemo extends Component {
         CardTitle: {
           normal: {
             fontSize: 18,
-            font:{
+            font: {
               weight: 600,
             },
             margin: {
@@ -152,16 +151,14 @@ class failedDemo extends Component {
     return (
       <Content>
         {/*页头*/}
-        <PageHeader routes={routes}  />
+        <PageHeader routes={routes} />
         {/*内容*/}
         <PageContent>
           <ContentContainer>
             <Theme config={iconTheme}>
               <Icon iconClass={'lugia-icon-reminder_close_circle'} />
               <SuccessText>{'提交失败'}</SuccessText>
-              <SuccessDesText>
-                {'请核对并修改以下信息后，再重新提交。'}
-              </SuccessDesText>
+              <SuccessDesText>{'请核对并修改以下信息后，再重新提交。'}</SuccessDesText>
             </Theme>
           </ContentContainer>
           <CardOutWrap>
@@ -185,7 +182,9 @@ class failedDemo extends Component {
           </CardOutWrap>
           <FooterWrap>
             <Theme config={buttonView}>
-              <Button type={'primary'} shape={'round'} onClick={this.props.goBack}>{'返回修改'}</Button>
+              <Button type={'primary'} shape={'round'} onClick={this.props.goBack}>
+                {'返回修改'}
+              </Button>
             </Theme>
           </FooterWrap>
         </PageContent>
@@ -194,14 +193,11 @@ class failedDemo extends Component {
   }
 }
 
-const FailedPage = connect(
-  failed,
-  mutations => {
-    return {
-      goBack: mutations.goBack,
-    };
-  }
-)(failedDemo);
+const FailedPage = connect(failed, mutations => {
+  return {
+    goBack: mutations.goBack,
+  };
+})(failedDemo);
 
 export default () => {
   return <FailedPage />;
