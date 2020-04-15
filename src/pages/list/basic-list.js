@@ -24,7 +24,6 @@ import GChartRight from './charts/basicChartThree';
 const RadioButton = Radio.Button;
 const RadioGroup = Radio.Group;
 
-//上部图表
 const BreadcrumbWrap = styled.div`
   width: 100%;
 `;
@@ -44,10 +43,6 @@ const SingleGraphContainer = styled.div`
   width: 30%;
 `;
 
-//下部列表
-
-//列表项
-//控制条
 const ListContentWrap = styled.div`
   background: #fff;
   margin: 30px 14px 0;
@@ -77,7 +72,6 @@ const ListHeaderContent = styled.p`
   font-weight: 600;
   line-height: 32px;
   color: #333;
-  font: PingFangSC-Medium;
   display: inline-block;
   vertical-align: bottom;
   margin-left: 6px;
@@ -86,32 +80,29 @@ const ActionBarLeftWrap = styled.div`
   display: flex;
   justify-content: right;
   font-size: 14px;
-  > button {
+  & > button {
     width: 96px;
     height: 32px;
-    font: PingFangSC-Regular;
-    > span {
-      > span {
+    & > span {
+      & > span {
         line-height: 32px;
         color: #4d63ff;
-        .jiahao {
-          font-size: 25px;
-          vertical-align: bottom;
-        }
       }
     }
   }
 `;
-//列表区域
+const AddIconWrap = styled.span`
+  font-size: 25px;
+  vertical-align: bottom;
+`;
 const ListContent = styled.div`
-  padding: 0px 14px;
-  font: PingFangSC-Regular;
+  padding: 0 14px;
   font-size: 14px;
 `;
 const ListItemWrap = styled.div`
   width: 100%;
   height: 70px;
-  padding: 14px 14px;
+  padding: 14px;
   border-bottom: 1px solid #e8e8e8;
   display: flex;
   justify-content: space-between;
@@ -130,11 +121,11 @@ const AvatarInfor = styled.div`
   width: 200px;
   height: 43px;
   margin-left: 14px;
-  >p: nth-child(1) {
+  & > p:nth-child(1) {
     color: #333;
     line-height: 20px;
   }
-  >p: nth-child(2) {
+  & > p:nth-child(2) {
     color: #999;
     line-height: 20px;
   }
@@ -143,35 +134,35 @@ const ItemApplicantInfor = styled.div`
   width: 305px;
   margin-right: 40px;
   display: flex;
-  justify: space-between;
+  justify-content: space-between;
 `;
 const ItemApplicantName = styled.div`
   width: 100px;
   margin-right: 40px;
-  >p: nth-child(1) {
+  & > p:nth-child(1) {
     color: #666;
     line-height: 20px;
     text-align: center;
   }
-  >p: nth-child(2) {
+  & > p:nth-child(2) {
     color: #333;
     line-height: 20px;
     text-align: center;
   }
 `;
 const ItemApplicantTime = styled.div`
-  >p: nth-child(1) {
+  & > p:nth-child(1) {
     color: #666;
     line-height: 20px;
     text-align: left;
   }
-  >p: nth-child(2) {
+  & > p:nth-child(2) {
     color: #333;
     line-height: 20px;
     text-align: left;
   }
 `;
-const ItemInfor = styled.div`
+const ItemInfo = styled.div`
   width: 455px;
   line-height: 40px;
   display: flex;
@@ -184,7 +175,7 @@ const ItemInforProgress = styled.div`
 const ItemInforEditor = styled.div`
   color: blue;
   margin-right: 20px;
-  &>span: nth-child(2) {
+  & > span:nth-child(2) {
     color: red;
   }
 `;
@@ -285,7 +276,6 @@ export default class BasicList extends Component {
             },
           },
         },
-        //单个按钮属性设置失效
         Radio: {
           theme: {
             Container: {
@@ -318,7 +308,6 @@ export default class BasicList extends Component {
     };
     return (
       <Content>
-        {/*页头*/}
         <BreadcrumbWrap>
           <Breadcrumb separator={'>'} lastSeparator={''} theme={config}>
             <Breadcrumb.Item href="a">首页</Breadcrumb.Item>
@@ -327,7 +316,6 @@ export default class BasicList extends Component {
           </Breadcrumb>
         </BreadcrumbWrap>
 
-        {/*上部图表*/}
         <FirstContentWrap>
           <GraphContentWrap>
             <SingleGraphContainer>
@@ -341,7 +329,6 @@ export default class BasicList extends Component {
             </SingleGraphContainer>
           </GraphContentWrap>
         </FirstContentWrap>
-        {/*下部列表*/}
         <ListContentWrap>
           <ActionBar>
             <Theme config={config}>
@@ -351,7 +338,7 @@ export default class BasicList extends Component {
               </ListHeader>
               <ActionBarLeftWrap>
                 <Button>
-                  <span className={'jiahao'}>+ </span>
+                  <AddIconWrap>+</AddIconWrap>
                   新增申请
                 </Button>
                 <RadioGroup childType="button" onChange={this.onChange} defaultValue="1">
@@ -385,7 +372,7 @@ export default class BasicList extends Component {
                   </ItemApplicantTime>
                 </ItemApplicantInfor>
               </ItemHeader>
-              <ItemInfor>
+              <ItemInfo>
                 <ItemInforProgress>
                   <Progress percent={80} showType="inside" status="active" />
                 </ItemInforProgress>
@@ -393,7 +380,7 @@ export default class BasicList extends Component {
                   <span>编辑 | </span>
                   <span>删除</span>
                 </ItemInforEditor>
-              </ItemInfor>
+              </ItemInfo>
             </ListItemWrap>
             <ListItemWrap>
               <ItemHeader>
@@ -417,7 +404,7 @@ export default class BasicList extends Component {
                   </ItemApplicantTime>
                 </ItemApplicantInfor>
               </ItemHeader>
-              <ItemInfor>
+              <ItemInfo>
                 <ItemInforProgress>
                   <Progress percent={70} showType="inside" status="error" />
                 </ItemInforProgress>
@@ -425,7 +412,7 @@ export default class BasicList extends Component {
                   <span>编辑 | </span>
                   <span>删除</span>
                 </ItemInforEditor>
-              </ItemInfor>
+              </ItemInfo>
             </ListItemWrap>
             <ListItemWrap>
               <ItemHeader>
@@ -449,7 +436,7 @@ export default class BasicList extends Component {
                   </ItemApplicantTime>
                 </ItemApplicantInfor>
               </ItemHeader>
-              <ItemInfor>
+              <ItemInfo>
                 <ItemInforProgress>
                   <Progress percent={100} showType="inside" />
                 </ItemInforProgress>
@@ -457,7 +444,7 @@ export default class BasicList extends Component {
                   <span>编辑 | </span>
                   <span>删除</span>
                 </ItemInforEditor>
-              </ItemInfor>
+              </ItemInfo>
             </ListItemWrap>
             <ListItemWrap>
               <ItemHeader>
@@ -481,7 +468,7 @@ export default class BasicList extends Component {
                   </ItemApplicantTime>
                 </ItemApplicantInfor>
               </ItemHeader>
-              <ItemInfor>
+              <ItemInfo>
                 <ItemInforProgress>
                   <Progress percent={60} showType="inside" status="active" />
                 </ItemInforProgress>
@@ -489,7 +476,7 @@ export default class BasicList extends Component {
                   <span>编辑 | </span>
                   <span>删除</span>
                 </ItemInforEditor>
-              </ItemInfor>
+              </ItemInfo>
             </ListItemWrap>
             <ListItemWrap>
               <ItemHeader>
@@ -513,7 +500,7 @@ export default class BasicList extends Component {
                   </ItemApplicantTime>
                 </ItemApplicantInfor>
               </ItemHeader>
-              <ItemInfor>
+              <ItemInfo>
                 <ItemInforProgress>
                   <Progress percent={80} showType="inside" status="active" />
                 </ItemInforProgress>
@@ -521,7 +508,7 @@ export default class BasicList extends Component {
                   <span>编辑 | </span>
                   <span>删除</span>
                 </ItemInforEditor>
-              </ItemInfor>
+              </ItemInfo>
             </ListItemWrap>
             <ListItemWrap>
               <ItemHeader>
@@ -545,7 +532,7 @@ export default class BasicList extends Component {
                   </ItemApplicantTime>
                 </ItemApplicantInfor>
               </ItemHeader>
-              <ItemInfor>
+              <ItemInfo>
                 <ItemInforProgress>
                   <Progress percent={80} showType="inside" status="active" />
                 </ItemInforProgress>
@@ -553,7 +540,7 @@ export default class BasicList extends Component {
                   <span>编辑 | </span>
                   <span>删除</span>
                 </ItemInforEditor>
-              </ItemInfor>
+              </ItemInfo>
             </ListItemWrap>
             <ListItemWrap>
               <ItemHeader>
@@ -577,7 +564,7 @@ export default class BasicList extends Component {
                   </ItemApplicantTime>
                 </ItemApplicantInfor>
               </ItemHeader>
-              <ItemInfor>
+              <ItemInfo>
                 <ItemInforProgress>
                   <Progress percent={30} showType="inside" status="active" />
                 </ItemInforProgress>
@@ -585,7 +572,7 @@ export default class BasicList extends Component {
                   <span>编辑 | </span>
                   <span>删除</span>
                 </ItemInforEditor>
-              </ItemInfor>
+              </ItemInfo>
             </ListItemWrap>
           </ListContent>
         </ListContentWrap>

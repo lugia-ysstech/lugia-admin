@@ -23,7 +23,7 @@ import {
 } from '@lugia/lugia-web';
 import { connect } from '@lugia/lugiax';
 import setting from '../../models/personal/setting';
-import { getBorderRadius } from '@lugia/theme-utils';
+import { getBorder, getBorderRadius } from '@lugia/theme-utils';
 
 const RadioGroup = Radio.Group;
 
@@ -31,9 +31,9 @@ const TabsContainer = styled.div`
   width: 100%;
   height: 100%;
   padding: 0 14px;
-  > div{
-    >div{
-      >div{
+  & > div {
+    > div {
+      > div {
         padding: 0;
       }
     }
@@ -61,18 +61,6 @@ const RightContainer = styled.div`
   display: block;
   text-align: center;
   margin-bottom: 20px;
-  &.uploadButton{
-    >div{
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      >div{
-        >span{
-          background: #fff;
-          color: #333;
-        }
-      }
-    }
-  }
 `;
 const SafeItemContainer = styled.div`
   align-items: center;
@@ -123,30 +111,31 @@ const IconWrap = styled.div`
   justify-content: center;
   align-items: center;
   border-radius: 50%;
-  &.wechat {
-    background: #86DB46;
-  };
-  &.weibo {
-    background: #E6172D;
-  };
-  &.facebook {
-    background: #4469B0;
-  };
-  &.twitter {
-    background: #29A3EF;
-  };
-  &.QQ {
-    background: #51BCFF;
-  };
+  background: #86db46;
+`;
+const QQIconWrap = styled(IconWrap)`
+  background: #51bcff;
+`;
+const TwitterIconWrap = styled(IconWrap)`
+  background: #29a3ef;
+`;
+const FacebookIconWrap = styled(IconWrap)`
+  background: #4469b0;
+`;
+const WeiboIconWrap = styled(IconWrap)`
+  background: #e6172d;
 `;
 const HeadWrap = styled.div`
   height: 25px;
   margin-bottom: 26px;
 `;
+const HeadWrapMessage = styled(HeadWrap)`
+  margin: 0;
+`;
 const ItemWrap = styled.div`
   margin-bottom: 20px;
   box-sizing: border-box;
-  &>label{
+  & > label {
     width: 42px;
     line-height: 32px;
     font-size: 14px;
@@ -157,11 +146,11 @@ const ItemWrap = styled.div`
 const AddtionWrap = styled.div`
   margin-top: 17px;
   padding-left: 42px;
-  &>Button: nth-child(1) {
+  & > button:nth-child(1) {
     margin-right: 20px;
     width: 110px;
   }
-  &>Button: nth-child(2) {
+  & > button:nth-child(2) {
     width: 76px;
   }
 `;
@@ -169,7 +158,7 @@ const SecurityItemWrap = styled.div`
   margin-bottom: 20px;
   min-width: 870px;
   box-sizing: border-box;
-  &>label{
+  & > label {
     width: 64px;
     line-height: 32px;
     font-size: 14px;
@@ -207,9 +196,6 @@ const MessageInnerContainer = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  &>.MessageHeadTitle {
-    margin: 0;
-  }
 `;
 const ItemContainer = styled.div`
   align-items: center;
@@ -217,7 +203,7 @@ const ItemContainer = styled.div`
   padding: 18px 5px 15px 0;
   position: relative;
 `;
-const MessageItemTitle= styled.div`
+const MessageItemTitle = styled.div`
   font-weight: bold;
   font-size: 14px;
   color: #333;
@@ -237,6 +223,17 @@ const SwitchWarp = styled.div`
   top: 50%;
   margin-top: -10px;
 `;
+
+const uploadTheme = {
+  [Widget.Upload]: {
+    UploadDefaultType: {
+      normal: {
+        border: getBorder({ width: 1, style: 'solid', color: '#ccc' }),
+        borderRadius: getBorderRadius(4),
+      },
+    },
+  },
+};
 
 function changeBrowserWidth() {
   return document.documentElement.clientWidth;
@@ -302,9 +299,9 @@ class Setting extends Component {
     const getItem = data => () => {
       return (
         <MessageInnerContainer>
-          <HeadWrap className={'MessageHeadTitle'}>
+          <HeadWrapMessage>
             <h2>消息通知</h2>
-          </HeadWrap>
+          </HeadWrapMessage>
           {data.map(item => {
             const { title, desc, operationText, icon, hasSwitch } = item;
             const leftIcon = icon ? (
@@ -324,9 +321,7 @@ class Setting extends Component {
                   <MessageItemTitle>{title}</MessageItemTitle>
                   <MessageItemContent>{desc}</MessageItemContent>
                 </ItemInnerContainer>
-                <SwitchWarp>
-                  {Operation}
-                </SwitchWarp>
+                <SwitchWarp>{Operation}</SwitchWarp>
               </ItemContainer>,
               <Divider />,
             ];
@@ -336,11 +331,7 @@ class Setting extends Component {
     };
     const getInputItem = data => () => {
       return data.map(item => {
-        const {
-          inputPlaceholder,
-          inputConfig,
-          onChange,
-        } = item;
+        const { inputPlaceholder, inputConfig, onChange } = item;
         return [
           <ItemInnerContainer>
             <Theme config={inputConfig}>
@@ -352,11 +343,7 @@ class Setting extends Component {
     };
     const getSelectItem = data => () => {
       return data.map(item => {
-        const {
-          selectData,
-          selectDefaultValue,
-          selectConfig,
-        } = item;
+        const { selectData, selectDefaultValue, selectConfig } = item;
         return [
           <ItemInnerContainer>
             <Theme config={selectConfig}>
@@ -481,7 +468,7 @@ class Setting extends Component {
       },
     ];
     const radioView = {
-      [Widget.Radio]:{
+      [Widget.Radio]: {
         Container: {
           normal: {
             margin: {
@@ -593,13 +580,14 @@ class Setting extends Component {
                 src="https://gw.alipayobjects.com/zos/antfincdn/XAosXuNZyF/BiazfanxmamNRoxxVxka.png"
               />
             </RightContainer>
-            <RightContainer className={'uploadButton'}>
-              <Upload
-                areaType={'button'}
-                icon={'lugia-icon-financial_download'}
-                onClick={this.props.doUpdateAvatar}
-              >
-              </Upload>
+            <RightContainer>
+              <Theme config={uploadTheme}>
+                <Upload
+                  areaType={'button'}
+                  icon={'lugia-icon-financial_download'}
+                  onClick={this.props.doUpdateAvatar}
+                ></Upload>
+              </Theme>
             </RightContainer>
           </Theme>
         </InnerContainer>
@@ -664,32 +652,31 @@ class Setting extends Component {
         <SecurityItemWrap>
           <label>账号:</label>
           <QuickLoginWrapper>
-            <IconWrap className={'wechat'}>
+            <IconWrap>
               <Theme config={theIconTheme('wechat')}>
                 <Icon iconClass="lugia-icon-logo_wechat" />
               </Theme>
             </IconWrap>
-            <IconWrap className={'weibo'}>
+            <WeiboIconWrap>
               <Theme config={theIconTheme('weibo')}>
                 <Icon iconClass="lugia-icon-logo_weibo" />
               </Theme>
-            </IconWrap>
-            <IconWrap className={'facebook'}>
+            </WeiboIconWrap>
+            <FacebookIconWrap>
               <Theme config={theIconTheme('facebook')}>
                 <Icon iconClass="lugia-icon-logo_facebook" />
               </Theme>
-            </IconWrap>
-            <IconWrap className={'twitter'}>
+            </FacebookIconWrap>
+            <TwitterIconWrap>
               <Theme config={theIconTheme('twitter')}>
                 <Icon iconClass="lugia-icon-logo_twitter" />
               </Theme>
-            </IconWrap>
-            <IconWrap className={'QQ'}>
+            </TwitterIconWrap>
+            <QQIconWrap>
               <Theme config={theIconTheme('QQ')}>
                 <Icon iconClass="lugia-icon-logo_QQ" />
               </Theme>
-            </IconWrap>
-
+            </QQIconWrap>
           </QuickLoginWrapper>
         </SecurityItemWrap>
         <SecurityItemWrap>
@@ -705,12 +692,8 @@ class Setting extends Component {
                 <Checkbox />
               </CheckboxInnerContainer>
               <ItemContentWrap>
-                <SafeInnerTitleText>
-                  Api 访问经过身份验证的用户的API
-                </SafeInnerTitleText>
-                <SafeDescText>
-                  以用户身份完全访问lugia pro,包括所有的组和项目进行读/写
-                </SafeDescText>
+                <SafeInnerTitleText>Api 访问经过身份验证的用户的API</SafeInnerTitleText>
+                <SafeDescText>以用户身份完全访问lugia pro,包括所有的组和项目进行读/写</SafeDescText>
               </ItemContentWrap>
             </FieldItemWrap>
             <FieldItemWrap>
@@ -718,9 +701,7 @@ class Setting extends Component {
                 <Checkbox />
               </CheckboxInnerContainer>
               <ItemContentWrap>
-                <SafeInnerTitleText>
-                  Read-user 读取经过身份验证的用户个人信息
-                </SafeInnerTitleText>
+                <SafeInnerTitleText>Read-user 读取经过身份验证的用户个人信息</SafeInnerTitleText>
                 <SafeDescText>
                   对用户的个人资料信息的只读访问权限,例如用户名,公共电子邮件和全名
                 </SafeDescText>
@@ -744,12 +725,8 @@ class Setting extends Component {
                 <Checkbox />
               </CheckboxInnerContainer>
               <ItemContentWrap>
-                <SafeInnerTitleText>
-                  read_repository 读取存储
-                </SafeInnerTitleText>
-                <SafeDescText>
-                  读取储存库
-                </SafeDescText>
+                <SafeInnerTitleText>read_repository 读取存储</SafeInnerTitleText>
+                <SafeDescText>读取储存库</SafeDescText>
               </ItemContentWrap>
             </FieldItemWrap>
             <FieldItemWrap>
@@ -757,11 +734,10 @@ class Setting extends Component {
                 <Checkbox />
               </CheckboxInnerContainer>
               <ItemContentWrap>
-                <SafeInnerTitleText>
-                  openid 使用OpenID Connect 进行身份验证
-                </SafeInnerTitleText>
+                <SafeInnerTitleText>openid 使用OpenID Connect 进行身份验证</SafeInnerTitleText>
                 <SafeDescText>
-                  使用Lugia pro进行身份认证的能力，以及对用户的配置文件信息和组成员身份的只读访问权限
+                  使用Lugia
+                  pro进行身份认证的能力，以及对用户的配置文件信息和组成员身份的只读访问权限
                 </SafeDescText>
               </ItemContentWrap>
             </FieldItemWrap>
@@ -772,9 +748,9 @@ class Setting extends Component {
           <SafeTitleText>关于pro :</SafeTitleText>
           <VersionTitleText>当前版本</VersionTitleText>
           <VersionTitleText>1.5.9 </VersionTitleText>
-            <Theme config={feedbackButtonTheme}>
-              <Button>意见反馈</Button>
-            </Theme>
+          <Theme config={feedbackButtonTheme}>
+            <Button>意见反馈</Button>
+          </Theme>
         </SecurityItemWrap>
         <SafeItemContainer>
           <SafeTitleText />
@@ -841,11 +817,7 @@ class Setting extends Component {
     return (
       <Theme config={config}>
         <TabsContainer>
-          <Tabs
-            tabType={'line'}
-            tabPosition={position}
-            data={defaultData}
-          />
+          <Tabs tabType={'line'} tabPosition={position} data={defaultData} />
         </TabsContainer>
       </Theme>
     );

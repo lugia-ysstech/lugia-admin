@@ -14,9 +14,8 @@ import 'core-js/es6/map';
 import 'core-js/es6/set';
 import 'core-js/es6/string';
 
-const {Row, Col} = Grid;
+const { Row, Col } = Grid;
 
-//上部图表
 const FirstContentWrap = styled.div`
   width: 100%;
 `;
@@ -41,29 +40,26 @@ const ListItemTopLeft = styled.div`
   font-size: 14px;
   text-align: left;
   line-height: 20px;
-  font-family: PingFangSC-Medium;
   color: #333;
-  > p: nth-child(2) {
-    font-size: 12px;
-    font-family: PingFangSC-Regular;
-    color: #999;
-  }
+`;
+const ListItemTopLeftContent = styled.p`
+  font-size: 12px;
+  color: #999;
 `;
 const ListItemTopRight = styled.div`
   min-width: 120px;
   line-height: 50px;
   font-size: 36px;
   font-weight: 600;
-  font-family: PingFangSC-Semibold;
   vertical-align: bottom;
-  color: #4D68FF;
+  color: #4d68ff;
   display: flex;
   justify-content: flex-end;
-  >.smallFont {
-    font-size:16px;
-    box-sizing: border-box;
-    padding-top: 6px;
-  }
+`;
+const SmallFontWrap = styled.span`
+  font-size: 16px;
+  box-sizing: border-box;
+  padding-top: 6px;
 `;
 const ListItemBottom = styled.div`
   width: 100%;
@@ -89,21 +85,14 @@ const SecContentWrap = styled.div`
 
 //列表区域
 const ListContentWrap = styled.div`
-  background: #fff;
   margin: 30px 12px;
   border-radius: 4px;
-  background: #F5F5F9;
+  background: #f5f5f9;
 `;
 const ListContent = styled.div`
-  font: PingFangSC-Regular;
   font-size: 14px;
-  > Row {
+  & > div {
     margin-bottom: 20px;
-  };
-  >div {
-    >div {
-      padding: 0 15px 30px;
-    }
   }
 `;
 const CardContainer = styled.div`
@@ -120,42 +109,52 @@ const CardHeaderWrap = styled.div`
     line-height: 25px;
     font-size: 18px;
     color: #333;
-  };
-  >h3 {
+  }
+  > h3 {
     font-size: 18px;
   }
 `;
 const IconWrap = styled.div`
-  margin:0 auto 12px;;
+  margin: 0 auto 12px;
   width: 40px;
   height: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
-  &.excle {
-    color: #4D68FF;
-  };
-  &.pic {
-    color: #FAAD14;
-  };
-  &.person {
-    color: #FAAD14;
-  };
-  &.word {
-    color: #7C9EFE;
-  };
-  &.wenhao {
-    color: #FAAD14;
-  };
-  &.tubiao{
-    color: #9DD1FF;
-  };
-  &.wenjian{
-    color: #7C9EFE;
-  };
-  &.fengjing{
-    color: #6FBDFF;
-  };
+  color: #4d68ff;
+`;
+const FengjingIconWrap = styled(IconWrap)`
+  color: #6fbdff;
+`;
+const WenjianIconWrap = styled(IconWrap)`
+  color: #7c9efe;
+`;
+const TubiaoIconWrap = styled(IconWrap)`
+  color: #9dd1ff;
+`;
+const WordIconWrap = styled(IconWrap)`
+  color: #7c9efe;
+`;
+const WenhaoIconWrap = styled(IconWrap)`
+  color: #faad14;
+`;
+const PersonIconWrap = styled.div`
+  margin: 0 auto 12px;
+  width: 40px;
+  height: 40px;
+  color: #faad14;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+const PicIconWrap = styled.div`
+  margin: 0 auto 12px;
+  width: 40px;
+  height: 40px;
+  color: #faad14;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 const CardContentWrap = styled.div`
   width: 100%;
@@ -163,7 +162,7 @@ const CardContentWrap = styled.div`
   line-height: 20px;
   font-size: 14px;
   color: #666;
-  > p: nth-child(1) {
+  > p:nth-child(1) {
     margin-bottom: 12px;
   }
 `;
@@ -178,7 +177,7 @@ const CardEditorBarWrap = styled.div`
     color: #666;
     margin-right: 10px;
   }
-  & > button: nth-child(2) {
+  & > button:nth-child(2) {
     margin-right: 0;
   }
 `;
@@ -196,12 +195,11 @@ const routes = [
 ];
 
 export default class BasicList extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = null;
   }
   render() {
-
     const view = {
       [Widget.Icon]: {
         Icon: {
@@ -221,7 +219,7 @@ export default class BasicList extends Component {
       },
     };
 
-    return(
+    return (
       <Content>
         {/*页头*/}
         <PageHeader routes={routes} title={'卡片列表页'} />
@@ -239,10 +237,10 @@ export default class BasicList extends Component {
                   <ListItemTop>
                     <ListItemTopLeft>
                       <p>总收入</p>
-                      <p>所有项目收入</p>
+                      <ListItemTopLeftContent>所有项目收入</ListItemTopLeftContent>
                     </ListItemTopLeft>
                     <ListItemTopRight>
-                      <span className={'smallFont'}>¥</span>
+                      <SmallFontWrap>¥</SmallFontWrap>
                       <span>109</span>
                     </ListItemTopRight>
                   </ListItemTop>
@@ -258,11 +256,11 @@ export default class BasicList extends Component {
                   <ListItemTop>
                     <ListItemTopLeft>
                       <p>今年新用户</p>
-                      <p>新的注册用户</p>
+                      <ListItemTopLeftContent>新的注册用户</ListItemTopLeftContent>
                     </ListItemTopLeft>
                     <ListItemTopRight>
                       <span>1899</span>
-                      <span className={'smallFont'}> &nbsp;&nbsp;人</span>
+                      <SmallFontWrap>&nbsp;&nbsp;人</SmallFontWrap>
                     </ListItemTopRight>
                   </ListItemTop>
                   <ListItemBottom>
@@ -277,10 +275,10 @@ export default class BasicList extends Component {
                   <ListItemTop>
                     <ListItemTopLeft>
                       <p>本月新订单</p>
-                      <p>本月新增订单数</p>
+                      <ListItemTopLeftContent>本月新增订单数</ListItemTopLeftContent>
                     </ListItemTopLeft>
                     <ListItemTopRight>
-                      <span/>
+                      <span />
                       <span>785</span>
                     </ListItemTopRight>
                   </ListItemTop>
@@ -296,10 +294,10 @@ export default class BasicList extends Component {
                   <ListItemTop>
                     <ListItemTopLeft>
                       <p>用户反馈待处理</p>
-                      <p>待处理的数量</p>
+                      <ListItemTopLeftContent>待处理的数量</ListItemTopLeftContent>
                     </ListItemTopLeft>
                     <ListItemTopRight>
-                      <span/>
+                      <span />
                       <span>10</span>
                     </ListItemTopRight>
                   </ListItemTop>
@@ -335,11 +333,17 @@ export default class BasicList extends Component {
                       <h3>lugia用户手册</h3>
                     </CardHeaderWrap>
                     <CardContentWrap>
-                      <p>上传人: &nbsp; <span>夹心心</span></p>
-                      <p>上传时间:&nbsp; <span>2019/04/19</span></p>
+                      <p>
+                        上传人: &nbsp; <span>夹心心</span>
+                      </p>
+                      <p>
+                        上传时间:&nbsp; <span>2019/04/19</span>
+                      </p>
                     </CardContentWrap>
                     <CardEditorBarWrap>
-                      <Button type="primary" shape="round">下载</Button>
+                      <Button type="primary" shape="round">
+                        下载
+                      </Button>
                       <Button shape="round">删除</Button>
                     </CardEditorBarWrap>
                   </CardContainer>
@@ -347,19 +351,25 @@ export default class BasicList extends Component {
                 <Col span={6}>
                   <CardContainer>
                     <CardHeaderWrap>
-                      <IconWrap className={'pic'}>
+                      <PicIconWrap>
                         <Theme config={view}>
                           <Icon iconClass="lugia-icon-financial_word" />
                         </Theme>
-                      </IconWrap>
+                      </PicIconWrap>
                       <h3>lugia logo</h3>
                     </CardHeaderWrap>
                     <CardContentWrap>
-                      <p>上传人: &nbsp; <span>雨萌萌</span></p>
-                      <p>上传时间:&nbsp; <span>2019/02/12</span></p>
+                      <p>
+                        上传人: &nbsp; <span>雨萌萌</span>
+                      </p>
+                      <p>
+                        上传时间:&nbsp; <span>2019/02/12</span>
+                      </p>
                     </CardContentWrap>
                     <CardEditorBarWrap>
-                      <Button type="primary" shape="round">下载</Button>
+                      <Button type="primary" shape="round">
+                        下载
+                      </Button>
                       <Button shape="round">删除</Button>
                     </CardEditorBarWrap>
                   </CardContainer>
@@ -367,19 +377,25 @@ export default class BasicList extends Component {
                 <Col span={6}>
                   <CardContainer>
                     <CardHeaderWrap>
-                      <IconWrap className={'person'}>
+                      <PersonIconWrap>
                         <Theme config={view}>
                           <Icon iconClass="lugia-icon-financial_group" />
                         </Theme>
-                      </IconWrap>
+                      </PersonIconWrap>
                       <h3>lugia用户调研报告</h3>
                     </CardHeaderWrap>
                     <CardContentWrap>
-                      <p>上传人: &nbsp; <span>果冻冻</span></p>
-                      <p>上传时间:&nbsp; <span>2018/12/30</span></p>
+                      <p>
+                        上传人: &nbsp; <span>果冻冻</span>
+                      </p>
+                      <p>
+                        上传时间:&nbsp; <span>2018/12/30</span>
+                      </p>
                     </CardContentWrap>
                     <CardEditorBarWrap>
-                      <Button type="primary" shape="round">下载</Button>
+                      <Button type="primary" shape="round">
+                        下载
+                      </Button>
                       <Button shape="round">删除</Button>
                     </CardEditorBarWrap>
                   </CardContainer>
@@ -387,19 +403,25 @@ export default class BasicList extends Component {
                 <Col span={6}>
                   <CardContainer>
                     <CardHeaderWrap>
-                      <IconWrap className={'word'}>
+                      <WordIconWrap>
                         <Theme config={view}>
                           <Icon iconClass="lugia-icon-financial_word" />
                         </Theme>
-                      </IconWrap>
+                      </WordIconWrap>
                       <h3>lugia产品发行工作单</h3>
                     </CardHeaderWrap>
                     <CardContentWrap>
-                      <p>上传人: &nbsp; <span>翠霞霞</span></p>
-                      <p>上传时间:&nbsp; <span>2018/11/09</span></p>
+                      <p>
+                        上传人: &nbsp; <span>翠霞霞</span>
+                      </p>
+                      <p>
+                        上传时间:&nbsp; <span>2018/11/09</span>
+                      </p>
                     </CardContentWrap>
                     <CardEditorBarWrap>
-                      <Button type="primary" shape="round">下载</Button>
+                      <Button type="primary" shape="round">
+                        下载
+                      </Button>
                       <Button shape="round">删除</Button>
                     </CardEditorBarWrap>
                   </CardContainer>
@@ -414,19 +436,25 @@ export default class BasicList extends Component {
                 <Col span={6}>
                   <CardContainer>
                     <CardHeaderWrap>
-                      <IconWrap className={'wenhao'}>
+                      <WenhaoIconWrap>
                         <Theme config={view}>
                           <Icon iconClass="lugia-icon-financial_file_unknown" />
                         </Theme>
-                      </IconWrap>
+                      </WenhaoIconWrap>
                       <h3>Bug错误汇总报告</h3>
                     </CardHeaderWrap>
                     <CardContentWrap>
-                      <p>上传人: &nbsp; <span>瑞光光</span></p>
-                      <p>上传时间:&nbsp; <span>2018/08/02</span></p>
+                      <p>
+                        上传人: &nbsp; <span>瑞光光</span>
+                      </p>
+                      <p>
+                        上传时间:&nbsp; <span>2018/08/02</span>
+                      </p>
                     </CardContentWrap>
                     <CardEditorBarWrap>
-                      <Button type="primary" shape="round">下载</Button>
+                      <Button type="primary" shape="round">
+                        下载
+                      </Button>
                       <Button shape="round">删除</Button>
                     </CardEditorBarWrap>
                   </CardContainer>
@@ -434,19 +462,25 @@ export default class BasicList extends Component {
                 <Col span={6}>
                   <CardContainer>
                     <CardHeaderWrap>
-                      <IconWrap className={'tubiao'}>
+                      <TubiaoIconWrap>
                         <Theme config={view}>
                           <Icon iconClass="lugia-icon-financial_histogram" />
                         </Theme>
-                      </IconWrap>
+                      </TubiaoIconWrap>
                       <h3>lugia产品计划表</h3>
                     </CardHeaderWrap>
                     <CardContentWrap>
-                      <p>上传人: &nbsp; <span>阵风风</span></p>
-                      <p>上传时间:&nbsp; <span>2018/07/28</span></p>
+                      <p>
+                        上传人: &nbsp; <span>阵风风</span>
+                      </p>
+                      <p>
+                        上传时间:&nbsp; <span>2018/07/28</span>
+                      </p>
                     </CardContentWrap>
                     <CardEditorBarWrap>
-                      <Button type="primary" shape="round">下载</Button>
+                      <Button type="primary" shape="round">
+                        下载
+                      </Button>
                       <Button shape="round">删除</Button>
                     </CardEditorBarWrap>
                   </CardContainer>
@@ -454,19 +488,25 @@ export default class BasicList extends Component {
                 <Col span={6}>
                   <CardContainer>
                     <CardHeaderWrap>
-                      <IconWrap className={'wenjian'}>
+                      <WenjianIconWrap>
                         <Theme config={view}>
                           <Icon iconClass="lugia-icon-financial_filing_cabinet" />
                         </Theme>
-                      </IconWrap>
+                      </WenjianIconWrap>
                       <h3>Lugia Desktop</h3>
                     </CardHeaderWrap>
                     <CardContentWrap>
-                      <p>上传人: &nbsp; <span>李软软</span></p>
-                      <p>上传时间:&nbsp; <span>2018/06/14</span></p>
+                      <p>
+                        上传人: &nbsp; <span>李软软</span>
+                      </p>
+                      <p>
+                        上传时间:&nbsp; <span>2018/06/14</span>
+                      </p>
                     </CardContentWrap>
                     <CardEditorBarWrap>
-                      <Button type="primary" shape="round">下载</Button>
+                      <Button type="primary" shape="round">
+                        下载
+                      </Button>
                       <Button shape="round">删除</Button>
                     </CardEditorBarWrap>
                   </CardContainer>
@@ -474,19 +514,25 @@ export default class BasicList extends Component {
                 <Col span={6}>
                   <CardContainer>
                     <CardHeaderWrap>
-                      <IconWrap className={'fengjing'}>
+                      <FengjingIconWrap>
                         <Theme config={view}>
                           <Icon iconClass="lugia-icon-financial_add_pic" />
                         </Theme>
-                      </IconWrap>
+                      </FengjingIconWrap>
                       <h3>lugia数据总计</h3>
                     </CardHeaderWrap>
                     <CardContentWrap>
-                      <p>上传人: &nbsp; <span>李显显</span></p>
-                      <p>上传时间:&nbsp; <span>2018/06/09</span></p>
+                      <p>
+                        上传人: &nbsp; <span>李显显</span>
+                      </p>
+                      <p>
+                        上传时间:&nbsp; <span>2018/06/09</span>
+                      </p>
                     </CardContentWrap>
                     <CardEditorBarWrap>
-                      <Button type="primary" shape="round">下载</Button>
+                      <Button type="primary" shape="round">
+                        下载
+                      </Button>
                       <Button shape="round">删除</Button>
                     </CardEditorBarWrap>
                   </CardContainer>
@@ -497,5 +543,5 @@ export default class BasicList extends Component {
         </SecContentWrap>
       </Content>
     );
-}
+  }
 }
