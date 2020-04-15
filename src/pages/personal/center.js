@@ -14,11 +14,10 @@ import About from '../../components/personal/about';
 import Project from '../../components/personal/project';
 import tx6 from '../../assets/images/cx.jpg';
 
-import { Avatar, consts as Widget, Grid, Icon, Label, Tabs, Theme } from '@lugia/lugia-web';
+import { Avatar, consts as Widget, Icon, Label, Tabs, Theme } from '@lugia/lugia-web';
 import center from '../../models/personal/center';
 import { connect } from '@lugia/lugiax';
 
-const {Row, Col} = Grid;
 const Container = styled.div`
   margin-top: 20px;
 `;
@@ -26,7 +25,6 @@ const Container = styled.div`
 const CenterContainer = styled.div`
   text-align: center;
 `;
-
 
 const Title = styled.div`
   margin: 10px 0 10px;
@@ -36,16 +34,13 @@ const Title = styled.div`
 `;
 const Text = styled.div`
   margin: 10px 0 0 -44px;
-  color: rgba(0,0,0,.45);
+  color: rgba(0, 0, 0, 0.45);
   font-size: 14px;
-  & i{
+  & i {
     vertical-align: text-top;
   }
 `;
 
-const GroupBox = styled.div`
-  margin: 10px;
-`;
 const TabsBox = styled.div`
   text-align: center;
 `;
@@ -56,23 +51,23 @@ const theme = {
       normal: {
         height: 104,
         width: 104,
-        boxShadow:' 0 0 1px 1px  red',
+        boxShadow: ' 0 0 1px 1px  red',
       },
     },
   },
   [Widget.Tabs]: {
     ContentBlock: {
-      normal:{
+      normal: {
         width: '100%',
       },
     },
-    TitleContainer:{
-      normal:{
-        textAlign:'center',
+    TitleContainer: {
+      normal: {
+        textAlign: 'center',
       },
     },
-    Container:{
-      normal:{
+    Container: {
+      normal: {
         width: '100%',
       },
     },
@@ -81,7 +76,7 @@ const theme = {
     Container: {
       normal: {
         height: 22,
-        margin:{
+        margin: {
           right: 10,
           bottom: 10,
         },
@@ -93,8 +88,8 @@ const theme = {
       normal: {
         height: 22,
         width: '100%',
-        textAlign:'center',
-        margin:{
+        textAlign: 'center',
+        margin: {
           right: 10,
           top: 5,
         },
@@ -104,7 +99,7 @@ const theme = {
   [Widget.Divider]: {
     HorizontalDivider: {
       normal: {
-        margin:{
+        margin: {
           top: 20,
           bottom: 20,
         },
@@ -114,7 +109,7 @@ const theme = {
   [Widget.Icon]: {
     Icon: {
       normal: {
-        margin:{
+        margin: {
           left: 30,
           right: 4,
         },
@@ -126,7 +121,7 @@ const iconTheme = {
   [Widget.Icon]: {
     Icon: {
       normal: {
-        margin:{
+        margin: {
           left: 50,
           right: 10,
         },
@@ -138,27 +133,11 @@ const iconTheme = {
   },
 };
 
-const avatarTheme = {
-  [Widget.Avatar]: {
-    Container: {
-      normal: {
-        height: 20,
-        width: 20,
-        margin:{
-          right: 10,
-        },
-      },
-    },
-  },
-};
-
-
-class Center extends Component{
-
+class Center extends Component {
   constructor(props) {
     super(props);
     this.state = {};
-    const {getUserInfo,getArticleInfo,getApplicationInfo,getProjectInfo} = props;
+    const { getUserInfo, getArticleInfo, getApplicationInfo, getProjectInfo } = props;
     getUserInfo().then(() => {
       getArticleInfo().then(() => {
         getApplicationInfo().then(() => {
@@ -169,95 +148,99 @@ class Center extends Component{
     this.state = {
       activityValue: 'article',
     };
-
   }
 
-
   render() {
-    const {userInfo} = this.props;
-    return <Content>
-    <Theme config={theme}>
-        <Container>
-              <PageContent>
-                <CenterContainer>
-                  <Avatar type={'img'}  src={tx6} />
-                  <Title>{userInfo.name}</Title>
-                  <Label>{userInfo.desc}</Label>
-                  <Text><Icon iconClass={'lugia-icon-financial_home'} />  {userInfo.company && userInfo.company.title}
-                  <Icon iconClass={'lugia-icon-financial_environment'} />  {userInfo.company && userInfo.company.department}
-                  <Icon iconClass={'lugia-icon-financial_contacts'} />  {userInfo.company && userInfo.company.position}</Text>
+    const { userInfo } = this.props;
+    return (
+      <Content>
+        <Theme config={theme}>
+          <Container>
+            <PageContent>
+              <CenterContainer>
+                <Avatar type={'img'} src={tx6} />
+                <Title>{userInfo.name}</Title>
+                <Label>{userInfo.desc}</Label>
+                <Text>
+                  <Icon iconClass={'lugia-icon-financial_home'} />{' '}
+                  {userInfo.company && userInfo.company.title}
+                  <Icon iconClass={'lugia-icon-financial_environment'} />{' '}
+                  {userInfo.company && userInfo.company.department}
+                  <Icon iconClass={'lugia-icon-financial_contacts'} />{' '}
+                  {userInfo.company && userInfo.company.position}
+                </Text>
 
-                  <Text>
-                    <Theme config={iconTheme}>
-                      <Icon iconClass={'lugia-icon-logo_wechat'} />
-                      <Icon iconClass={'lugia-icon-logo_weibo_circle'} />
-                      <Icon iconClass={'lugia-icon-logo_QQ'} />
-                    </Theme>
+                <Text>
+                  <Theme config={iconTheme}>
+                    <Icon iconClass={'lugia-icon-logo_wechat'} />
+                    <Icon iconClass={'lugia-icon-logo_weibo_circle'} />
+                    <Icon iconClass={'lugia-icon-logo_QQ'} />
+                  </Theme>
+                </Text>
+              </CenterContainer>
+            </PageContent>
 
-                  </Text>
-                </CenterContainer>
-
-              </PageContent>
-
-              <PageContent>
-                <TabsBox>
-                  {this.getTabs()}
-                </TabsBox>
-
-              </PageContent>
-        </Container>
-      </Theme>
-    </Content>;
-
+            <PageContent>
+              <TabsBox>{this.getTabs()}</TabsBox>
+            </PageContent>
+          </Container>
+        </Theme>
+      </Content>
+    );
   }
 
   getTabs = () => {
-    const {articleInfo,projectInfo,applicationInfo} = this.props;
-    const {activityValue} = this.state;
+    const { articleInfo, projectInfo, applicationInfo } = this.props;
+    const { activityValue } = this.state;
 
-    const tabsData=[
+    const tabsData = [
       {
-        title: '表单页' ,
-        content:  <Article data={articleInfo.data} />,
+        title: '表单页',
+        content: <Article data={articleInfo.data} />,
         key: 'article',
       },
       {
-        title: '图片页' ,
-        content:  <Project data={projectInfo.data}/>,
+        title: '图片页',
+        content: <Project data={projectInfo.data} />,
         key: 'application',
       },
       {
-        title: '选项卡' ,
-        content:  <Project data={projectInfo.data} showDesc/>,
+        title: '选项卡',
+        content: <Project data={projectInfo.data} showDesc />,
         key: 'project',
       },
       {
-        title: '关于页' ,
-        content:  <About />,
+        title: '关于页',
+        content: <About />,
         key: 'about',
       },
     ];
-    return  <Tabs data={tabsData} onChange={this.onChange} activityValue={activityValue}/>;
+    return <Tabs data={tabsData} onChange={this.onChange} activityValue={activityValue} />;
   };
 
   onChange = res => {
-    const {activityValue} = res;
-    if(!activityValue){
-      return ;
+    const { activityValue } = res;
+    if (!activityValue) {
+      return;
     }
-    this.setState({activityValue});
-  }
-
+    this.setState({ activityValue });
+  };
 }
 
 const CenterPage = connect(
   center,
   state => {
     return {
-      userInfo: state.get('userInfo').toJS?state.get('userInfo').toJS():state.get('userInfo'),
-      articleInfo: state.get('articleInfo').toJS?state.get('articleInfo').toJS():state.get('articleInfo'),
-      projectInfo: state.get('projectInfo').toJS?state.get('projectInfo').toJS():state.get('projectInfo'),
-      applicationInfo: state.get('applicationInfo').toJS?state.get('applicationInfo').toJS():state.get('applicationInfo'),
+      userInfo: state.get('userInfo').toJS ? state.get('userInfo').toJS() : state.get('userInfo'),
+      articleInfo: state.get('articleInfo').toJS
+        ? state.get('articleInfo').toJS()
+        : state.get('articleInfo'),
+      projectInfo: state.get('projectInfo').toJS
+        ? state.get('projectInfo').toJS()
+        : state.get('projectInfo'),
+      applicationInfo: state.get('applicationInfo').toJS
+        ? state.get('applicationInfo').toJS()
+        : state.get('applicationInfo'),
     };
   },
   mutations => {
@@ -271,8 +254,5 @@ const CenterPage = connect(
 )(Center);
 
 export default () => {
-  return (
-    <CenterPage/>
-  );
+  return <CenterPage />;
 };
-
