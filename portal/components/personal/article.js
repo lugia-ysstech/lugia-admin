@@ -9,16 +9,15 @@ import loginBg4 from '../../assets/images/copy5.png';
 import loginBg5 from '../../assets/images/copy6.png';
 import loginBg6 from '../../assets/images/copy7.png';
 
-const randomImg={
-  1:loginBg,
-  2:loginBg1,
-  3:loginBg2,
-  4:loginBg3,
-  5:loginBg4,
-  6:loginBg5,
-  7:loginBg6,
+const randomImg = {
+  1: loginBg,
+  2: loginBg1,
+  3: loginBg2,
+  4: loginBg3,
+  5: loginBg4,
+  6: loginBg5,
+  7: loginBg6,
 };
-
 
 const UL = styled.ul`
   padding: 20px;
@@ -31,7 +30,7 @@ const Li = styled.li`
   padding-bottom: 20px;
 `;
 const RemarkBox = styled.div`
-  margin: 5px 0 ;
+  margin: 5px 0;
 `;
 
 const FlexBox = styled.div`
@@ -41,17 +40,16 @@ const FlexBox = styled.div`
 `;
 
 const ProjectImgBox = styled.div`
-    width: 180px;
-   height: 120px;
-   overflow: hidden;
-   margin: 0 20px  0 0 ;
+  width: 180px;
+  height: 120px;
+  overflow: hidden;
+  margin: 0 20px 0 0;
 `;
 
 const Img = styled.img`
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 `;
-
 
 const Title = styled.div`
   color: #333;
@@ -68,19 +66,19 @@ const Text = styled.div`
 `;
 const Time = styled.span`
   margin: 12px 0;
-  color: rgba(0,0,0,.25);
+  color: rgba(0, 0, 0, 0.25);
   font-size: 14px;
   line-height: 22px;
 `;
 
 const Link = styled.a`
- margin: 0 6px;
- color: #4d63ff;
- opacity: 0.8;
+  margin: 0 6px;
+  color: #4d63ff;
+  opacity: 0.8;
 `;
 
 const Container = styled.div`
-  width: calc( 100% - 180px );
+  width: calc(100% - 180px);
 `;
 
 const theme = {
@@ -88,13 +86,13 @@ const theme = {
     Container: {
       normal: {
         height: 22,
-        margin:{
+        margin: {
           right: 10,
         },
-        background:{
-          color:'#FFFFFF',
+        background: {
+          color: '#fff',
         },
-        border:{
+        border: {
           top: {
             width: 1,
             color: '#ccc',
@@ -118,7 +116,7 @@ const theme = {
         },
       },
       hover: {
-        border:{
+        border: {
           top: {
             width: 1,
             color: '#ccc',
@@ -140,24 +138,24 @@ const theme = {
             style: 'solid',
           },
         },
-        background:{
-          color:'#ffffff',
+        background: {
+          color: '#fff',
         },
       },
     },
     ButtonText: {
       normal: {
-        color:'#666',
+        color: '#666',
       },
       hover: {
-        color:'#888',
+        color: '#888',
       },
     },
   },
   [Widget.Label]: {
     Container: {
       normal: {
-        color:'rgba(0,0,0,.45)',
+        color: 'rgba(0,0,0,.45)',
         width: 'auto',
         margin: {
           // left: 6,
@@ -177,11 +175,11 @@ const theme = {
   [Widget.Divider]: {
     VerticalDivider: {
       normal: {
-        height:16,
-        background:{
-          color:'#D8D8D8',
+        height: 16,
+        background: {
+          color: '#D8D8D8',
         },
-        margin:{
+        margin: {
           left: 16,
         },
       },
@@ -190,55 +188,58 @@ const theme = {
   [Widget.Icon]: {
     Icon: {
       normal: {
-        margin:{
+        margin: {
           left: 15,
           right: 0,
         },
       },
     },
   },
-
 };
-
 
 export default class Article extends Component {
   render() {
-    const {data =[],} = this.props;
+    const { data = [], } = this.props;
     return (
-     <UL>
-       <Theme config={theme}>
-       {data.map( (item,index) => {
-          const {title,remark,text,star,support,message,} = item;
-         return <Li>
-           <FlexBox>
-             <ProjectImgBox>
-               <Img  src={randomImg[index+1]} />
-             </ProjectImgBox>
-             <Container>
-               <Title>{title}</Title>
-               <Text>{text}</Text>
-               <RemarkBox>
-                 {remark.map( item => {
-                   return <Button>{item}</Button>;
-                 })}
-               </RemarkBox>
+      <UL>
+        <Theme config={theme}>
+          {data.map((item, index) => {
+            const { title, remark, text, star, support, message, } = item;
+            return (
+              <Li>
+                <FlexBox>
+                  <ProjectImgBox>
+                    <Img src={randomImg[index + 1]} />
+                  </ProjectImgBox>
+                  <Container>
+                    <Title>{title}</Title>
+                    <Text>{text}</Text>
+                    <RemarkBox>
+                      {remark.map(item => {
+                        return <Button>{item}</Button>;
+                      })}
+                    </RemarkBox>
 
-               <FlexBox>
-                 <Label><Icon iconClass={'lugia-icon-financial_star_o'} /> {star}</Label>
-                 <Divider type="vertical" />
-                 <Label><Icon iconClass={'lugia-icon-financial_like_o'} /> {support}</Label>
-                 <Divider type="vertical" />
-                 <Label><Icon iconClass={'lugia-icon-financial_describe'} /> {message}</Label>
-               </FlexBox>
-
-
-             </Container>
-           </FlexBox>
-
-         </Li>;
-       })}
-       </Theme>
-     </UL>
+                    <FlexBox>
+                      <Label>
+                        <Icon iconClass={'lugia-icon-financial_star_o'} /> {star}
+                      </Label>
+                      <Divider type="vertical" />
+                      <Label>
+                        <Icon iconClass={'lugia-icon-financial_like_o'} /> {support}
+                      </Label>
+                      <Divider type="vertical" />
+                      <Label>
+                        <Icon iconClass={'lugia-icon-financial_describe'} /> {message}
+                      </Label>
+                    </FlexBox>
+                  </Container>
+                </FlexBox>
+              </Li>
+            );
+          })}
+        </Theme>
+      </UL>
     );
   }
 }

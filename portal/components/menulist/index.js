@@ -6,16 +6,16 @@
  */
 import React from 'react';
 import styled from 'styled-components';
-import { consts as Widget, Navmenu } from '@lugia/lugia-web';
+import { consts as Widget, Navmenu, } from '@lugia/lugia-web';
 import logo from '../../assets/images/pro_logo.png';
 import menuList from '../../models/menuList';
-import { connect } from '@lugia/lugiax';
+import { connect, } from '@lugia/lugiax';
 import Security from '../../models/security';
 import Authenticate from '../../authenticate';
 import SideNavConfig from '../../../src/config/router/sideNav.config';
 import TopNavConfig from '../../../src/config/router/topNav.config';
 import AllPages from '../../../src/config/router/cusRouting.config';
-import { topNav } from '../../../src/config/router/routing.config';
+import { topNav, } from '../../../src/config/router/routing.config';
 
 function getNavContainerCSS() {
   return topNav
@@ -50,6 +50,7 @@ const Title = styled.div`
   & > img {
     width: 84px;
   }
+
   ${getTitleCSS}
 `;
 
@@ -89,7 +90,7 @@ class List extends React.Component {
     if (topNav) {
       return {};
     }
-    const { height = 600 } = this.state;
+    const { height = 600, } = this.state;
     return {
       [Widget.NavMenu]: {
         Tree: {
@@ -172,14 +173,14 @@ class List extends React.Component {
   };
 
   render() {
-    const { menuState = {}, routeData } = this.props;
-    let { value } = menuState;
+    const { menuState = {}, routeData, } = this.props;
+    let { value, } = menuState;
     if (!value) {
-      const { value: stateValue } = this.state;
+      const { value: stateValue, } = this.state;
       value = stateValue;
     }
 
-    const { authenticateSwitch } = Authenticate;
+    const { authenticateSwitch, } = Authenticate;
     const filterRouterData = this.getTargetOrDefaultTarget(
       authenticateSwitch,
       routeData,
@@ -218,9 +219,9 @@ class List extends React.Component {
   }
 }
 const MenuList = connect(
-  [menuList, Security],
+  [menuList, Security,],
   state => {
-    const [menuList, Security] = state;
+    const [menuList, Security,] = state;
     return {
       menuState: menuList.get('menuState').toJS
         ? menuList.get('menuState').toJS()
@@ -231,7 +232,7 @@ const MenuList = connect(
     };
   },
   mutations => {
-    const [menuList] = mutations;
+    const [menuList,] = mutations;
     return {
       onSelect: menuList.onSelect,
     };

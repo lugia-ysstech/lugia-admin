@@ -9,8 +9,11 @@ import G2 from '@antv/g2';
 import DataSet from '@antv/data-set';
 import getPath from './basicChartOne';
 
-
-const data = [{ name: '微应用内存', value: 18, }, { name: '已申请量', value: 4, }, { name: '可申请余量', value: 4, },];
+const data = [
+  { name: '微应用内存', value: 18, },
+  { name: '已申请量', value: 4, },
+  { name: '可申请余量', value: 4, },
+];
 
 G2.Shape.registerShape('interval', 'sliceShape', {
   draw: function draw(cfg, container) {
@@ -57,20 +60,16 @@ export default class Demo extends Component<> {
       position: 'right-bottom',
       offsetX: -100,
       offsetY: -50,
-      textStyle:{
+      textStyle: {
         fontSize: 14,
-        fill:'#333',
+        fill: '#333',
       },
     });
 
     chart
       .intervalStack()
       .position('value')
-      .color('name', [
-        '#33f',
-        '#aaf',
-        '#f88',
-      ])
+      .color('name', ['#33f', '#aaf', '#f88',])
       .shape('interval')
       .tooltip('name*value', (name, value) => {
         return {
@@ -81,9 +80,9 @@ export default class Demo extends Component<> {
       .label('name', {
         formatter: (text, item) => {
           const point = item.point; // 每个弧度对应的点
-          return point.percent*26;
+          return point.percent * 26;
         },
-        textStyle:{
+        textStyle: {
           fontSize: 16,
           fill: '#fff',
         },

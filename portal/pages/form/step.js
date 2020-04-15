@@ -62,7 +62,6 @@ const OperationContainer = styled.div`
 `;
 
 const StepContainer = styled(ItemContainer)`
-  text-align: center;
   margin: 16px 0;
   text-align: center;
   width: 100%;
@@ -74,7 +73,6 @@ const SecondStepContainer = styled(ItemContainer)`
 `;
 const ThirdStepsContentContainer = styled(SecondStepContainer)`
   background: #fafafa;
-  border-radius: 4px;
   border-radius: 4px;
 `;
 const MemoContainer = styled(ItemContainer)`
@@ -152,9 +150,8 @@ const StepsSecondText = styled.div`
   display: inline-block;
   height: 25px;
   line-height: 25px;
-  font-family: PingFangSC-Regular;
   font-size: 14px;
-  color: #666666;
+  color: #666;
 `;
 const MemoText = styled.div`
   position: relative;
@@ -228,11 +225,7 @@ class StepForm extends Component {
       return (
         <StepContainer>
           <Theme config={stepTheme}>
-            <Steps
-              data={steps}
-              currentStepNumber={currentStepNumber}
-              desAlign={'center'}
-            />
+            <Steps data={steps} currentStepNumber={currentStepNumber} desAlign={'center'} />
           </Theme>
         </StepContainer>
       );
@@ -297,10 +290,7 @@ class StepForm extends Component {
                   <TitleText>{'券商:'}</TitleText>
                 </RightInputContainer>
                 <RightItemInputContainer>
-                  <Input
-                    placeholder={'******'}
-                    onChange={this.props.dealerChange}
-                  />
+                  <Input placeholder={'******'} onChange={this.props.dealerChange} />
                 </RightItemInputContainer>
               </ItemContainer>
             </Warpper>
@@ -311,10 +301,7 @@ class StepForm extends Component {
                   <TitleText>{'抵扣比例:'}</TitleText>
                 </ItemInnerContainer>
                 <ItemInputContainer>
-                  <NumberInput
-                    placeholder={10}
-                    onChange={this.props.deductionChange}
-                  />
+                  <NumberInput placeholder={10} onChange={this.props.deductionChange} />
                   {/*<PercentText>{"%"}</PercentText>*/}
                 </ItemInputContainer>
               </ItemContainer>
@@ -342,10 +329,7 @@ class StepForm extends Component {
                   <MustStar>*</MustStar>
                   <TitleText>{'税费所属期间:'}</TitleText>
                 </ItemInnerContainer>
-                <RangePicker
-                  format={'YYYY-MM-DD'}
-                  onChange={this.props.periodChange}
-                />
+                <RangePicker format={'YYYY-MM-DD'} onChange={this.props.periodChange} />
               </ItemContainer>
               <ItemContainer>
                 <RightInputContainer>
@@ -353,10 +337,7 @@ class StepForm extends Component {
                   <TitleText>{'支付时间:'}</TitleText>
                 </RightInputContainer>
                 <RightItemInputContainer>
-                  <TimePicker
-                    placeholder={'选择时间'}
-                    onChange={this.props.payTimeChange}
-                  />
+                  <TimePicker placeholder={'选择时间'} onChange={this.props.payTimeChange} />
                 </RightItemInputContainer>
               </ItemContainer>
             </Warpper>
@@ -366,10 +347,7 @@ class StepForm extends Component {
                   <MustStar>*</MustStar>
                   <TitleText>{'任务提醒时间:'}</TitleText>
                 </ItemInnerContainer>
-                <TimePicker
-                  placeholder={'选择时间'}
-                  onChange={this.props.reminderTimeChange}
-                />
+                <TimePicker placeholder={'选择时间'} onChange={this.props.reminderTimeChange} />
               </ItemContainer>
               <ItemContainer>
                 <RightInputContainer>
@@ -377,10 +355,7 @@ class StepForm extends Component {
                   <TitleText>{'头寸时间'}</TitleText>
                 </RightInputContainer>
                 <RightItemInputContainer>
-                  <TimePicker
-                    placeholder={'选择时间'}
-                    onChange={this.props.positionTimeChange}
-                  />
+                  <TimePicker placeholder={'选择时间'} onChange={this.props.positionTimeChange} />
                 </RightItemInputContainer>
               </ItemContainer>
             </Warpper>
@@ -460,27 +435,19 @@ class StepForm extends Component {
                 </Theme>
                 <BlockContainer>
                   <BlockContainer>
-                    <StepsSecondTitleRightText>
-                      {'券商'}
-                    </StepsSecondTitleRightText>
+                    <StepsSecondTitleRightText>{'券商'}</StepsSecondTitleRightText>
                     <StepsSecondText>{'农业银行'}</StepsSecondText>
                   </BlockContainer>
                   <BlockContainer>
-                    <StepsSecondTitleRightText>
-                      {'发票'}
-                    </StepsSecondTitleRightText>
+                    <StepsSecondTitleRightText>{'发票'}</StepsSecondTitleRightText>
                     <StepsSecondText>{'发票前置'}</StepsSecondText>
                   </BlockContainer>
                   <BlockContainer>
-                    <StepsSecondTitleRightText>
-                      {'支付时间'}
-                    </StepsSecondTitleRightText>
+                    <StepsSecondTitleRightText>{'支付时间'}</StepsSecondTitleRightText>
                     <StepsSecondText>{'2018年10月21日'}</StepsSecondText>
                   </BlockContainer>
                   <BlockContainer>
-                    <StepsSecondTitleRightText>
-                      {'头寸时间'}
-                    </StepsSecondTitleRightText>
+                    <StepsSecondTitleRightText>{'头寸时间'}</StepsSecondTitleRightText>
                     <StepsSecondText>{'2018年10月21日'}</StepsSecondText>
                   </BlockContainer>
                 </BlockContainer>
@@ -532,27 +499,19 @@ class StepForm extends Component {
             <ThirdStepsContentContainer>
               <ThirdBlockContainer>
                 <ThirdBlockContainer>
-                  <StepsSecondTitleRightText>
-                    {'托管行'}
-                  </StepsSecondTitleRightText>
+                  <StepsSecondTitleRightText>{'托管行'}</StepsSecondTitleRightText>
                   <StepsSecondText>{'中国农业银行'}</StepsSecondText>
                 </ThirdBlockContainer>
                 <ThirdBlockContainer>
-                  <StepsSecondTitleRightText>
-                    {'税务归属'}
-                  </StepsSecondTitleRightText>
+                  <StepsSecondTitleRightText>{'税务归属'}</StepsSecondTitleRightText>
                   <StepsSecondText>{'中国农业资产单元'}</StepsSecondText>
                 </ThirdBlockContainer>
                 <ThirdBlockContainer>
-                  <StepsSecondTitleRightText>
-                    {'支付时间'}
-                  </StepsSecondTitleRightText>
+                  <StepsSecondTitleRightText>{'支付时间'}</StepsSecondTitleRightText>
                   <StepsSecondText>{'2018年10月21日'}</StepsSecondText>
                 </ThirdBlockContainer>
                 <ThirdBlockContainer>
-                  <StepsSecondTitleRightText>
-                    {'头寸时间'}
-                  </StepsSecondTitleRightText>
+                  <StepsSecondTitleRightText>{'头寸时间'}</StepsSecondTitleRightText>
                   <StepsSecondText>{'2018年10月21日'}</StepsSecondText>
                 </ThirdBlockContainer>
               </ThirdBlockContainer>

@@ -67,10 +67,10 @@ const Title = styled.td`
   display: inline-block;
   text-align: left;
   width: 200px;
-  &.time{
+  &.time {
     width: 300px;
   }
-  &> span{
+  & > span {
     font-weight: 600;
   }
 `;
@@ -96,7 +96,7 @@ const cardThemeConfig = {
         border: 'none',
         boxShadow: 'none',
         background: {
-          color:'#F8F8F8',
+          color: '#F8F8F8',
         },
       },
     },
@@ -114,8 +114,8 @@ const cardThemeConfig = {
       },
     },
   },
-  [Widget.Steps]:{
-    StepOutContainer:{
+  [Widget.Steps]: {
+    StepOutContainer: {
       normal: {
         width: 200,
         margin: {
@@ -125,14 +125,14 @@ const cardThemeConfig = {
     },
   },
   [Widget.Step]: {
-    StepOutContainer:{
+    StepOutContainer: {
       normal: {
         width: 210,
       },
     },
     StepDescription: {
       normal: {
-        width:200,
+        width: 200,
         fontSize: 12,
         color: '#666',
         margin: {
@@ -182,29 +182,30 @@ const routes = [
   },
 ];
 
- class ResultSuccess extends Component {
+class ResultSuccess extends Component {
   render() {
-
     return (
       <Content>
         {/*页头*/}
-        <PageHeader routes={routes}  />
+        <PageHeader routes={routes} />
         {/*页中内容*/}
         <PageContent>
           {/*成功信息*/}
           <ContentContainer>
-              <Theme config={iconTheme}>
-                <Icon iconClass={'lugia-icon-reminder_check_circle'} />
-                <SuccessText>{'提交成功'}</SuccessText>
-                <SuccessDesTextWrap>
-                  <SuccessDesText>
-                    提交结果页用于反馈一系列操作任务的处理结果， 如果仅是简单操作，使用 Message 全局提示反馈即可。
-                  </SuccessDesText>
-                  <SuccessDesText>
-                    本文字区域可以展示简单的补充说明，如果有类似展示 “单据”的需求，下面这个灰色区域可以呈现比较复杂的内容
-                  </SuccessDesText>
-                </SuccessDesTextWrap>
-              </Theme>
+            <Theme config={iconTheme}>
+              <Icon iconClass={'lugia-icon-reminder_check_circle'} />
+              <SuccessText>{'提交成功'}</SuccessText>
+              <SuccessDesTextWrap>
+                <SuccessDesText>
+                  提交结果页用于反馈一系列操作任务的处理结果， 如果仅是简单操作，使用 Message
+                  全局提示反馈即可。
+                </SuccessDesText>
+                <SuccessDesText>
+                  本文字区域可以展示简单的补充说明，如果有类似展示
+                  “单据”的需求，下面这个灰色区域可以呈现比较复杂的内容
+                </SuccessDesText>
+              </SuccessDesTextWrap>
+            </Theme>
           </ContentContainer>
           {/*流程信息*/}
           <PorcessContentWrap>
@@ -233,12 +234,7 @@ const routes = [
                       <Step
                         title="创建任务"
                         stepStatus="process"
-                        description={
-                          [
-                            <div>{'曲丽丽'}</div>,
-                            <div>{'2016-12-12 12:32'}</div>,
-                          ]
-                        }
+                        description={[<div>{'曲丽丽'}</div>, <div>{'2016-12-12 12:32'}</div>,]}
                       />
                       <Step
                         description={
@@ -249,11 +245,8 @@ const routes = [
                         title="部门初审"
                         stepStatus="next"
                       />
-                      <Step
-                        title="财务复核"
-                        stepStatus="wait"
-                      />
-                      <Step title="完成" stepStatus="wait"  />
+                      <Step title="财务复核" stepStatus="wait" />
+                      <Step title="完成" stepStatus="wait" />
                     </Steps>
                   </CardContentContainer>
                 }
@@ -263,9 +256,15 @@ const routes = [
           {/*页脚*/}
           <FooterContainer>
             <Theme config={buttonView}>
-              <Button type={'primary'} shape={'round'} onClick={this.props.goBack}>{'返回列表'}</Button>
-              <Button shape={'round'} onClick={this.props.goDetails}>{'查看项目'}</Button>
-              <Button shape={'round'} onClick={this.props.doPrint}>{'打印'}</Button>
+              <Button type={'primary'} shape={'round'} onClick={this.props.goBack}>
+                {'返回列表'}
+              </Button>
+              <Button shape={'round'} onClick={this.props.goDetails}>
+                {'查看项目'}
+              </Button>
+              <Button shape={'round'} onClick={this.props.doPrint}>
+                {'打印'}
+              </Button>
             </Theme>
           </FooterContainer>
         </PageContent>
@@ -274,16 +273,13 @@ const routes = [
   }
 }
 
-const SuccessPage = connect(
-  success,
-  mutations => {
-    return {
-      goBack: mutations.goBack,
-      goDetails: mutations.goDetails,
-      doPrint: mutations.doPrint,
-    };
-  }
-)(ResultSuccess);
+const SuccessPage = connect(success, mutations => {
+  return {
+    goBack: mutations.goBack,
+    goDetails: mutations.goDetails,
+    doPrint: mutations.doPrint,
+  };
+})(ResultSuccess);
 
 export default () => {
   return <SuccessPage />;

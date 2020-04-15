@@ -12,9 +12,9 @@ import styled from 'styled-components';
 
 const HeaderContainer = styled.div`
   height: 60px;
-  background: #ffffff;
+  background: #fff;
   position: relative;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   z-index: 100;
 `;
 
@@ -24,7 +24,7 @@ const SwitchMenuListButton = styled.div`
   top: 50%;
   transform: translateY(-50%);
   font-size: 20px;
-  color: #999999;
+  color: #999;
 `;
 
 const ActionListContainer = styled.div`
@@ -44,7 +44,6 @@ const InputWrap = styled.div`
   transform: translateY(-60%);
 `;
 
-
 const InputContainer = styled.div`
   display: inline-block;
 `;
@@ -53,7 +52,7 @@ const CommonIconWrap = styled.div`
   width: 24px;
   height: 24px;
   font-size: 21px;
-  color: #999999;
+  color: #999;
   display: inline-block;
   position: relative;
   top: 50%;
@@ -74,31 +73,31 @@ const AvatarWrap = styled.div`
   margin-left: 26px;
 `;
 
-const theme= {
+const theme = {
   [Widget.Avatar]: {
     Container: {
       normal: {
         height: 32,
         width: 32,
-        boxShadow:' 0 0 1px 1px  red',
+        boxShadow: ' 0 0 1px 1px  red',
       },
     },
   },
 };
-const inputTheme= {
+const inputTheme = {
   [Widget.Input]: {
     Container: {
       normal: {
         height: 32,
         width: 200,
-        borderRadius:getBorderRadius(28),
-        border: getBorder({width: 1,color:'transparent',}),
+        borderRadius: getBorderRadius(28),
+        border: getBorder({ width: 1, color: 'transparent', }),
         background: {
           color: '#f5f5f9',
         },
       },
       hover: {
-        borderRadius:getBorderRadius(28),
+        borderRadius: getBorderRadius(28),
       },
     },
     Placeholder: {
@@ -113,12 +112,10 @@ const inputTheme= {
     },
   },
 };
-const iconTheme= {
+const iconTheme = {
   [Widget.Icon]: {
     Icon: {
-      normal: {
-
-      },
+      normal: {},
       hover: {
         color: '#4d63ff',
       },
@@ -137,9 +134,10 @@ export default class Header extends React.Component<> {
           <InputWrap>
             <InputContainer>
               <Theme config={inputTheme}>
-                <Input placeholder={'站内搜索'}  prefix={<Icon
-                  iconClass="lugia-icon-financial_search"
-                />} />
+                <Input
+                  placeholder={'站内搜索'}
+                  prefix={<Icon iconClass="lugia-icon-financial_search" />}
+                />
               </Theme>
             </InputContainer>
           </InputWrap>
@@ -149,9 +147,7 @@ export default class Header extends React.Component<> {
               <Popover
                 placement="bottom"
                 action={'hover'}
-                description={[
-                  <div onClick={e => this.goDoc()}>使用文档</div>,
-                ]}
+                description={[<div onClick={e => this.goDoc()}>使用文档</div>,]}
                 showClearButton={false}
               >
                 <div>
@@ -164,9 +160,7 @@ export default class Header extends React.Component<> {
               <Popover
                 placement="bottom"
                 action={'hover'}
-                description={
-                  <div onClick={e => this.goPersonalCenter()}>个人中心</div>
-                }
+                description={<div onClick={e => this.goPersonalCenter()}>个人中心</div>}
                 showClearButton={false}
               >
                 <div>
@@ -179,9 +173,7 @@ export default class Header extends React.Component<> {
               <Popover
                 placement="bottom"
                 action={'hover'}
-                description={[
-                  <div onClick={e => this.goSetting()}>个人设置</div>,
-                ]}
+                description={[<div onClick={e => this.goSetting()}>个人设置</div>,]}
                 showClearButton={false}
               >
                 <div>
@@ -196,9 +188,7 @@ export default class Header extends React.Component<> {
               <Popover
                 placement="bottom"
                 action={'hover'}
-                description={[
-                  <div onClick={e => this.onClick()}>退出登陆</div>,
-                ]}
+                description={[<div onClick={e => this.onClick()}>退出登陆</div>,]}
                 showClearButton={false}
               >
                 <div>
@@ -212,7 +202,6 @@ export default class Header extends React.Component<> {
                 </div>
               </Popover>
             </Theme>
-
           </AvatarWrap>
         </ActionListContainer>
       </HeaderContainer>

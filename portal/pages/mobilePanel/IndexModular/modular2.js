@@ -43,7 +43,7 @@ const sliderView = {
       hover: {
         width: 10,
         height: 10,
-        background: { color: '#red', },
+        background: { color: 'red', },
         border: getBorder({ style: 'solid', color: '#4D63FF', width: 1, }),
       },
     },
@@ -58,15 +58,15 @@ const sliderView = {
   },
 };
 class Modular2 extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props);
-    this.state ={
+    this.state = {
       sliderVale: 10,
     };
   }
   sliberChange = value => {
     console.log('value', value);
-  }
+  };
   render() {
     return (
       <div>

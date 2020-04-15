@@ -84,8 +84,7 @@ export default class Demo extends Component {
         if (val === 'sell') {
           return '卖出';
         }
-          return '买入';
-
+        return '买入';
       },
     });
 

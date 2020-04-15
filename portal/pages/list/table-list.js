@@ -21,7 +21,7 @@ import {
 } from './style/tableListStyle';
 import PageHeader from '../../components/page-header';
 
-const {Row, Col,} = Grid;
+const { Row, Col, } = Grid;
 const routes = [
   {
     path: '/dashboard/analyse',
@@ -34,30 +34,94 @@ const routes = [
     title: '查询表格页',
   },
 ];
-const columns = [{
-  title: '用户ID', dataIndex: 'nameID', width: 100,
-}, {
-  title: '用户名', dataIndex: 'name', key:'name', width: 100,
-}, {
-  title: '邮箱', dataIndex: 'email', key:'email', width: 200,
-}, {
-  title: '手机号', dataIndex: 'phoneNum', key:'phoneNum', width: 200,
-}, {
-  title: '创建时间', dataIndex: 'createTime', key:'createTime', width: 200,
-}, {
-  title: '状态', dataIndex: 'status', key:'status', width: 200,
-},];
+const columns = [
+  {
+    title: '用户ID',
+    dataIndex: 'nameID',
+    width: 100,
+  },
+  {
+    title: '用户名',
+    dataIndex: 'name',
+    key: 'name',
+    width: 100,
+  },
+  {
+    title: '邮箱',
+    dataIndex: 'email',
+    key: 'email',
+    width: 200,
+  },
+  {
+    title: '手机号',
+    dataIndex: 'phoneNum',
+    key: 'phoneNum',
+    width: 200,
+  },
+  {
+    title: '创建时间',
+    dataIndex: 'createTime',
+    key: 'createTime',
+    width: 200,
+  },
+  {
+    title: '状态',
+    dataIndex: 'status',
+    key: 'status',
+    width: 200,
+  },
+];
 
 const data = [
-  { nameID: '00031', name: '李彦斌', email: '13887767283@163.com', phoneNum: '13887767283', createTime: '2013-03-12',status: '运行', key:'1', },
-  { nameID: '00032', name: '张翠霞', email: '283749301@qq.com', phoneNum: '15932535355', createTime: '2013-03-14',status: '已禁用', key:'2', },
-  { nameID: '00033', name: '王老五', email: '13887767283@163.com', phoneNum: '13887767283', createTime: '2013-03-12',status: '运行', key:'3', },
-  { nameID: '00034', name: '李西风', email: '283749301@qq.com', phoneNum: '15932535355', createTime: '2013-03-14',status: '已禁用', key:'4', },
-  { nameID: '00035', name: '李彦斌', email: '13887767283@163.com', phoneNum: '13887767283', createTime: '2013-03-12',status: '运行', key:'5', },
+  {
+    nameID: '00031',
+    name: '李彦斌',
+    email: '13887767283@163.com',
+    phoneNum: '13887767283',
+    createTime: '2013-03-12',
+    status: '运行',
+    key: '1',
+  },
+  {
+    nameID: '00032',
+    name: '张翠霞',
+    email: '283749301@qq.com',
+    phoneNum: '15932535355',
+    createTime: '2013-03-14',
+    status: '已禁用',
+    key: '2',
+  },
+  {
+    nameID: '00033',
+    name: '王老五',
+    email: '13887767283@163.com',
+    phoneNum: '13887767283',
+    createTime: '2013-03-12',
+    status: '运行',
+    key: '3',
+  },
+  {
+    nameID: '00034',
+    name: '李西风',
+    email: '283749301@qq.com',
+    phoneNum: '15932535355',
+    createTime: '2013-03-14',
+    status: '已禁用',
+    key: '4',
+  },
+  {
+    nameID: '00035',
+    name: '李彦斌',
+    email: '13887767283@163.com',
+    phoneNum: '13887767283',
+    createTime: '2013-03-12',
+    status: '运行',
+    key: '5',
+  },
 ];
 
 export default class TableList extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
       holdClassName: '',
@@ -83,7 +147,7 @@ export default class TableList extends Component {
         Container: {
           normal: {
             width: 80,
-            margin:{
+            margin: {
               right: 10,
             },
           },
@@ -92,10 +156,13 @@ export default class TableList extends Component {
     };
     return (
       <Content>
-
         {/*页头*/}
         <HeaderWrap>
-          <PageHeader routes={routes} title={'基础查询表格'} desc={'常用于对单项大数据表格的查看和查询'} />
+          <PageHeader
+            routes={routes}
+            title={'基础查询表格'}
+            desc={'常用于对单项大数据表格的查看和查询'}
+          />
         </HeaderWrap>
 
         {/*内容*/}
@@ -103,12 +170,16 @@ export default class TableList extends Component {
           <SecContentWrap>
             <SearchBarWrap className={this.state.holdClassName}>
               <label>查询名称: </label>
-              <Input placeholder="请输入要查询表格的名称" theme={config}/>
+              <Input placeholder="请输入要查询表格的名称" theme={config} />
               <ButtonWrap>
-                <Button type="primary" theme={config}>搜索</Button>
+                <Button type="primary" theme={config}>
+                  搜索
+                </Button>
               </ButtonWrap>
-              <AdvanceSearchWrap onClick = {this.handleHoldSearchClick}>
-                <a>高级搜索 <span>&lt;</span></a>
+              <AdvanceSearchWrap onClick={this.handleHoldSearchClick}>
+                <a>
+                  高级搜索 <span>&lt;</span>
+                </a>
               </AdvanceSearchWrap>
             </SearchBarWrap>
             <SearchBarWrap className={this.state.unholdClassName}>
@@ -121,19 +192,19 @@ export default class TableList extends Component {
                 <Col span={8}>
                   <SearchInputWrap>
                     <label>查询名称: </label>
-                    <Input placeholder="请输入要查询表格的名称" theme={config}/>
+                    <Input placeholder="请输入要查询表格的名称" theme={config} />
                   </SearchInputWrap>
                 </Col>
                 <Col span={8}>
                   <SearchInputWrap>
                     <label>查询名称: </label>
-                    <Input placeholder="请输入要查询表格的名称" theme={config}/>
+                    <Input placeholder="请输入要查询表格的名称" theme={config} />
                   </SearchInputWrap>
                 </Col>
                 <Col span={8}>
                   <SearchInputWrap>
                     <label>查询名称: </label>
-                    <Input placeholder="请输入要查询表格的名称" theme={config}/>
+                    <Input placeholder="请输入要查询表格的名称" theme={config} />
                   </SearchInputWrap>
                 </Col>
               </Row>
@@ -146,35 +217,39 @@ export default class TableList extends Component {
                 <Col span={8}>
                   <SearchInputWrap>
                     <label>查询名称: </label>
-                    <Input placeholder="请输入要查询表格的名称" theme={config}/>
+                    <Input placeholder="请输入要查询表格的名称" theme={config} />
                   </SearchInputWrap>
                 </Col>
                 <Col span={8}>
                   <SearchInputWrap>
                     <label>查询名称: </label>
-                    <Input placeholder="请输入要查询表格的名称" theme={config}/>
+                    <Input placeholder="请输入要查询表格的名称" theme={config} />
                   </SearchInputWrap>
                 </Col>
                 <Col span={8}>
                   <SearchInputWrap>
                     <label>查询名称: </label>
-                    <Input placeholder="请输入要查询表格的名称" theme={config}/>
+                    <Input placeholder="请输入要查询表格的名称" theme={config} />
                   </SearchInputWrap>
                 </Col>
               </Row>
               <ButtonWrap>
-                <Button type="primary" theme={config}>搜索</Button>
+                <Button type="primary" theme={config}>
+                  搜索
+                </Button>
               </ButtonWrap>
-              <AdvanceSearchWrap  onClick={this.handleUnholdSearchClick}>
-                <a>收起 <span>&gt;</span></a>
+              <AdvanceSearchWrap onClick={this.handleUnholdSearchClick}>
+                <a>
+                  收起 <span>&gt;</span>
+                </a>
               </AdvanceSearchWrap>
             </SearchBarWrap>
             <ListContentWrap>
-              <Table columns={columns} data={data} tableStyle="linear"/>
+              <Table columns={columns} data={data} tableStyle="linear" />
             </ListContentWrap>
             <PaginationWrap>
               <PaginationPositionWrap>
-                <Pagination showQuickJumper defaultCurrent={1} total={300} theme={config}/>
+                <Pagination showQuickJumper defaultCurrent={1} total={300} theme={config} />
               </PaginationPositionWrap>
             </PaginationWrap>
           </SecContentWrap>
@@ -182,13 +257,13 @@ export default class TableList extends Component {
       </Content>
     );
   }
-  handleHoldSearchClick(){
+  handleHoldSearchClick() {
     this.setState(() => ({
       holdClassName: 'fold',
       unholdClassName: '',
     }));
   }
-  handleUnholdSearchClick(){
+  handleUnholdSearchClick() {
     this.setState(() => ({
       holdClassName: '',
       unholdClassName: 'unfold',

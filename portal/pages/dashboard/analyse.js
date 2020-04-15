@@ -201,7 +201,6 @@ const FooterTotalTitle = styled.div`
 const FooterTotalValue = styled.div`
   display: inline-block;
   width: 50%;
-  background: #red;
   color: #4d63ff;
   text-align: right;
 `;
@@ -212,7 +211,7 @@ const FooterSelectWrap = styled.div`
 
 const FooterCheckBoxWrap = styled.div`
   position: absolute;
-  top: 0px;
+  top: 0;
   right: 40px;
 `;
 
@@ -443,11 +442,7 @@ class Analyse extends Component<> {
               content={
                 <TabsContentBoxWrap key={'1'}>
                   <TabsSelectWrap>
-                    <Select
-                      theme={selectView}
-                      value={'请选择'}
-                      canClear={false}
-                    />
+                    <Select theme={selectView} value={'请选择'} canClear={false} />
                   </TabsSelectWrap>
                   <YearsTrendChart data={yearsTrendData} />
                 </TabsContentBoxWrap>
@@ -458,11 +453,7 @@ class Analyse extends Component<> {
               content={
                 <TabsContentBoxWrap key={'2'}>
                   <TabsSelectWrap>
-                    <Select
-                      theme={selectView}
-                      value={'请选择'}
-                      canClear={false}
-                    />
+                    <Select theme={selectView} value={'请选择'} canClear={false} />
                   </TabsSelectWrap>
                   <YearsTrendChart data={yearsTrendData} />
                 </TabsContentBoxWrap>
@@ -607,19 +598,11 @@ class Analyse extends Component<> {
             <Col span={6}>
               <FooterFormWrap>
                 <FooterSelectWrap>
-                  <Select
-                    theme={selectView}
-                    value={'请选择日期'}
-                    canClear={false}
-                  />
+                  <Select theme={selectView} value={'请选择日期'} canClear={false} />
                 </FooterSelectWrap>
 
                 <FooterSelectWrap>
-                  <Select
-                    theme={selectView}
-                    value={'请选择日期'}
-                    canClear={false}
-                  />
+                  <Select theme={selectView} value={'请选择日期'} canClear={false} />
                 </FooterSelectWrap>
 
                 <FooterTitle>区间统计：</FooterTitle>
@@ -664,9 +647,7 @@ const AnalysePage = connect(
       intervalData: state.get('intervalData').toJS
         ? state.get('intervalData').toJS()
         : state.get('intervalData'),
-      secInfo: state.get('secInfo').toJS
-        ? state.get('secInfo').toJS()
-        : state.get('secInfo'),
+      secInfo: state.get('secInfo').toJS ? state.get('secInfo').toJS() : state.get('secInfo'),
       interactData: state.get('interactData').toJS
         ? state.get('interactData').toJS()
         : state.get('interactData'),

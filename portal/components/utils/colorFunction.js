@@ -1,18 +1,20 @@
-export const getColorCalculate = (color,stage,type) => {
+export const getColorCalculate = (color, stage, type) => {
   const isRGB = isRGBColor(color);
-  type = type?type.toLowerCase():type;
-  let resultColor = getRgbFromArray(hexToRgbArray(isRGB?rgbToHex(color):color).map(item => item+stage)) ;
-  if(type ==='hex'){
+  type = type ? type.toLowerCase() : type;
+  let resultColor = getRgbFromArray(
+    hexToRgbArray(isRGB ? rgbToHex(color) : color).map(item => item + stage)
+  );
+  if (type === 'hex') {
     resultColor = rgbToHex(resultColor);
   }
-  return  resultColor;
+  return resultColor;
 };
 
 export const getRgbFromArray = arr => {
-  return 'rgb(' + arr.join(',') +')' ;
+  return 'rgb(' + arr.join(',') + ')';
 };
 
-export const hexToRgbArray =  color => {
+export const hexToRgbArray = color => {
   const reg = /^#([0-9a-fA-f]{3}|[0-9a-fA-f]{6})$/;
   color = color.toLowerCase();
   if (color && reg.test(color)) {
@@ -28,9 +30,8 @@ export const hexToRgbArray =  color => {
       sColorChange.push(parseInt('0x' + color.slice(i, i + 2)));
     }
     return sColorChange;
-  } 
-    return color;
-  
+  }
+  return color;
 };
 
 export const hexToRgb = color => {
@@ -61,7 +62,7 @@ export const rgbToHex = rgb => {
     } else if (aNum.length === 3) {
       let numHex = '#';
       for (let i = 0; i < aNum.length; i += 1) {
-        numHex += (aNum[i] + aNum[i]);
+        numHex += aNum[i] + aNum[i];
       }
       return numHex;
     }
