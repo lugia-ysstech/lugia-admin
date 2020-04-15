@@ -1,11 +1,11 @@
 import React from 'react';
-import { createRoute, } from '@lugia/lugiax-router';
+import { createRoute } from '@lugia/lugiax-router';
 import Header from '../components/header';
 import MenuList from '../components/menulist';
 import '../App.css';
 import styled from 'styled-components';
 import router from '../router';
-import { topNav, } from '../../config/routing.config';
+import { topNav } from '../../src/config/router/routing.config';
 
 const Container = styled.div`
   margin: 0 auto;
