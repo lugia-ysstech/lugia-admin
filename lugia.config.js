@@ -4,7 +4,7 @@ import megaDesktopConfig from './config/mega.desktop.config.json';
 export default {
   disableCSSModules: true,
   cssModulesWithAffix: true,
-  entry: './portal/index.js',
+  entry: './src/index.js',
   publicPath: '/',
   alias: {
     '@': join(__dirname, './src'),

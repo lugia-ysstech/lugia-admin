@@ -1,0 +1,16 @@
+**/*.md
+**/*.svg
+**/*.html
+**/*.eot
+**/*.ttf
+**/*.woff
+**/*.png
+assets
+.history
+*.lugiad
+*.jpg
+*.json
+package.json
+*.css
+
+

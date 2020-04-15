@@ -17,9 +17,10 @@
     "build": "lugia-scripts build",
     "test": "lugia-scripts test -w",
     "stylelint": "stylelint",
-    "lint": "eslint --ext .js src",
-    "lint:fix": "eslint --fix --ext .js src",
-    "lint:css": "stylelint  src/**/*.js",
+    "prettier": "prettier src/**/*.js test/**/*.js",
+    "lint": "eslint --ext .js src/**/*.js test/**/*.js",
+    "lint:fix": "eslint --fix --ext .js src/**/*.js test/**/*.js",
+    "lint:css": "stylelint  ./src",
     "lint-staged": "lint-staged"
   },
   "dependencies": {
@@ -71,7 +72,7 @@
   },
   "lint-staged": {
     "src/**/*.js": [
-      "prettier",
+      "npm run prettier",
       "npm run lint:fix",
       "npm run lint",
       "npm run lint:css"
