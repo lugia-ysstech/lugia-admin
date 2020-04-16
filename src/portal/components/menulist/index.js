@@ -15,7 +15,7 @@ import Authenticate from '../../../authenticate.json';
 import SideNavConfig from '../../../config/router/sideNav.config';
 import TopNavConfig from '../../../config/router/topNav.config';
 import AllPages from '../../../config/router/cusRouting.config';
-import { topNav } from '../../../config/router/isTopNav.config';
+import { topNav } from '../../../config/router/nav.config.json';
 
 function getNavContainerCSS() {
   return topNav
