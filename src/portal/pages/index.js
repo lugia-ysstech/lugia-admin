@@ -4,8 +4,8 @@ import Header from '../components/header';
 import MenuList from '../components/menulist';
 import '../../App.css';
 import styled from 'styled-components';
-import router from '../router';
-import { topNav } from '../../src/config/router/routing.config';
+import router from '../../router';
+import { topNav } from '../../config/router/routing.config';
 
 const Container = styled.div`
   margin: 0 auto;

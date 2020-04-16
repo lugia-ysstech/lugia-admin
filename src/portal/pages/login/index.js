@@ -8,10 +8,10 @@ import React from 'react';
 import { Button, consts as Widget, Input, Radio, Theme } from '@lugia/lugia-web';
 import styled from 'styled-components';
 import '../../../App.css';
-import '../assets/iconfonts/index.css';
-import loginBg from '../assets/images/backgroundPic.png';
-import { getColorCalculate } from '../components/utils/colorFunction';
-import login from '../models/login';
+import '../../assets/iconfonts/index.css';
+import loginBg from '../../assets/images/backgroundPic.png';
+import { getColorCalculate } from '../../components/utils/colorFunction';
+import login from '../../models/login';
 import { connect } from '@lugia/lugiax';
 
 const LoginContainer = styled.div`
