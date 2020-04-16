@@ -1,22 +1,22 @@
 import React from 'react';
 import {createRoute, Redirect} from '@lugia/lugiax-router';
-import Pages from './pages';
+import Pages from './portal/pages';
 
 export const firstRouter = {
   '/register/register': {
     exact: true,
-    render: async () => import('./register/register'),
+    render: async () => import('./portal/pages/register/register'),
   },
   '/register/registerSuccess': {
     exact: true,
-    render: async () => import('./register/registerSuccess'),
+    render: async () => import('./portal/pages/register/registerSuccess'),
   },
   '/login': {
     exact: true,
-    render: async () => import('./login'),
+    render: async () => import('./portal/pages/login'),
   },
   '/404': {
-    render: async () => import('./components/abnormal/404'),
+    render: async () => import('./portal/components/abnormal/404'),
   },
   '/': {
     // exact: true,

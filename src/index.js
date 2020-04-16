@@ -3,11 +3,11 @@ import { createBrowserHistory } from 'history';
 import { createApp, go, render } from '@lugia/lugiax-router';
 import '@lugia/lugia-web/dist/css/global.css';
 import Main from './App';
-import PageLoading from './components/pageloading';
+import PageLoading from './portal/components/pageloading';
 import RoutingConfig from './config/router/cusRouting.config';
 import Authenticate from './authenticate.json';
-import Security from './models/security';
-import doRequest from './components/utils/requestFunction';
+import Security from './portal/models/security';
+import doRequest from './portal/components/utils/requestFunction';
 
 const history = createBrowserHistory();
 async function checkAuthorityData(query) {

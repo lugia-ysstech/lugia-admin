@@ -5,12 +5,12 @@
  * @flow
  */
 import React, { Component } from 'react';
-import Content from '../components/content';
+import Content from '../../components/content';
 import { Button, Icon, Theme } from '@lugia/lugia-web';
 import styled from 'styled-components';
 import Widget from '@lugia/lugia-web/dist/consts';
 import { connect } from '@lugia/lugiax';
-import registerSuccess from '../models/registerSuccess';
+import registerSuccess from '../../models/registerSuccess';
 
 const TitleContainer = styled.div`
   height: 40px;

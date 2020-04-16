@@ -7,7 +7,7 @@
 import React from 'react';
 import { Button, consts as Widget, Input, Theme } from '@lugia/lugia-web';
 import styled from 'styled-components';
-import '../App.css';
+import '../../../App.css';
 import '../assets/iconfonts/index.css';
 import loginBg from '../assets/images/backgroundPic.png';
 import { getColorCalculate } from '../components/utils/colorFunction';

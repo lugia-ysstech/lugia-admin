@@ -61,13 +61,13 @@ export default {
   },
   ...getRouters(routingConfig),
   '/404': {
-    render: async () => import('./components/abnormal/404'),
+    render: async () => import('./portal/components/abnormal/404'),
   },
   '/403': {
-    render: async () => import('./components/abnormal/403'),
+    render: async () => import('./portal/components/abnormal/403'),
   },
   '/500': {
-    render: async () => import('./components/abnormal/500'),
+    render: async () => import('./portal/components/abnormal/500'),
   },
   NotFound: {
     isHidden: true,

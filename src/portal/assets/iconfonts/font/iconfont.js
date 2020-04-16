@@ -15,7 +15,7 @@
   }
   !(function(t) {
     if (document.addEventListener)
-      if (~['complete', 'loaded', 'interactive',].indexOf(document.readyState)) setTimeout(t, 0);
+      if (~['complete', 'loaded', 'interactive'].indexOf(document.readyState)) setTimeout(t, 0);
       else {
         var e = function() {
           document.removeEventListener('DOMContentLoaded', e, !1), t();
