@@ -5,7 +5,7 @@ import MenuList from '../components/menulist';
 import '../../App.css';
 import styled from 'styled-components';
 import router from '../../router';
-import { topNav } from '../../config/router/routing.config';
+import { topNav } from '../../config/router/isTopNav.config';
 
 const Container = styled.div`
   margin: 0 auto;

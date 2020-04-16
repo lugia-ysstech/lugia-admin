@@ -1,5 +1,3 @@
-export const topNav = false;
-
 export default [
   {
     id: 'analyse',
