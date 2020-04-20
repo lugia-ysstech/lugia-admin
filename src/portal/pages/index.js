@@ -18,14 +18,14 @@ const ContentContainer = styled.div`
   display: flex;
   flex: 1;
   flex-direction: column;
-  overflow: auto;
+  ${() => (topNav ? '' : 'overflow: auto')}
 `;
 
 const Content = styled.div`
   display: flex;
   justify-content: center;
   flex-wrap: nowrap;
-  overflow: auto;
+  ${() => (topNav ? '' : 'overflow: auto')}
   flex: 1;
   padding: 0 4px;
   color: #333;
