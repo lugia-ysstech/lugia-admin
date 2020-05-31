@@ -1399,6 +1399,13 @@
   dependencies:
     chai "^4.1.2"
 
+"@lugia/lugiad-lib@1.0.4-alpha.1":
+  version "1.0.4-alpha.1"
+  resolved "http://192.168.102.79:5001/@lugia%2flugiad-lib/-/lugiad-lib-1.0.4-alpha.1.tgz#099a58ae5a6e1bb7505d073457a3238ef3ce9654"
+  integrity sha1-CZpYrlpuG7dQXQc0V6MjjvPOllQ=
+  dependencies:
+    tslib "^1.11.1"
+
 "@lugia/lugiad-loader@^1.2.16":
   version "1.2.16"
   resolved "https://registry.npm.taobao.org/@lugia/lugiad-loader/download/@lugia/lugiad-loader-1.2.16.tgz#982ba44b441d37835090e51432cb159e56f72c69"
