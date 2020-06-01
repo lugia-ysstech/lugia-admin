@@ -1,6 +1,9 @@
 import React from 'react';
-import {createRoute, Redirect} from '@lugia/lugiax-router';
+import { createRoute, Redirect } from '@lugia/lugiax-router';
+import { Theme } from '@lugia/lugia-web';
+import { load } from '@lugia/lugia-web/dist/css/theme-common-dict';
 import Pages from './portal/pages';
+import PublicValue from './config/theme/theme.config';
 
 export const firstRouter = {
   '/register/register': {
@@ -40,5 +43,12 @@ export const firstRouter = {
 };
 
 export default () => {
-  return <React.Fragment>{createRoute(firstRouter)}</React.Fragment>;
+  const { publicValue, theme: { widgetDefaultTheme = {} } = {} } = PublicValue;
+  publicValue && load(publicValue);
+
+  return (
+    <React.Fragment>
+      <Theme config={widgetDefaultTheme}>{createRoute(firstRouter)}</Theme>
+    </React.Fragment>
+  );
 };
