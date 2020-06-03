@@ -25,10 +25,10 @@ const Content = styled.div`
   display: flex;
   justify-content: center;
   flex-wrap: nowrap;
-  ${() => (topNav ? '' : 'overflow: auto')}
   flex: 1;
   padding: 0 4px;
   color: #333;
+  ${() => (topNav ? '' : 'overflow: auto')};
 `;
 
 export default () => {
