@@ -1436,10 +1436,10 @@
     "@lugia/lugiad-runtime-lib" "^1.0.1-alpha.1"
     tslib "^1.11.1"
 
-"@lugia/lugiad-lib@1.0.4-alpha.1":
-  version "1.0.4-alpha.1"
-  resolved "http://192.168.102.79:5001/@lugia%2flugiad-lib/-/lugiad-lib-1.0.4-alpha.1.tgz#099a58ae5a6e1bb7505d073457a3238ef3ce9654"
-  integrity sha1-CZpYrlpuG7dQXQc0V6MjjvPOllQ=
+"@lugia/lugiad-lib@^1.0.3":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@lugia/lugiad-lib/-/lugiad-lib-1.0.3.tgz#fff5d72ad1ca176cb4d991116180350dc764b705"
+  integrity sha512-IuznQk+u4r5VHfaozoxwQ46GSw3qpMnYWRN4DUvRQ/SuIAeYGvUUW/mYl5Sh42E998oNL2xxUMkQhRIQ1OGUHQ==
   dependencies:
     tslib "^1.11.1"
 

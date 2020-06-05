@@ -1,6 +1,6 @@
 {
   "name": "@lugia/scaffolding-admin",
-  "version": "1.6.0-alpha.1",
+  "version": "1.6.0-alpha.5",
   "keywords": [
     "lugia",
     "lugia-admin",
@@ -28,7 +28,7 @@
     "@antv/g2": "^3.5.8",
     "@lugia/dict": "^1.0.4",
     "@lugia/lugia-web": "^1.2.4-alpha.42",
-    "@lugia/lugiad-lib": "1.0.4-alpha.1",
+    "@lugia/lugiad-lib": "^1.0.3",
     "@lugia/lugiax": "1.1.8",
     "@lugia/lugiax-router": "^1.1.11",
     "@lugia/theme-config": "^1.1.5",
