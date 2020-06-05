@@ -1424,10 +1424,10 @@
   dependencies:
     "@lugia/lugiad-types" "^1.0.1-alpha.7"
 
-"@lugia/lugiad-compiler@^1.0.1-alpha.11":
-  version "1.0.1-alpha.11"
-  resolved "https://registry.yarnpkg.com/@lugia/lugiad-compiler/-/lugiad-compiler-1.0.1-alpha.11.tgz#5ccdca79a602ecc40168c80c1b1178daccd70689"
-  integrity sha512-GPRipzCaXt0y5aDet8jeC8RKamN72WXCgY5st6K9NXqcF6bfgva32QUDNrMRMOYrDKK5WBCgHRSyC5mkBYXrpw==
+"@lugia/lugiad-compiler@^1.0.1-alpha.12":
+  version "1.0.1-alpha.12"
+  resolved "https://registry.yarnpkg.com/@lugia/lugiad-compiler/-/lugiad-compiler-1.0.1-alpha.12.tgz#49586a254b9342215633614831f838855c21c9db"
+  integrity sha512-Jnwan1F9drRtpAonn6y9RqmtlIfykhOa0zi7DTIPNMYPzWjZBPoJhwGO2WGoy7z4/hyMJlmy9o3ZnCjoIkXllw==
   dependencies:
     "@lugia/array-utils" "^1.0.2"
     "@lugia/geometry" "^1.0.4"
@@ -1443,13 +1443,13 @@
   dependencies:
     tslib "^1.11.1"
 
-"@lugia/lugiad-loader@^1.3.0-alpha.8":
-  version "1.3.0-alpha.8"
-  resolved "https://registry.yarnpkg.com/@lugia/lugiad-loader/-/lugiad-loader-1.3.0-alpha.8.tgz#ef14f919146f199a07dc1482020404ca9e5efcb5"
-  integrity sha512-BHY7KkeRorfDRx0opO64+y/M/4DIHwFxc43xxDaxKrgFxUdRS+l7GmSXCjqe7Uy8z8ymZy7FHxTyCLOVfhdYPg==
+"@lugia/lugiad-loader@^1.3.0-alpha.9":
+  version "1.3.0-alpha.9"
+  resolved "https://registry.yarnpkg.com/@lugia/lugiad-loader/-/lugiad-loader-1.3.0-alpha.9.tgz#744cefad407d7c2fe2a727def75bfae80fd8e3c6"
+  integrity sha512-s9MeW4MycOLUM9+KAy0hve59LPfQF9ovJMn7bjm15PpgxhAvDVnAXD4gISNtL6EdHC4CqIVJay4Su43hdAyf9g==
   dependencies:
     "@babel/runtime" "^7.4.3"
-    "@lugia/lugiad-runtime" "^1.0.1-alpha.15"
+    "@lugia/lugiad-runtime" "^1.0.1-alpha.17"
     loader-utils "1.2.3"
 
 "@lugia/lugiad-runtime-lib@^1.0.1-alpha.2":
@@ -1459,15 +1459,15 @@
   dependencies:
     tslib "^1.11.1"
 
-"@lugia/lugiad-runtime@^1.0.1-alpha.15":
-  version "1.0.1-alpha.15"
-  resolved "https://registry.yarnpkg.com/@lugia/lugiad-runtime/-/lugiad-runtime-1.0.1-alpha.15.tgz#cb8470fe6fac229f47787ae0aaaad6a745429d4a"
-  integrity sha512-LgvSS3IpMk0xVkuBw51gxv+iGbRdjJecc8esKOLqKzfpFIDDs/ktt679wMdNK8FAFN79KaBORQWfZyKw5B5qpA==
+"@lugia/lugiad-runtime@^1.0.1-alpha.17":
+  version "1.0.1-alpha.17"
+  resolved "https://registry.yarnpkg.com/@lugia/lugiad-runtime/-/lugiad-runtime-1.0.1-alpha.17.tgz#f6661fa765b2da06768e0e4e5af5f31c9dc28f0b"
+  integrity sha512-nDa6iNsGEuFnM0+Qiy2xlbEuqtZaYpGjXytmETGVpPczQS+6yY/JBx3PtZwxDu55JKODPdfNgDVF0ouzM4Hh1A==
   dependencies:
-    "@lugia/lugiad-compiler" "^1.0.1-alpha.11"
+    "@lugia/lugiad-compiler" "^1.0.1-alpha.12"
     "@lugia/lugiad-compiler-types" "^1.0.1-alpha.7"
     "@lugia/lugiad-types" "^1.0.1-alpha.7"
-    "@lugia/lugiadc-render" "^1.0.1-alpha.15"
+    "@lugia/lugiadc-render" "^1.0.1-alpha.17"
     "@lugia/lugiadc-render-react-plugin" "^1.0.1-alpha.7"
     "@lugia/lugiadc-render-types" "^1.0.1-alpha.7"
     tslib "^1.11.1"
@@ -1517,14 +1517,14 @@
   dependencies:
     "@lugia/lugiad-compiler-types" "^1.0.1-alpha.7"
 
-"@lugia/lugiadc-render@^1.0.1-alpha.15":
-  version "1.0.1-alpha.15"
-  resolved "https://registry.yarnpkg.com/@lugia/lugiadc-render/-/lugiadc-render-1.0.1-alpha.15.tgz#13eae3137da12c7c985910c5900f34ef50571292"
-  integrity sha512-7n4YO6kUWVfCrGqa8DXAKMJNxXFq5ahxLuQ+Q8ZiKYPlJvO57B4cjVSV6uWby3OIqc4ynwcc8cy9+ajh1JfxUg==
+"@lugia/lugiadc-render@^1.0.1-alpha.17":
+  version "1.0.1-alpha.17"
+  resolved "https://registry.yarnpkg.com/@lugia/lugiadc-render/-/lugiadc-render-1.0.1-alpha.17.tgz#a082bd44d4d318e29e916eb6e07a036c79defbce"
+  integrity sha512-mORKaX4dhpqRs3jqIsKPLajfJe09SI5CW8vlpLwfEWONZJRBvUUzmwhX2EQCSAHdXnBZPy6wgYQp8f1m7pM54g==
   dependencies:
     "@lugia/geometry" "^1.0.4"
     "@lugia/lugiad" "^1.0.2-alpha.12"
-    "@lugia/lugiad-compiler" "^1.0.1-alpha.11"
+    "@lugia/lugiad-compiler" "^1.0.1-alpha.12"
     "@lugia/lugiad-compiler-types" "^1.0.1-alpha.7"
     "@lugia/lugiad-runtime-lib" "^1.0.1-alpha.2"
     "@lugia/lugiad-types" "^1.0.1-alpha.7"
@@ -1645,19 +1645,19 @@
     ts-jest-babel-7 "^22.0.7"
     typescript "^3.4.5"
 
-"@lugia/mega-scripts@^1.5.0-alpha.9":
-  version "1.5.0-alpha.9"
-  resolved "https://registry.yarnpkg.com/@lugia/mega-scripts/-/mega-scripts-1.5.0-alpha.9.tgz#007c71bc8676b0d31501feb28ff0261aa4a3ed2d"
-  integrity sha512-lp79QT3IdB8lDyYCbF/wQED8eztBEGrvh0BdbYHh3os6WTXthSkJUw19B4WHOxE4ASzubgFmzExySiZ3YBJwFw==
+"@lugia/mega-scripts@^1.5.0-alpha.10":
+  version "1.5.0-alpha.10"
+  resolved "https://registry.yarnpkg.com/@lugia/mega-scripts/-/mega-scripts-1.5.0-alpha.10.tgz#4ff156b8353f94088b62e02824dba322a4e2f6f2"
+  integrity sha512-JOe+/bREpTXga3U/3gsZnBNxXI3yZkHrmlJdpM8cChth/a6p5MI8qRVR1mcfBW32sFHNMPWKAnHb83OpQPVt9Q==
   dependencies:
     "@babel/core" "7.4.3"
     "@babel/runtime" "^7.1.5"
     "@lugia/babel-preset-mega" "^1.2.0-alpha.0"
     "@lugia/devtools-material" "^1.0.40"
-    "@lugia/lugiad-runtime" "^1.0.1-alpha.15"
+    "@lugia/lugiad-runtime" "^1.0.1-alpha.17"
     "@lugia/mega-config" "^1.3.0-alpha.0"
     "@lugia/mega-utils" "^1.6.0-alpha.0"
-    "@lugia/mega-webpack" "^1.5.0-alpha.9"
+    "@lugia/mega-webpack" "^1.5.0-alpha.10"
     babel-plugin-add-module-exports "^1.0.0"
     body-parser "^1.18.3"
     browser-sync "^2.26.3"
@@ -1744,15 +1744,15 @@
     username "^4.1.0"
     which "^1.3.1"
 
-"@lugia/mega-webpack@^1.5.0-alpha.9":
-  version "1.5.0-alpha.9"
-  resolved "https://registry.yarnpkg.com/@lugia/mega-webpack/-/mega-webpack-1.5.0-alpha.9.tgz#77eb192add96b305b28c0178e3cba38921b82ef0"
-  integrity sha512-Y+CuyeiM5RfysUTWxMGX2lpzwwvdZAah8ZHWtxVPJMItIYSeB0IKqdMGDYNUVxM26keaLBBnSsq/zcv+yIiAVA==
+"@lugia/mega-webpack@^1.5.0-alpha.10":
+  version "1.5.0-alpha.10"
+  resolved "https://registry.yarnpkg.com/@lugia/mega-webpack/-/mega-webpack-1.5.0-alpha.10.tgz#c85c26b6030a1a75b58cb8b02254eb3a43219d5b"
+  integrity sha512-ZlpE3gzHY6KZvTXb8qWRicMsBHh1EY4CtaUdG586tUFACKNeOcT2Ea081exZyWiZbLm/lzXgsyhj++Fnl2FOrQ==
   dependencies:
     "@babel/core" "7.1.5"
     "@babel/runtime" "^7.5.5"
     "@lugia/babel-preset-mega" "^1.2.0-alpha.0"
-    "@lugia/lugiad-loader" "^1.3.0-alpha.8"
+    "@lugia/lugiad-loader" "^1.3.0-alpha.9"
     "@lugia/mega-utils" "^1.6.0-alpha.0"
     assert "^1.4.1"
     autoprefixer "^8.6.5"
