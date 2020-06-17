@@ -73,9 +73,6 @@ const ForgotPwd = styled.div`
 
 const RemindIcon = styled.div`
   display: inline-block;
-  position: absolute;
-  left: 4px;
-  top: -6px;
   font-size: 14px;
   color: #333;
 `;
@@ -147,13 +144,13 @@ class Login extends React.Component<> {
     const { autoSignIn } = this.props;
     const theme = {
       [Widget.Input]: {
-        Input: {
+        Container: {
           normal: {
-            width: 340,
+            width: '100%',
             height: 40,
             borderRadius: 20,
             padding: {
-              left: 30,
+              left: 10,
               right: 0,
             },
           },
