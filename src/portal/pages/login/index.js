@@ -6,6 +6,7 @@
  */
 import React from 'react';
 import { Button, consts as Widget, Input, Radio, Theme } from '@lugia/lugia-web';
+import { getBorderRadius } from '@lugia/theme-utils';
 import styled from 'styled-components';
 import '../../../App.css';
 import '../../assets/iconfonts/index.css';
@@ -148,7 +149,7 @@ class Login extends React.Component<> {
           normal: {
             width: '100%',
             height: 40,
-            borderRadius: 20,
+            borderRadius: getBorderRadius(20),
             padding: {
               left: 10,
               right: 0,
