@@ -26,7 +26,7 @@ function getNavContainerCSS() {
     : `
     display: inline-block;
     background: #000033;
-    height: 100%;
+    height: inherit;
   `;
 }
 

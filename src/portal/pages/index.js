@@ -10,7 +10,6 @@ import { topNav } from '../../config/router/nav.config.json';
 const Container = styled.div`
   margin: 0 auto;
   background: #f5f5f9;
-  height: 100%;
   ${() => (topNav ? '' : 'display: flex')}
 `;
 
