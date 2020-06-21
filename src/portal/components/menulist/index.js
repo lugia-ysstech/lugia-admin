@@ -27,6 +27,7 @@ function getNavContainerCSS() {
     display: inline-block;
     background: #000033;
     height: inherit;
+    overflow-y: scroll
   `;
 }
 
@@ -43,6 +44,27 @@ function getTitleCSS() {
 
 const NavContainer = styled.div`
   ${getNavContainerCSS}
+
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &:hover::-webkit-scrollbar-thumb {
+    background: #d9d9d9;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: #bdbdbd;
+  }
 `;
 
 const Title = styled.div`
@@ -54,6 +76,74 @@ const Title = styled.div`
   ${getTitleCSS}
 `;
 
+const navTheme = {
+  [Widget.NavMenu]: {
+    Tree: {
+      Container: {
+        normal: {
+          width: 220,
+          padding: {
+            right: 10,
+            left: 10,
+          },
+        },
+      },
+      TreeItem: {
+        TreeItemWrap: {
+          normal: {
+            height: 40,
+            padding: {
+              right: 0,
+              left: 0,
+            },
+          },
+        },
+        SelectedTreeItemWrap: {
+          normal: {
+            padding: {
+              left: 0,
+              right: 0,
+            },
+          },
+        },
+        Text: {
+          normal: {
+            height: 32,
+            font: {
+              size: 14,
+            },
+            padding: {
+              left: 20,
+            },
+          },
+        },
+        SelectedText: {
+          normal: {
+            height: 32,
+            font: {
+              size: 14,
+            },
+            padding: {
+              left: 20,
+            },
+          },
+        },
+        Switch: {
+          normal: {
+            color: '#fff',
+            font: {
+              size: 8,
+            },
+          },
+          hover: {
+            color: '#4d63ff',
+          },
+        },
+      },
+    },
+  },
+};
+
 class List extends React.Component {
   constructor(props) {
     super(props);
@@ -63,103 +153,10 @@ class List extends React.Component {
   }
 
   componentDidMount() {
-    if (topNav) {
-      this.setState({
-        value: window.location.pathname,
-      });
-    } else {
-      const viewHeight = this.getWindowHeight();
-      this.setState({
-        value: window.location.pathname,
-        height: viewHeight,
-      });
-      window.onresize = () => {
-        const viewHeight = this.getWindowHeight();
-        this.setState({
-          height: viewHeight,
-        });
-      };
-    }
+    this.setState({
+      value: window.location.pathname,
+    });
   }
-
-  getWindowHeight = () => {
-    return document.body.clientHeight - 122;
-  };
-
-  getNavTheme = () => {
-    if (topNav) {
-      return {};
-    }
-    const { height = 600 } = this.state;
-    return {
-      [Widget.NavMenu]: {
-        Tree: {
-          Container: {
-            normal: {
-              width: 210,
-              height,
-              padding: {
-                right: 10,
-                left: 10,
-              },
-            },
-          },
-          TreeItem: {
-            TreeItemWrap: {
-              normal: {
-                height: 40,
-                padding: {
-                  right: 0,
-                  left: 0,
-                },
-              },
-            },
-            SelectedTreeItemWrap: {
-              normal: {
-                padding: {
-                  left: 0,
-                  right: 0,
-                },
-              },
-            },
-            Text: {
-              normal: {
-                height: 32,
-                font: {
-                  size: 14,
-                },
-                padding: {
-                  left: 20,
-                },
-              },
-            },
-            SelectedText: {
-              normal: {
-                height: 32,
-                font: {
-                  size: 14,
-                },
-                padding: {
-                  left: 20,
-                },
-              },
-            },
-            Switch: {
-              normal: {
-                color: '#fff',
-                font: {
-                  size: 8,
-                },
-              },
-              hover: {
-                color: '#4d63ff',
-              },
-            },
-          },
-        },
-      },
-    };
-  };
 
   getTargetOrDefaultTarget = (condition, target, defaultTarget) => {
     return condition ? target : defaultTarget;
@@ -187,8 +184,7 @@ class List extends React.Component {
       this.getRouterData(topNav, TopNavConfig, SideNavConfig)
     );
     const mode = this.getTargetOrDefaultTarget(topNav, 'horizontal', 'inline');
-    const autoHeight = this.getTargetOrDefaultTarget(topNav, true, false);
-    const theme = this.getNavTheme();
+    const theme = this.getTargetOrDefaultTarget(topNav, {}, navTheme);
     return (
       <NavContainer>
         <Title>
@@ -211,13 +207,14 @@ class List extends React.Component {
             }}
             step={60}
             inlineExpandAll={true}
-            autoHeight={autoHeight}
+            autoHeight={true}
           />
         )}
       </NavContainer>
     );
   }
 }
+
 const MenuList = connect(
   [menuList, Security],
   state => {
