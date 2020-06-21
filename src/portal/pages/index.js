@@ -10,14 +10,16 @@ import { topNav } from '../../config/router/nav.config.json';
 const Container = styled.div`
   margin: 0 auto;
   background: #f5f5f9;
+  height: 100vh;
   ${() => (topNav ? '' : 'display: flex')}
 `;
 
 const ContentContainer = styled.div`
   display: flex;
   flex: 1;
+  background: #f5f5f9;
   flex-direction: column;
-  ${() => (topNav ? '' : 'overflow: auto')}
+  ${() => (topNav ? '' : 'overflow-y: auto')};
 `;
 
 const Content = styled.div`
@@ -27,7 +29,6 @@ const Content = styled.div`
   flex: 1;
   padding: 0 4px;
   color: #333;
-  ${() => (topNav ? '' : 'overflow: auto')};
 `;
 
 export default () => {
