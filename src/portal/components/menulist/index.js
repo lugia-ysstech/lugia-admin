@@ -27,6 +27,7 @@ function getNavContainerCSS() {
     display: inline-block;
     background: #000033;
     height: inherit;
+    min-height: 100vh;
     overflow-y: scroll
   `;
 }
