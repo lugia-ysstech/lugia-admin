@@ -22,12 +22,15 @@ function getNavContainerCSS() {
     ? `
     display:flex;
     background: #000033;
+    height: 60px;
     `
     : `
     display: inline-block;
     background: #000033;
     height: inherit;
-    min-height: 100vh;
+    height: 100vh;
+    position: fixed;
+    z-index: 100;
     overflow-y: scroll
   `;
 }

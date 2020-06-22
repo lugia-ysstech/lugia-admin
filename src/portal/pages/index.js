@@ -18,7 +18,7 @@ const ContentContainer = styled.div`
   flex: 1;
   background: #f5f5f9;
   flex-direction: column;
-  ${() => (topNav ? '' : 'overflow-y: auto')};
+  ${() => (topNav ? '' : 'overflow-y: auto; padding-left: 230px')};
 `;
 
 const Content = styled.div`
