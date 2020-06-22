@@ -1,6 +1,6 @@
 {
   "name": "@lugia/scaffolding-admin",
-  "version": "1.6.0-alpha.10",
+  "version": "1.6.0",
   "keywords": [
     "lugia",
     "lugia-admin",
@@ -64,7 +64,6 @@
     "lint-staged": "^8.1.7",
     "prettier": "^1.17.1",
     "slash": "^3.0.0",
-    "styled-components": "^4.2.0",
     "stylelint": "^13.2.0",
     "stylelint-config-standard": "^18.3.0",
     "stylelint-processor-styled-components": "^1.10.0"
