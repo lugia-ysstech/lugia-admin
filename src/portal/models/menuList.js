@@ -21,7 +21,12 @@ export default lugiax.register({
   mutations: {
     sync: {
       onSelect(state, inParam) {
-        const { value } = inParam;
+        const { newItem = {} } = inParam;
+        const { value, outer = false, innerLink = true } = newItem;
+        if (outer && !innerLink) {
+          window.open(`http://${value}`);
+          return state;
+        }
         go({ url: value });
         return state.setIn(['menuState', 'value'], value);
       },
