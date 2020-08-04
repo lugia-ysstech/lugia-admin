@@ -98,17 +98,5 @@
     "value": "/mobilePanel",
     "text": "移动板块",
     "icon": "lugia-icon-logo_windows_o"
-  },
-  {
-    "value": "/www.baidu.com",
-    "text": "内部跳转到百度",
-    "outer": true,
-    "innerLink": true
-  },
-  {
-    "value": "/lugia.tech",
-    "text": "跳转到Lugia官网",
-    "outer": true,
-    "innerLink": false
   }
 ]
