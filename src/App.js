@@ -43,8 +43,19 @@ export const firstRouter = {
 };
 
 export default () => {
-  const { publicValue, theme: { widgetDefaultTheme = {} } = {} } = PublicValue;
-  publicValue && load(publicValue);
+  const { publicValue, widgetDefaultTheme = {} } = PublicValue;
+  publicValue.forEach(({ moduleName, value }) => {
+    switch (moduleName) {
+      case '@lugia/lugia-web':
+        value && load(value);
+        break;
+      case 'xxx-web':
+        //todo:如需配置第三方组件的公共值，在此加载对应组件的load
+        break;
+      default:
+        break;
+    }
+  });
 
   return (
     <React.Fragment>
