@@ -1841,6 +1841,16 @@
     is-plain-object "^3.0.0"
     tslib "^1.11.1"
 
+"@lugia/object-utils@^1.0.20-alpha.0":
+  version "1.0.20-alpha.0"
+  resolved "https://registry.yarnpkg.com/@lugia/object-utils/-/object-utils-1.0.20-alpha.0.tgz#97071ad5ae747c1316e526b5f1e1147cf7142156"
+  integrity sha512-FJYlY9lz+ICArb5RyfQi8wuaahB+oS9obdqOByeZNVpWs2SqlVuzZWBmu1lbOVIHFFaI0vkEHiLfTZCk6hnpUw==
+  dependencies:
+    "@babel/runtime" "^7.4.5"
+    deepmerge "^3.2.0"
+    is-plain-object "^3.0.0"
+    tslib "^1.11.1"
+
 "@lugia/ramada@^1.0.5":
   version "1.0.5"
   resolved "https://registry.npm.taobao.org/@lugia/ramada/download/@lugia/ramada-1.0.5.tgz#e760646adcd3a9b00e4b8200359e03483c344779"
@@ -1848,23 +1858,23 @@
   dependencies:
     "@babel/runtime" "^7.4.5"
 
-"@lugia/theme-config@^1.1.5":
-  version "1.1.5"
-  resolved "https://registry.npm.taobao.org/@lugia/theme-config/download/@lugia/theme-config-1.1.5.tgz#1d4536aadc92854396501a5afe1893090c6a8b9c"
-  integrity sha1-HUU2qtyShUOWUBpa/hiTCQxqi5w=
+"@lugia/theme-config@^1.1.7":
+  version "1.1.7"
+  resolved "https://registry.yarnpkg.com/@lugia/theme-config/-/theme-config-1.1.7.tgz#d44d0ea64f161d106e6806692ea8758237506d65"
+  integrity sha512-dW+uwVDC2c50s6/IFbsJVFbAwop70gDrxPgb2bHCAQGaT37PCifkZ51dYpfdH6gEvMk6Mszp+9CHwmpxdn0IyQ==
   dependencies:
     "@babel/runtime" "^7.4.5"
     "@types/react" "^16.9.27"
     "@types/react-test-renderer" "^16.9.2"
     prop-types "^15.7.2"
 
-"@lugia/theme-core@^1.1.9":
-  version "1.1.10"
-  resolved "https://registry.npm.taobao.org/@lugia/theme-core/download/@lugia/theme-core-1.1.10.tgz#3fbe5e4f7682a70d99933bcc8a4e60e2da53f706"
-  integrity sha1-P75eT3aCpw2ZkzvMik5g4tpT9wY=
+"@lugia/theme-core@^1.1.12":
+  version "1.1.12"
+  resolved "https://registry.yarnpkg.com/@lugia/theme-core/-/theme-core-1.1.12.tgz#1fec33b8b4920be869380fece6de4a33ab4d7462"
+  integrity sha512-lHwK2WKiEXrXgfFVqDDcR5a049iwuqwvhvD1h/vOey39TDJJwkxk5qFmEW+gx0Hmu0b4HdieCKV4MD5l8XiOxA==
   dependencies:
     "@babel/runtime" "^7.4.5"
-    "@lugia/object-utils" "^1.0.19"
+    "@lugia/object-utils" "^1.0.20-alpha.0"
     "@types/react" "^16.9.32"
     debug "^4.1.1"
     tslib "^1.11.1"
