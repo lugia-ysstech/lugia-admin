@@ -59,7 +59,7 @@ export default () => {
 
   return (
     <React.Fragment>
-      <Theme config={widgetDefaultTheme}>{createRoute(firstRouter)}</Theme>
+      <Theme globalConfig={widgetDefaultTheme}>{createRoute(firstRouter)}</Theme>
     </React.Fragment>
   );
 };
