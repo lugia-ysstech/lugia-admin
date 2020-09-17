@@ -1,6 +1,6 @@
 {
   "name": "@lugia/scaffolding-admin",
-  "version": "1.6.3-alpha.5",
+  "version": "1.6.3-alpha.6",
   "keywords": [
     "lugia",
     "lugia-admin",
@@ -86,9 +86,7 @@
     "mock",
     "src",
     ".eslintignore",
-    ".eslintrc",
     ".prettierrc",
-    ".stylelintrc",
     "portal",
     "public",
     "test",
