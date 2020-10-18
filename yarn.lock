@@ -1404,10 +1404,10 @@
     rxjs "^6.3.3"
     tslib "^1.11.1"
 
-"@lugia/lugia-web@^1.2.5-alpha.95":
-  version "1.2.5-alpha.95"
-  resolved "https://registry.yarnpkg.com/@lugia/lugia-web/-/lugia-web-1.2.5-alpha.95.tgz#f65a1d16c6d8fe3250c07b356e4183191c35c6cd"
-  integrity sha512-EWgZ0Un5s8nS+K8Lkjh+u1zFiHHgnZmnRL0sQ8Qed9sDnu75jR19qjiqCWVs9wmZvKzgWciyZQlbPo0NkGzcSQ==
+"@lugia/lugia-web@1.2.5":
+  version "1.2.5"
+  resolved "https://registry.npm.taobao.org/@lugia/lugia-web/download/@lugia/lugia-web-1.2.5.tgz#28398c28a80351c7d08d710185968e34b80e5830"
+  integrity sha1-KDmMKKgDUcfQjXEBhZaONLgOWDA=
   dependencies:
     "@lugia/css" "^1.0.24"
     "@lugia/listener" "^1.0.5"
@@ -1472,10 +1472,10 @@
     query-string "^6.13.5"
     tslib "^1.11.1"
 
-"@lugia/lugiad-loader@^1.4.0-alpha.10":
-  version "1.4.0-alpha.10"
-  resolved "https://registry.yarnpkg.com/@lugia/lugiad-loader/-/lugiad-loader-1.4.0-alpha.10.tgz#6bc597041100909861aa2c10930183fcfa4eff00"
-  integrity sha512-2BltErBAjZH3+/b0NyxI2uHYvgr80mb+cQhobkQ+bilJ5k2QdtgSbMC5QVuP2B1hF6wnOivIVZZuUEKFe8cjBg==
+"@lugia/lugiad-loader@^1.4.1":
+  version "1.4.1"
+  resolved "https://registry.npm.taobao.org/@lugia/lugiad-loader/download/@lugia/lugiad-loader-1.4.1.tgz#76109b3027e07d2445538bd026fc46fa979de31b"
+  integrity sha1-dhCbMCfgfSRFU4vQJvxG+ped4xs=
   dependencies:
     "@babel/runtime" "^7.4.3"
     "@lugia/lugiad-runtime" "1.1.16"
@@ -1514,10 +1514,10 @@
     "@lugia/lugiad-types" "^1.1.9"
     tslib "^1.11.1"
 
-"@lugia/lugiadac-loader@^1.0.1-alpha.10":
-  version "1.0.1-alpha.10"
-  resolved "https://registry.yarnpkg.com/@lugia/lugiadac-loader/-/lugiadac-loader-1.0.1-alpha.10.tgz#cb950dfaaa5fc026aadc356bbb7a5b2dc33c97b1"
-  integrity sha512-wRscNGam1xYRZmgdvzaa3/eUzuuZINBVkflPo0skyYF+6tC6wtx2IrfukNfZslzfbeO5ux0BJts1iKGBOPMTmw==
+"@lugia/lugiadac-loader@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.npm.taobao.org/@lugia/lugiadac-loader/download/@lugia/lugiadac-loader-1.0.2.tgz#12aec6816d82635d84ec07ef381a5db57ec45ee3"
+  integrity sha1-Eq7GgW2CY12E7AfvOBpdtX7EXuM=
   dependencies:
     "@babel/runtime" "^7.4.3"
     "@lugia/lugiad-runtime" "1.1.16"
@@ -1715,10 +1715,10 @@
     ts-jest-babel-7 "^22.0.7"
     typescript "^3.4.5"
 
-"@lugia/mega-scripts@^1.6.0-alpha.11":
-  version "1.6.0-alpha.11"
-  resolved "https://registry.yarnpkg.com/@lugia/mega-scripts/-/mega-scripts-1.6.0-alpha.11.tgz#8720c263520335a39b53d008698c540aaca857b7"
-  integrity sha512-OBONo0jXckbjXqpBiOxy7V/I3uNNWJMekM0Vc8OFiym43ZpwWoCbGT9uA4JLM8R45flcPhOyRtYDL3fkEy9VjQ==
+"@lugia/mega-scripts@1.6.1":
+  version "1.6.1"
+  resolved "https://registry.npm.taobao.org/@lugia/mega-scripts/download/@lugia/mega-scripts-1.6.1.tgz#a8485aec30dce60c49221bd649148ec0ce170318"
+  integrity sha1-qEha7DDc5gxJIhvWSRSOwM4XAxg=
   dependencies:
     "@babel/core" "7.4.3"
     "@babel/runtime" "^7.1.5"
@@ -1727,7 +1727,7 @@
     "@lugia/lugiad-runtime" "1.1.16"
     "@lugia/mega-config" "^1.3.0-alpha.0"
     "@lugia/mega-utils" "^1.6.0-alpha.0"
-    "@lugia/mega-webpack" "^1.6.0-alpha.11"
+    "@lugia/mega-webpack" "^1.6.0"
     babel-plugin-add-module-exports "^1.0.0"
     body-parser "^1.18.3"
     browser-sync "^2.26.3"
@@ -1814,16 +1814,16 @@
     username "^4.1.0"
     which "^1.3.1"
 
-"@lugia/mega-webpack@^1.6.0-alpha.11":
-  version "1.6.0-alpha.11"
-  resolved "https://registry.yarnpkg.com/@lugia/mega-webpack/-/mega-webpack-1.6.0-alpha.11.tgz#f46ab2db24bf3c8f6842b3790fdea81300ffdbda"
-  integrity sha512-A4L0kj/iPyqioWuzFhCK6ZmvRFnRSiTQKmMk1pzIZzIAG3t3n+RlXO25Dlz/Ib8WppO3Ujo569aYupSles0+RQ==
+"@lugia/mega-webpack@^1.6.0":
+  version "1.6.0"
+  resolved "https://registry.npm.taobao.org/@lugia/mega-webpack/download/@lugia/mega-webpack-1.6.0.tgz#91561604a402dc153c7c4e2a309b0083b8f9b3fd"
+  integrity sha1-kVYWBKQC3BU8fE4qMJsAg7j5s/0=
   dependencies:
     "@babel/core" "7.1.5"
     "@babel/runtime" "^7.5.5"
     "@lugia/babel-preset-mega" "^1.2.0-alpha.0"
-    "@lugia/lugiad-loader" "^1.4.0-alpha.10"
-    "@lugia/lugiadac-loader" "^1.0.1-alpha.10"
+    "@lugia/lugiad-loader" "^1.4.1"
+    "@lugia/lugiadac-loader" "^1.0.2"
     "@lugia/mega-utils" "^1.6.0-alpha.0"
     assert "^1.4.1"
     autoprefixer "^8.6.5"
