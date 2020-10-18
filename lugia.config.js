@@ -29,6 +29,14 @@ export default {
       },
       '@/components',
     ],
+    [
+      'import',
+      {
+        libraryName: '@lugia/action-lib',
+        libraryDirectory: 'dist',
+      },
+      '@lugia/action-lib',
+    ]
   ],
   applyWebpack(webpackConfig, { webpack, merge, }) {
     return webpackConfig;
