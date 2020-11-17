@@ -26,7 +26,6 @@ const Content = styled.div`
   justify-content: center;
   flex-wrap: nowrap;
   flex: 1;
-  padding: 0 4px;
   min-height: calc(100vh - 60px);
   color: #333;
 `;
