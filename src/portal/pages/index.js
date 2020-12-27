@@ -18,7 +18,7 @@ const ContentContainer = styled.div`
   flex: 1;
   background: #f5f5f9;
   flex-direction: column;
-  ${() => (topNav ? '' : 'overflow-y: auto; padding-left: 230px')};
+  ${() => (topNav ? '' : 'overflow-y: auto; padding-left: 228px')};
 `;
 
 const Content = styled.div`
@@ -26,7 +26,6 @@ const Content = styled.div`
   justify-content: center;
   flex-wrap: nowrap;
   flex: 1;
-  padding: 0 4px;
   min-height: calc(100vh - 60px);
   color: #333;
 `;

@@ -9,6 +9,7 @@ import { go } from '@lugia/lugiax-router';
 import { Avatar, consts as Widget, Icon, Input, Popover, Theme } from '@lugia/lugia-web';
 import { getBorder, getBorderRadius } from '@lugia/theme-utils';
 import styled from 'styled-components';
+import avatarImg from '../../assets/images/avatar.jpg';
 
 const HeaderContainer = styled.div`
   height: 60px;
@@ -194,7 +195,7 @@ export default class Header extends React.Component<> {
                 <div>
                   <Avatar
                     shape={'circle'}
-                    src="http://192.168.102.73:8081/BigFrontend/Work/ued/lugia/raw/master/lugiaweb%E7%BB%84%E4%BB%B6/%E5%A4%B4%E5%83%8F/32.jpg"
+                    src={avatarImg}
                     msgNum={99}
                     size={'small'}
                     type={'img'}
