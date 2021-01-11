@@ -15,6 +15,7 @@ const registerBabel = require('@lugia/mega-scripts/lib/utils/registerBabel');
 const getUserConfig = require('@lugia/mega-config').default;
 const { join, dirname } = require('path');
 const { writeFileSync, ensureFileSync } = require('fs-extra');
+const tsImportPluginFactory = require('ts-import-plugin');
 
 // 此函数执行时需要设置环境变量
 // 无论是在父进程还是子进程
@@ -31,11 +32,22 @@ function singleCompile(
     watch,
     configFile,
     publicPath,
-    disableCssExtract
+    disableCssExtract,
+    importModules = []
   },
   cb
 ) {
   let userConfig = {};
+  const tsPlugins = {
+    transpileOnly: true,
+    getCustomTransformers: () => ({
+      before:
+        importModules.length > 0 ? [tsImportPluginFactory(importModules)] : []
+    }),
+    compilerOptions: {
+      module: 'es2015'
+    }
+  };
   if (configFile) {
     // register babel for config files
     registerBabel(require.resolve('@lugia/mega-scripts/lib/utils/babel.js'), {
@@ -84,8 +96,8 @@ function singleCompile(
     disableCssExtract
   });
 
-  const applyWebpack = (webpackConfig, { merge }) =>
-    merge(webpackConfig, {
+  const applyWebpack = (webpackConfig, { merge }) => {
+    const config = merge(webpackConfig, {
       output: {
         path: join(cwd, './.lugia/temp'),
         library: name,
@@ -103,6 +115,15 @@ function singleCompile(
         '@lugia/theme-hoc-devtools': 'LugiaThemeDevTools'
       }
     });
+    config.module.rules.push({
+      test: /\.(tsx|ts)$/,
+      loader: 'ts-loader',
+      options: tsPlugins,
+      exclude: /node_modules/
+    });
+
+    return config;
+  };
 
   build(
     {
