@@ -2,6 +2,7 @@ import React from 'react';
 import { createBrowserHistory } from 'history';
 import { createApp, go, render } from '@lugia/lugiax-router';
 import '@lugia/lugia-web/dist/css/global.css';
+import './assets/icon/index.css';
 import Main from './App';
 import PageLoading from './portal/components/pageloading';
 import RoutingConfig from './config/router/cusRouting.config';
