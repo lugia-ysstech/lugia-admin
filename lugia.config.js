@@ -8,6 +8,9 @@ export default {
   publicPath: '/',
   alias: {
     '@': join(__dirname, './src'),
+    '@models': join(__dirname, './src/models'),
+    '@pages': join(__dirname, './src/pages'),
+    '@components': join(__dirname, './src/components'),
   },
   dllDependenciesExcludes: [],
   extraBabelIncludes: [/decamelize/,],
@@ -25,7 +28,7 @@ export default {
       {
         libraryName: '@/components',
         libraryDirectory: '',
-        camel2DashComponentName: false,
+        camel2DashComponentName: true,
       },
       '@/components',
     ],
@@ -36,7 +39,25 @@ export default {
         libraryDirectory: 'dist',
       },
       '@lugia/action-lib',
-    ]
+    ],
+    [
+      'import',
+      {
+        libraryName: '@/models',
+        libraryDirectory: '',
+        camel2DashComponentName: true,
+      },
+      '@/models',
+    ],
+    [
+      'import',
+      {
+        libraryName: '@/pages',
+        libraryDirectory: '',
+        camel2DashComponentName: true,
+      },
+      '@/pages',
+    ],
   ],
   applyWebpack(webpackConfig, { webpack, merge, }) {
     return webpackConfig;
