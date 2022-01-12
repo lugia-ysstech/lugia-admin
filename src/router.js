@@ -49,15 +49,13 @@ function getIndexRouter(routingConfig) {
 export default {
   '/': {
     exact: true,
-    render: async () => {
-      return () => (
-        <Redirect
-          to={{
-            pathname: getIndexRouter(routingConfig),
-          }}
-        />
-      );
-    },
+    component: () => (
+      <Redirect
+        to={{
+          pathname: getIndexRouter(routingConfig),
+        }}
+      />
+    ),
   },
   ...getRouters(routingConfig),
   '/404': {
